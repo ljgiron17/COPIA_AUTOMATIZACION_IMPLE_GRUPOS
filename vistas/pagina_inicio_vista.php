@@ -293,7 +293,6 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
-
             <!---- solicitudes ----->
 
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_solicitudes'] ?>">
@@ -345,6 +344,42 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
               </ul>
             </li>
+            <!---- JEFATURA ----->
+
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book-open"></i>
+                <p>
+                  JEFATURA
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
+                  <a href="../vistas/menu_ayuda_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> GESTION CARGA ACADEMICA </p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> GESTION DESCARGA ACADEMICA </p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> GESTION PLANIFICACION ACADEMICA </p>
+                  </a>
+                </li>
+              </ul>
+
             <!---- Ayuda ----->
 
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
