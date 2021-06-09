@@ -346,34 +346,34 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
             <!---- JEFATURA ----->
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_jefatura'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book-open"></i>
                 <p>
-                  JEFATURA
+                  Jefatura
                   <i class="fas fa-angle-left right"></i>
                   <span class="badge badge-info right"></span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
-                  <a href="../vistas/menu_ayuda_vista.php" class="nav-link">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_carga'] ?>">
+                  <a href="../vistas/g_cargajefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> GESTION CARGA ACADEMICA </p>
                   </a>
                 </li>
               </ul>
               <ul class="nav nav-treeview">
-                <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
-                  <a href="#" class="nav-link">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_descarga'] ?>">
+                  <a href="../vistas/g_descargajefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> GESTION DESCARGA ACADEMICA </p>
                   </a>
                 </li>
               </ul>
               <ul class="nav nav-treeview">
-                <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
-                  <a href="#" class="nav-link">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_planificacion'] ?>">
+                  <a href="../vistas/g_planificacionjefatura_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> GESTION PLANIFICACION ACADEMICA </p>
                   </a>
