@@ -346,7 +346,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
             <!---- Jefatura ----->
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_Jefatura'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-tie"></i>
                 <p>
@@ -359,23 +359,23 @@ if (session_status() === PHP_SESSION_NONE) {
                 <li class="nav-item" style="display:<?php echo $_SESSION['g_carga'] ?>">
                   <a href="../vistas/g_cargajefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p> Gestión Carga Academica</p>
+                    <p>Gestión Carga Academica</p>
                   </a>
                 </li>
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['g_descarga'] ?>">
-                  <a href="../vistas/g_descargajefatura_vista.php" class="nav-link">
+                  <a href="../vistas/g_reasignacionjefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p> Gestón Reasignacion Academica </p>
+                    <p>Gestón Reasignacion Academica </p>
                   </a>
                 </li>
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['g_planificacion'] ?>">
-                  <a href="../vistas/g_planificacionjefatura_vista" class="nav-link">
+                  <a href="../vistas/g_planificacionjefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p> Gestión Administracion Y Planificacion Academica </p>
+                    <p>Gestión Administracion Y Planificacion Academica </p>
                   </a>
                 </li>
               </ul>
