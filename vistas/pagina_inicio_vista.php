@@ -356,7 +356,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item" style="display:<?php echo $_SESSION['g_carga'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_cargajefatura'] ?>">
                   <a href="../vistas/g_cargajefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Gestión Carga Academica</p>
@@ -364,7 +364,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
               </ul>
               <ul class="nav nav-treeview">
-                <li class="nav-item" style="display:<?php echo $_SESSION['g_descarga'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_reasignacionjefatura'] ?>">
                   <a href="../vistas/g_reasignacionjefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Gestón Reasignacion Academica </p>
@@ -372,7 +372,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
               </ul>
               <ul class="nav nav-treeview">
-                <li class="nav-item" style="display:<?php echo $_SESSION['g_planificacion'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_planificacionjefatura'] ?>">
                   <a href="../vistas/g_planificacionjefatura_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Gestión Administracion Y Planificacion Academica </p>
