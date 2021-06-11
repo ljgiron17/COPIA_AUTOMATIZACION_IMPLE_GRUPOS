@@ -5,7 +5,7 @@ require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_visualizar.php');
 
 
-if (permiso_ver('119')=='1')
+if (permiso_ver('118')=='1')
  {
   
   $_SESSION['g_cargajefatura_vista']="...";
@@ -66,7 +66,7 @@ $_SESSION['ayuda_menu']="No
     <div class="col-6 col-sm-6 col-md-4">
     <div class="small-box bg-light">
     <div class="inner">	
-    <h4>carga Académica</h4>
+    <h4>Carga Académica</h4>
     <p><?php echo $_SESSION['ayuda_menu'];?></p>
   </div>
   <div class="icon">
