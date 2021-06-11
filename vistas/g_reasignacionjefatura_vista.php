@@ -66,7 +66,7 @@ $_SESSION['ayuda_menu']="No
     <div class="col-6 col-sm-6 col-md-4">
     <div class="small-box bg-light">
     <div class="inner">	
-    <h4>Solicitud de Reasignacion de Docentes</h4>
+    <h4>Solicitud de Reasignación</h4>
     <p><?php echo $_SESSION['ayuda_menu'];?></p>
   </div>
   <div class="icon">
