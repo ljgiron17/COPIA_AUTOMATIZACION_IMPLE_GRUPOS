@@ -74,7 +74,7 @@ $_SESSION['ayuda_menu']="No
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="#" class="small-box-footer">
+  <a href="g_cargaacademica_vista.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
