@@ -1,14 +1,12 @@
 <?php
 
-
-
     $servidor= "localhost";
     $usuario= "root";
     $password = "";
     $base= "informat_desarrollo_automatizacion";
 
-	$mysqli = new mysqli($servidor, $usuario,$password,$base);
-	$connection = mysqli_connect($servidor, $usuario,$password,$base) or die("Error " . mysqli_error($connection));
+	$mysqli = new mysqli($servidor,$usuario,$password,$base);
+	$connection = mysqli_connect($servidor,$usuario,$password,$base) or die("Error " . mysqli_error($connection));
 	
 	if($mysqli->connect_error){
 		echo "Nuestro sitio presenta fallas....";
