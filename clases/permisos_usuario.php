@@ -385,22 +385,22 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
    }   
    
    //----agregando botones de GESTION DE JEFATURA----//
-   if ($_SESSION['pantalla'] = '121') {
+   if ($_SESSION['pantalla'] = '104') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['btn_Jefatura'] = "block";
       }
    } 
-   if ($_SESSION['pantalla'] == '118') {
+   if ($_SESSION['pantalla'] == '105') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['g_cargajefatura_vista'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '119') {
+   if ($_SESSION['pantalla'] == '118') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['g_reasignacionjefatura_vista'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '120') {
+   if ($_SESSION['pantalla'] == '121') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['g_planificacionjefatura_vista'] = "block";
       }
