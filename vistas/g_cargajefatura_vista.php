@@ -7,7 +7,7 @@ require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_permisos.php');
 
-if (permiso_ver('118')=='1')
+if (permiso_ver('105')=='1')
  {
   
   $_SESSION['g_cargajefatura_vista']="...";

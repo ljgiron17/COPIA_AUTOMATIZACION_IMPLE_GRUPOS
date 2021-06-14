@@ -7,6 +7,17 @@ require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_permisos.php');
 
+if (permiso_ver('121')=='1')
+ {
+  
+  $_SESSION['g_cargajefatura_vista']="...";
+}
+else
+{
+$_SESSION['ayuda_menu']="No 
+  tiene permisos para visualizar";
+
+}
 ?>
 
 </head>
