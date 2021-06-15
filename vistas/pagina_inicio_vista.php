@@ -24,7 +24,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Informatica Administrativa</title>
+  <title>Informatica Administrativa </title>
 
 
 
