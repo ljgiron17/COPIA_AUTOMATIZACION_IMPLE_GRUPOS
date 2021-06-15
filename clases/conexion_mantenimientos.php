@@ -1,7 +1,7 @@
 <?php
 require_once "global.php";
 
-$conexion = new mysqli('167.114.169.207', 'informat_admin', 'HLo{Q3e{)II^', 'informat_automatizacion');
+$conexion = new mysqli("127.0.0.1", "root", "", "automatizacion");
 
 mysqli_query($conexion, 'SET NAMES "' . DB_ENCODE . '"');
 

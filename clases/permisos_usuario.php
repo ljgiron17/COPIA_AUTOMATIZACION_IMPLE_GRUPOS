@@ -6,12 +6,12 @@ Require_once ('../clases/Conexion.php');
 
 
 
-			if (session_status() === PHP_SESSION_NONE){session_start();} 
+			if (session_status() === PHP_SESSION_NONE){session_start();}
 
 
 
-      
-       
+
+
 
 $sql_permisos="select pu.visualizar ,p.id_objeto from tbl_permisos_usuarios pu ,tbl_objetos p,tbl_usuarios u ,tbl_roles r where r.id_rol=pu.id_rol and r.id_rol=u.id_rol and pu.id_objeto=p.id_objeto and id_usuario=".$_SESSION['id_usuario']." ";
 
@@ -26,6 +26,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['btn_mantenimientos']='none';
    $_SESSION['btn_ayuda']='none';
    $_SESSION['btn_mantenimiento']='none';
+   $_SESSION['btn_comite_vida_estudiantil']='none';
 
    /*Menu laterales*/
    $_SESSION['pregunta_vista']='none';
@@ -55,7 +56,8 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['mantemiento_carga_academica1'] = 'none';
    $_SESSION['plan_estudio_vista'] = 'none';
    $_SESSION['mantenimiento_plan'] = 'none';
-   
+   $_SESSION['adminitracion_cve']='none';
+
 
 
   while ($fila = $resultado_permisos->fetch_row())
@@ -63,7 +65,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    	/*
    	echo '<script> alert("Bienvenido a nuestro sistema :  ' .$fila[0], $fila[1]. '")</script>';
        */
-    if ($fila[0]=='1') 
+    if ($fila[0]=='1')
        {
       $_SESSION['confirmacion_ver']="block";
        }
@@ -74,22 +76,22 @@ $resultado_permisos = $mysqli->query($sql_permisos);
     permisos_a_roles_visualizar($fila[1],$_SESSION['confirmacion_ver']);
     }
 
-    
-          
+
+
 
  function  permisos_a_roles_visualizar($pantalla,$confirmacion)
     {
    $_SESSION['confirmacion']=$confirmacion;
   $_SESSION['pantalla']=$pantalla;
-      
+
 
    /* $_SESSION['historial_registro']='none';*/
 
-    
+
 
            if ($_SESSION['pantalla']>='1' and $_SESSION['pantalla']<='10')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['btn_seguridad']="block";
 
@@ -99,7 +101,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
            if ($_SESSION['pantalla']=='14' or $_SESSION['pantalla']=='20'  or $_SESSION['pantalla']=='21')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['btn_vinculacion']="block";
 
@@ -108,15 +110,15 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
        if ($_SESSION['pantalla']>='51')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['btn_docentes']="block";
 
         }
-       } 
+       }
        if ($_SESSION['pantalla']>='51')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['btn_docentes']="block";
        }
@@ -124,15 +126,15 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
       if ($_SESSION['pantalla']>='71')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['btn_ayuda']="block";
 
         }
-       } 
+       }
  if ($_SESSION['pantalla']=='1' or $_SESSION['pantalla']=='2')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['pregunta_vista']="block";
 
@@ -141,7 +143,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='3' or $_SESSION['pantalla']=='4')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['usuarios_vista']="block";
 
@@ -149,7 +151,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
        }
         if ($_SESSION['pantalla']=='5' or $_SESSION['pantalla']=='6')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['roles_vista']="block";
 
@@ -157,7 +159,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
        }
         if ($_SESSION['pantalla']=='7')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['parametro_vista']="block";
 
@@ -165,7 +167,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
        }
         if ($_SESSION['pantalla']=='8')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['bitacora_vista']="block";
 
@@ -174,17 +176,17 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='9' or $_SESSION['pantalla']=='10')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['permisos_usuario_vista']="block";
 
         }
        }
-       
+
 
          if ($_SESSION['pantalla']=='14'  or $_SESSION['pantalla']=='18' or $_SESSION['pantalla']=='20' or $_SESSION['pantalla']=='21' or $_SESSION['pantalla']=='26'or $_SESSION['pantalla']=='27' or $_SESSION['pantalla']=='28')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['practica_vista']="block";
 
@@ -192,7 +194,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
        }
        if ($_SESSION['pantalla']=='14'  or $_SESSION['pantalla']=='18' or $_SESSION['pantalla']=='20' or $_SESSION['pantalla']=='21' or $_SESSION['pantalla']=='26'or $_SESSION['pantalla']=='27' or $_SESSION['pantalla']=='28')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['supervision_vista']="block";
 
@@ -202,7 +204,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
          if ($_SESSION['pantalla']=='13' or $_SESSION['pantalla']=='15' or $_SESSION['pantalla']=='16' or $_SESSION['pantalla']=='17' or $_SESSION['pantalla']=='19' or $_SESSION['pantalla']=='39' or  $_SESSION['pantalla']=='40')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['solicitud_practica']="block";
 
@@ -211,7 +213,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
            if ($_SESSION['pantalla']=='22' or $_SESSION['pantalla']=='23')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['egresados_vista']="block";
 
@@ -220,16 +222,16 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
           if ($_SESSION['pantalla']=='24' or $_SESSION['pantalla']=='25')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['proyectos_vinculacion_vista']="block";
 
         }
-       } 
+       }
 
         if ($_SESSION['pantalla']=='29')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['solicitud_final_practica']="block";
 
@@ -238,7 +240,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='30')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['solicitud_cambio_carrera']="block";
 
@@ -247,7 +249,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='31')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['solicitud_carta_egresado']="block";
 
@@ -256,7 +258,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='32')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['solicitud_equivalencias']="block";
 
@@ -265,7 +267,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='33')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['solicitud_cancelar_clases']="block";
 
@@ -274,7 +276,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='34')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['final_practica']="block";
 
@@ -283,7 +285,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='35')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['cambio_carrera']="block";
 
@@ -292,7 +294,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='36')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['carta_egresado']="block";
 
@@ -301,7 +303,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='37')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['equivalencias']="block";
 
@@ -310,7 +312,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         if ($_SESSION['pantalla']=='38')
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['cancelar_clases']="block";
 
@@ -322,7 +324,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
        // boton de solicitudes */
        if ($_SESSION['pantalla']>='29' and $_SESSION['pantalla']<='33' or $_SESSION['pantalla']=='13' or $_SESSION['pantalla']=='15' or $_SESSION['pantalla']=='16' or $_SESSION['pantalla']=='17' or $_SESSION['pantalla']=='19' or $_SESSION['pantalla']=='39' or  $_SESSION['pantalla']=='40' )
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['btn_solicitudes']="block";
 
@@ -332,7 +334,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 //** las pantallas son el id de la tbl_objetos */
 if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
        {
-        if ( $_SESSION['confirmacion']=='block') 
+        if ( $_SESSION['confirmacion']=='block')
         {
          $_SESSION['btn_coordinacion']="block";
 
@@ -380,11 +382,35 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['btn_mantenimiento'] = "block";
       }
-   }   
-   
+   }
+
+//AGREGANDO MODULO CVE
+if ($_SESSION['pantalla'] = '122') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['btn_comite_vida_estudiantil'] = "block";
+   }
+}
+
+if ($_SESSION['pantalla'] = '122') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['adminitracion_cve'] = "block";
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
    // if ($_SESSION['pantalla']=='55')
    // {
-   //  if ( $_SESSION['confirmacion']=='block') 
+   //  if ( $_SESSION['confirmacion']=='block')
    //  {
    //   $_SESSION['mantemiento_carga_academica']="block";
 
