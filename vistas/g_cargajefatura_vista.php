@@ -14,7 +14,31 @@ if (permiso_ver('105')=='1')
 }
 else
 {
-$_SESSION['ayuda_menu']="No 
+$_SESSION['g_cargajefatura_vista']="No 
+  tiene permisos para visualizar";
+
+}
+
+if (permiso_ver('114')=='1')
+ {
+  
+  $_SESSION['g_carga_cargaacademica_vista']="...";
+}
+else
+{
+$_SESSION['g_carga_cargaacademica_vista']="No 
+  tiene permisos para visualizar";
+
+}
+
+if (permiso_ver('110')=='1')
+ {
+  
+  $_SESSION['g_carga_recontratacion_vista']="...";
+}
+else
+{
+$_SESSION['g_carga_recontratacion_vista']="No 
   tiene permisos para visualizar";
 
 }
@@ -69,12 +93,12 @@ $_SESSION['ayuda_menu']="No
     <div class="small-box bg-light">
     <div class="inner">	
     <h4>Carga Académica</h4>
-    <p><?php echo $_SESSION['ayuda_menu'];?></p>
+    <p><?php echo $_SESSION['g_cargaacademica_vista'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="g_cargaacademica_vista.php" class="small-box-footer">
+  <a href="../vistas/g_carga_cargaacademica_vista.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>

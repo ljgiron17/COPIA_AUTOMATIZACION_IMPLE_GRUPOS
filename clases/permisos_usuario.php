@@ -405,6 +405,16 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_planificacionjefatura_vista'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '114') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_carga_cargaacademica_vista'] = "block";
+      }
+
+   }
+   if ($_SESSION['pantalla'] == '110') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_carga_recontratacion_vista'] = "block";
+      }
 
    // if ($_SESSION['pantalla']=='55')
    // {
@@ -416,6 +426,6 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
    // }
        //--------------------------
    }
-
+}
 
 ?>
