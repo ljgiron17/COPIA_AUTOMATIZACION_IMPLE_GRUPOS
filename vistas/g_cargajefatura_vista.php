@@ -31,14 +31,14 @@ $_SESSION['g_carga_cargaacademica_vista']="No
 
 }
 
-if (permiso_ver('110')=='1')
+if (permiso_ver('106')=='1')
  {
   
-  $_SESSION['g_carga_recontratacion_vista']="...";
+  $_SESSION['g_carga_declaracionjurada_vista']="...";
 }
 else
 {
-$_SESSION['g_carga_recontratacion_vista']="No 
+$_SESSION['g_carga_declaracionjurada_vista']="No 
   tiene permisos para visualizar";
 
 }
@@ -108,12 +108,12 @@ $_SESSION['g_carga_recontratacion_vista']="No
   <div class="small-box bg-light">
   <div class="inner">	
     <h4>Declaración Jurada</h4>
-    <p><?php echo $_SESSION['ayuda_menu'];?></p>
+    <p><?php echo $_SESSION['g_carga_declaracionjurada_vista'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="#" class="small-box-footer">
+  <a href="../vistas/g_carga_declaracionjurada_vista.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
@@ -123,12 +123,12 @@ $_SESSION['g_carga_recontratacion_vista']="No
   <div class="small-box bg-light">
   <div class="inner">	
     <h4>Recontratación</h4>
-    <p><?php echo $_SESSION['ayuda_menu'];?></p>
+    <p><?php echo $_SESSION['g_carga_recontratacion_vista'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="#" class="small-box-footer">
+  <a href="../vistas/g_carga_recontratacion_vista.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
