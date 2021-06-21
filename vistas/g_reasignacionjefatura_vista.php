@@ -19,6 +19,29 @@ $_SESSION['ayuda_menu']="No
 
 }
 
+if (permiso_ver('115')=='1')
+ {
+  
+  $_SESSION['g_cargararchivosdecargaacademica_vista']="...";
+}
+else
+{
+$_SESSION['g_cargararchivosdecargaacademica_vista']="No 
+  tiene permisos para visualizar";
+
+}
+
+if (permiso_ver('119')=='1')
+ {
+  
+  $_SESSION['g_reasignacion_solicitud']="...";
+}
+else
+{
+$_SESSION['g_reasignacion_solicitud']="No 
+  tiene permisos para visualizar";
+
+}
 
 
 ?>
@@ -69,12 +92,12 @@ $_SESSION['ayuda_menu']="No
     <div class="small-box bg-light">
     <div class="inner">	
     <h4>Solicitud de Reasignación</h4>
-    <p><?php echo $_SESSION['ayuda_menu'];?></p>
+    <p><?php echo $_SESSION['g_reasignacion_solicitud'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="#" class="small-box-footer">
+  <a href="../vistas/g_reasignacion_solicitud.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
@@ -84,12 +107,12 @@ $_SESSION['ayuda_menu']="No
   <div class="small-box bg-light">
   <div class="inner">	
     <h4>Consultas</h4>
-    <p><?php echo $_SESSION['ayuda_menu'];?></p>
+    <p><?php echo $_SESSION['g_cargararchivosdecargaacademica_vista'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="#" class="small-box-footer">
+  <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>

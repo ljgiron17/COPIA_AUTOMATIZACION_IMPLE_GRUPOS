@@ -421,6 +421,18 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_carga_declaracionjurada_vista'] = "block";
       }
    }
+
+   if ($_SESSION['pantalla'] == '115') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_cargararchivosdecargaacademica_vista'] = "block";
+      }
+   }
+   
+   if ($_SESSION['pantalla'] == '119') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_reasignacion_solicitud'] = "block";
+      }
+   }
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 
