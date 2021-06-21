@@ -7,6 +7,42 @@ require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_permisos.php');
 
+
+$id_objeto=106 ;
+
+$visualizacion= permiso_ver($id_objeto);
+
+if ($visualizacion==0)
+{
+  echo '<script type="text/javascript">
+                          swal({
+                                title:"",
+                                text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                type: "error",
+                                showConfirmButton: false,
+                                timer: 3000
+                              });
+                            window.location = "../vistas/gestion_dias_feriados_vista.php";
+
+                            </script>';
+}
+
+else 
+
+{
+
+      bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'Ingresó' , 'a Declaracion Jurada');
+
+
+}
+
+
+
+
+ob_end_flush();
+
+
+
 if (permiso_ver('106')=='1')
  {
   
@@ -56,7 +92,7 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
         <div class="container-fluid">
 
           <!-- pantalla 1 -->
-          <form action="../Controlador/guardar_permisos_usuarios_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax">
+          <!--form action="../Controlador/guardar_permisos_usuarios_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax"-->
           <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title"> </h3>
@@ -67,11 +103,14 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
           </div>
 
           <div class="card-header">
-          
-            <div class="px-12 float-sm-right">
+            
+           <div class="box-header with-border">
+              <div class="px-12 float-sm-right">
+                <div class="form-group">
+                  <!--button type="submit" name="export" class="btn btn-success "  id="btn_generar_recontratacion" ><i class="zmdi zmdi-floppy"></i>Generar Declaración</button-->
+                <a href="../vistas/g_generardeclaracion_vista.php" class="btn btn-success"><i class="zmdi zmdi-floppy"></i>Generar Declaración</a>
 
-              <div class="form-group">
-                <button type="submit" name="export" class="btn btn-success "  id="btn_generar_recontratacion" ><i class="zmdi zmdi-floppy"></i>Generar Declaración</button>
+              </div>
             </div>
             </div>
               <div class="row">
@@ -114,7 +153,7 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
         </div> <!-- /.container-fluid -->
       </section>
 
-
+      <!-- pantalla 2 -->
       <section class="content">
         <div class="container-fluid">  
 
@@ -138,15 +177,13 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
               </thead>
               <tbody>
                 <tr>
-                  <td>  
-                    <td>
-                      <td>
-                        <td style="text-align: center;">
-                          <input type="checkbox" name="acciones[]" value="<?php echo $row['']; ?>">
-                        </td>
-                      </td>
-                    </td> 
-                  </td> 
+                  <td> </td>  
+                  <td> </td>
+                  <td> </td>
+                  <td style="text-align: center;">
+                    <input type="checkbox" name="acciones[]" value="<?php echo $row['']; ?>">
+                  </td>
+
                 </tr>
               </tbody>
             </table>
@@ -163,7 +200,7 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
       </div>
       <div class="RespuestaAjax"></div>
 
-      </form>
+    <!--/form-->
 
     </div>
 
