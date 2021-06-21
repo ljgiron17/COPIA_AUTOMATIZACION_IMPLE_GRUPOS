@@ -421,6 +421,16 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_carga_declaracionjurada_vista'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '108') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_generardeclaracion_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '112') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_generarrecontratacion_vista'] = "block";
+      }
+   }
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 

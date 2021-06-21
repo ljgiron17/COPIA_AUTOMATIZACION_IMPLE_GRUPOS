@@ -55,13 +55,13 @@ $_SESSION['g_carga_recontratacion_vista']="No
         <div class="container-fluid">
 
           <!-- pantalla 1 -->
-          <form action="../Controlador/guardar_permisos_usuarios_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax">
+          <!--form action="../Controlador/guardar_permisos_usuarios_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax"-->
           <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title"> </h3>
 
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
             </div>
           </div>
 
@@ -70,7 +70,7 @@ $_SESSION['g_carga_recontratacion_vista']="No
             <div class="px-12 float-sm-right">
 
               <div class="form-group">
-                <button type="submit" name="export" class="btn btn-success "  id="btn_generar_recontratacion" ><i class="zmdi zmdi-floppy"></i>Generar Recontratación</button>
+              <a href="../vistas/g_generarrecontratacion_vista.php" class="btn btn-success"><i class="zmdi zmdi-floppy"></i>Generar Declaración</a>
             </div>
             </div>
               <div class="row">
@@ -162,7 +162,7 @@ $_SESSION['g_carga_recontratacion_vista']="No
       </div>
       <div class="RespuestaAjax"></div>
 
-      </form>
+    <!--/form-->
 
     </div>
 
