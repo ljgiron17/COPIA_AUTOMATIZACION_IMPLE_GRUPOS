@@ -426,6 +426,16 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_guardarreportedecarga_vista'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '122') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_solicitud_reasignacion_docentes_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '123') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_retroalimentacion_docentes_vista'] = "block";
+      }
+   }
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 
