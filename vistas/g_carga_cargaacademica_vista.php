@@ -154,7 +154,7 @@ if (isset($_REQUEST['msj']))
             
             <div class="card-body d-flex justify-content-between align-items-center">
             <h3 class="card-title">Registros de Cargas Académicas</h3>
-						<a href="#" class="btn btn-success btn-m">Nueva Gestión de Carga</a>
+						<a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="btn btn-success btn-m">Nueva Gestión de Carga</a>
 					</div>
            
             </div>

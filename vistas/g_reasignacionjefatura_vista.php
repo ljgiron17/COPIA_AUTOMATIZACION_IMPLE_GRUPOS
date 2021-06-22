@@ -107,12 +107,12 @@ $_SESSION['g_reasignacion_solicitud']="No
   <div class="small-box bg-light">
   <div class="inner">	
     <h4>Consultas</h4>
-    <p><?php echo $_SESSION['g_cargararchivosdecargaacademica_vista'];?></p>
+    <p><?php echo $_SESSION[''];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="small-box-footer">
+  <a href="#" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>

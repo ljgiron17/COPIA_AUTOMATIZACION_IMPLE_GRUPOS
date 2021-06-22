@@ -106,12 +106,18 @@ require_once ('../clases/funcion_bitacora.php');
                  </tr>
                  </tbody>
               </table>
+              <br>
+              
+              <div class="px-12 float-sm-right">
+                <a href="../vistas/g_guardarreportedecarga_vista.php" class="btn btn-secondary"><i class="zmdi zmdi-floppy"></i>Siguiente</a>
+              </div>
               <div class=" px-12 text-center">
               <A style="vertical-align: inherit;" class="fas fa-download" HREF="otra_pagina.html"> Descargar formato de "carga de coordinacion academica"   </A> 
               </div>
               <div class=" px-12 text-center">
               <A style="vertical-align: inherit;" class="fas fa-download" HREF="otra_pagina.html"> Descargar formato de "carga CRAED"   </A> 
               </div>
+
               
             </div> <!-- /.card-bodyr -->
           </div> <!-- /.container-fluid -->

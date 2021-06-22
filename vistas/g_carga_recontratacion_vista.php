@@ -70,7 +70,7 @@ $_SESSION['g_carga_recontratacion_vista']="No
             <div class="px-12 float-sm-right">
 
               <div class="form-group">
-              <a href="../vistas/g_generarrecontratacion_vista.php" class="btn btn-success"><i class="zmdi zmdi-floppy"></i>Generar Declaración</a>
+              <a href="../vistas/g_generarrecontratacion_vista.php" class="btn btn-success"><i class="zmdi zmdi-floppy"></i>Generar Recontratación</a>
             </div>
             </div>
               <div class="row">
@@ -89,16 +89,16 @@ $_SESSION['g_carga_recontratacion_vista']="No
              
                 <div class="col-sm-6">
                   <div class="form-group">
-                     <label>Fecha Inicio</label>
+                      <label>Fecha Inicio</label>
                       <input class="form-control" type="date" id="txt_fecha_inicio" name="txt_fecha_inicio"  >
-                    </div>
                   </div>
+                </div>
 
-                  <div class="col-sm-6">
-                    <div class="form-group">
+                <div class="col-sm-6">
+                  <div class="form-group">
                       <label>Fecha Final</label>
                       <input class="form-control" type="date" id="txt_fecha_final" name="txt_fecha_final"  >
-                   </div>
+                  </div>
                 </div>
 
 
