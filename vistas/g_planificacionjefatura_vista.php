@@ -30,12 +30,12 @@ $_SESSION['ayuda_menu']="No
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">PLANIFICACION Y ADMINISTRACION DE JEFATURA</h1>
+            <h1 class="m-0 text-dark">Práctica Profesional Supervisada</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Jefatura</li>
+              <li class="breadcrumb-item active">Vinculación</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,66 +43,32 @@ $_SESSION['ayuda_menu']="No
     </div>
     <!-- /.content-header -->
 
+
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Info boxes -->0
+        <!-- Info boxes -->
         <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
+
+
+
+
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-primary">
    <div class="inner">
-    <h5>Mantenimiento Indicadores de Gestión</h5>
-   <!-- cambiar al nombre del mantenmiento - de indicadores de gestion -->
+    <h5>Mantenimiento días feriado </h5>
    <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/mantenimiento_indgestion_jefatura.php" class="small-box-footer">
+  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
-
-   <!-- Info boxes 1 -->
-   <div class="row" style="  display: flex;
-    align-items: center;
-    justify-content: center;">
-   <div class="col-6 col-sm-6 col-md-4">
-   <div class="small-box bg-primary">
-   <div class="inner">
-    <h5>Mantenimiento Tipo Recursos</h5>
-   <!-- cambiar al nombre del mantenmiento - de recusos -->
-   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-edit"></i>
-  </div>
-  <a href="../vistas/mantenimiento_recursos_jefatura.php" class="small-box-footer">
-    Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-
-   <!-- Info boxes 2-->
-   <div class="row" style="  display: flex;
-    align-items: center;
-    justify-content: center;">
-   <div class="col-6 col-sm-6 col-md-4">
-   <div class="small-box bg-primary">
-   <div class="inner">
-    <h5>Mantenimiento Tipo Gastos</h5>
-   <!-- cambiar al nombre del mantenmiento - de tipos de gastos -->
-   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-edit"></i>
-  </div>
-  <a href="../vistas/mantenimiento_tipogastos_jefatura.php" class="small-box-footer">
-    Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-
 </div>
 
 
