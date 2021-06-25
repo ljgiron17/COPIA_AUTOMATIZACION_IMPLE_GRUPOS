@@ -43,12 +43,10 @@ $_SESSION['ayuda_menu']="No
     </div>
     <!-- /.content-header -->
 
-
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Info boxes -->
+        <!-- Info boxes -->0
         <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
@@ -74,7 +72,7 @@ $_SESSION['ayuda_menu']="No
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-primary">
    <div class="inner">
-    <h5>Mantenimiento Indicadores de Gestión</h5>
+    <h5>Mantenimiento Tipo Recursos</h5>
    <!-- cambiar al nombre del mantenmiento - de recusos -->
    <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
   </div>
@@ -93,7 +91,7 @@ $_SESSION['ayuda_menu']="No
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-primary">
    <div class="inner">
-    <h5>Mantenimiento Indicadores de Gestión</h5>
+    <h5>Mantenimiento Tipo Gastos</h5>
    <!-- cambiar al nombre del mantenmiento - de tipos de gastos -->
    <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
   </div>
