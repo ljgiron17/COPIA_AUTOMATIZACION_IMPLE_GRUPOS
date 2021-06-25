@@ -16,8 +16,15 @@ class modelo_mantenimientos
         return $consulta;
 
     }
-    
+     //este funcion instancia a los mantenimientos en jefatura.
+    function mant_jefatura(){
+        global $instancia_conexion;
+        $consulta=$instancia_conexion->ejecutarConsulta('select * from tbl_comisiones');
 
+    }
+     //
+
+     
     function listar_comision(){
         global $instancia_conexion;
         $consulta=$instancia_conexion->ejecutarConsulta('select * from tbl_comisiones');

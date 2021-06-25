@@ -1,8 +1,5 @@
 <?php
 require "../clases/conexion_mantenimientos.php";
-
-
-
 $instancia_conexion = new conexion();
 
 class feriados

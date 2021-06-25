@@ -38,8 +38,6 @@ if (isset($_REQUEST['msj'])) {
     });
 </script>';
 
-
-
         $sqltabla = "SELECT*, 
         (SELECT c.Descripcion FROM tbl_carrera as c where c.id_carrera=tbl_comisiones.id_carrera Limit 1) AS Descripcion
         FROM tbl_comisiones";
