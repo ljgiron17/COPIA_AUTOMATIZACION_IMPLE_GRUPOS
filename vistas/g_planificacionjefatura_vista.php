@@ -54,12 +54,12 @@ $_SESSION['ayuda_menu']="No
     justify-content: center;">
 
 
-
+ <!-- manteniminento indicadores de gestion -->
 
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-primary">
    <div class="inner">
-    <h5>Mantenimiento días feriado </h5>
+    <h5>Mantenimiento Indicadores Gestión</h5>
    <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
   </div>
   <div class="icon">
@@ -71,7 +71,38 @@ $_SESSION['ayuda_menu']="No
 </div>
 </div>
 
+ <!-- mantenimiento de tipo de recursos -->
+<div class="col-6 col-sm-6 col-md-4">
+   <div class="small-box bg-primary">
+   <div class="inner">
+    <h5>Mantenimiento Tipo de Recursos </h5>
+   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
+  </div>
+  <div class="icon">
+    <i class="fas fa-user-edit"></i>
+  </div>
+  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
+    Ir <i class="fas fa-arrow-circle-right"></i>
+  </a>
+</div>
+</div>
 
+ <!-- mantenimiento de tipos de gastos-->
+
+<div class="col-6 col-sm-6 col-md-4">
+   <div class="small-box bg-primary">
+   <div class="inner">
+    <h5>Mantenimiento Tipo de Gastos</h5>
+   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
+  </div>
+  <div class="icon">
+    <i class="fas fa-user-edit"></i>
+  </div>
+  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
+    Ir <i class="fas fa-arrow-circle-right"></i>
+  </a>
+</div>
+</div>
     
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-light">
@@ -106,37 +137,7 @@ $_SESSION['ayuda_menu']="No
  
   </div>
 
-
-   <div class="col-6 col-sm-6 col-md-4">
-   <div class="small-box bg-light">
-   <div class="inner">
-    <h5>Gestión Asignaturas Aprobadas</h5>
-   <p><?php echo $_SESSION['gestion_clases_aprobadas_menu']; ?></p> 
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-edit"></i>
-  </div>
-  <a href="../vistas/gestion_asignaturas_aprobadas_vista.php" class="small-box-footer">
-    Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-</div>
-
-
-     <div class="col-6 col-sm-6 col-md-4">
-   <div class="small-box bg-light">
-   <div class="inner">
-    <h5>Revisión  de Doc. de PPS</h5>
-   <p><?php echo $_SESSION['revision_doc_practica_menu']; ?></p> 
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-edit"></i>
-  </div>
-  <a href="../vistas/gestion_documentos_practica_vista.php" class="small-box-footer">
-    Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-</div>
+  
 
 
    <div class="col-6 col-sm-6 col-md-4">
