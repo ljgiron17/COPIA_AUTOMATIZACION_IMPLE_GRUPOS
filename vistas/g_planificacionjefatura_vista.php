@@ -65,7 +65,7 @@ $_SESSION['ayuda_menu']="No
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
+  <a href="../vistas/mantenimiento_indicadores_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
@@ -81,7 +81,7 @@ $_SESSION['ayuda_menu']="No
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
+  <a href="../vistas/mantenimiento_tipos_recursos_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
@@ -98,7 +98,7 @@ $_SESSION['ayuda_menu']="No
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
+  <a href="../vistas/mantenimiento_tipo_gastos_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
