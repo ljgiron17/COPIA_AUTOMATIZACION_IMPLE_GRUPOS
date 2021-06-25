@@ -5,6 +5,7 @@
     $password = "";
     $base= "informat_desarrollo_automatizacion";
 
+
 	$mysqli = new mysqli($servidor,$usuario,$password,$base);
 	$connection = mysqli_connect($servidor,$usuario,$password,$base) or die("Error" . mysqli_error($connection));
 	
