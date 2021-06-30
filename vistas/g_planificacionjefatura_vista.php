@@ -60,7 +60,7 @@ $_SESSION['ayuda_menu']="No
    <div class="small-box bg-primary">
    <div class="inner">
     <h5>Mantenimiento Indicadores Gestión</h5>
-   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
+   <p><?php echo $_SESSION['mantenimiento_indicadores_vista']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
@@ -76,7 +76,7 @@ $_SESSION['ayuda_menu']="No
    <div class="small-box bg-primary">
    <div class="inner">
     <h5>Mantenimiento Tipo de Recursos </h5>
-   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
+   <p><?php echo $_SESSION['mantenimiento_tipos_recursos_vista']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
@@ -93,7 +93,7 @@ $_SESSION['ayuda_menu']="No
    <div class="small-box bg-primary">
    <div class="inner">
     <h5>Mantenimiento Tipo de Gastos</h5>
-   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
+   <p><?php echo $_SESSION['mantenimiento_tipo_gastos_vista']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
@@ -107,7 +107,7 @@ $_SESSION['ayuda_menu']="No
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-light">
    <div class="inner">
-    <h5>Gestión Inscripción </h5>
+    <h5>PROYECTO OPERATIVO ANUAL </h5>
    <p><?php echo $_SESSION['gestion_inscripcion_menu']; ?></p> 
   </div>
   <div class="icon">
@@ -123,7 +123,7 @@ $_SESSION['ayuda_menu']="No
 <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">
-    <h5>Registro de Asignaturas Aprobadas</h5>
+    <h5>GASTOS ADMINISTRATIVOS</h5>
    <p><?php echo $_SESSION['registrar_clases_aprobadas_menu'];?></p>
   </div>
   <div class="icon">
@@ -143,7 +143,7 @@ $_SESSION['ayuda_menu']="No
    <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">
-    <h5>Aprobación/Rechazo de PPS</h5>
+    <h5>RECURSOS ADMINISTRATIVOS</h5>
    <p><?php  echo $_SESSION['aprobacion_rechazo_practica_menu'];?></p>
   </div>
   <div class="icon">
