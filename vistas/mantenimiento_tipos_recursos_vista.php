@@ -38,13 +38,7 @@ else
 
 
 }
-
-
-
-
 ob_end_flush();
-
-
 
 ?>
 
@@ -66,22 +60,15 @@ ob_end_flush();
               <li class="breadcrumb-item active"><a href="../vistas/g_planificacionjefatura_vista.php">Jefatura</a></li>
             </ol>
           </div>
-
             <div class="RespuestaAjax"></div>
-   
         </div>
       </div><!-- /.container-fluid -->
     </section>
    
 
 <!--Pantalla 2-->
-
-
-
-         
             <!-- /.card-body -->
-          
- <div class="card card-default">        
+           <div class="card card-default">        
         <!-- Main content -->
         <section class="content">
             <div class="card-header">
@@ -134,13 +121,7 @@ ob_end_flush();
     </div><!-- /.content-wrapper -->
         
           <!-- /.card-body -->
-
-
-
-
-
-
-                      
+   
 
 <script type="text/javascript" src="../js/dias_feriados.js"></script>
   <script src="../js/bootbox.all.js"></script>

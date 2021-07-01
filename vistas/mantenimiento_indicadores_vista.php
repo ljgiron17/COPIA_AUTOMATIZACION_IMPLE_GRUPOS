@@ -1,8 +1,6 @@
 <?php
 
 ob_start();
-
-
 session_start();
 
 require_once ('../vistas/pagina_inicio_vista.php');
@@ -11,7 +9,7 @@ require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_visualizar.php');
 
 
-$id_objeto=126 ;
+$id_objeto=126;
 
 $visualizacion= permiso_ver($id_objeto);
 
@@ -38,9 +36,6 @@ else
 
 
 }
-
-
-
 
 ob_end_flush();
 
