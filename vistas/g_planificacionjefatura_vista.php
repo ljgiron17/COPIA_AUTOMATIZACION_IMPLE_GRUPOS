@@ -76,7 +76,7 @@ $_SESSION['ayuda_menu']="No
    <div class="small-box bg-primary">
    <div class="inner">
     <h5>Mantenimiento Tipo de Recursos </h5>
-   <p><?php echo $_SESSION['mantenimiento_tipos_recursos_vista']; ?></p> 
+     <p><?php echo $_SESSION['mantenimiento_tipos_recuros_vista']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
