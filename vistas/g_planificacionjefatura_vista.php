@@ -30,7 +30,7 @@ $_SESSION['ayuda_menu']="No
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Práctica Profesional Supervisada</h1>
+            <h1 class="m-0 text-dark">Planificacion Jefatura</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -136,10 +136,6 @@ $_SESSION['ayuda_menu']="No
   </div>
  
   </div>
-
-  
-
-
    <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">
