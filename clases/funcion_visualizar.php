@@ -1,7 +1,5 @@
 <?php 
 
- 
-
 function permiso_ver($pantalla)
 
 
@@ -18,10 +16,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 $permiso_ver= mysqli_fetch_array($resultado_permisos);
 
 
- 
-
 return $permiso_ver['Ver'];
 
 }
-
 ?>
