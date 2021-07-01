@@ -25,7 +25,7 @@ if ($visualizacion==0)
                                 showConfirmButton: false,
                                 timer: 3000
                               });
-                            window.location = "../vistas/mantenimiento_tipos_recursos_vista.php";
+                            window.location = "../vistas/mantenimiento_tipo_gastos_vista.php";
 
                             </script>';
 }
@@ -34,14 +34,14 @@ else
 
 {
 
-      bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'Ingresó' , 'a mantenimiento de tipos de resursos');
+      bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'Ingresó' , 'a mantenimiento de tipo de gastos');
 
 
 }
+
 ob_end_flush();
 
 ?>
-
 
 
 <div class="content-wrapper">
@@ -51,7 +51,7 @@ ob_end_flush();
         <div class="row mb-2">
           <div class="col-sm-6">
 
-         <h1>Mantenimiento Tipo de Recursos</h1>
+         <h1>Mantenimiento Tipo de Gastos</h1>
           </div>
 
                 <div class="col-sm-6">
@@ -60,22 +60,29 @@ ob_end_flush();
               <li class="breadcrumb-item active"><a href="../vistas/g_planificacionjefatura_vista.php">Jefatura</a></li>
             </ol>
           </div>
+
             <div class="RespuestaAjax"></div>
+   
         </div>
       </div><!-- /.container-fluid -->
     </section>
    
 
 <!--Pantalla 2-->
+
+
+
+         
             <!-- /.card-body -->
-           <div class="card card-default">        
+          
+ <div class="card card-default">        
         <!-- Main content -->
         <section class="content">
             <div class="card-header">
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="card-title">Nuevo Tipo de Recurso <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="card-title">Nuevo Tipo de Gastos  <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -121,7 +128,13 @@ ob_end_flush();
     </div><!-- /.content-wrapper -->
         
           <!-- /.card-body -->
-   
+
+
+
+
+
+
+                      
 
 <script type="text/javascript" src="../js/dias_feriados.js"></script>
   <script src="../js/bootbox.all.js"></script>
