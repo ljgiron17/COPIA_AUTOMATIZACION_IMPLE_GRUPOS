@@ -51,7 +51,7 @@ ob_end_flush();
         <div class="row mb-2">
           <div class="col-sm-6">
 
-         <h1>Mantenimiento Tipo de Gastos</h1>
+         <h1>Mantenimiento Tipo de Recursos</h1>
           </div>
 
                 <div class="col-sm-6">
@@ -82,7 +82,7 @@ ob_end_flush();
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="card-title">Nuevo Tipo de Gastos  <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="card-title">Nuevo Tipo de Recursos  <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
