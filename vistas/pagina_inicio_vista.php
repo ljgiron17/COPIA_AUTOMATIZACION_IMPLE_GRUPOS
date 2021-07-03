@@ -440,6 +440,13 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
 
+                <li class="nav-item" style="display:<?php echo $_SESSION['tipos_recursos'] ?>">
+                  <a href="../vistas/menu_mantenimiento_recursos.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Mantenimientos Tipos de recursos</p>
+                  </a>
+                </li>
+
               </ul>
 
             </li>

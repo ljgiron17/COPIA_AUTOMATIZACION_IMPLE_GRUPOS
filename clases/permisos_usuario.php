@@ -436,21 +436,6 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_retroalimentacion_docentes_vista'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '124') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['mantenimiento_tipo_gastos_vista'] = "block";
-      }
-   }
-   if ($_SESSION['pantalla'] == '125') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['mantenimiento_tipos_recursos_vista'] = "block";
-      }
-   }
-   if ($_SESSION['pantalla'] == '126') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['mantenimiento_indicadores_vista'] = "block";
-      }
-   }
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 

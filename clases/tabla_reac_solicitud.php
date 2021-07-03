@@ -7,7 +7,7 @@ $query = "SELECT id_reac_academica,id_docente,nombre_docente, estado  FROM tbl_r
 
 //buscando el resultado 
 $resultado = mysqli_query($conexion, $query);
-if (!$resultado) {
+if (!$resultado) { 
     die("Error");
 } else {
     $filas = array();

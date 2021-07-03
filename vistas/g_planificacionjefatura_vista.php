@@ -18,8 +18,8 @@ $_SESSION['ayuda_menu']="No
   tiene permisos para visualizar";
 
 }
-
 ?>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -30,7 +30,7 @@ $_SESSION['ayuda_menu']="No
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Planificacion Jefatura</h1>
+            <h1 class="m-0 text-dark">Práctica Profesional Supervisada</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -54,60 +54,29 @@ $_SESSION['ayuda_menu']="No
     justify-content: center;">
 
 
- <!-- manteniminento indicadores de gestion -->
+
 
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-primary">
    <div class="inner">
-    <h5>Mantenimiento Indicadores Gestión</h5>
-   <p><?php echo $_SESSION['mantenimiento_indicadores_vista']; ?></p> 
+    <h5>Mantenimiento días feriado </h5>
+   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/mantenimiento_indicadores_vista.php" class="small-box-footer">
+  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
 </div>
 
- <!-- mantenimiento de tipo de recursos -->
-<div class="col-6 col-sm-6 col-md-4">
-   <div class="small-box bg-primary">
-   <div class="inner">
-    <h5>Mantenimiento Tipo de Recursos </h5>
-     <p><?php echo $_SESSION['mantenimiento_tipos_recuros_vista']; ?></p> 
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-edit"></i>
-  </div>
-  <a href="../vistas/mantenimiento_tipos_recursos_vista.php" class="small-box-footer">
-    Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-</div>
 
- <!-- mantenimiento de tipos de gastos-->
-
-<div class="col-6 col-sm-6 col-md-4">
-   <div class="small-box bg-primary">
-   <div class="inner">
-    <h5>Mantenimiento Tipo de Gastos</h5>
-   <p><?php echo $_SESSION['mantenimiento_tipo_gastos_vista']; ?></p> 
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-edit"></i>
-  </div>
-  <a href="../vistas/mantenimiento_tipo_gastos_vista.php" class="small-box-footer">
-    Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-</div>
     
    <div class="col-6 col-sm-6 col-md-4">
    <div class="small-box bg-light">
    <div class="inner">
-    <h5>PROYECTO OPERATIVO ANUAL </h5>
+    <h5>Gestión Inscripción </h5>
    <p><?php echo $_SESSION['gestion_inscripcion_menu']; ?></p> 
   </div>
   <div class="icon">
@@ -123,7 +92,7 @@ $_SESSION['ayuda_menu']="No
 <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">
-    <h5>GASTOS ADMINISTRATIVOS</h5>
+    <h5>Registro de Asignaturas Aprobadas</h5>
    <p><?php echo $_SESSION['registrar_clases_aprobadas_menu'];?></p>
   </div>
   <div class="icon">
@@ -136,10 +105,44 @@ $_SESSION['ayuda_menu']="No
   </div>
  
   </div>
+
+
+   <div class="col-6 col-sm-6 col-md-4">
+   <div class="small-box bg-light">
+   <div class="inner">
+    <h5>Gestión Asignaturas Aprobadas</h5>
+   <p><?php echo $_SESSION['gestion_clases_aprobadas_menu']; ?></p> 
+  </div>
+  <div class="icon">
+    <i class="fas fa-user-edit"></i>
+  </div>
+  <a href="../vistas/gestion_asignaturas_aprobadas_vista.php" class="small-box-footer">
+    Ir <i class="fas fa-arrow-circle-right"></i>
+  </a>
+</div>
+</div>
+
+
+     <div class="col-6 col-sm-6 col-md-4">
+   <div class="small-box bg-light">
+   <div class="inner">
+    <h5>Revisión  de Doc. de PPS</h5>
+   <p><?php echo $_SESSION['revision_doc_practica_menu']; ?></p> 
+  </div>
+  <div class="icon">
+    <i class="fas fa-user-edit"></i>
+  </div>
+  <a href="../vistas/gestion_documentos_practica_vista.php" class="small-box-footer">
+    Ir <i class="fas fa-arrow-circle-right"></i>
+  </a>
+</div>
+</div>
+
+
    <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">
-    <h5>RECURSOS ADMINISTRATIVOS</h5>
+    <h5>Aprobación/Rechazo de PPS</h5>
    <p><?php  echo $_SESSION['aprobacion_rechazo_practica_menu'];?></p>
   </div>
   <div class="icon">

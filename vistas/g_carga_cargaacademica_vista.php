@@ -52,7 +52,15 @@ if (isset($_REQUEST['msj'])) {
   <title></title>
 
   <style>
+    .my-custom-scrollbar {
+      position: relative;
+      height: 500px;
+      overflow: auto;
+    }
 
+    .table-wrapper-scroll-y {
+      display: block;
+    }
   </style>
 </head>
 
@@ -106,15 +114,21 @@ if (isset($_REQUEST['msj'])) {
                             <div class="row">
                               <div class="col-sm">
                                 <label for="">PERIODO</label><br>
-                                <input type="text" class="form-control" name="periodo_ca" id="periodo_ca" required>
+                                <select name="periodo_ca" id="periodo_ca" class="form-control">
+                                  <option value="PERIODO I">PERIODO I</option>
+                                  <option value="PERIODO II">PERIODO II</option>
+                                  <option value="PERIODO III">PERIODO III</option>
+                                </select>
+                                <!-- <input type="text" class="form-control" name="periodo_ca" id="periodo_ca" required> -->
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
                                 <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" required>
                               </div>
                               <div class="col-sm">
-                                <label for="">FECHA INGRESO</label><br>
-                                <input class="form-control" type="date" id="txt_fecha_ingreso_ca" name="txt_fecha_ingreso_ca" onkeydown="return false" max="2021-06-22" min="1970-01-01" required>
+                                <label for="">AÑO PERIODO</label><br>
+                                <input type="text" id="datepicker" name="txt_fecha_ingreso_ca" onkeydown="return false" class="form-control" placeholder="AÑO PERIODO" required>
+                                <!-- <input class="form-control" type="date" id="txt_fecha_ingreso_ca" name="txt_fecha_ingreso_ca" onkeydown="return false" max="2021-06-22" min="1970-01-01" required> -->
                               </div>
                             </div>
                           </div>
@@ -144,16 +158,23 @@ if (isset($_REQUEST['msj'])) {
                           <div class="container">
                             <div class="row">
                               <div class="col-sm">
+
                                 <label for="">PERIODO</label><br>
-                                <input type="text" class="form-control" name="periodo_cr" id="periodo_cr" required>
+                                <select name="periodo_cr" id="periodo_cr" class="form-control">
+                                  <option value="PERIODO I">PERIODO I</option>
+                                  <option value="PERIODO II">PERIODO II</option>
+                                  <option value="PERIODO III">PERIODO III</option>
+                                </select>
+                                <!-- <input type="text" class="form-control" name="periodo_cr" id="periodo_cr" required> -->
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
                                 <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" required>
                               </div>
                               <div class="col-sm">
-                                <label for="">FECHA INGRESO</label><br>
-                                <input class="form-control" type="date" id="txt_fecha_ingreso_cr" name="txt_fecha_ingreso_cr" required="" onkeydown="return false" max="2021-06-22" min="1970-01-01" required>
+                                <label for="">AÑO PERIODO</label><br>
+                                <input type="text" id="datepicker1" name="txt_fecha_ingreso_cr" onkeydown="return false" class="form-control" placeholder="AÑO PERIODO" required>
+                                <!-- <input class="form-control" type="date" id="datepicker" name="txt_fecha_ingreso_cr" required="" onkeydown="return false" max="2021-06-22" min="1970-01-01" required> -->
                               </div>
                             </div>
                           </div>
@@ -163,13 +184,40 @@ if (isset($_REQUEST['msj'])) {
 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="enviar_archivos">Guardar</button>
+                    <button type="button" class="btn btn-success" id="enviar_archivos">Enviar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
               </div>
             </div>
             <!-- fin del modal -->
+
+            <!-- inicio del modal2 -->
+            <div id="modal" class="modal fade bd-example-modal-lg archivosAcademica" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Archivo de Académica</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar" id="cargar_excel">
+
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Generar WORD</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin del modal2 -->
+
 
             <h1>Gestión de Carga Académica</h1>
           </div>
@@ -191,56 +239,27 @@ if (isset($_REQUEST['msj'])) {
       <div class="container-fluid">
         <!-- pantalla 1 -->
 
-        <form action="../Controlador/filtrar_bitacora_controlador.php" method="post" data-form="save" autocomplete="off">
 
-          <div class="card card-default">
-            <div class="card-header">
-              <h3 class="card-title">Datos</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-              </div>
-            </div>
-
-
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="row">
-
-
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Fecha Inicio</label>
-                    <input class="form-control" type="date" id="txt_fecha_inicio" name="txt_fecha_inicio">
-                  </div>
-
-
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Fecha Final</label>
-                    <input class="form-control" type="date" id="txt_fecha_final" name="txt_fecha_final">
-                  </div>
-
-
-                  </select>
-                </div>
-
-                <p class="text-center" style="margin-top: 10px;">
-                  <button type="submit" class="btn btn-primary sm" id="btn_filtrar_cargas"></i> Filtrar</button>
-                </p>
-
-        </form>
 
       </div>
     </section>
     <!--Pantalla 2-->
     <div class="card card-default">
 
-      <div class="card-body d-flex justify-content-between align-items-center">
-        <h3 class="card-title">Registros de Cargas Académicas</h3>
+
+      <div class="card-body  ">
+        <div class="row">
+          <div class="col-9">
+            <h3 class="card-title">Registros de Cargas Académicas</h3>
+          </div>
+          <div class="col-3">
+            <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".bd-example-modal-lg">Nueva Gestión de Carga</a>
+          </div>
+
+        </div>
+
         <!-- <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="btn btn-success btn-m">Nueva Gestión de Carga</a> -->
-        <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".bd-example-modal-lg">Nueva Gestión de Carga</a>
+
       </div>
 
     </div>
@@ -287,13 +306,14 @@ if (isset($_REQUEST['msj'])) {
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table id="tabla" class="table table-bordered table-striped" cellpadding="0" width="100%">
+                      <table id="tabla_academica" class="table table-bordered table-striped" cellpadding="0" width="100%">
                         <thead>
                           <tr>
                             <th scope="col">PERIODO</th>
                             <th scope="col">DESCRIPCIÓN</th>
                             <th scope="col">ARCHIVO</th>
-                            <th scope="col">FECHA</th>
+                            <th scope="col">AÑO PERIODO</th>
+                            <th scope="col">FECHA SUBIDA</th>
                             <th scope="col">ACCIÓN</th>
                           </tr>
                         </thead>
@@ -338,6 +358,12 @@ if (isset($_REQUEST['msj'])) {
   </section>
 
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+
+
   <script src="../js/jefatura.js"></script>
   <!-- <script type="text/javascript">
     $(function() {
@@ -355,10 +381,10 @@ if (isset($_REQUEST['msj'])) {
   </script> -->
   <script type="text/javascript">
     $(document).ready(function() {
-      var table = $("#tabla").DataTable({
+      var table = $("#tabla_academica").DataTable({
         "lengthMenu": [
-          [3],
-          [3]
+          [5],
+          [5]
         ],
         "order": [
           [0, 'desc']
@@ -382,16 +408,66 @@ if (isset($_REQUEST['msj'])) {
             "data": "fecha"
           },
           {
-            "data": null,
-            defaultContent: '<center><div class="btn-group"> <button class="ver btn btn-primary btn - m"><i class="fas fa-eye"></i></button><button class="editar btn btn-success btn - m"><i class="fas fa-file-download"></i></button><div></center>'
+            "data": "fecha_subida"
           },
-          // { "data": "ip" },
-          // { "data": "cambio" },                                                    
+          {
+            "data": null,
+            defaultContent: '<center><div class="btn-group"> <button id="ver_detail" class="ver btn btn-primary btn - m" data-toggle="modal" data-target=".archivosAcademica"><i class="fas fa-eye"></i></button><button id="descarga" class=" btn btn-success btn - m"><i class="fas fa-file-download"></i></button><div></center>'
+          },
         ],
       });
+
+      $('#tabla_academica tbody').on('click', '#ver_detail', function() {
+        var fila = table.row($(this).parents('tr')).data();
+        var nombre_archivo = fila.nombre_archivo;
+        console.log(nombre_archivo);
+        //comienza ajax
+        var ver_excel_ca = "ver_excel_ca";
+        $.ajax({
+          url: "../Controlador/action.php",
+          type: "POST",
+          dataType: "html",
+          data: {
+            nombre_archivo: nombre_archivo,
+            ver_excel_ca: ver_excel_ca
+          },
+          success: function(r) {
+            console.log(r);
+            //document.getElementById('cargar_excel').innerHTML = r;
+            $('#cargar_excel').html(r);
+          } //FIN SUCCES
+        });
+        //FIN  AJAX
+      });
+
+      $('#tabla_academica tbody').on('click', '#descarga', function() {
+        var fila = table.row($(this).parents('tr')).data();
+        var nombre_archivo = fila.nombre_archivo;
+        console.log(nombre_archivo);
+
+        var url = `../archivos/file_academica/${nombre_archivo}`;        
+        download(url);
+
+      });
     });
+
+    function download(url) {
+      var link = document.createElement("a");
+      $(link).click(function(e) {
+        e.preventDefault();
+        window.location.href = url;
+      });
+      $(link).click();
+    }
   </script>
 
+  <script>
+    $("#datepicker, #datepicker1").datepicker({
+      format: " yyyy", // Notice the Extra space at the beginning
+      viewMode: "years",
+      minViewMode: "years"
+    });
+  </script>
 </body>
 
 </html>
