@@ -106,21 +106,6 @@ $_SESSION['g_reasignacion_solicitud']="No
 <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">	
-    <h4>Consultas</h4>
-    <p><?php echo $_SESSION[''];?></p>
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-plus"></i>
-  </div>
-  <a href="#" class="small-box-footer">
-  Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-</div>
-
-<div class="col-6 col-sm-6 col-md-4">
-  <div class="small-box bg-light">
-  <div class="inner">	
     <h4>Retroalimentacion</h4>
     <p><?php echo $_SESSION['ayuda_menu'];?></p>
   </div>
