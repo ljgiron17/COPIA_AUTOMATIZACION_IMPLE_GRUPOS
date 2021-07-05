@@ -21,8 +21,6 @@ if($visualizacion==0){
   window.location = "../vistas/pagina_principal_vista.php";
 
    </script>'; 
- 
-   
 }else{
 
   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A SOLICITUD CARTA DE EGRESADO');

@@ -400,6 +400,11 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_reasignacionjefatura_vista'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '120') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_reasignacion_retroalimentacion'] = "block";
+      }
+   }
    if ($_SESSION['pantalla'] == '121') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['g_planificacionjefatura_vista'] = "block";

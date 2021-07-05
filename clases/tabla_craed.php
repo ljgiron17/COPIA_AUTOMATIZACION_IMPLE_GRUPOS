@@ -3,7 +3,7 @@ require_once 'conexion3.php';
 $conexion = conexion();
 
 //envio de la consulta
-$query = "SELECT periodo_cr, descripcion_cr, nombre_archivo_cr, fecha_cr FROM tbl_craed_jefatura";
+$query = "SELECT periodo_cr, descripcion_cr, nombre_archivo_cr, fecha_cr, fecha_subida FROM tbl_craed_jefatura";
 
 //buscando el resultado 
 $resultado = mysqli_query($conexion, $query);

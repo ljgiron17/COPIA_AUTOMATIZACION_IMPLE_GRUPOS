@@ -74,10 +74,10 @@ require_once ('../clases/funcion_bitacora.php');
                 <thead>
                 <tr>
                  <th>ID DOCENTE</th>
-                 <th>NOMBRE</th>
-                 <th>JORNADA</th>
-                 <th>CLASE A REASIGNAR</th>
-                 <th>ACTIVIDAD A REALIZAR</th>
+                 <th>ID DOCENTE</th>
+                 <th>NOMBRE DOCENTE</th>
+                 <th>ESTADO DE LA SOLICITUD</th>
+                 <th>ACCION</th>
                  </tr>
                </thead>
                </table>

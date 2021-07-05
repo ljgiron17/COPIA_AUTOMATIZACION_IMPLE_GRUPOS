@@ -18,8 +18,8 @@ $_SESSION['ayuda_menu']="No
   tiene permisos para visualizar";
 
 }
-
 ?>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">

@@ -6,6 +6,7 @@ const Btn_enviar = document.getElementById("enviar_archivos");
 const file_ca = document.getElementById("file_ca");
 const file_cr = document.getElementById("file_cr");
 
+//!envio de datos del formulario
 //**validando el archivo lado del cliente
 $("#file_ca").on('change', function () {
     let file_ext = $(this).val().split(".").pop().toLowerCase();//dividiendo la imagen
@@ -71,7 +72,6 @@ function showMEssage(type, message) {
         </div>`
 }
 
-
 Btn_enviar.addEventListener('click', function (e) {
     e.preventDefault();
     var formulario = new FormData(archivos_send);
@@ -98,15 +98,32 @@ Btn_enviar.addEventListener('click', function (e) {
                         '¡Datos subidos correctamente!',
                         'success'
                     )
-                } else {
+                    // var tabla = $('#tabla').dataTable();
+                    // tabla.api().ajax.reload();
+                    // var tabla_craed = $('#tabla_craed').dataTable();
+                    // tabla_craed.api().ajax.reload();
+
+                    // var tabla_academica = $('#tabla_academica').dataTable();
+                    // tabla_academica.api().ajax.reload();
+                    $('#tabla_academica').DataTable().ajax.reload();
+                    $('#tabla_craed').DataTable().ajax.reload();
+                } else if (data == "cr_incorrecto") {
                     swal(
                         'Oops...',
-                        'Algo salio mal!',
+                        'Archivo de coordinacion académica no es el correcto!',
                         'error'
                     )
-                }
+                } else if (data == "cread_invalido") {
+                    swal(
+                        'Oops...',
+                        'Archivo de coordinacion CREAD no es el correcto!',
+                        'error'
+                    )
+                } 
             });
 
     }//fin del else
 
 });
+
+//!Fin envio de datos del formulario

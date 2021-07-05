@@ -1,6 +1,6 @@
 <?php
 //generando la conexion a la base de datos
-function conexion(){
+function conexion(){ 
     $db_host="localhost";
  	$db_nombre="informat_desarrollo_automatizacion";
  	$db_usuario="root";
