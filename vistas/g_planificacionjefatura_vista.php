@@ -72,7 +72,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>PLAN OPERATIVO ANUAL(POA)</h5>
-                  <p><?php echo $_SESSION['gestion_poa_vista']; ?></p>
+                  <p><?php echo $_SESSION['g_planificacion_vista']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>
