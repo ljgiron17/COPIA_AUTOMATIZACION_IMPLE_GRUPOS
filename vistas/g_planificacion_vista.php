@@ -42,7 +42,6 @@ if (permiso_ver('114') == '1') {
 
       </div><!-- /.container-fluid -->
     </section>
-
     <section class="content">
       <div class="card card-default">
         <div class="card-body  ">
