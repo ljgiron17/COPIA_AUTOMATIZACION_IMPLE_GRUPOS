@@ -30,12 +30,12 @@ $_SESSION['ayuda_menu']="No
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Práctica Profesional Supervisada</h1>
+            <h1 class="m-0 text-dark">PLANIFICACION ACADEMICA DE JEFATURA</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Vinculación</li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_planificacionjefatura_vista.php">Jefatura</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -54,52 +54,34 @@ $_SESSION['ayuda_menu']="No
     justify-content: center;">
 
 
-
-
-   <div class="col-6 col-sm-6 col-md-4">
-   <div class="small-box bg-primary">
-   <div class="inner">
-    <h5>Mantenimiento días feriado </h5>
-   <p><?php echo $_SESSION['mantenimiento_dias_feriados']; ?></p> 
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-edit"></i>
-  </div>
-  <a href="../vistas/gestion_dias_feriados_vista.php" class="small-box-footer">
-    Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-</div>
-</div>
-
-
     
-   <div class="col-6 col-sm-6 col-md-4">
+   <div class="col-4 col-sm-4 col-md-4">
    <div class="small-box bg-light">
    <div class="inner">
-    <h5>Gestión Inscripción </h5>
-   <p><?php echo $_SESSION['gestion_inscripcion_menu']; ?></p> 
+    <h5>PLAN OPERATIVO ANUAL(POA)</h5>
+   <p><?php echo $_SESSION['gestion_poa_vista']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/gestion_asistencia_charla_vista.php" class="small-box-footer">
+  <a href="../vistas/gestion_poa_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
 </div>
 
 
-<div class="col-6 col-sm-6 col-md-4">
+<div class="col-4 col-sm-4 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">
-    <h5>Registro de Asignaturas Aprobadas</h5>
-   <p><?php echo $_SESSION['registrar_clases_aprobadas_menu'];?></p>
+    <h5>GESTIÓN DE RECURSOS</h5>
+   <p><?php echo $_SESSION['gestion_recursos_vista'];?></p>
   </div>
   <div class="icon">
         <i class="fas fa-user-edit"></i>
 
   </div>
-  <a href="../vistas/registrar_asignaturas_aprobadas_vista.php" class="small-box-footer">
+  <a href="../vistas/gestion_recursos_vista.php" class="small-box-footer">
    Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
   </div>
@@ -107,53 +89,39 @@ $_SESSION['ayuda_menu']="No
   </div>
 
 
-   <div class="col-6 col-sm-6 col-md-4">
+   <div class="col-4 col-sm-4 col-md-4">
    <div class="small-box bg-light">
    <div class="inner">
-    <h5>Gestión Asignaturas Aprobadas</h5>
-   <p><?php echo $_SESSION['gestion_clases_aprobadas_menu']; ?></p> 
+    <h5>GESTIÓN DE GASTOS OPERATIVOS</h5>
+   <p><?php echo $_SESSION['gestion_gastos_vista']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/gestion_asignaturas_aprobadas_vista.php" class="small-box-footer">
+  <a href="../vistas/gestion_gastos_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
 </div>
 
 
-     <div class="col-6 col-sm-6 col-md-4">
+     <div class="col-4 col-sm-4 col-md-4">
    <div class="small-box bg-light">
    <div class="inner">
-    <h5>Revisión  de Doc. de PPS</h5>
-   <p><?php echo $_SESSION['revision_doc_practica_menu']; ?></p> 
+    <h5>GESTIÓN DE REQUERIMIENTOS OPERATIVOS</h5>
+   <p><?php echo $_SESSION['gestion_requerimientos_vista']; ?></p> 
   </div>
   <div class="icon">
     <i class="fas fa-user-edit"></i>
   </div>
-  <a href="../vistas/gestion_documentos_practica_vista.php" class="small-box-footer">
+  <a href="../vistas/gestion_requerimientos_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
 </div>
 
 
-   <div class="col-6 col-sm-6 col-md-4">
-  <div class="small-box bg-light">
-  <div class="inner">
-    <h5>Aprobación/Rechazo de PPS</h5>
-   <p><?php  echo $_SESSION['aprobacion_rechazo_practica_menu'];?></p>
-  </div>
-  <div class="icon">
-    <i class="fas fa-user-plus"></i>
-  </div>
-  <a href="../vistas/aprobar_practica_coordinacion_vista.php" class="small-box-footer">
-   Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-  </div>
-   <!-- /.info-box -->
-  </div>
+
 
 
 

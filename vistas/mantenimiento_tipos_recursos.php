@@ -72,9 +72,8 @@ require_once('../clases/funcion_bitacora.php');
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="enviar_Datos" class="needs-validation">
+                                        <form id="editar_datos" class="needs-validation">
                                             <!-- inicio del form -->
-
                                             <div class="card card-default">
                                                 <!--inciio primer card -->
                                                 <div class="card-header" style="background-color: #ced2d7;">
@@ -88,25 +87,22 @@ require_once('../clases/funcion_bitacora.php');
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <label for="">Fecha</label><br>
-                                                            <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dd/mm/yyyy" required> <br>
+                                                            <input type="text" class="form-control" id="datepicker" name="fecha_recurso_ed" placeholder="dd/mm/yyyy" required> <br>
                                                             <label for="">Nombre Recurso</label><br>
-                                                            <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" required><br>
+                                                            <input type="text" class="form-control" id="nombre_recurso_ed" name="nombre_recurso_ed" required><br>
                                                         </div>
                                                         <br>
                                                         <div class="col-12">
                                                             <label for="">Descripción</label><br>
-                                                            <textarea cols="20" rows="5" class="form-control" id="descripcion" name="descripcion" maxlength="50" required></textarea>
+                                                            <textarea cols="20" rows="5" class="form-control" id="descripcion_ed" name="descripcion_ed" maxlength="50" required></textarea>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                             </div><!-- fin primer card -->
                                         </form> <!-- fin del form -->
-
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" id="tipos_recursos">Enviar</button>
+                                        <button type="button" class="btn btn-success" id="">Enviar</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
@@ -121,6 +117,7 @@ require_once('../clases/funcion_bitacora.php');
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_recursos.php">Recursos</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/recursos_tipo.php">Nuevo Recurso</a></li>
                         </ol>
                     </div>
 
@@ -142,20 +139,20 @@ require_once('../clases/funcion_bitacora.php');
         <div class="card card-default">
 
 
-            <div class="card-body  ">
+            <!-- <div class="card-body  ">
                 <div class="row">
                     <div class="col-9">
                         <h3 class="card-title">Registros de Tipos de recurso</h3>
                     </div>
                     <div class="col-3">
-                        <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".bd-example-modal-lg">Nuevo Tipo de Recurso</a>
+                        <a href="../vistas/recursos_tipo.php" class="btn btn-success btn-m" >Nuevo Tipo de Recurso</a>
                     </div>
 
                 </div>
 
-                <!-- <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="btn btn-success btn-m">Nueva Gestión de Carga</a> -->
+               
 
-            </div>
+            </div> -->
 
         </div>
         <!-- /.card-header -->
@@ -211,6 +208,7 @@ require_once('../clases/funcion_bitacora.php');
                                                         <th scope="col">ESTADO</th>
                                                         <th scope="col">ACCIÓN</th>
                                                         <th scope="col">ELIMINAR</th>
+                                                        <th scope="col">EDICIÓN</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -263,8 +261,8 @@ require_once('../clases/funcion_bitacora.php');
         $(document).ready(function() {
             var table = $("#tabla_recursos_tipo").DataTable({
                 "lengthMenu": [
-                    [4],
-                    [4]
+                    [10],
+                    [10]
                 ],
                 "order": [
                     [0, 'desc']
@@ -302,6 +300,10 @@ require_once('../clases/funcion_bitacora.php');
                         "data": null,
                         defaultContent: '<center><div class="btn-group"> <button id="eliminar" class="ver btn btn-danger btn - m" ><i class="fas fa-trash"></i></button><div></center>'
                     },
+                    {
+                        "data": null,
+                        defaultContent: '<center><div class="btn-group"> <button id="editar" data-toggle="modal" data-target="#modal" class="ver btn btn-warning btn - m" ><i class="fas fa-edit"></i></button><div></center>'
+                    },
                 ],
             });
 
@@ -312,6 +314,18 @@ require_once('../clases/funcion_bitacora.php');
                 console.log(id, estado);
                 cambiarEstado(id, estado);
                 //eliminar(id_recurso_tipo);
+            });
+
+            $('#tabla_recursos_tipo tbody').on('click', '#editar', function() {
+                var fila = table.row($(this).parents('tr')).data();
+                var id = fila.id_recurso_tipo;
+                var descripcion = fila.descripcion;
+                var fecha = fila.fecha;
+                var nombre_recurso = fila.nombre_recurso;
+                document.getElementById('descripcion_ed').value = descripcion;
+                document.getElementById("datepicker").value = fecha;
+                document.getElementById("nombre_recurso_ed").value = nombre_recurso;
+
             });
 
 
