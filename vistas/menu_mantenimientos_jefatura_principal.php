@@ -293,7 +293,7 @@ if (permiso_ver('66') == '1') {
                   <i class="fas fa-plus-square"></i>
                 </div>
 
-                <a href="../vistas/indicadores_tipo.php" class="small-box-footer">
+                <a href="../vistas/indicador_tipo.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
