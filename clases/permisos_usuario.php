@@ -436,9 +436,36 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_retroalimentacion_docentes_vista'] = "block";
       }
    }
+   
+   //nuevas pantallas de poa
    if ($_SESSION['pantalla'] == '124') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['menu_mantenimientos_jefatura_principal'] = "block";
+         $_SESSION['g_planificacion'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '125') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_objetivos'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '126') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_indicadores'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '127') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_indicadoresactividad'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '128') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_menu_mantenimientos_jefatura_principal'] = "block";
+      }
+   }
+    if ($_SESSION['pantalla'] == '127') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_indicadoresactividad'] = "block";
       }
    }
    // if ($_SESSION['pantalla']=='55')
