@@ -133,11 +133,6 @@ require_once('../clases/funcion_visualizar.php');
               </div>
             </div>
 
-
-
-
-
-
             <!-- /.row -->
           </div>
           <!--/. container-fluid -->

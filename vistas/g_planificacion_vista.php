@@ -28,8 +28,6 @@ if (permiso_ver('114') == '1') {
           <div class="col-sm-6">
             <h1>Proyecto Operativo Anual (POA)</h1>
           </div>
-
-
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
