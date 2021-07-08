@@ -222,3 +222,15 @@ if (isset($_POST['cambiar_estado'])) {
         echo json_encode($respuesta);
     }
 }
+
+if (isset($_POST['agregar_tipo_gasto'])) {
+
+    $descrip = $_POST['descripcion'];
+    $estado = "Activo";
+    $fecha = $_POST['fecha_gasto'];
+    $nombre_gasto = $_POST['nombre_gasto'];
+
+    $respuesta = $db->insertTipoGasto($descrip, $estado, $fecha, $nombre_gasto);
+    echo json_encode($respuesta);
+    //echo json_encode($_POST);
+}

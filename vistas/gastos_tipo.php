@@ -65,9 +65,11 @@ ob_end_flush();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
 </head>
+
 <body>
 
 
@@ -112,7 +114,7 @@ ob_end_flush();
                     <!-- /.card-header -->
                     <div class="card-body ">
                         <div class="row">
-                            <form id="enviar_Datos" class="needs-validation">
+                            <form id="enviar_Datos">
                                 <!-- inicio del form -->
                                 <div class="card card-default">
                                     <!--inciio primer card -->
@@ -129,7 +131,14 @@ ob_end_flush();
                                                 <label for="">Fecha</label><br>
                                                 <input type="text" class="form-control" id="datepicker" name="fecha_gasto" placeholder="dd/mm/yyyy" required> <br>
                                                 <label for="">Nombre Gasto</label><br>
-                                                <input type="text" class="form-control" id="nombre_gasto" name="nombre_gasto" required><br>
+                                                <input type="text" class="form-control" id="nombre_gasto" name="nombre_gasto" required>
+                                                <!-- <label for="">Gastos Tipos</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="1">Vaitico</option>
+                                                    <option value="2">Mantenimiento</option>
+                                                    <option value="3">Pasajes</option>
+                                                    <option value="4">Eventos/Capacitaciones</option>
+                                                </select> -->
                                             </div>
                                             <br>
                                             <div class="col-12">
@@ -156,8 +165,9 @@ ob_end_flush();
         </section>
     </div>
 </body>
+
 </html>
-<script src="../js/tipos_gastos.js"></script>
+<script src="../js/newGasto.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>
