@@ -23,17 +23,13 @@ if ($visualizacion==0)
                                 timer: 3000
                               });
                             window.location = "../vistas/gestion_dias_feriados_vista.php";
-
                             </script>';
 }
 
 else 
 
 {
-
       bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'Ingresó' , 'a Declaracion Jurada');
-
-
 }
 
 

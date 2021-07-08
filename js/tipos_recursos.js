@@ -94,7 +94,6 @@ function eliminar(id) {
 
 }
 
-
 function cambiarEstado(id, estado) {
     swal({
         title: 'Seguro que quiere cambiar este recurso?',
