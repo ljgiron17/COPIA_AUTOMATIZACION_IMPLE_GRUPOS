@@ -202,12 +202,12 @@ if (isset($_POST['tipo_recursos'])) {
     $respuesta = $db->newTipoRecurso($descripcion, $fecha, $nombre_recurso, $estado);
     echo json_encode($respuesta);
 }
+
 if (isset($_POST['eliminar'])) {
     $id = $_POST['id'];
     $respuesta = $db->eliminarRecurso($id);
     echo json_encode($respuesta);
 }
-
 
 if (isset($_POST['cambiar_estado'])) {
     $estado = $_POST['estado'];
