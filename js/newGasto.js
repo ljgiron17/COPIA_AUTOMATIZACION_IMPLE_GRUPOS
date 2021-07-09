@@ -11,7 +11,7 @@ button.addEventListener('click', function (e) {
         method: 'POST',
         body: form2
     })
-        .then(res => res.json())
+        .then(respuesta => respuesta.json())
         .then(data => {
             console.log(data);
             if(data== 'exito'){

@@ -132,7 +132,7 @@ ob_end_flush();
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="">Fecha</label><br>
-                                                <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dd/mm/yyyy" required> <br>
+                                                <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dia/mes/año" required> <br>
                                                 <label for="">Nombre Recurso</label><br>
                                                 <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" required><br>
                                             </div>
@@ -167,7 +167,7 @@ ob_end_flush();
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>
     $("#datepicker").datepicker({
-        // format: " yyyy", // Notice the Extra space at the beginning
+        // format: "yyyy", // Notice the Extra space at the beginning
         // viewMode: "years",
         // minViewMode: "years"
     });
