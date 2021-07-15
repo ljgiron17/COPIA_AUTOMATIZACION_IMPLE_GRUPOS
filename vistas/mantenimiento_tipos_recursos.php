@@ -293,6 +293,8 @@ language: {
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 },                
             },
+            
+
                 "ajax": {
                     "url": "../clases/tabla_recursos_tipo.php",
                     "type": "POST",
@@ -332,6 +334,8 @@ language: {
                 ],
             });
 
+            table.columns([0]).visible(false);
+            
             $('#tabla_recursos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id = fila.id_recurso_tipo;

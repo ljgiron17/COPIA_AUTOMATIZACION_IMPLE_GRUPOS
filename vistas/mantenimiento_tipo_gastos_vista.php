@@ -237,7 +237,7 @@ require_once('../clases/funcion_bitacora.php');
                     },
                 ],
             });
-
+            table.columns([0]).visible(false);
             $('#tabla_gastos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id = fila.id_tipo_gastos;
