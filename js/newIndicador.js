@@ -23,7 +23,7 @@ button.addEventListener('click', function (e) {
 
 function eliminar(id) {
     swal({
-        title: 'Seguro que quiere eliminar este gasto?',
+        title: 'Seguro que quiere eliminar este Indicador de Gestión Academica?',
         text: "!Este registro no podra ser recuperado!",
         type: 'warning',
         showCancelButton: true,
@@ -76,7 +76,7 @@ function eliminar(id) {
 }
 function cambiarEstado(id, estado) {
     swal({
-        title: 'Seguro que quiere cambiar este indicador de gestión?',
+        title: 'Seguro que quiere cambiar este Indicador de Gestión Academica?',
         text: "!Este registro podra ser cambiado!",
         type: 'warning',
         showCancelButton: true,
