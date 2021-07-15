@@ -126,7 +126,7 @@ require_once('../clases/funcion_bitacora.php');
                                             <table id="tabla_recursos_tipo" class="table table-bordered table-striped" cellpadding="0" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">NUM INDICADOR</th>
+                                                        <th scope="col">NUM GASTO</th>
                                                         <th scope="col">NOMBRE</th>
                                                         <th scope="col">DESCRIPCIÓN</th>
                                                         <th scope="col">FECHA</th>
