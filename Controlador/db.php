@@ -104,15 +104,15 @@ class db extends conexion2
         return 'exito';
     }
 
-    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_gasto)
+    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
     {
-        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
+        $sql = "INSERT INTO tbl_indicadores_gestion(descripcion,estado, fecha, nombre_indicador)  VALUES (:descripcion, :estado, :fecha, :nombre_indicador) ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'descripcion' => $descripcion,
             'estado' => $estado,
             'fecha' => $fecha,
-            'nombre_gasto' => $nombre_gasto
+            'nombre_indicador' => $nombre_indicador
         ]);
         return 'exito';
     }

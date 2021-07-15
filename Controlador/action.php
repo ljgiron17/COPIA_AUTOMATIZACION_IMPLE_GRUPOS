@@ -234,3 +234,15 @@ if (isset($_POST['agregar_tipo_gasto'])) {
     echo json_encode($respuesta);
     //echo json_encode($_POST);
 }
+
+if (isset($_POST['agregar_tipo_indicador'])) {
+
+    $descripcion = $_POST['descripcion'];
+    $estado = "Activo";
+    $fecha = $_POST['fecha_indicador'];
+    $nombre_indicador = $_POST['nombre_indicador'];
+
+    $respuesta = $db->insertTipoIndicador($descripcion, $estado, $fecha, $nombre_indicador);
+    echo json_encode($respuesta);
+    //echo json_encode($_POST);
+}

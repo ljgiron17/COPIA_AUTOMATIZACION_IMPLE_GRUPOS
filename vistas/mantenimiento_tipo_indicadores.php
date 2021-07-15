@@ -32,8 +32,10 @@ require_once('../clases/funcion_bitacora.php');
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
+
     <style>
         .my-custom-scrollbar {
             position: relative;
@@ -47,7 +49,10 @@ require_once('../clases/funcion_bitacora.php');
     </style>
 </head>
 
+
 <body>
+
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -55,14 +60,64 @@ require_once('../clases/funcion_bitacora.php');
                 <div class="row mb-2">
                     <div class="col-sm-6">
 
-                        <h1>Gestión de Tipos de Gastos Operativos </h1>
+
+                        <!-- inicio del modal -->
+                        <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Envio de datos</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="editar_datos" class="needs-validation">
+                                            <!-- inicio del form -->
+                                            <div class="card card-default">
+                                                <!--inciio primer card -->
+                                                <div class="card-header" style="background-color: #ced2d7;">
+                                                    <h3 class="card-title"><strong>TIPOS DE INDICADORES</strong> </h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <label for="">Fecha</label><br>
+                                                            <input type="text" class="form-control" id="datepicker" name="fecha_recurso_ed" placeholder="dd/mm/yyyy" required> <br>
+                                                            <label for="">Nombre guardar_indicador</label><br>
+                                                            <input type="text" class="form-control" id="nombre_recurso_ed" name="nombre_recurso_ed" required><br>
+                                                        </div>
+                                                        <br>
+                                                        <div class="col-12">
+                                                            <label for="">Descripción</label><br>
+                                                            <textarea cols="20" rows="5" class="form-control" id="descripcion_ed" name="descripcion_ed" maxlength="50" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- fin primer card -->
+                                        </form> <!-- fin del form -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" id="">Enviar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fin del modal -->
+
+                        <h1>Gestión de Tipos de Indicadores de Gestión</h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimientos_jefatura_principal.php">Mantenimientos Jefatura</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/gastos_tipo.php">Nuevo Gasto</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/indicador_tipo.php">Nuevo Indicador</a></li>
                         </ol>
                     </div>
 
@@ -75,38 +130,18 @@ require_once('../clases/funcion_bitacora.php');
         <section class="content">
             <div class="container-fluid">
                 <!-- pantalla 1 -->
+
+
+
             </div>
         </section>
         <!--Pantalla 2-->
         <div class="card card-default">
+
         </div>
         <!-- /.card-header -->
         <div class=" card-body">
-            <!-- <table id="tabla" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>PERIODO</th>
-            <th>DESCRIPCIÓN</th>
-            <th>FECHA</th>
-            <th>ACCIONES</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            <td>
-            <td>
-            <td>
-              <div class="btn-group"> <button class="ver btn btn-primary btn - m">
-                  <i class="fas fa-eye"></i>
-                </button>
-                <button class="editar btn btn-success btn-m">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <div>
 
-        </tbody>
-      </table> -->
             <div class="container-fluid">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -133,6 +168,7 @@ require_once('../clases/funcion_bitacora.php');
                                                         <th scope="col">ESTADO</th>
                                                         <th scope="col">ACCIÓN</th>
                                                         <th scope="col">ELIMINAR</th>
+                                                        <th scope="col">EDICIÓN</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -151,28 +187,42 @@ require_once('../clases/funcion_bitacora.php');
                     </div> -->
                 </div>
             </div>
+
+
             <div class="container-fluid">
+
             </div>
+
+
         </div>
+
+
         <!-- /.card-body -->
     </div>
+
+
     <!-- /.card-body -->
     <div class="card-footer">
+
     </div>
     </div>
+
     </div>
+
     </section>
+
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 
-    <script src="../js/newGasto.js"></script>
+    <script src="../js/newIndicador.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var table = $("#tabla_gastos_tipo").DataTable({
+            var table = $("#tabla_indicadores_tipo").DataTable({
                 "lengthMenu": [
-                    [4],
-                    [4]
+                    [10],
+                    [10]
                 ],
                 "order": [
                     [0, 'desc']
@@ -204,15 +254,15 @@ require_once('../clases/funcion_bitacora.php');
                     },
                 },
                 "ajax": {
-                    "url": "../clases/tabla_gastos_tipo.php",
+                    "url": "../clases/tabla_indicadores_tipo.php",
                     "type": "POST",
                     "dataSrc": ""
                 },
                 "columns": [{
-                        "data": "id_tipo_gastos"
+                        "data": "id_indicadores_gestion"
                     },
                     {
-                        "data": "nombre_gasto"
+                        "data": "nombre_indicador"
                     },
                     {
                         "data": "descripcion"
@@ -235,24 +285,42 @@ require_once('../clases/funcion_bitacora.php');
                         "data": null,
                         defaultContent: '<center><div class="btn-group"> <button id="eliminar" class="ver btn btn-danger btn - m" ><i class="fas fa-trash"></i></button><div></center>'
                     },
+                    {
+                        "data": null,
+                        defaultContent: '<center><div class="btn-group"> <button id="editar" data-toggle="modal" data-target="#modal" class="ver btn btn-warning btn - m" ><i class="fas fa-edit"></i></button><div></center>'
+                    },
                 ],
-            });
 
-            $('#tabla_gastos_tipo tbody').on('click', '#estado', function() {
+            });
+            table.columns([0]).visible(false);
+
+            $('#tabla_indicadores_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var id = fila.id_tipo_gastos;
+                var id = fila.id_indicadores_gestion;
                 var estado = fila.estado;
                 console.log(id, estado);
                 cambiarEstado(id, estado);
                 //eliminar(id_recurso_tipo);
             });
 
-
-            $('#tabla_gastos_tipo tbody').on('click', '#eliminar', function() {
+            $('#tabla_indicadores_tipo tbody').on('click', '#editar', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var id_tipo_gastos = fila.id_tipo_gastos;
-                console.log(id_tipo_gastos + ' eliminar');
-                eliminar(id_tipo_gastos);
+                var id = fila.id_indicadores_gestion;
+                var descripcion = fila.descripcion;
+                var fecha = fila.fecha;
+                var nombre_indicador = fila.nombre_indicador;
+                document.getElementById('descripcion_ed').value = descripcion;
+                document.getElementById("datepicker").value = fecha;
+                document.getElementById("nombre_indicador_ed").value = nombre_indicador;
+
+            });
+
+
+            $('#tabla_indicadores_tipo tbody').on('click', '#eliminar', function() {
+                var fila = table.row($(this).parents('tr')).data();
+                var id_indicadores_gestion = fila.id_indicadores_gestion;
+                console.log(id_indicadores_gestion + 'eliminar');
+                eliminar(id_indicadores_gestion);
             });
         });
     </script>
@@ -265,4 +333,5 @@ require_once('../clases/funcion_bitacora.php');
         });
     </script>
 </body>
+
 </html>

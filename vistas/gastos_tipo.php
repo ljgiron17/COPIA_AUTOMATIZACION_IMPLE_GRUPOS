@@ -129,7 +129,7 @@ ob_end_flush();
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="">Fecha</label><br>
-                                                <input type="text" class="form-control" id="datepicker" name="fecha_gasto" placeholder="dd/mm/yyyy" required> <br>
+                                                <input type="text" class="form-control" id="datepicker" name="fecha_gasto" placeholder="dia/mes/año" required> <br>
                                                 <label for="">Nombre Gasto</label><br>
                                                 <input type="text" class="form-control" id="nombre_gasto" name="nombre_gasto" required>
                                                 <!-- <label for="">Gastos Tipos</label>

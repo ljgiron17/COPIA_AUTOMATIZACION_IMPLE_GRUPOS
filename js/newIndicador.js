@@ -1,11 +1,11 @@
-console.log('gastos');
+console.log('indicador');
 const formualrio = document.getElementById('enviar_Datos');
-const button = document.getElementById('guardar_gasto');
+const button = document.getElementById('guardar_indicador');
 
 button.addEventListener('click', function (e) {
     e.preventDefault();
     var form2 = new FormData(formualrio);
-    form2.append('agregar_tipo_gasto', 1);
+    form2.append('agregar_tipo_indicador', 1);
 
     fetch('../Controlador/action.php', {
         method: 'POST',
@@ -52,7 +52,7 @@ function eliminar(id) {
                         '!Su registro ha sido eliminado!',
                         'success'
                     )
-                    $('#tabla_gastos_tipo').DataTable().ajax.reload();
+                    $('#tabla_indicadores_tipo').DataTable().ajax.reload();
                 } else {
                     swal(
                         'Error',
@@ -76,7 +76,7 @@ function eliminar(id) {
 }
 function cambiarEstado(id, estado) {
     swal({
-        title: 'Seguro que quiere cambiar este gasto?',
+        title: 'Seguro que quiere cambiar este indicador de gestión?',
         text: "!Este registro podra ser cambiado!",
         type: 'warning',
         showCancelButton: true,
@@ -106,7 +106,7 @@ function cambiarEstado(id, estado) {
                         '!Su registro ha sido cambiado!',
                         'success'
                     )
-                    $('#tabla_gastos_tipo').DataTable().ajax.reload();
+                    $('#tabla_indicadores_tipo').DataTable().ajax.reload();
                 } else {
                     swal(
                         'Error',
@@ -128,14 +128,14 @@ function cambiarEstado(id, estado) {
     })
 
 }
-const buttonGuardar = document.getElementById('guardar_gasto');
+const buttonGuardar = document.getElementById('guardar_indicador');
 const formulario_datos = document.getElementById('enviar_Datos');
 
 buttonGuardar.addEventListener('click', function (e) {
-    //alert('hola_gastos');
+    //alert('hola_indicadores');
     e.preventDefault();
     const form2 = new FormData(formulario_datos);
-    form2.append('tipo_gastos', 1);
+    form2.append('tipo_indicadores', 1);
 
     if (enviar_Datos.checkValidity() === false) {
         e.preventDefault();
@@ -158,7 +158,7 @@ buttonGuardar.addEventListener('click', function (e) {
                             'Los datos han sido agregados exitosamente',
                         showLoaderOnConfirm: true,
                         preConfirm: function () {
-                            location.href = "../vistas/mantenimiento_tipos_gastos.php";
+                            location.href = "../vistas/mantenimiento_tipo_indicadores.php";
                         }
                     }]);
 

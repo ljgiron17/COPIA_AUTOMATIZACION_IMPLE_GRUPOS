@@ -125,7 +125,7 @@ ob_end_flush();
                                             <div class="col-12">
                                                 <label for="">Fecha</label><br>
                                                 <input type="text" class="form-control" id="datepicker" name="fecha_indicador" placeholder="dd/mm/yyyy" required> <br>
-                                                <label for="">Nombre Recurso</label><br>
+                                                <label for="">Nombre Indicador</label><br>
                                                 <input type="text" class="form-control" id="nombre_indicador" name="nombre_indicador" required><br>
                                             </div>
                                             <br>
@@ -155,7 +155,7 @@ ob_end_flush();
 </body>
 
 </html>
-<script src="../js/tipos_indicadores.js"></script>
+<script src="../js/newIndicador.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>
