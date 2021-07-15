@@ -128,6 +128,7 @@ function cambiarEstado(id, estado) {
     })
 
 }
+
 const buttonGuardar = document.getElementById('guardar_gasto');
 const formulario_datos = document.getElementById('enviar_Datos');
 

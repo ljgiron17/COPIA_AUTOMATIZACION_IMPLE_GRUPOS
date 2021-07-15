@@ -3,7 +3,7 @@ require_once 'conexion3.php';
 $conexion = conexion();
 
 //envio de la consulta
-$query = "SELECT id_tipo_gastos,nombre_gasto,descripcion,fecha,estado FROM  tbl_tipo_gastos";
+$query = "SELECT * FROM `tbl_tipo_gastos`";
 
 //buscando el resultado 
 $resultado = mysqli_query($conexion, $query);

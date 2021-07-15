@@ -158,7 +158,7 @@ require_once('../clases/funcion_bitacora.php');
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="tabla_recursos_tipo" class="table table-bordered table-striped" cellpadding="0" width="100%">
+                                            <table id="tabla_indicadores_tipo" class="table table-bordered table-striped" cellpadding="0" width="100%">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">NUM INDICADOR</th>

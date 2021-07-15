@@ -123,7 +123,7 @@ require_once('../clases/funcion_bitacora.php');
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="tabla_recursos_tipo" class="table table-bordered table-striped" cellpadding="0" width="100%">
+                                            <table id="tabla_gastos_tipo" class="table table-bordered table-striped" cellpadding="0" width="100%">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">NUM GASTO</th>
@@ -237,7 +237,9 @@ require_once('../clases/funcion_bitacora.php');
                     },
                 ],
             });
+
             table.columns([0]).visible(false);
+
             $('#tabla_gastos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id = fila.id_tipo_gastos;
