@@ -62,29 +62,21 @@ ob_end_flush();
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <title></title>
-
-
-
 </head>
 
 <body>
-
-
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-
-
-                        <h1>CREAR UN NUEVO TIPO DE RECURSO</h1>
+                        <h1>CREAR UN NUEVO TIPO DE INDICADOR DE GESTIÓN</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -108,7 +100,7 @@ ob_end_flush();
 
                 <div class="card card-default ">
                     <div class="card-header center">
-                        <h3 class="card-title">NUEVO TIPO DE RECURSO</h3>
+                        <h3 class="card-title">NUEVO TIPO DE INDICADOR DE GESTIÓN</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -122,7 +114,7 @@ ob_end_flush();
                                 <div class="card card-default">
                                     <!--inciio primer card -->
                                     <div class="card-header" style="background-color: #ced2d7;">
-                                        <h3 class="card-title"><strong>TIPOS DE RECURSOS</strong> </h3>
+                                        <h3 class="card-title"><strong>TIPOS DE INDICADORES DE GESTIÓN</strong> </h3>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                         </div>
@@ -132,9 +124,9 @@ ob_end_flush();
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="">Fecha</label><br>
-                                                <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dia/mes/año" required> <br>
-                                                <label for="">Nombre Recurso</label><br>
-                                                <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" required><br>
+                                                <input type="text" class="form-control" id="datepicker" name="fecha_indicador" placeholder="dd/mm/yyyy" required> <br>
+                                                <label for="">Nombre Indicador</label><br>
+                                                <input type="text" class="form-control" id="nombre_indicador" name="nombre_indicador" required><br>
                                             </div>
                                             <br>
                                             <div class="col-12">
@@ -144,7 +136,7 @@ ob_end_flush();
 
                                             <div class="col-12">
                                                 <br>
-                                                <button class="btn btn-primary" id="guardar_recurso">Guardar</button>
+                                                <button class="btn btn-primary" id="guardar_indicador">Guardar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -161,13 +153,14 @@ ob_end_flush();
         </section>
     </div>
 </body>
+
 </html>
-<script src="../js/tipos_recursos.js"></script>
+<script src="../js/newIndicador.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>
     $("#datepicker").datepicker({
-        // format: "yyyy", // Notice the Extra space at the beginning
+        // format: " yyyy", // Notice the Extra space at the beginning
         // viewMode: "years",
         // minViewMode: "years"
     });

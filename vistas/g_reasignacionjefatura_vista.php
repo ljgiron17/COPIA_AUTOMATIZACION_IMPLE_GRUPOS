@@ -19,14 +19,14 @@ $_SESSION['ayuda_menu']="No
 
 }
 
-if (permiso_ver('120')=='1')
+if (permiso_ver('115')=='1')
  {
   
-  $_SESSION['g_reasignacion_retroalimentacion']="...";
+  $_SESSION['g_cargararchivosdecargaacademica_vista']="...";
 }
 else
 {
-$_SESSION['g_reasignacion_retroalimentacion']="No 
+$_SESSION['g_cargararchivosdecargaacademica_vista']="No 
   tiene permisos para visualizar";
 
 }
@@ -103,18 +103,16 @@ $_SESSION['g_reasignacion_solicitud']="No
 </div>
 </div>
 
-
-
 <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">	
     <h4>Retroalimentacion</h4>
-    <p><?php echo $_SESSION['g_reasignacion_retroalimentacion'];?></p>
+    <p><?php echo $_SESSION['ayuda_menu'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="../vistas/g_reasignacion_retroalimentacion.php" class="small-box-footer">
+  <a href="#" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>

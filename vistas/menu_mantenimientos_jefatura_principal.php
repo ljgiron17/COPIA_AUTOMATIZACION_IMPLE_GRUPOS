@@ -187,41 +187,10 @@ if (permiso_ver('66') == '1') {
     align-items: center;
     justify-content: center;">
 
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Tipo de Requerimiento </h4>
-                  <p><?php echo $_SESSION['requerimiento_tipo']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
-
-                <a href="../vistas/requerimientos_tipo.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-              <!-- /.info-box -->
-            </div>
+           
             <!-- fix for small devices only -->
             <div class="clearfix hidden-md-up"></div>
 
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Requerimientos </h4>
-                  <p><?php echo $_SESSION['mantenimiento_grados_academicos_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
-
-                <a href="../vistas/mantenimiento_requerimientos_tipo.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-              <!-- /.info-box -->
-            </div>
             <!-- /.row -->
           </div>
           <!--/. container-fluid  aqui termina requerimientos-->
@@ -261,10 +230,10 @@ if (permiso_ver('66') == '1') {
                   <p><?php echo $_SESSION['gastos_tipo']; ?></p>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-edit"></i>
+                  <i class="fas fa-edit"></i> 
                 </div>
 
-                <a href="../vistas/mantenimiento_gastos_tipo.php" class="small-box-footer">
+                <a href="../vistas/mantenimiento_tipo_gastos_vista.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -293,7 +262,7 @@ if (permiso_ver('66') == '1') {
                   <i class="fas fa-plus-square"></i>
                 </div>
 
-                <a href="../vistas/indicadores_tipo.php" class="small-box-footer">
+                <a href="../vistas/indicador_tipo.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -312,7 +281,7 @@ if (permiso_ver('66') == '1') {
                   <i class="fas fa-edit"></i>
                 </div>
 
-                <a href="../vistas/mantenimiento_indicadores tipo.php" class="small-box-footer">
+                <a href="../vistas/mantenimiento_tipo_indicadores.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>

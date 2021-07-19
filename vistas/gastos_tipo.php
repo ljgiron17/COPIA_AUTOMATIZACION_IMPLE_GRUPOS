@@ -68,9 +68,6 @@ ob_end_flush();
 
 <head>
     <title></title>
-
-
-
 </head>
 
 <body>
@@ -84,7 +81,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>CREAR UN NUEVO TIPO DE RECURSO</h1>
+                        <h1>CREAR UN NUEVO TIPO DE GASTO</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -108,7 +105,7 @@ ob_end_flush();
 
                 <div class="card card-default ">
                     <div class="card-header center">
-                        <h3 class="card-title">NUEVO TIPO DE RECURSO</h3>
+                        <h3 class="card-title">NUEVO TIPO DE GASTO</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -117,12 +114,12 @@ ob_end_flush();
                     <!-- /.card-header -->
                     <div class="card-body ">
                         <div class="row">
-                            <form id="enviar_Datos" class="needs-validation">
+                            <form id="enviar_Datos">
                                 <!-- inicio del form -->
                                 <div class="card card-default">
                                     <!--inciio primer card -->
                                     <div class="card-header" style="background-color: #ced2d7;">
-                                        <h3 class="card-title"><strong>TIPOS DE RECURSOS</strong> </h3>
+                                        <h3 class="card-title"><strong>TIPOS DE GASTOS</strong> </h3>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                         </div>
@@ -132,9 +129,16 @@ ob_end_flush();
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="">Fecha</label><br>
-                                                <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dia/mes/año" required> <br>
-                                                <label for="">Nombre Recurso</label><br>
-                                                <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" required><br>
+                                                <input type="text" class="form-control" id="datepicker" name="fecha_gasto" placeholder="dia/mes/año" required> <br>
+                                                <label for="">Nombre Gasto</label><br>
+                                                <input type="text" class="form-control" id="nombre_gasto" name="nombre_gasto" required>
+                                                <!-- <label for="">Gastos Tipos</label>
+                                                <select name="" id="" class="form-control">
+                                                    <option value="1">Vaitico</option>
+                                                    <option value="2">Mantenimiento</option>
+                                                    <option value="3">Pasajes</option>
+                                                    <option value="4">Eventos/Capacitaciones</option>
+                                                </select> -->
                                             </div>
                                             <br>
                                             <div class="col-12">
@@ -144,7 +148,7 @@ ob_end_flush();
 
                                             <div class="col-12">
                                                 <br>
-                                                <button class="btn btn-primary" id="guardar_recurso">Guardar</button>
+                                                <button class="btn btn-primary" id="guardar_gasto">Guardar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -161,13 +165,14 @@ ob_end_flush();
         </section>
     </div>
 </body>
+
 </html>
-<script src="../js/tipos_recursos.js"></script>
+<script src="../js/newGasto.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>
     $("#datepicker").datepicker({
-        // format: "yyyy", // Notice the Extra space at the beginning
+        // format: " yyyy", // Notice the Extra space at the beginning
         // viewMode: "years",
         // minViewMode: "years"
     });
