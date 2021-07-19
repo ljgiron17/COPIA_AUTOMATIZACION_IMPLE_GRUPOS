@@ -1,47 +1,19 @@
 <?php
 ob_start();
 session_start();
-require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php');
-require_once ('../clases/funcion_bitacora.php');
-require_once ('../clases/funcion_visualizar.php');
-require_once ('../clases/funcion_permisos.php');
+require_once('../vistas/pagina_inicio_vista.php');
+require_once('../clases/Conexion.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
+//require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('121')=='1')
- {
-  
-  $_SESSION['g_planificacionjefatura_vista']="...";
-}
-else
-{
-$_SESSION['ayuda_menu']="No 
-  tiene permisos para visualizar";
+//if (permiso_ver('121') == '1') {
 
-}
-?>
-
-</head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-<div class="wrapper">
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Práctica Profesional Supervisada</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Vinculación</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+  //$_SESSION['g_planificacionjefatura_vista'] = "...";
+//} else {
+  //$_SESSION['g_planificacionjefatura_vista'] = "No 
+  //tiene permisos para visualizar";
+//}
 
 //if (permiso_ver('124') == '1') {
 
