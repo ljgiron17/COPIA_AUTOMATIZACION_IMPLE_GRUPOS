@@ -32,8 +32,10 @@ require_once('../clases/funcion_bitacora.php');
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
+
     <style>
         .my-custom-scrollbar {
             position: relative;
@@ -47,7 +49,10 @@ require_once('../clases/funcion_bitacora.php');
     </style>
 </head>
 
+
 <body>
+
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -55,14 +60,67 @@ require_once('../clases/funcion_bitacora.php');
                 <div class="row mb-2">
                     <div class="col-sm-6">
 
-                        <h1>Gestión de Tipos de Gastos Operativos </h1>
+
+                        <!-- inicio del modal -->
+                        <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Envio de datos</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="enviar_Datos" class="needs-validation">
+                                            <!-- inicio del form -->
+
+                                            <div class="card card-default">
+                                                <!--inciio primer card -->
+                                                <div class="card-header" style="background-color: #ced2d7;">
+                                                    <h3 class="card-title"><strong>TIPO INDICADORES DE GESTIÓN</strong> </h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <label for="">Fecha</label><br>
+                                                            <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dd/mm/yyyy" required> <br>
+                                                            <label for="">Nombre Recurso</label><br>
+                                                            <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" required><br>
+                                                        </div>
+                                                        <br>
+                                                        <div class="col-12">
+                                                            <label for="">Descripción</label><br>
+                                                            <textarea cols="20" rows="5" class="form-control" id="descripcion" name="descripcion" maxlength="50" required></textarea>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div><!-- fin primer card -->
+                                        </form> <!-- fin del form -->
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" id="tipos_recursos">Enviar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fin del modal -->
+
+                        <h1>Gestión de Tipos de Indicadores </h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimientos_jefatura_principal.php">Mantenimientos Jefatura</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/gastos_tipo.php">Nuevo Gasto</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_recursos.php">Recursos</a></li>
                         </ol>
                     </div>
 
@@ -75,10 +133,30 @@ require_once('../clases/funcion_bitacora.php');
         <section class="content">
             <div class="container-fluid">
                 <!-- pantalla 1 -->
+
+
+
             </div>
         </section>
         <!--Pantalla 2-->
         <div class="card card-default">
+
+
+            <div class="card-body  ">
+                <div class="row">
+                    <div class="col-9">
+                        <h3 class="card-title">Registros de Tipos de Indicadores de Geestión</h3>
+                    </div>
+                    <div class="col-3">
+                        <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".bd-example-modal-lg">Nuevo Tipo de Recurso</a>
+                    </div>
+
+                </div>
+
+                <!-- <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="btn btn-success btn-m">Nueva Gestión de Carga</a> -->
+
+            </div>
+
         </div>
         <!-- /.card-header -->
         <div class=" card-body">
@@ -123,10 +201,10 @@ require_once('../clases/funcion_bitacora.php');
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="tabla_gastos_tipo" class="table table-bordered table-striped" cellpadding="0" width="100%">
+                                            <table id="tabla_recursos_tipo" class="table table-bordered table-striped" cellpadding="0" width="100%">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">NUM GASTO</th>
+                                                        <th scope="col">NUM INDICADOR</th>
                                                         <th scope="col">NOMBRE</th>
                                                         <th scope="col">DESCRIPCIÓN</th>
                                                         <th scope="col">FECHA</th>
@@ -151,25 +229,39 @@ require_once('../clases/funcion_bitacora.php');
                     </div> -->
                 </div>
             </div>
+
+
             <div class="container-fluid">
+
             </div>
+
+
         </div>
+
+
         <!-- /.card-body -->
     </div>
+
+
     <!-- /.card-body -->
     <div class="card-footer">
+
     </div>
     </div>
+
     </div>
+
     </section>
+
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 
-    <script src="../js/newGasto.js"></script>
+    <script src="../js/tipos_recursos.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var table = $("#tabla_gastos_tipo").DataTable({
+            var table = $("#tabla_recursos_tipo").DataTable({
                 "lengthMenu": [
                     [4],
                     [4]
@@ -178,41 +270,16 @@ require_once('../clases/funcion_bitacora.php');
                     [0, 'desc']
                 ],
                 "responsive": true,
-
-                language: {
-                    "sProcessing": "Procesando...",
-                    "sLengthMenu": "Mostrar    _MENU_    Filas",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "sEmptyTable": "Ningún dato disponible en esta tabla",
-                    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
-                    "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
-                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Buscar:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    },
-                },
                 "ajax": {
-                    "url": "../clases/tabla_gastos_tipo.php",
+                    "url": "../clases/tabla_recursos_tipo.php",
                     "type": "POST",
                     "dataSrc": ""
                 },
                 "columns": [{
-                        "data": "id_tipo_gastos"
+                        "data": "id_recurso_tipo"
                     },
                     {
-                        "data": "nombre_gasto"
+                        "data": "nombre_recurso"
                     },
                     {
                         "data": "descripcion"
@@ -238,11 +305,9 @@ require_once('../clases/funcion_bitacora.php');
                 ],
             });
 
-            table.columns([0]).visible(false);
-
-            $('#tabla_gastos_tipo tbody').on('click', '#estado', function() {
+            $('#tabla_recursos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var id = fila.id_tipo_gastos;
+                var id = fila.id_recurso_tipo;
                 var estado = fila.estado;
                 console.log(id, estado);
                 cambiarEstado(id, estado);
@@ -250,11 +315,11 @@ require_once('../clases/funcion_bitacora.php');
             });
 
 
-            $('#tabla_gastos_tipo tbody').on('click', '#eliminar', function() {
+            $('#tabla_recursos_tipo tbody').on('click', '#eliminar', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var id_tipo_gastos = fila.id_tipo_gastos;
-                console.log(id_tipo_gastos + ' eliminar');
-                eliminar(id_tipo_gastos);
+                var id_recurso_tipo = fila.id_recurso_tipo;
+                console.log(id_recurso_tipo + ' eliminar');
+                eliminar(id_recurso_tipo);
             });
         });
     </script>
@@ -267,4 +332,5 @@ require_once('../clases/funcion_bitacora.php');
         });
     </script>
 </body>
+
 </html>

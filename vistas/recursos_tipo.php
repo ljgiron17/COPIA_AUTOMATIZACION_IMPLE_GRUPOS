@@ -10,11 +10,19 @@ require_once('../clases/funcion_bitacora.php');
 // require_once('../clases/funcion_visualizar.php');
 // require_once('../clases/funcion_permisos.php');
 
+
+
+
+
 // $Id_objeto = 64;
 
 // bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento/Crear Comision');
 
+
+
 // $visualizacion = permiso_ver($Id_objeto);
+
+
 
 // if ($visualizacion == 0) {
 //     //header('location:  ../vistas/menu_roles_vista.php');
@@ -31,6 +39,11 @@ require_once('../clases/funcion_bitacora.php');
 
 //                             </script>';
 // } else {
+
+
+
+
+
 
 //     if (permisos::permiso_insertar($Id_objeto) == '1') {
 //         $_SESSION['btn_guardar_comision'] = "";
@@ -84,14 +97,16 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>CREAR UN NUEVO TIPO DE RECURSO</h1>
+                        <h1>Crear nuevo Tipo Recurso</h1>
                     </div>
+
+
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="#">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimientos_jefatura_principal.php"> Mantenimiento Jefatura</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_comisiones_docente_vista.php"> Mantenimiento Comisiones</a></li>
                         </ol>
                     </div>
 
@@ -108,7 +123,7 @@ ob_end_flush();
 
                 <div class="card card-default ">
                     <div class="card-header center">
-                        <h3 class="card-title">NUEVO TIPO DE RECURSO</h3>
+                        <h3 class="card-title">Nuevo recurso Tipo</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -132,7 +147,7 @@ ob_end_flush();
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="">Fecha</label><br>
-                                                <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dia/mes/año" required> <br>
+                                                <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dd/mm/yyyy" required> <br>
                                                 <label for="">Nombre Recurso</label><br>
                                                 <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" required><br>
                                             </div>
@@ -167,7 +182,7 @@ ob_end_flush();
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>
     $("#datepicker").datepicker({
-        // format: "yyyy", // Notice the Extra space at the beginning
+        // format: " yyyy", // Notice the Extra space at the beginning
         // viewMode: "years",
         // minViewMode: "years"
     });

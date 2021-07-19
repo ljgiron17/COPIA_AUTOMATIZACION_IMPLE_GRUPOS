@@ -36,6 +36,17 @@ class db extends conexion2
         return $fila;
     }
 
+    // public function getDatosCliente(){
+    //     $sql = "";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->execute([
+
+    //     ]);
+    //     $fila = $stmt->fetch();
+    //     return $fila;
+    // }
+
+
     public function updateSolicitudDenegada($id_solicitud)
     {
         $sql = "UPDATE tbl_reasignacion_academica set estado = 'Denegada' WHERE id_reac_academica = :id_solicitud";
@@ -86,33 +97,6 @@ class db extends conexion2
         $stmt->execute([
             'id' => $id,
             'estado' => $estado
-        ]);
-        return 'exito';
-    }
-
-
-    public function insertTipoGasto($descripcion, $estado, $fecha, $nombre_gasto)
-    {
-        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            'descripcion' => $descripcion,
-            'estado' => $estado,
-            'fecha' => $fecha,
-            'nombre_gasto' => $nombre_gasto
-        ]);
-        return 'exito';
-    }
-
-    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
-    {
-        $sql = "INSERT INTO tbl_indicadores_gestion(descripcion,estado, fecha, nombre_indicador)  VALUES (:descripcion, :estado, :fecha, :nombre_indicador) ";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            'descripcion' => $descripcion,
-            'estado' => $estado,
-            'fecha' => $fecha,
-            'nombre_indicador' => $nombre_indicador
         ]);
         return 'exito';
     }

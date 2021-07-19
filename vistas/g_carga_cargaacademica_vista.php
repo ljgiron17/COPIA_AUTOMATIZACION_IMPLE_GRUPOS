@@ -123,7 +123,7 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
-                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('area_asignatura');" onkeypress="return sololetras(event)" required>
+                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" required>
                               </div>
                               <div class="col-sm">
                                 <label for="">AÑO PERIODO</label><br>
@@ -333,22 +333,35 @@ if (isset($_REQUEST['msj'])) {
           </div>
         </div>
       </div>
+
+
       <div class="container-fluid">
+
       </div>
+
+
     </div>
+
+
     <!-- /.card-body -->
   </div>
 
 
   <!-- /.card-body -->
   <div class="card-footer">
+
   </div>
   </div>
+
   </div>
+
   </section>
+
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
+
 
 
   <script src="../js/jefatura.js"></script>
@@ -366,7 +379,6 @@ if (isset($_REQUEST['msj'])) {
       });
     });
   </script> -->
-
   <script type="text/javascript">
     $(document).ready(function() {
       var table = $("#tabla_academica").DataTable({
@@ -378,31 +390,6 @@ if (isset($_REQUEST['msj'])) {
           [0, 'desc']
         ],
         "responsive": true,
-       
-language: {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar    _MENU_    Filas",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla",
-                "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
-                "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },                
-            },
         "ajax": {
           "url": "../clases/tabla_academica.php",
           "type": "POST",
@@ -458,7 +445,7 @@ language: {
         var nombre_archivo = fila.nombre_archivo;
         console.log(nombre_archivo);
 
-        var url = `../archivos/file_academica/${nombre_archivo}`;
+        var url = `../archivos/file_academica/${nombre_archivo}`;        
         download(url);
 
       });
@@ -473,6 +460,7 @@ language: {
       $(link).click();
     }
   </script>
+
   <script>
     $("#datepicker, #datepicker1").datepicker({
       format: " yyyy", // Notice the Extra space at the beginning
