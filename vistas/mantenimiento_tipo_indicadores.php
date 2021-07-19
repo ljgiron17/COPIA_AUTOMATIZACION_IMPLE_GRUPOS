@@ -292,6 +292,7 @@ require_once('../clases/funcion_bitacora.php');
                 ],
 
             });
+            
             table.columns([0]).visible(false);
 
             $('#tabla_indicadores_tipo tbody').on('click', '#estado', function() {
