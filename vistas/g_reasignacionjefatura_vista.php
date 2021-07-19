@@ -107,12 +107,12 @@ $_SESSION['g_reasignacion_solicitud']="No
   <div class="small-box bg-light">
   <div class="inner">	
     <h4>Retroalimentacion</h4>
-    <p><?php echo $_SESSION['ayuda_menu'];?></p>
+    <p><?php echo $_SESSION['g_reasignacion_retroalimentacion'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="#" class="small-box-footer">
+  <a href="../vistas/g_reasignacion_retroalimentacion.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
