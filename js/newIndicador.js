@@ -1,8 +1,29 @@
-console.log('hola_recurso');
+console.log('indicador');
+const formualrio = document.getElementById('enviar_Datos');
+const button = document.getElementById('guardar_indicador');
+
+button.addEventListener('click', function (e) {
+    e.preventDefault();
+    var form2 = new FormData(formualrio);
+    form2.append('agregar_tipo_indicador', 1);
+
+    fetch('../Controlador/action.php', {
+        method: 'POST',
+        body: form2
+    })
+        .then(respuesta => respuesta.json())
+        .then(data => {
+            console.log(data);
+            if(data== 'exito'){
+                swal();
+            }
+        })
+
+});
 
 function eliminar(id) {
     swal({
-        title: 'Seguro que quiere eliminar este recurso?',
+        title: 'Seguro que quiere eliminar este Indicador de Gestión Academica?',
         text: "!Este registro no podra ser recuperado!",
         type: 'warning',
         showCancelButton: true,
@@ -31,7 +52,7 @@ function eliminar(id) {
                         '!Su registro ha sido eliminado!',
                         'success'
                     )
-                    $('#tabla_recursos_tipo').DataTable().ajax.reload();
+                    $('#tabla_indicadores_tipo').DataTable().ajax.reload();
                 } else {
                     swal(
                         'Error',
@@ -53,10 +74,9 @@ function eliminar(id) {
     })
 
 }
-
 function cambiarEstado(id, estado) {
     swal({
-        title: 'Seguro que quiere cambiar este recurso?',
+        title: 'Seguro que quiere cambiar este Indicador de Gestión Academica?',
         text: "!Este registro podra ser cambiado!",
         type: 'warning',
         showCancelButton: true,
@@ -86,7 +106,7 @@ function cambiarEstado(id, estado) {
                         '!Su registro ha sido cambiado!',
                         'success'
                     )
-                    $('#tabla_recursos_tipo').DataTable().ajax.reload();
+                    $('#tabla_indicadores_tipo').DataTable().ajax.reload();
                 } else {
                     swal(
                         'Error',
@@ -108,15 +128,14 @@ function cambiarEstado(id, estado) {
     })
 
 }
-
-const buttonGuardar = document.getElementById('guardar_recurso');
+const buttonGuardar = document.getElementById('guardar_indicador');
 const formulario_datos = document.getElementById('enviar_Datos');
 
 buttonGuardar.addEventListener('click', function (e) {
-    //alert('hola_recurso');
+    //alert('hola_indicadores');
     e.preventDefault();
     const form2 = new FormData(formulario_datos);
-    form2.append('tipo_recursos', 1);
+    form2.append('tipo_indicadores', 1);
 
     if (enviar_Datos.checkValidity() === false) {
         e.preventDefault();
@@ -139,7 +158,7 @@ buttonGuardar.addEventListener('click', function (e) {
                             'Los datos han sido agregados exitosamente',
                         showLoaderOnConfirm: true,
                         preConfirm: function () {
-                            location.href = "../vistas/mantenimiento_tipos_recursos.php";
+                            location.href = "../vistas/mantenimiento_tipo_indicadores.php";
                         }
                     }]);
 
@@ -160,4 +179,3 @@ buttonGuardar.addEventListener('click', function (e) {
             })
     }
 });
-

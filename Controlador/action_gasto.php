@@ -194,12 +194,12 @@ if (isset($_POST['ver_excel_cr'])) {
     echo '</table>';
 }
 
-if (isset($_POST['tipo_recursos'])) {
+if (isset($_POST['tipo_gastos'])) {
     $estado = 'Activo';
     $descripcion = $_POST['descripcion'];
-    $fecha = $_POST['fecha_recurso'];
-    $nombre_recurso = $_POST['nombre_recurso'];
-    $respuesta = $db->newTipoRecurso($descripcion, $fecha, $nombre_recurso, $estado);
+    $fecha = $_POST['fecha_gastos'];
+    $nombre_gasto = $_POST['nombre_gasto'];
+    $respuesta = $db->newTipoRecurso($descripcion, $fecha, $nombre_gasto, $estado);
     echo json_encode($respuesta);
 }
 
@@ -221,28 +221,4 @@ if (isset($_POST['cambiar_estado'])) {
         $respuesta = $db->cambiarEstado($id, $nuevo_estado);
         echo json_encode($respuesta);
     }
-}
-
-if (isset($_POST['agregar_tipo_gasto'])) {
-
-    $descrip = $_POST['descripcion'];
-    $estado = "Activo";
-    $fecha = $_POST['fecha_gasto'];
-    $nombre_gasto = $_POST['nombre_gasto'];
-
-    $respuesta = $db->insertTipoGasto($descrip, $estado, $fecha, $nombre_gasto);
-    echo json_encode($respuesta);
-    //echo json_encode($_POST);
-}
-
-if (isset($_POST['agregar_tipo_indicador'])) {
-
-    $descripcion = $_POST['descripcion'];
-    $estado = "Activo";
-    $fecha = $_POST['fecha_indicador'];
-    $nombre_indicador = $_POST['nombre_indicador'];
-
-    $respuesta = $db->insertTipoIndicador($descripcion, $estado, $fecha, $nombre_indicador);
-    echo json_encode($respuesta);
-    //echo json_encode($_POST);
 }

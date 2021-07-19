@@ -116,7 +116,7 @@ require_once('../clases/funcion_bitacora.php');
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_recursos.php">Recursos</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimientos_jefatura_principal.php">Mantenimientos Jefatura</a></li>
                             <li class="breadcrumb-item active"><a href="../vistas/recursos_tipo.php">Nuevo Recurso</a></li>
                         </ol>
                     </div>
@@ -268,6 +268,33 @@ require_once('../clases/funcion_bitacora.php');
                     [0, 'desc']
                 ],
                 "responsive": true,
+               
+language: {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar    _MENU_    Filas",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
+                "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },                
+            },
+            
+
                 "ajax": {
                     "url": "../clases/tabla_recursos_tipo.php",
                     "type": "POST",
@@ -307,6 +334,8 @@ require_once('../clases/funcion_bitacora.php');
                 ],
             });
 
+            table.columns([0]).visible(false);
+            
             $('#tabla_recursos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id = fila.id_recurso_tipo;
