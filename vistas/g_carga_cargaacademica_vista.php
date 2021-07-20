@@ -123,7 +123,7 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
-                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('area_asignatura');" onkeypress="return sololetras(event)" required>
+                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descrp_ca');" onkeypress="return sololetras(event)" required>
                               </div>
                               <div class="col-sm">
                                 <label for="">AÑO PERIODO</label><br>
@@ -169,7 +169,7 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
-                                <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" required>
+                                <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descrip_cr');" onkeypress="return sololetras(event)" required>
                               </div>
                               <div class="col-sm">
                                 <label for="">AÑO PERIODO</label><br>
@@ -184,7 +184,7 @@ if (isset($_REQUEST['msj'])) {
 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="enviar_archivos">Enviar</button>
+                    <button type="button" class="btn btn-success" id="enviar_archivos">Guardar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>

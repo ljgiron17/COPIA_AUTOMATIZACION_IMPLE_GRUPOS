@@ -142,6 +142,7 @@ $visualizacion = permiso_ver($Id_objeto);
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_reasignacionjefatura_vista.php">Jefatura</a></li>
 
             </ol>
           </div>
