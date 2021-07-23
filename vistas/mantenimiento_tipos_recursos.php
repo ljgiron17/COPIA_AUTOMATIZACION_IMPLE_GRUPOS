@@ -94,7 +94,7 @@ require_once('../clases/funcion_bitacora.php');
                                                         <br>
                                                         <div class="col-12">
                                                             <label for="">Descripción</label><br>
-                                                            <textarea cols="20" rows="5" class="form-control" id="descripcion_ed" name="descripcion_ed" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion_ed');" onkeypress="return sololetras(event)" required></textarea>
+                                                            <textarea cols="20" rows="5" class="form-control" id="descripcion_ed" name="descripcion_ed" maxlength="100" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion_ed');" onkeypress="return sololetras(event)" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
