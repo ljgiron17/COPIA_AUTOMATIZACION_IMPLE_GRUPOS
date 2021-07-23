@@ -49,7 +49,7 @@ require_once('../vistas/pagina_inicio_vista.php');
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Detalles de la solicitud</h5>
+          <h5 class="modal-title">Detalle</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -83,7 +83,7 @@ require_once('../vistas/pagina_inicio_vista.php');
               <p style="text-align:right; margin-right: 58px;">Oficio de solicitud N° ________</p><br>
               <p></p>
               <p align="center" class="f0">
-                <strong>Reporte de retroalimentación por reasignación académica</strong>
+                <strong>Retroalimentación por reasignación académica</strong>
               </p>
               <br>
 

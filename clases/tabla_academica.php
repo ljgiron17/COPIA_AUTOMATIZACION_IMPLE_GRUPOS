@@ -5,7 +5,7 @@ require_once 'conexion3.php';
 $conexion = conexion();
 
 //envio de la consulta
-$query = "SELECT id_coordAcademica, periodo, descripcion,nombre_archivo, fecha, fecha_subida FROM tbl_coordinacion_academica";
+$query = "SELECT periodo, descripcion,nombre_archivo, fecha, fecha_subida FROM tbl_coordinacion_academica";
 
 //buscando el resultado 
 $resultado = mysqli_query($conexion, $query);

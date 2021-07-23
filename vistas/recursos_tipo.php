@@ -139,7 +139,7 @@ ob_end_flush();
                                             <br>
                                             <div class="col-12">
                                                 <label for="">Descripción</label><br>
-                                                <textarea cols="20" rows="5" class="form-control" id="descripcion" name="descripcion" maxlength="100" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion');" onkeypress="return sololetras(event)" required></textarea>
+                                                <textarea cols="20" rows="5" class="form-control" id="descripcion" name="descripcion" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion');" onkeypress="return sololetras(event)" required></textarea>
                                             </div>
 
                                             <div class="col-12">
