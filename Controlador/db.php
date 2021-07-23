@@ -125,29 +125,6 @@ public function cambiarEstadog($id, $estado)
     return 'exito';
 }
 
-
-
-
-public function contarArchivo($id){
-    $sql = "SELECT COUNT(id_coordAcademica)AS cuenta FROM tbl_carga_academica_temporal WHERE id_coordAcademica = :id";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->execute([
-        'id'=>$id
-    ]);
-    $fila = $stmt->fetch();
-    return $fila;
-}
-
-public function contarArchivoCR($id){
-    $sql = "SELECT COUNT(id_craed_jefa)AS cuenta FROM tbl_carga_craed WHERE id_craed_jefa = :id";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->execute([
-        'id'=>$id
-    ]);
-    $fila = $stmt->fetch();
-    return $fila;
-}
-
 //aqui empiezan los datos de Indicadores de Gestion
     public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
     {
