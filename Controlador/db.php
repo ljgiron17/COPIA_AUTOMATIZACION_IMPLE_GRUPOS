@@ -36,17 +36,6 @@ class db extends conexion2
         return $fila;
     }
 
-    // public function getDatosCliente(){
-    //     $sql = "";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->execute([
-
-    //     ]);
-    //     $fila = $stmt->fetch();
-    //     return $fila;
-    // }
-
-
     public function updateSolicitudDenegada($id_solicitud)
     {
         $sql = "UPDATE tbl_reasignacion_academica set estado = 'Denegada' WHERE id_reac_academica = :id_solicitud";
@@ -66,118 +55,113 @@ class db extends conexion2
         ]);
         return 'exito';
     }
- //aqui empiezan los datos de recursos 
-     public function newTipoRecurso($descripcion, $fecha, $nombre_recurso, $estado)
+//aqui empiezan los datos de recursos 
+    public function newTipoRecurso($descripcion, $fecha, $nombre_recurso, $estado)
     {
-         $sql = "INSERT INTO tbl_recursos_tipo (descripcion,fecha, nombre_recurso,estado) VALUES (:descripcion, :fecha, :nombre_recurso, :estado)";
-          $stmt = $this->conn->prepare($sql);
-            $stmt->execute([
-                 'descripcion' => $descripcion,
-                 'fecha' => $fecha,
-                 'nombre_recurso' => $nombre_recurso,
-                 'estado' => $estado
-                   ]);
-     return 'exito';
-     }
-//eliminar los recursos
-     public function eliminarRecurso($id)
-     {
-     $sql = "DELETE FROM tbl_recursos_tipo WHERE id_recurso_tipo = :id";
-     $stmt = $this->conn->prepare($sql);
-     $stmt->execute([
-         'id' => $id
-     ]);
-     return 'exito';
-        }
-//cambiar los recuros funcion activo y desactivar   
-     public function cambiarEstado($id, $estado)
-     {
-     $sql = "UPDATE tbl_recursos_tipo set estado = :estado WHERE id_recurso_tipo = :id";
-     $stmt = $this->conn->prepare($sql);
-     $stmt->execute([
-         'id' => $id,
-         'estado' => $estado
-     ]);
-     return 'exito';
-     }
-
-//aqui empiezan los datos de los Gastos
- public function insertTipoGasto($descripcion, $estado, $fecha, $nombre_gasto)
- {
-     $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto)";
-     $stmt = $this->conn->prepare($sql);
-     $stmt->execute([
-         'descripcion' => $descripcion,
-         'estado' => $estado,
-         'fecha' => $fecha,
-         'nombre_gasto' => $nombre_gasto
-     ]);
-     return 'exito';
- }
-//eliminar los gastos
-     public function eliminarGastos($id)
-    {
-         $sql = "DELETE FROM  tbl_tipo_gastos  WHERE id_tipo_gastos = :id";
-         $stmt = $this->conn->prepare($sql);
-         $stmt->execute([
-            'id' => $id
-    ]);
-    return 'exito';
+        $sql = "INSERT INTO tbl_recursos_tipo (descripcion,fecha, nombre_recurso,estado) VALUES (:descripcion, :fecha, :nombre_recurso, :estado)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'descripcion' => $descripcion,
+            'fecha' => $fecha,
+            'nombre_recurso' => $nombre_recurso,
+            'estado' => $estado
+        ]);
+        return 'exito';
     }
-
-//cambiar los gastos funcion activo y desactivar
-     public function cambiarEstadog($id, $estado)
+//eliminar los recursos
+    public function eliminarRecurso($id)
     {
-            $sql = "UPDATE tbl_tipo_gastos set estado = :estado WHERE id_tipo_gastos = :id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute([
+        $sql = "DELETE FROM tbl_recursos_tipo WHERE id_recurso_tipo = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        return 'exito';
+    }
+//cambiar los recuros funcion activo y desactivar
+    public function cambiarEstado($id, $estado)
+    {
+        $sql = "UPDATE tbl_recursos_tipo set estado = :estado WHERE id_recurso_tipo = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
             'id' => $id,
             'estado' => $estado
-            ]);
-    return 'exito';
+        ]);
+        return 'exito';
     }
 
+//aqui empiezan los datos de los Gastos
+    public function insertTipoGasto($descripcion, $estado, $fecha, $nombre_gasto)
+    {
+        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'descripcion' => $descripcion,
+            'estado' => $estado,
+            'fecha' => $fecha,
+            'nombre_gasto' => $nombre_gasto
+        ]);
+        return 'exito';
+    }
+//eliminar los gastos
+public function eliminarGastos($id)
+{
+    $sql = "DELETE FROM  tbl_tipo_gastos  WHERE id_tipo_gastos = :id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        'id' => $id
+    ]);
+    return 'exito';
+}
+//cambiar los gastos funcion activo y desactivar
+public function cambiarEstadog($id, $estado)
+{
+    $sql = "UPDATE tbl_tipo_gastos set estado = :estado WHERE id_tipo_gastos = :id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        'id' => $id,
+        'estado' => $estado
+    ]);
+    return 'exito';
+}
 
-  //aqui empiezan los datos de Indicadores de Gestion
-        public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
-        {  
-     $sql = "INSERT INTO tbl_indicadores_gestion(descripcion,estado, fecha, nombre_indicador)  VALUES (:descripcion, :estado, :fecha, :nombre_indicador)";
-     $stmt = $this->conn->prepare($sql);
-     $stmt->execute([
-         'descripcion' => $descripcion,
-         'estado' => $estado,
-         'fecha' => $fecha,
-         'nombre_indicador' => $nombre_indicador
-     ]);
-     return 'exito';
- }
+//aqui empiezan los datos de Indicadores de Gestion
+    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
+    {
+        $sql = "INSERT INTO tbl_indicadores_gestion(descripcion,estado, fecha, nombre_indicador)  VALUES (:descripcion, :estado, :fecha, :nombre_indicador) ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'descripcion' => $descripcion,
+            'estado' => $estado,
+            'fecha' => $fecha,
+            'nombre_indicador' => $nombre_indicador
+        ]);
+        return 'exito';
+    }
 
- //eliminar los indicadores de gestion
-        public function eliminarGestion($id)
-        {
- $sql = "DELETE FROM  tbl_indicadores_gestion  WHERE id_indicadores_gestion = :id";
- $stmt = $this->conn->prepare($sql);
- $stmt->execute([
-     'id' => $id
- ]);
- return 'exito';
-        }
+    //eliminar los indicadores de gestion
+    public function eliminarGestion($id)
+{
+    $sql = "DELETE FROM  tbl_indicadores_gestion  WHERE id_indicadores_gestion = :id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        'id' => $id
+    ]);
+    return 'exito';
+}
 
 //cambiar los indicadores funcion activo y desactivar
-        public function cambiarEstadogg($id, $estado)
-        {
- $sql = "UPDATE  tbl_indicadores_gestion set estado = :estado WHERE id_indicadores_gestion = :id";
- $stmt = $this->conn->prepare($sql);
- $stmt->execute([
-     'id' => $id,
-     'estado' => $estado
- ]);
- return 'exito';
-        }
+public function cambiarEstadogg($id, $estado)
+{
+    $sql = "UPDATE  tbl_indicadores_gestion set estado = :estado WHERE id_indicadores_gestion = :id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        'id' => $id,
+        'estado' => $estado
+    ]);
+    return 'exito';
+}
 
-
-}  
-
-
+}
 
 

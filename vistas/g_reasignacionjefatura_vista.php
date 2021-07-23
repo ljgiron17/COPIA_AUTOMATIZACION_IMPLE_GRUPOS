@@ -18,6 +18,19 @@ $_SESSION['ayuda_menu']="No
   tiene permisos para visualizar";
 
 }
+
+if (permiso_ver('115')=='1')
+ {
+  
+  $_SESSION['g_cargararchivosdecargaacademica_vista']="...";
+}
+else
+{
+$_SESSION['g_cargararchivosdecargaacademica_vista']="No 
+  tiene permisos para visualizar";
+
+}
+
 if (permiso_ver('119')=='1')
  {
   
@@ -29,17 +42,7 @@ $_SESSION['g_reasignacion_solicitud']="No
   tiene permisos para visualizar";
 
 }
-if (permiso_ver('120')=='1')
- {
-  
-  $_SESSION['g_reasignacion_retroalimentacion']="...";
-}
-else
-{
-$_SESSION['g_reasignacion_retroalimentacion']="No 
-  tiene permisos para visualizar";
 
-}
 
 ?>
 <!DOCTYPE html>
