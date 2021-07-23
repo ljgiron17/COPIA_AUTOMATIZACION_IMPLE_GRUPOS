@@ -67,48 +67,6 @@ if (isset($_POST['add_info'])) {
     }
 
 
-    // $fileExt = explode('.', $nombreArchivo_ca);
-    // $fileActualExt = strtolower(end($fileExt));
-    // $fileNewNombre_ca = uniqid('', true) . "." . $fileActualExt;
-
-
-    // $ruta = "../archivos/file_academica/" . $fileNewNombre_ca;
-    // move_uploaded_file($nombreTemp_ca, $ruta);
-
-    // //?fin archivo coordinacion academica
-
-    // //?inicio archivo craed
-    // $nombreArchivo_cr = $_FILES['file_cr']['name'];
-    // $nombreTemp_cr = $_FILES['file_cr']['tmp_name'];
-    // $fileError_cr = $_FILES['file_cr']['error']; //!errores
-
-    // $fileExt_cr = explode('.', $nombreArchivo_cr);
-    // $fileActualExt_cr = strtolower(end($fileExt_cr));
-    // $fileNewNombre_cr = uniqid('', true) . "." . $fileActualExt_cr;
-
-
-    // $ruta2 = "../archivos/file_craed/" . $fileNewNombre_cr;
-    // move_uploaded_file($nombreTemp_cr, $ruta2);
-
-    // //?fin inicio archivo craed
-
-    // $periodo_ca = $_POST['periodo_ca'];
-    // $descrip_ca = $_POST['descrp_ca'];
-    // $nombre_archivo = $fileNewNombre_ca;
-    // $fecha = $_POST['txt_fecha_ingreso_ca'];
-
-    // //$_POST[''];
-
-    // $periodo_cr = $_POST['periodo_cr'];
-    // $descripcion_cr = $_POST['descrip_cr'];
-    // $nombre_archivo_cr = $fileNewNombre_cr;
-    // $fecha_cr = $_POST['txt_fecha_ingreso_cr'];
-
-    // $respuesta = $db->addfileAcademica($periodo_ca, $descrip_ca, $nombre_archivo, $fecha, $periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr);
-    //echo json_encode($respuesta);
-    //echo json_encode($_POST);
-
-
 
 }
 
@@ -168,14 +126,12 @@ if (isset($_POST['ver_excel_cr'])) {
     print_r('<label>' . $nombre_archivo . '</label>');
     $ruta_archivo_excel = '../archivos/file_craed/' . $nombre_archivo;
 
-
     //$ruta = 'craed.xlsx';
     $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader("Xlsx");
     $spreadsheet = $reader->load($ruta_archivo_excel);
     //establecer en que hoja se trabajara
     $sheet = $spreadsheet->getActiveSheet(0); // se espcifica en que hoja se quiere trabajar
     $value = $spreadsheet->getActiveSheet()->getCell('A4')->getValue(); //especifica el valor especifico del archivo a subir
-
 
     echo '<table class="table table-bordered table-striped mb-0" >';
     foreach ($sheet->/*getRowIterator(3)*/getRowIterator(4)  as $row) {
@@ -193,10 +149,6 @@ if (isset($_POST['ver_excel_cr'])) {
     }
     echo '</table>';
 }
-
-
-
-
 
 //aqui empiezan los datos de los recursos
 if (isset($_POST['tipo_recursos'])) {
@@ -228,11 +180,8 @@ if (isset($_POST['cambiar_estado'])) {
     }
 }
 //aqui finalizan los datos de los recursos
-
-
 //aqui empizan los datos de gastos
 if (isset($_POST['agregar_tipo_gasto'])) {
-
     $descrip = $_POST['descripcion'];
     $estado = "Activo";
     $fecha = $_POST['fecha_gasto'];
@@ -263,7 +212,6 @@ if (isset($_POST['cambiar_estado'])) {
     }
 }
 //fin de los datos de gastos
-
 //aqui empiezan los datos de los indicadores
 if (isset($_POST['agregar_tipo_indicador'])) {
 
@@ -275,14 +223,15 @@ if (isset($_POST['agregar_tipo_indicador'])) {
     $respuesta = $db->insertTipoIndicador($descripcion, $estado, $fecha, $nombre_indicador);
     echo json_encode($respuesta);
     //echo json_encode($_POST);
+    
 }
-
 //eliminar para indicadores
 if (isset($_POST['eliminar'])) {
     $id = $_POST['id'];
     $respuesta = $db->eliminarGestion($id);
     echo json_encode($respuesta);
 }
+
 //cambiar estado para indicadores
 if (isset($_POST['cambiar_estado'])) {
     $estado = $_POST['estado'];
@@ -298,3 +247,7 @@ if (isset($_POST['cambiar_estado'])) {
     }
 }
 //fin datos de indicadores de gestion
+
+
+
+
