@@ -194,11 +194,6 @@ if (isset($_POST['ver_excel_cr'])) {
     echo '</table>';
 }
 
-
-
-
-
-//aqui empiezan los datos de los recursos
 if (isset($_POST['tipo_recursos'])) {
     $estado = 'Activo';
     $descripcion = $_POST['descripcion'];
@@ -207,13 +202,13 @@ if (isset($_POST['tipo_recursos'])) {
     $respuesta = $db->newTipoRecurso($descripcion, $fecha, $nombre_recurso, $estado);
     echo json_encode($respuesta);
 }
-//eliminar el recurso
+
 if (isset($_POST['eliminar'])) {
     $id = $_POST['id'];
     $respuesta = $db->eliminarRecurso($id);
     echo json_encode($respuesta);
 }
-//cambiar estado de recurso
+
 if (isset($_POST['cambiar_estado'])) {
     $estado = $_POST['estado'];
     $id = $_POST['id'];
@@ -227,10 +222,7 @@ if (isset($_POST['cambiar_estado'])) {
         echo json_encode($respuesta);
     }
 }
-//aqui finalizan los datos de los recursos
 
-
-//aqui empizan los datos de gastos
 if (isset($_POST['agregar_tipo_gasto'])) {
 
     $descrip = $_POST['descripcion'];
@@ -242,29 +234,7 @@ if (isset($_POST['agregar_tipo_gasto'])) {
     echo json_encode($respuesta);
     //echo json_encode($_POST);
 }
-//eliminar el gasto
-if (isset($_POST['eliminar'])) {
-    $id = $_POST['id'];
-    $respuesta = $db->eliminarGastos($id);
-    echo json_encode($respuesta);
-}
-//cambiar estado de gastos
-if (isset($_POST['cambiar_estado'])) {
-    $estado = $_POST['estado'];
-    $id = $_POST['id'];
-    if ($estado == 'Activo') {
-        $nuevo_estado = 'Inactivo';
-        $respuesta = $db->cambiarEstadog($id, $nuevo_estado);
-        echo json_encode($respuesta);
-    } else if ($estado == 'Inactivo') {
-        $nuevo_estado = 'Activo';
-        $respuesta = $db->cambiarEstadog($id, $nuevo_estado);
-        echo json_encode($respuesta);
-    }
-}
-//fin de los datos de gastos
 
-//aqui empiezan los datos de los indicadores
 if (isset($_POST['agregar_tipo_indicador'])) {
 
     $descripcion = $_POST['descripcion'];
@@ -276,25 +246,3 @@ if (isset($_POST['agregar_tipo_indicador'])) {
     echo json_encode($respuesta);
     //echo json_encode($_POST);
 }
-
-//eliminar para indicadores
-if (isset($_POST['eliminar'])) {
-    $id = $_POST['id'];
-    $respuesta = $db->eliminarGestion($id);
-    echo json_encode($respuesta);
-}
-//cambiar estado para indicadores
-if (isset($_POST['cambiar_estado'])) {
-    $estado = $_POST['estado'];
-    $id = $_POST['id'];
-    if ($estado == 'Activo') {
-        $nuevo_estado = 'Inactivo';
-        $respuesta = $db->cambiarEstadogg($id, $nuevo_estado);
-        echo json_encode($respuesta);
-    } else if ($estado == 'Inactivo') {
-        $nuevo_estado = 'Activo';
-        $respuesta = $db->cambiarEstadogg($id, $nuevo_estado);
-        echo json_encode($respuesta);
-    }
-}
-//fin datos de indicadores de gestion
