@@ -123,6 +123,7 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
+                                <!--  <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" required>-->
                                 <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descrp_ca');" onkeypress="return sololetras(event)" required>
                               </div>
                               <div class="col-sm">
@@ -169,7 +170,8 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
-                                <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descrip_cr');" onkeypress="return sololetras(event)" required>
+                                <!-- <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" required>-->
+                                <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" maxlength="50" value="" onkeyup="DobleEspacio(this, event); MismaLetra('descrip_cr');" onkeypress="return sololetras(event)" required>
                               </div>
                               <div class="col-sm">
                                 <label for="">AÑO PERIODO</label><br>
@@ -309,12 +311,14 @@ if (isset($_REQUEST['msj'])) {
                       <table id="tabla_academica" class="table table-bordered table-striped" cellpadding="0" width="100%">
                         <thead>
                           <tr>
+                            <th scope="col">ID ARCHIVO</th>
                             <th scope="col">PERIODO</th>
                             <th scope="col">DESCRIPCIÓN</th>
                             <th scope="col">ARCHIVO</th>
                             <th scope="col">AÑO PERIODO</th>
                             <th scope="col">FECHA SUBIDA</th>
                             <th scope="col">ACCIÓN</th>
+                            <th scope="col">SUBIR</th>
                           </tr>
                         </thead>
                       </table>
@@ -333,22 +337,35 @@ if (isset($_REQUEST['msj'])) {
           </div>
         </div>
       </div>
+
+
       <div class="container-fluid">
+
       </div>
+
+
     </div>
+
+
     <!-- /.card-body -->
   </div>
 
 
   <!-- /.card-body -->
   <div class="card-footer">
+
   </div>
   </div>
+
   </div>
+
   </section>
+
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
+
 
 
   <script src="../js/jefatura.js"></script>
@@ -366,7 +383,6 @@ if (isset($_REQUEST['msj'])) {
       });
     });
   </script> -->
-
   <script type="text/javascript">
     $(document).ready(function() {
       var table = $("#tabla_academica").DataTable({
@@ -378,37 +394,28 @@ if (isset($_REQUEST['msj'])) {
           [0, 'desc']
         ],
         "responsive": true,
-       
-language: {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar    _MENU_    Filas",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla",
-                "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
-                "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },                
-            },
+        "language": {
+          "lengthMenu": "Mostrar _MENU_ Registros",
+          "zeroRecords": "No se encontraron resultados",
+          "info": "Mostrando la pagina de _PAGE_ de _PAGES_",
+          "infoEmpty": "No records available",
+          "infoFiltered": "(Filtrado de _MAX_ Registros Totales)",
+          "search": "Buscar:",
+          "pagingType": "full_numbers",
+          "oPaginate": {
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+          },
+        },
         "ajax": {
           "url": "../clases/tabla_academica.php",
           "type": "POST",
           "dataSrc": ""
         },
         "columns": [{
+            "data": "id_coordAcademica"
+          },
+          {
             "data": "periodo"
           },
           {
@@ -427,6 +434,10 @@ language: {
             "data": null,
             defaultContent: '<center><div class="btn-group"> <button id="ver_detail" class="ver btn btn-primary btn - m" data-toggle="modal" data-target=".archivosAcademica"><i class="fas fa-eye"></i></button><button id="descarga" class=" btn btn-success btn - m"><i class="fas fa-file-download"></i></button><div></center>'
           },
+          {
+            "data": null,
+            defaultContent: '<button id="upload" class="btn btn-warning"><i class="fas fa-upload"></i></button>'
+          },
         ],
       });
 
@@ -434,7 +445,7 @@ language: {
         var fila = table.row($(this).parents('tr')).data();
         var nombre_archivo = fila.nombre_archivo;
         console.log(nombre_archivo);
-        //comienza ajax
+        //comienza ajax 
         var ver_excel_ca = "ver_excel_ca";
         $.ajax({
           url: "../Controlador/action.php",
@@ -462,6 +473,38 @@ language: {
         download(url);
 
       });
+
+      $('#tabla_academica tbody').on('click', '#upload', function() {
+        var fila = table.row($(this).parents('tr')).data();
+        var nombre_archivo1 = fila.nombre_archivo;
+        var id_archivo = fila.id_coordAcademica;
+        const formulario = new FormData();
+        formulario.append('subir_excel_ca', 1);
+        formulario.append('nombre_archivo1', nombre_archivo1);
+        formulario.append('id_archivo', id_archivo);
+        fetch('../Controlador/action.php', {
+            method: 'POST',
+            body: formulario
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data == 'exito') {
+              swal(
+                'Exito!',
+                '¡Datos subidos correctamente!',
+                'success'
+              )
+            } else if (data == "archivo_subido") {
+              swal(
+                'Existe!',
+                '¡Archivo ya existe en la base de datos!',
+                'warning'
+              )
+            }
+          });
+      });
+
     });
 
     function download(url) {
@@ -473,6 +516,7 @@ language: {
       $(link).click();
     }
   </script>
+
   <script>
     $("#datepicker, #datepicker1").datepicker({
       format: " yyyy", // Notice the Extra space at the beginning
