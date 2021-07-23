@@ -11,9 +11,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -293,7 +290,6 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
-
             <!---- solicitudes ----->
 
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_solicitudes'] ?>">
@@ -345,7 +341,43 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
               </ul>
             </li>
-            <!---- Ayuda ----->
+            <!---- Jefatura ----->
+
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_Jefatura'] ?>">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-tie"></i>
+                <p>
+                  Jefatura
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_cargajefatura'] ?>">
+                  <a href="../vistas/g_cargajefatura_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Gestión Carga Academica</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_reasignacionjefatura'] ?>">
+                  <a href="../vistas/g_reasignacionjefatura_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Gestón Reasignacion Academica </p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_planificacionjefatura'] ?>">
+                  <a href="../vistas/g_planificacionjefatura_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Gestión Administracion Y Planificacion Academica </p>
+                  </a>
+                </li>
+              </ul>
+
+              <!---- Ayuda ----->
 
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
               <a href="#" class="nav-link">
@@ -402,6 +434,13 @@ if (session_status() === PHP_SESSION_NONE) {
                   <a href="../vistas/menu_mantenimiento_plan.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Plan de Estudios</p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['tipos_recursos'] ?>">
+                  <a href="../vistas/menu_mantenimientos_jefatura_principal.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Mantenimientos Jefatura</p>
                   </a>
                 </li>
 

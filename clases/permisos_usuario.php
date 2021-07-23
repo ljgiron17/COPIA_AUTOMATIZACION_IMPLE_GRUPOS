@@ -26,6 +26,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['btn_mantenimientos']='none';
    $_SESSION['btn_ayuda']='none';
    $_SESSION['btn_mantenimiento']='none';
+   $_SESSION['btn_jefatura']='none';
 
    /*Menu laterales*/
    $_SESSION['pregunta_vista']='none';
@@ -55,8 +56,9 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['mantemiento_carga_academica1'] = 'none';
    $_SESSION['plan_estudio_vista'] = 'none';
    $_SESSION['mantenimiento_plan'] = 'none';
-   
-
+   $_SESSION['gestion_carga']='none';
+   $_SESSION['gestion_reasignacion']='none';
+   $_SESSION['gestion_planificacion ']='none';
 
   while ($fila = $resultado_permisos->fetch_row())
    {
@@ -382,6 +384,92 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
       }
    }   
    
+   //----agregando botones de GESTION DE JEFATURA----//
+   if ($_SESSION['pantalla'] = '104') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_Jefatura'] = "block";
+      }
+   } 
+   if ($_SESSION['pantalla'] == '105') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_cargajefatura_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '118') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_reasignacionjefatura_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '121') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planificacionjefatura_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '114') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_carga_cargaacademica_vista'] = "block";
+      }
+
+   }
+   if ($_SESSION['pantalla'] == '110') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_carga_recontratacion_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '106') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_carga_declaracionjurada_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '116') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_guardarreportedecarga_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '122') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_solicitud_reasignacion_docentes_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '123') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_retroalimentacion_docentes_vista'] = "block";
+      }
+   }
+   
+   //nuevas pantallas de poa
+   if ($_SESSION['pantalla'] == '124') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planificacion'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '125') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_objetivos'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '126') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_indicadores'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '127') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_indicadoresactividad'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '128') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_menu_mantenimientos_jefatura_principal'] = "block";
+      }
+   }
+    if ($_SESSION['pantalla'] == '127') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_planif_indicadoresactividad'] = "block";
+      }
+   }
+
+   
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 
@@ -391,7 +479,7 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
    //  }
    // }
        //--------------------------
-   }
-
+   
+}
 
 ?>
