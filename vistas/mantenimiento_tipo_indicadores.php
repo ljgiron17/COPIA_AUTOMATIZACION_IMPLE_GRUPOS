@@ -326,4 +326,5 @@ require_once('../clases/funcion_bitacora.php');
         });
     </script>
 </body>
+
 </html>
