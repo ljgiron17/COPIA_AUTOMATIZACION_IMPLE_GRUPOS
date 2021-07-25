@@ -66,50 +66,6 @@ if (isset($_POST['add_info'])) {
         }
     }
 
-
-    // $fileExt = explode('.', $nombreArchivo_ca);
-    // $fileActualExt = strtolower(end($fileExt));
-    // $fileNewNombre_ca = uniqid('', true) . "." . $fileActualExt;
-
-
-    // $ruta = "../archivos/file_academica/" . $fileNewNombre_ca;
-    // move_uploaded_file($nombreTemp_ca, $ruta);
-
-    // //?fin archivo coordinacion academica
-
-    // //?inicio archivo craed
-    // $nombreArchivo_cr = $_FILES['file_cr']['name'];
-    // $nombreTemp_cr = $_FILES['file_cr']['tmp_name'];
-    // $fileError_cr = $_FILES['file_cr']['error']; //!errores
-
-    // $fileExt_cr = explode('.', $nombreArchivo_cr);
-    // $fileActualExt_cr = strtolower(end($fileExt_cr));
-    // $fileNewNombre_cr = uniqid('', true) . "." . $fileActualExt_cr;
-
-
-    // $ruta2 = "../archivos/file_craed/" . $fileNewNombre_cr;
-    // move_uploaded_file($nombreTemp_cr, $ruta2);
-
-    // //?fin inicio archivo craed
-
-    // $periodo_ca = $_POST['periodo_ca'];
-    // $descrip_ca = $_POST['descrp_ca'];
-    // $nombre_archivo = $fileNewNombre_ca;
-    // $fecha = $_POST['txt_fecha_ingreso_ca'];
-
-    // //$_POST[''];
-
-    // $periodo_cr = $_POST['periodo_cr'];
-    // $descripcion_cr = $_POST['descrip_cr'];
-    // $nombre_archivo_cr = $fileNewNombre_cr;
-    // $fecha_cr = $_POST['txt_fecha_ingreso_cr'];
-
-    // $respuesta = $db->addfileAcademica($periodo_ca, $descrip_ca, $nombre_archivo, $fecha, $periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr);
-    //echo json_encode($respuesta);
-    //echo json_encode($_POST);
-
-
-
 }
 
 if (isset($_POST['reac_cliente'])) {
@@ -235,6 +191,28 @@ if (isset($_POST['agregar_tipo_gasto'])) {
     //echo json_encode($_POST);
 }
 
+//eliminar el gasto
+if (isset($_POST['eliminar'])) {
+    $id = $_POST['id'];
+    $respuesta = $db->eliminarGastos($id);
+    echo json_encode($respuesta);
+}
+//cambiar estado de gastos
+if (isset($_POST['cambiar_estado'])) {
+    $estado = $_POST['estado'];
+    $id = $_POST['id'];
+    if ($estado == 'Activo') {
+        $nuevo_estado = 'Inactivo';
+        $respuesta = $db->cambiarEstadog($id, $nuevo_estado);
+        echo json_encode($respuesta);
+    } else if ($estado == 'Inactivo') {
+        $nuevo_estado = 'Activo';
+        $respuesta = $db->cambiarEstadog($id, $nuevo_estado);
+        echo json_encode($respuesta);
+    }
+}
+//fin de los datos de gastos
+
 if (isset($_POST['agregar_tipo_indicador'])) {
 
     $descripcion = $_POST['descripcion'];
@@ -246,6 +224,28 @@ if (isset($_POST['agregar_tipo_indicador'])) {
     echo json_encode($respuesta);
     //echo json_encode($_POST);
 }
+
+//eliminar para indicadores
+if (isset($_POST['eliminar'])) {
+    $id = $_POST['id'];
+    $respuesta = $db->eliminarGestion($id);
+    echo json_encode($respuesta);
+}
+//cambiar estado para indicadores
+if (isset($_POST['cambiar_estado'])) {
+    $estado = $_POST['estado'];
+    $id = $_POST['id'];
+    if ($estado == 'Activo') {
+        $nuevo_estado = 'Inactivo';
+        $respuesta = $db->cambiarEstadogg($id, $nuevo_estado);
+        echo json_encode($respuesta);
+    } else if ($estado == 'Inactivo') {
+        $nuevo_estado = 'Activo';
+        $respuesta = $db->cambiarEstadogg($id, $nuevo_estado);
+        echo json_encode($respuesta);
+    }
+}
+//fin datos de indicadores de gestion
 
 if (isset($_POST['subir_excel_ca'])) {
 

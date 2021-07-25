@@ -114,7 +114,27 @@ class db extends conexion2
         ]);
         return 'exito';
     }
-
+//eliminar los gastos
+public function eliminarGastos($id)
+{
+    $sql = "DELETE FROM  tbl_tipo_gastos  WHERE id_tipo_gastos = :id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        'id' => $id
+    ]);
+    return 'exito';
+}
+//cambiar los gastos funcion activo y desactivar
+public function cambiarEstadog($id, $estado)
+{
+    $sql = "UPDATE tbl_tipo_gastos set estado = :estado WHERE id_tipo_gastos = :id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        'id' => $id,
+        'estado' => $estado
+    ]);
+    return 'exito';
+}
     public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_gasto)
     {
         $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
@@ -127,7 +147,29 @@ class db extends conexion2
         ]);
         return 'exito';
     }
-
+ //eliminar los indicadores de gestion
+ public function eliminarGestion($id)
+ {
+     $sql = "DELETE FROM  tbl_indicadores_gestion  WHERE id_indicadores_gestion = :id";
+     $stmt = $this->conn->prepare($sql);
+     $stmt->execute([
+         'id' => $id
+     ]);
+     return 'exito';
+ }
+ 
+ //cambiar los indicadores funcion activo y desactivar
+ public function cambiarEstadogg($id, $estado)
+ {
+     $sql = "UPDATE  tbl_indicadores_gestion set estado = :estado WHERE id_indicadores_gestion = :id";
+     $stmt = $this->conn->prepare($sql);
+     $stmt->execute([
+         'id' => $id,
+         'estado' => $estado
+     ]);
+     return 'exito';
+ }
+ 
     public function contarArchivo($id){
         $sql = "SELECT COUNT(`id_coordAcademica`)AS cuenta FROM `tbl_carga_academica_temporal` WHERE `id_coordAcademica` = :id";
         $stmt = $this->conn->prepare($sql);
