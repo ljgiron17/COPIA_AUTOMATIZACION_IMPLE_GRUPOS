@@ -39,7 +39,7 @@ console.log('hola_gasto');
 
 function eliminar(id) {
     swal({
-        title: 'Seguro que quiere eliminar este recurso?',
+        title: 'Seguro que quiere eliminar este Gasto?',
         text: "!Este registro no podra ser recuperado!",
         type: 'warning',
         showCancelButton: true,
@@ -93,7 +93,7 @@ function eliminar(id) {
 
 function cambiarEstado(id, estado) {
     swal({
-        title: 'Seguro que quiere cambiar este recurso?',
+        title: 'Seguro que quiere cambiar este Gasto?',
         text: "!Este registro podra ser cambiado!",
         type: 'warning',
         showCancelButton: true,

@@ -187,16 +187,9 @@ require_once('../clases/funcion_bitacora.php');
                     </div> -->
                 </div>
             </div>
-
-
             <div class="container-fluid">
-
             </div>
-
-
         </div>
-
-
         <!-- /.card-body -->
     </div>
 
@@ -219,7 +212,7 @@ require_once('../clases/funcion_bitacora.php');
     <script src="../js/newIndicador.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var table = $("#tabla_indicadores_tipo").DataTable({
+            var table = $("#tbl_indicadores_gestion").DataTable({
                 "lengthMenu": [
                     [10],
                     [10]
@@ -325,7 +318,6 @@ require_once('../clases/funcion_bitacora.php');
             });
         });
     </script>
-
     <script>
         $("#datepicker").datepicker({
             // format: " yyyy", // Notice the Extra space at the beginning

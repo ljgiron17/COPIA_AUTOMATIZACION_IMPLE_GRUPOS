@@ -106,7 +106,7 @@ function cambiarEstado(id, estado) {
                         '!Su registro ha sido cambiado!',
                         'success'
                     )
-                    $('#tabla_indicadores_tipo').DataTable().ajax.reload();
+                    $('#tbl_indicadores_gestion').DataTable().ajax.reload();
                 } else {
                     swal(
                         'Error',
