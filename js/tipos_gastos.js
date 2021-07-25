@@ -141,7 +141,7 @@ buttonGuardar.addEventListener('click', function (e) {
                             'Los datos han sido agregados exitosamente',
                         showLoaderOnConfirm: true,
                         preConfirm: function () {
-                            location.href = "../vistas/mantenimiento_gastos_tipo.php";
+                            location.href = "../vistas/mantenimiento_tipo_gastos_vista.php";
                         }
                     }]);
 
