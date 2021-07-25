@@ -1,9 +1,48 @@
 console.log('hola_indicador');
 
+// const button_enviar = document.getElementById('tipos_recursos');
+// const formulario_datos = document.getElementById('enviar_Datos');
+
+// button_enviar.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const form2 = new FormData(formulario_datos);
+//     form2.append('tipo_recursos', 1);
+
+
+//     if (enviar_Datos.checkValidity() === false) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//         enviar_Datos.classList.add('was-validated')
+//     } else {
+
+//         fetch('../Controlador/action.php', {
+//             method: 'POST',
+//             body: form2
+//         }
+//         )
+//             .then(res => res.json())
+//             .then(data => {
+//                 if (data == 'exito') {
+//                     swal(
+//                         'Exito!',
+//                         'Los datos han sido agregados!',
+//                         'success'
+//                     )
+//                     $('#modal').modal('toggle');
+//                     $('#tabla_recursos_tipo').DataTable().ajax.reload();
+//                     document.getElementById("enviar_Datos").reset();
+//                 } else {
+
+//                 }
+//                 console.log(data);
+//             })
+//     }
+
+// })
 
 function eliminar(id) {
     swal({
-        title: 'Seguro que quiere eliminar este Indicador?',
+        title: 'Seguro que quiere eliminar este recurso?',
         text: "!Este registro no podra ser recuperado!",
         type: 'warning',
         showCancelButton: true,
@@ -32,7 +71,7 @@ function eliminar(id) {
                         '!Su registro ha sido eliminado!',
                         'success'
                     )
-                    $('#tabla_indicadores_tipo').DataTable().ajax.reload();
+                    $('#tabla_recursos_tipo').DataTable().ajax.reload();
                 } else {
                     swal(
                         'Error',
@@ -57,7 +96,7 @@ function eliminar(id) {
 
 function cambiarEstado(id, estado) {
     swal({
-        title: 'Seguro que quiere cambiar este Indicador?',
+        title: 'Seguro que quiere cambiar este recurso?',
         text: "!Este registro podra ser cambiado!",
         type: 'warning',
         showCancelButton: true,
@@ -140,7 +179,7 @@ buttonGuardar.addEventListener('click', function (e) {
                             'Los datos han sido agregados exitosamente',
                         showLoaderOnConfirm: true,
                         preConfirm: function () {
-                            location.href = "../vistas/mantenimiento_tipo_indicadores.php";
+                            location.href = "../vistas/mantenimiento_indicadores tipo.php";
                         }
                     }]);
 
