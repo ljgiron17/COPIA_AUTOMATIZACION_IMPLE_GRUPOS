@@ -104,7 +104,7 @@ class db extends conexion2
 
     public function insertTipoGasto($descripcion, $estado, $fecha, $nombre_gasto)
     {
-        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
+        $sql = "INSERT INTO tbl_tipo_gastos (descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'descripcion' => $descripcion,
@@ -137,7 +137,7 @@ public function cambiarEstadog($id, $estado)
 }
     public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_gasto)
     {
-        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
+        $sql = "INSERT INTO tbl_indicadores_gestion  (descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'descripcion' => $descripcion,
