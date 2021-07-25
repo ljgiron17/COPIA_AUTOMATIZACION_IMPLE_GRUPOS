@@ -49,12 +49,14 @@
             <table id="tabla_craed" class="table table-bordered table-striped table-dark" cellpadding="0" width="100%">
               <thead class="thead-light">
                 <tr>
+                  <th scope="col">ID ARCHIVO</th>
                   <th scope="col">PERIODO</th>
                   <th scope="col">DESCRIPCIÓN</th>
                   <th scope="col">ARCHIVO</th>
                   <th scope="col">AÑO PERIODO</th>
                   <th scope="col">FECHA SUBIDA</th>
                   <th scope="col">ACCIÓN</th>
+                  <th scope="col">SUBIR</th>
                 </tr>
               </thead>
             </table>
@@ -78,36 +80,28 @@
         [0, 'desc']
       ],
       "responsive": true,
-language: {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar    _MENU_    Filas",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla",
-                "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
-                "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },                
+      "language": {
+            "lengthMenu": "Mostrar _MENU_ Registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando la pagina de _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(Filtrado de _MAX_ Registros Totales)",
+            "search": "Buscar:",
+            "pagingType": "full_numbers",
+            "oPaginate": {
+              "sNext":"Siguiente",
+              "sPrevious": "Anterior"
             },
+          },
       "ajax": {
         "url": "../clases/tabla_craed.php",
         "type": "POST",
         "dataSrc": ""
       },
       "columns": [{
+          "data": "id_craed_jefa"
+          },
+        {
           "data": "periodo_cr"
         },
         {
@@ -126,6 +120,11 @@ language: {
           "data": null,
           defaultContent: '<center><div class="btn-group"> <button id="ver_archivo_craed" class="ver btn btn-primary btn - m" data-toggle="modal" data-target=".archivos_craed"><i class="fas fa-eye"></i></button><button id="descarga_cr" class=" btn btn-success btn - m"><i class="fas fa-file-download"></i></button><div></center>'
         },
+        {
+            "data": null,
+            defaultContent: '<button id="upload1" class="btn btn-warning"><i class="fas fa-upload"></i></button>'
+          },
+
         // { "data": "ip" },
         // { "data": "cambio" },                                                    
       ],
@@ -147,7 +146,7 @@ language: {
           ver_excel_cr: ver_excel_cr
         },
         success: function(r) {
-          console.log(r);
+         // console.log(r);
           //document.getElementById('cargar_excel').innerHTML = r;
           $('#cargar_excel_cr').html(r);
         } //FIN SUCCES
@@ -164,6 +163,41 @@ language: {
       download(url);
 
     });
+
+    $('#tabla_craed tbody').on('click','#upload1', function() {
+        var fila = table.row($(this).parents('tr')).data();
+        var nombre_archivo_cr = fila.nombre_archivo_cr;
+        var id_archivo_cr = fila.id_craed_jefa;
+
+        console.log(nombre_archivo_cr, id_archivo_cr);
+
+        const formulario = new FormData();
+        formulario.append('subir_excel_cr', 1);
+        formulario.append('nombre_archivo_cr', nombre_archivo_cr);
+        formulario.append('id_archivo_cr', id_archivo_cr);
+
+        fetch('../Controlador/action.php', {
+            method: 'POST',
+            body: formulario
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data == 'exito') {
+              swal(
+                'Exito!',
+                '¡Datos subidos correctamente!',
+                'success'
+              ) 
+            } else if (data == "archivo_subidoCR") {
+              swal(
+                'Existe!',
+                '¡Archivo ya existe en la base de datos!',
+                'warning'
+              )
+            }
+          });
+      });
   });
 
 
