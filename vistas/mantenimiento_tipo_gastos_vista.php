@@ -28,8 +28,6 @@ require_once('../clases/funcion_bitacora.php');
 
 
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +44,6 @@ require_once('../clases/funcion_bitacora.php');
         }
     </style>
 </head>
-
 <body>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -82,35 +79,12 @@ require_once('../clases/funcion_bitacora.php');
         </div>
         <!-- /.card-header -->
         <div class=" card-body">
-            <!-- <table id="tabla" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>PERIODO</th>
-            <th>DESCRIPCIÓN</th>
-            <th>FECHA</th>
-            <th>ACCIONES</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            <td>
-            <td>
-            <td>
-              <div class="btn-group"> <button class="ver btn btn-primary btn - m">
-                  <i class="fas fa-eye"></i>
-                </button>
-                <button class="editar btn btn-success btn-m">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <div>
-
-        </tbody>
-      </table> -->
+      
+      </table>
             <div class="container-fluid">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recursos</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">MANTENIMIENTO GASTOS OPERATIVOS</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" id="movimientos-tab" data-toggle="tab" href="#movimientos" role="tab" aria-controls="movimientos" aria-selected="false">CRAED</a>
