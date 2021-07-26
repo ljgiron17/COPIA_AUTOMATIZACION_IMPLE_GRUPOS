@@ -478,8 +478,50 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_planif_indicadoresactividad'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '131') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['menu_mantenimientos_jefatura_principal'] = "block";
+      }
+   }
+   
+   if ($_SESSION['pantalla'] == '133') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_tipo_indicadores'] = "block";
+      }
+   }
 
    
+   if ($_SESSION['pantalla'] == '138') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['indicador_tipo'] = "block";
+      }
+   }
+  
+   if ($_SESSION['pantalla'] == '135') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_tipos_recursos'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '136') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['recursos_tipo'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '137') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['gastos_tipo'] = "block";
+      }
+   }
+    
+   if ($_SESSION['pantalla'] == '134') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_tipo_gastos_vista'] = "block";
+      }
+   }
+
+
+
+
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 

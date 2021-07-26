@@ -149,7 +149,7 @@ if (isset($_POST['ver_excel_cr'])) {
     }
     echo '</table>';
 }
-
+//aqui recursos
 if (isset($_POST['tipo_recursos'])) {
     $estado = 'Activo';
     $descripcion = $_POST['descripcion'];
@@ -178,7 +178,8 @@ if (isset($_POST['cambiar_estado'])) {
         echo json_encode($respuesta);
     }
 }
-
+//termina recursos.
+//aqui gastos
 if (isset($_POST['agregar_tipo_gasto'])) {
 
     $descrip = $_POST['descripcion'];
@@ -212,7 +213,7 @@ if (isset($_POST['cambiar_estado'])) {
     }
 }
 //fin de los datos de gastos
-
+//aqui empieza ind
 if (isset($_POST['agregar_tipo_indicador'])) {
 
     $descripcion = $_POST['descripcion'];
@@ -361,3 +362,252 @@ if (isset($_POST['subir_excel_cr'])) {
     echo json_encode('exito');
   }
 }
+
+//empieza poa
+
+if (isset($_POST['enviar_retro'])) {
+    $id_retro = $_POST['id_retro'];
+    $respuesta = $db->retro($id_retro);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['crear_plani'])) {
+
+    $nombre = $_POST['n_planificacion'];
+    $descripcion = $_POST['descripcion'];
+    $anio = $_POST['txt_fecha_ingreso_ca'];
+    $respuesta = $db->addPlanificaion($nombre, $descripcion, $anio);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['crear_obj'])) {
+
+    $nombre_objetivo = $_POST['n_objetivo'];
+    $descripcion = $_POST['obj_descripción'];
+    $id_planificacion = $_POST['id_plani'];
+
+    $respuesta = $db->addObjetivo($nombre_objetivo, $descripcion, $id_planificacion);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['obj_delete'])) {
+
+    $id = $_POST['id_delete'];
+    $respuesta = $db->deleteObj($id);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['new_indicador'])) {
+    $descripcion = $_POST['ind_indicador'];
+    $resultados = $_POST['ind_resultado'];
+    $id_objetivo = $_POST['id_objetivo'];
+    $respuesta = $db->new_indicador($descripcion, $resultados, $id_objetivo);
+    echo json_encode($respuesta);
+}
+
+
+if (isset($_POST['delete_plani'])) {
+
+    $id_planificacion = $_POST['id_plan'];
+    $resultado = $db->deletePlan($id_planificacion);
+    echo json_encode($resultado);
+}
+
+if (isset($_POST['edit_form_plan'])) {
+
+    $id_plan  = $_POST['id_plani_edit'];
+    $descripcion = $_POST['descripcion'];
+    $anio = $_POST['txt_fecha_ingreso_ca'];
+    $nombre_plan = $_POST['n_planificacion'];
+
+    $respuesta = $db->editPlan($id_plan, $descripcion, $anio, $nombre_plan);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['edicion_obj_edit'])) {
+
+    $id_objetivo = $_POST['id_objetivo_edit'];
+    $nombre_objetivo = $_POST['n_objetivo'];
+    $descripcion = $_POST['obj_descripción'];
+    $respuesta = $db->editObj($id_objetivo, $nombre_objetivo, $descripcion);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['indicador_delete'])) {
+
+    $id_indicador = $_POST['id_indicador'];
+    $respuesta = $db->delete_Indicador($id_indicador);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['edit_indicador'])) {
+
+    $id_indicador = $_POST['id_indicador_edit'];
+    $descripcion = $_POST['ind_indicador'];
+    $resultados = $_POST['ind_resultado'];
+    $mensaje = $db->edit_indicador($id_indicador, $descripcion, $resultados);
+    echo json_encode($mensaje);
+}
+
+if (isset($_POST['get_data_res'])) {
+
+    $id_indicador = $_POST['id_indicador'];
+    $respuesta = $db->get_data_responsables($id_indicador);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['add_res'])) {
+
+    $responsable = $_POST['responsable_rs'];
+    $id_indicador = $_POST['id_indicador_res'];
+    $respuesta = $db->insert_responsable($id_indicador, $responsable);
+    echo json_encode($respuesta);
+}
+
+//!obtener data de las actividades
+if (isset($_POST['getdata_Act'])) {
+
+    $id_indicador = $_POST['id_indicador_act'];
+    $respuesta = $db->getData_actividades($id_indicador);
+    echo json_encode($respuesta);
+}
+//! fin obtener data de las actividades
+
+//!guardar data de las actividades
+if (isset($_POST['send_data_act'])) {
+    $id_indicador = $_POST['id_indicador_act'];
+    $nombre_actividad = $_POST['n_actividad'];
+
+    $id_actividad = $db->guardar_actividad($nombre_actividad, $id_indicador);
+
+
+    $verificacion = $_POST['m_verificacion'];
+    $id_med_ver = $db->guardar_medioVerificacion($verificacion);
+
+
+
+    $poblacion = $_POST['p_objetivo'];
+    $id_poblacion = $db->add_poblacion_objetivo($poblacion);
+
+
+    $actividad_verificacion = $db->add_actividad_verificacion($id_actividad, $id_med_ver);
+    $actividad_poblacion = $db->add_actividad_poblacion($id_poblacion, $id_actividad);
+
+    if ($actividad_verificacion = 'exito' and $actividad_poblacion = 'exito') {
+        echo json_encode('exito');
+    } else {
+        echo json_encode('error');
+    }
+}
+//!fin guardar data de las actividades
+
+//! INICIO obtener la data de las metas_smart
+
+if (isset($_POST['getData_metas'])) {
+
+    $id_indicador_meta = $_POST['id_indicador_meta'];
+    $respuesta = $db->getData_Metas($id_indicador_meta);
+    echo json_encode($respuesta);
+    //echo json_encode($_POST);
+}
+
+if (isset($_POST['addNew_meta'])) {
+
+    $id_indicador = $_POST['id_indicador_meta'];
+    $primer_trimestre = $_POST['primer_trimestre'];
+    $segundo_trimestre = $_POST['segundo_trimestre'];
+    $tercer_trimestre = $_POST['tercer_trimestre'];
+    $cuarto_trimestre = $_POST['cuarto_trimestre'];
+
+    if ($primer_trimestre == null) {
+        $primer_trimestre = 0;
+    } else {
+        $primer_trimestre = $primer_trimestre;
+    }
+
+    if ($segundo_trimestre == null) {
+        $segundo_trimestre = 0;
+    } else {
+        $segundo_trimestre = $segundo_trimestre;
+    }
+
+    if ($tercer_trimestre == null) {
+        $tercer_trimestre = 0;
+    } else {
+        $tercer_trimestre = $tercer_trimestre;
+    }
+
+    if ($cuarto_trimestre == null) {
+        $cuarto_trimestre = 0;
+    } else {
+        $cuarto_trimestre = $cuarto_trimestre;
+    }
+
+
+    $total = $primer_trimestre + $segundo_trimestre + $tercer_trimestre + $cuarto_trimestre;
+    if ($total > 100) {
+        echo json_encode('cuenta_mayor');
+    } else if ($total < 100) {
+        echo json_encode('menor_cuenta');
+    } else {
+        $conteo = $db->contar_metas($id_indicador);
+        $conteo_total = $conteo['total'];
+        if ($conteo_total >= 1) {
+            echo json_encode('tiene_datos');
+        } else {
+            //echo json_encode('no tiene datos');
+            //insertar datos
+            $respuesta = $db->insertData_metas($primer_trimestre, $segundo_trimestre, $tercer_trimestre, $cuarto_trimestre, $id_indicador);
+            echo json_encode($respuesta);
+        }
+    }
+    //echo json_encode($_POST);
+}
+//! FIN obtener data de las metas
+
+//?INICIO eliminacion de responsable
+if (isset($_POST['dele_responsable'])) {
+
+    $id_responsable = $_POST['id_responsable'];
+    $respuesta = $db->delete_responsable($id_responsable);
+    echo json_encode($respuesta);
+}
+//?fin eliminacion de responsable
+
+//?eliminacion de una actividades
+if (isset($_POST['dele_actividad'])) {
+
+    $id_actividad = $_POST['id_actividad'];
+    $respuesta = $db->delete_actividad($id_actividad);
+    echo json_encode($respuesta);
+}
+//?fin eliminacion de responsable
+
+//?inciio elliminacion de meta
+if (isset($_POST['dele_meta'])) {
+
+    $id_meta = $_POST['id_meta'];
+    $respuesta = $db->delete_meta($id_meta);
+    echo json_encode($respuesta);
+}
+
+//?fin eliminacion de meta
+
+//* start obtener detalle de poa
+
+if (isset($_POST['get_detalle_poa'])) {
+
+    $id_planificacion = $_POST['id_planificacion'];
+    $salida = $db->get_data($id_planificacion);
+
+    $count = count($salida);
+    for ($i = 0; $i < $count; $i++) {
+        printf($salida[$i]['id_objetivo'].';');
+    }
+}
+
+
+//* FIN obtener detalle de poa
+
+
+

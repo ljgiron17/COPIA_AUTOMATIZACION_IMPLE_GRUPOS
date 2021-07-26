@@ -77,7 +77,7 @@ require_once('../clases/funcion_visualizar.php');
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>
                 </div>
-                <a href="../vistas/g_planificacion_vista.php" class="small-box-footer">
+                <a href="../vistas/poa_vista.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
