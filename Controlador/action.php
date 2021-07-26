@@ -8,7 +8,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 if (isset($_POST['add_info'])) {
 
-    // //?archivo coordinacion academica
+    //archivo coordinacion academica
     $nombreArchivo_ca = $_FILES['file_ca']['name'];
     $nombreTemp_ca = $_FILES['file_ca']['tmp_name']; //ruta del archivo a validar formato correcto
     $fileError_ca = $_FILES['file_ca']['error']; //!errores
@@ -149,6 +149,7 @@ if (isset($_POST['ver_excel_cr'])) {
     }
     echo '</table>';
 }
+
 //aqui recursos
 if (isset($_POST['tipo_recursos'])) {
     $estado = 'Activo';
@@ -179,6 +180,7 @@ if (isset($_POST['cambiar_estado'])) {
     }
 }
 //termina recursos.
+
 //aqui gastos
 if (isset($_POST['agregar_tipo_gasto'])) {
 
@@ -363,8 +365,9 @@ if (isset($_POST['subir_excel_cr'])) {
   }
 }
 
-//empieza poa
 
+
+//empieza poa
 if (isset($_POST['enviar_retro'])) {
     $id_retro = $_POST['id_retro'];
     $respuesta = $db->retro($id_retro);
