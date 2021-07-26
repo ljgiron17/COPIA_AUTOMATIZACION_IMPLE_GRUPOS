@@ -55,15 +55,15 @@
                             <form id="agregar_actividades">
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Nombre Actividad</label>
-                                    <input type="text" class="form-control" id="n_actividad" name="n_actividad" maxlength="90" placeholder="Actividad" required>
+                                    <input type="text" class="form-control" id="n_actividad" name="n_actividad" maxlength="200" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('n_actividad');" onkeypress="return sololetras(event)" placeholder="Actividad" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Medios de verificacion</label>
-                                    <input type="text" class="form-control" id="m_verificacion" name="m_verificacion" maxlength="150" placeholder="Verificación" required>
+                                    <input type="text" class="form-control" id="m_verificacion" name="m_verificacion" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('m_verificacion');" onkeypress="return sololetras(event)" placeholder="Verificación" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput3">Población objetivo</label>
-                                    <input type="text" class="form-control" id="p_objetivo" name="p_objetivo" maxlength="150" placeholder="Población" required>
+                                    <input type="text" class="form-control" id="p_objetivo" name="p_objetivo" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('p_objetivo');" onkeypress="return sololetras(event)" placeholder="Población" required>
                                 </div>
                                 <div class="form-group d-flex">
                                     <div class="ml-auto p-2">

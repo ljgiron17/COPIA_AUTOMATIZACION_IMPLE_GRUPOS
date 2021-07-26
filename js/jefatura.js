@@ -231,3 +231,27 @@ function myFunction1(){
 		    }
 	    }
     }
+    function letrasynumeros(e){
+        
+        key=e.keyCode || e.wich;
+    
+        teclado= String.fromCharCode(key).toUpperCase();
+    
+        letras= "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ1234567890";
+        
+        especiales ="8-37-38-46-164";
+    
+        teclado_especial=false;
+    
+        for (var i in especiales) {
+          
+          if(key==especiales[i]){
+            teclado_especial= true;break;
+          }
+        }
+    
+        if (letras.indexOf(teclado)==-1 && !teclado_especial) {
+          return false;
+        }
+    
+    }
