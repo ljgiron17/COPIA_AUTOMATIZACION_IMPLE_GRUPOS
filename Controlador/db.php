@@ -503,4 +503,54 @@ class db extends conexion2
         //$filas = $stmt->fetchAll();
         return $row;
     }
+    //! detalles recursos
+
+    public function getDataTipo_recurso()
+    {
+        $sql = "SELECT `id_recurso_tipo`, `nombre_recurso` from tbl_recursos_tipo";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([]);
+        $filas = $stmt->fetchAll();
+        return $filas;
+    }
+
+    public function insertar_detalle($nombre, $cantidad, $descripcion, $precio_aprox, $id_recurso_tipo)
+    {
+        $sql = "INSERT INTO `tbl_detalles_tipo_recurso`(`nombre`, `cantidad`, `descripcion`, `precio_aprox`, `id_recurso_tipo`) 
+        VALUES (:nombre, :cantidad, :descripcion, :precio_aprox, :id_recurso_tipo)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'nombre' => $nombre,
+            'cantidad' => $cantidad,
+            'descripcion' => $descripcion,
+            'precio_aprox' => $precio_aprox,
+            'id_recurso_tipo' => $id_recurso_tipo
+        ]);
+        return 'exito';
+    }
+
+//parte de los indicadores para agregar multiples descripciones
+public function getDataTipo_indicador()
+{
+    $sql = "SELECT `id_indicadores_gestion`, `nombre_indicador` from tbl_indicadores_gestion";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([]);
+    $filas = $stmt->fetchAll();
+    return $filas;
 }
+
+public function insertar_detalle_gestion($descripcion, $id_indicador_gestion)
+{
+    $sql = "INSERT INTO `tbl_detalles_tipo_indicador`(`descripcion`, `id_indicador_gestion`) 
+    VALUES (:descripcion, :id_indicador_gestion)";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([
+        'descripcion' => $descripcion,
+        'id_indicador_gestion' => $id_indicador_gestion
+    ]);
+    return 'exito';
+}
+
+}
+
+

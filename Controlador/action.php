@@ -65,7 +65,6 @@ if (isset($_POST['add_info'])) {
             echo json_encode($respuesta);
         }
     }
-
 }
 
 if (isset($_POST['reac_cliente'])) {
@@ -293,11 +292,11 @@ if (isset($_POST['subir_excel_ca'])) {
                 array_push($row, $id);
                 // $consulta = "INSERT INTO `academica_prueba_1`(`n_empleado`, `nombre`, `codigo`, `aignatura`, `unidades_valorativas`, `seccion`, `hi`, `hf`, `dia`, `aula`, `edificio`, `n_alumnos`, `control`, `modalidad`)
                 // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]')";
-               // $consulta = " INSERT INTO `tbl_carga_academica_temporal`(`N_empleado`, `Nombre`, `Codigo`, `Asignatura`, `UV`, `Seccion`, `HI`, `HF`, `Dias`, `Aula`, `Edificio`, `N_Alumnos`, `N_Control`, `Modalidad`,`id_coordAcademica`)
-        //VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]')";
+                // $consulta = " INSERT INTO `tbl_carga_academica_temporal`(`N_empleado`, `Nombre`, `Codigo`, `Asignatura`, `UV`, `Seccion`, `HI`, `HF`, `Dias`, `Aula`, `Edificio`, `N_Alumnos`, `N_Control`, `Modalidad`,`id_coordAcademica`)
+                //VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]')";
 
 
-        $consulta = "INSERT INTO `tbl_carga_academica_temporal`(`N_empleado`, `Nombre`, `Codigo`, `Asignatura`, `UV`, `Seccion`, `HI`, `HF`, `Dias`, `Aula`, `Edificio`, `N_Alumnos`, `N_Control`, `Modalidad`,`id_coordAcademica`)
+                $consulta = "INSERT INTO `tbl_carga_academica_temporal`(`N_empleado`, `Nombre`, `Codigo`, `Asignatura`, `UV`, `Seccion`, `HI`, `HF`, `Dias`, `Aula`, `Edificio`, `N_Alumnos`, `N_Control`, `Modalidad`,`id_coordAcademica`)
             VALUES('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]')";
                 $resultado = $conexion->query($consulta);
             }
@@ -316,53 +315,53 @@ if (isset($_POST['subir_excel_cr'])) {
     if ($cantidad >= 1) {
         echo json_encode('archivo_subidoCR');
     } else {
-    $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
+        $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
 
 
-    //$ruta = '../archivos/file_academica/' . $nombre_archivo;
+        //$ruta = '../archivos/file_academica/' . $nombre_archivo;
 
-    class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
-    {
-
-        public function readCell($column, $row, $worksheetName = '')
+        class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
         {
-            if ($row > 4) {
-                return true;
+
+            public function readCell($column, $row, $worksheetName = '')
+            {
+                if ($row > 4) {
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
-    }
 
-    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
-    $inputFileName = '../archivos/file_craed/' . $nombre_archivo;
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+        $inputFileName = '../archivos/file_craed/' . $nombre_archivo;
 
-    $inputFileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($inputFileName);
+        $inputFileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($inputFileName);
 
-    $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
 
-    $reader->setReadFilter(new MyReadFilter());
-    $spreadsheet = $reader->load($inputFileName);
-    $cantidad = $spreadsheet->getActiveSheet()->toArray();
+        $reader->setReadFilter(new MyReadFilter());
+        $spreadsheet = $reader->load($inputFileName);
+        $cantidad = $spreadsheet->getActiveSheet()->toArray();
 
 
-    foreach ($cantidad as $row) {
-        if ($row[0] != "") {
-            array_push($row, $id);
-            // $consulta = "INSERT INTO `academica_prueba_1`(`n_empleado`, `nombre`, `codigo`, `aignatura`, `unidades_valorativas`, `seccion`, `hi`, `hf`, `dia`, `aula`, `edificio`, `n_alumnos`, `control`, `modalidad`)
-            // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]')";
-            // $consulta = " INSERT INTO `tbl_carga_craed`(`Seleccionar`, `N_Control_cr`, `Centro_cr`, `Codigo_cr`, `Asignatura_cr`, `Seccion_cr`, `Periodo`, `HI_cr`, `HF_cr`, `Dias_cr`, `Aula_cr`, `Edificio_cr`, `Numero`, `Profesor`, `Autorizacion`, `Cupos`, `Cupos_libres`, `Lista_espera`, `Semana`, `En_linea`, `Por_egresar`, `En_Red`, 'id_craed_jefa')
-            // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]', '$row[15]', '$row[16]', '$row[17]','$row[18]', '$row[19]','$row[20]','$row[21]','$row[22]')";
+        foreach ($cantidad as $row) {
+            if ($row[0] != "") {
+                array_push($row, $id);
+                // $consulta = "INSERT INTO `academica_prueba_1`(`n_empleado`, `nombre`, `codigo`, `aignatura`, `unidades_valorativas`, `seccion`, `hi`, `hf`, `dia`, `aula`, `edificio`, `n_alumnos`, `control`, `modalidad`)
+                // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]')";
+                // $consulta = " INSERT INTO `tbl_carga_craed`(`Seleccionar`, `N_Control_cr`, `Centro_cr`, `Codigo_cr`, `Asignatura_cr`, `Seccion_cr`, `Periodo`, `HI_cr`, `HF_cr`, `Dias_cr`, `Aula_cr`, `Edificio_cr`, `Numero`, `Profesor`, `Autorizacion`, `Cupos`, `Cupos_libres`, `Lista_espera`, `Semana`, `En_linea`, `Por_egresar`, `En_Red`, 'id_craed_jefa')
+                // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]', '$row[15]', '$row[16]', '$row[17]','$row[18]', '$row[19]','$row[20]','$row[21]','$row[22]')";
 
-            $consulta =  "INSERT INTO `tbl_carga_craed`(`Seleccionar`, `N_Control_cr`, `Centro_cr`, `Codigo_cr`, `Asignatura_cr`, `Seccion_cr`, `Periodo`, `HI_cr`, `HF_cr`, `Dias_cr`, `Aula_cr`, `Edificio_cr`, `Numero`, `Profesor`, `Autorizacion`, `Cupos`, `Cupos_libres`, `Lista_espera`, `Semana`, `En_linea`, `Por_egresar`, `En_Red`, `id_craed_jefa`)
+                $consulta =  "INSERT INTO `tbl_carga_craed`(`Seleccionar`, `N_Control_cr`, `Centro_cr`, `Codigo_cr`, `Asignatura_cr`, `Seccion_cr`, `Periodo`, `HI_cr`, `HF_cr`, `Dias_cr`, `Aula_cr`, `Edificio_cr`, `Numero`, `Profesor`, `Autorizacion`, `Cupos`, `Cupos_libres`, `Lista_espera`, `Semana`, `En_linea`, `Por_egresar`, `En_Red`, `id_craed_jefa`)
         VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]','$row[15]', '$row[16]','$row[17]', '$row[18]', '$row[19]', '$row[20]','$row[21]', '$row[22]')";
-            $resultado = $conexion->query($consulta);
-            //print_r($row);
+                $resultado = $conexion->query($consulta);
+                //print_r($row);
 
+            }
         }
+        //    echo $resultado;
+        echo json_encode('exito');
     }
-    //    echo $resultado;
-    echo json_encode('exito');
-  }
 }
 
 
@@ -605,7 +604,7 @@ if (isset($_POST['get_detalle_poa'])) {
 
     $count = count($salida);
     for ($i = 0; $i < $count; $i++) {
-        printf($salida[$i]['id_objetivo'].';');
+        printf($salida[$i]['id_objetivo'] . ';');
     }
 }
 
@@ -613,4 +612,35 @@ if (isset($_POST['get_detalle_poa'])) {
 //* FIN obtener detalle de poa
 
 
+//!obetner detalles de tipo_recursos
 
+if (isset($_POST['getDataRecursos'])) {
+    $respuesta = $db->getDataTipo_recurso();
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['addData_r_detalle'])) {
+
+    $nombre = $_POST["nombre_detalle_r"];
+    $cantidad = $_POST["cantidad_detalle"];
+    $descripcion = $_POST["descp_detalle"];
+    $precio_aprox = $_POST["precio_detalle"];
+    $id_recurso_tipo = $_POST["valor_select"];
+    $rspuesta = $db->insertar_detalle($nombre, $cantidad, $descripcion, $precio_aprox, $id_recurso_tipo);
+    echo json_encode($rspuesta);
+}
+
+//!obetner detalles de id_detalles_tipo_indicador
+
+if (isset($_POST['getDataIndicador'])) {
+    $respuesta = $db->getDataTipo_indicador();
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['addData_r_detalle'])) {
+
+    $descripcion = $_POST["descp_detalle"];
+    $id_indicador_gestion = $_POST["valor_select"];
+    $rspuesta = $db->insertar_detalle_gestion($descripcion,$id_indicador_gestion);
+    echo json_encode($rspuesta);
+}

@@ -518,7 +518,11 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['mantenimiento_tipo_gastos_vista'] = "block";
       }
    }
-
+   if ($_SESSION['pantalla'] == '139') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_detalle_recursos'] = "block";
+      }
+   }
 
 
 

@@ -88,13 +88,13 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>GESTIÓN DE RECURSOS</h5>
-                  <p><?php echo $_SESSION['gestion_recursos_vista']; ?></p>
+                  <p><?php echo $_SESSION['g_detalle_recursos']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>
 
                 </div>
-                <a href="../vistas/gestion_recursos_vista.php" class="small-box-footer">
+                <a href="../vistas/g_detalle_recursos.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -121,18 +121,17 @@ require_once('../clases/funcion_visualizar.php');
             <div class="col-4 col-sm-4 col-md-4">
               <div class="small-box bg-light">
                 <div class="inner">
-                  <h5>GESTIÓN DE REQUERIMIENTOS OPERATIVOS</h5>
-                  <p><?php echo $_SESSION['gestion_requerimientos_vista']; ?></p>
+                  <h5>GESTIÓN DE INDICADORES ACADEMICOS</h5>
+                  <p><?php echo $_SESSION['g_detalle_indicadores']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>
                 </div>
-                <a href="../vistas/gestion_requerimientos_vista.php" class="small-box-footer">
+                <a href="../vistas/g_detalle_indicadores.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div>
-
             <!-- /.row -->
           </div>
           <!--/. container-fluid -->
