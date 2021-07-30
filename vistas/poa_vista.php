@@ -112,7 +112,7 @@ require_once('../vistas/pagina_inicio_vista.php');
                                     <div class="modal-body">
                                         <form id="poa_form">
                                             <div class="container">
-                                                <label for="">Nombre planificación</label>
+                                                <label for="">Nombre Planificación</label>
                                                 <input type="text" id="n_planificacion" name="n_planificacion" class="form-control" maxlength="150" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('n_planificacion');" onkeypress="return sololetras(event)" required>
                                                 <label for="">Fecha</label>
                                                 <input type="text" id="datepicker" name="txt_fecha_ingreso_ca" onkeydown="return false" class="form-control" placeholder="AÑO" required="">
@@ -132,13 +132,13 @@ require_once('../vistas/pagina_inicio_vista.php');
                             </div>
                         </div>
                         <!-- fin del modal-->
-                        <h1>Gestión de POA</h1>
+                        <h1>GESTIÓN DE PLAN OPERATIVO ANUAL (POA)</h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/planificacion_academica_vista.php">POA</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/g_planificacionjefatura_vista.php">Jefatura</a></li>
                         </ol>
                     </div>
                 </div>
@@ -150,10 +150,10 @@ require_once('../vistas/pagina_inicio_vista.php');
             <div class="card-body  ">
                 <div class="row">
                     <div class="col-9">
-                        <h3 class="card-title">Registro de planificaciones</h3>
+                        <h3 class="card-title">Registro de Planificaciones Academicas</h3>
                     </div>
                     <div class="col-3">
-                        <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".poa_modal" onclick="cambiarNombre();">Nueva planificación</a>
+                        <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".poa_modal" onclick="cambiarNombre();">Nueva Planificación</a>
                     </div>
                 </div>
             </div>
