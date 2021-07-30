@@ -97,7 +97,7 @@ require_once('../clases/funcion_bitacora.php');
                                                         <div class="col-12">
                                                             <label for="">Fecha</label><br>
                                                             <input type="text" class="form-control" id="datepicker" name="fecha_recurso_ed" placeholder="dd/mm/yyyy" required> <br>
-                                                            <label for="">Nombre guardar_indicador</label><br>
+                                                            <label for="">Nombre Indicador</label><br>
                                                             <input type="text" class="form-control" id="nombre_recurso_ed" name="nombre_recurso_ed" required><br>
                                                         </div>
                                                         <br>

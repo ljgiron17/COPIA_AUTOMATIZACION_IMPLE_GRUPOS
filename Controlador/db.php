@@ -135,15 +135,15 @@ class db extends conexion2
         ]);
         return 'exito';
     }
-    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_gasto)
+    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
     {
-        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
+        $sql = "INSERT INTO tbl_indicadores_gestion(descripcion,estado, fecha, nombre_indicador)  VALUES (:descripcion, :estado, :fecha, :nombre_indicador) ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'descripcion' => $descripcion,
             'estado' => $estado,
             'fecha' => $fecha,
-            'nombre_gasto' => $nombre_gasto
+            'nombre_indicador' => $nombre_indicador
         ]);
         return 'exito';
     }
@@ -576,23 +576,21 @@ class db extends conexion2
     }
 
     public function eliminarGestion_indicador($id_detalles_tipo_indicador)
-     {
+    {
         $sql = "DELETE FROM ` tbl_detalles_tipo_indicador` WHERE id_indicador = :id_indicador";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
-            'id_detalle_tipo_indicador' => $id_detalles_tipo_indicador 
+            'id_detalle_tipo_indicador' => $id_detalles_tipo_indicador
         ]);
         return 'exito';
     }
     public function eliminarGestion_recursos($id_detalle_tipo_recurso)
     {
-       $sql = "DELETE FROM ` tbl_detalles_tipo_recurso` WHERE id_detalle_tipo_recurso = :id_detalle_tipo_recurso";
-       $stmt = $this->conn->prepare($sql);
-       $stmt->execute([
-           'id_detalle_tipo_recurso' => $id_detalle_tipo_recurso
-       ]);
-       return 'exito';
-   }
-    
-    
+        $sql = "DELETE FROM ` tbl_detalles_tipo_recurso` WHERE id_detalle_tipo_recurso = :id_detalle_tipo_recurso";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_detalle_tipo_recurso' => $id_detalle_tipo_recurso
+        ]);
+        return 'exito';
+    }
 }
