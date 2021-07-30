@@ -33,6 +33,15 @@ require_once('../clases/funcion_bitacora.php');
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
     <title></title>
     <style>
         .my-custom-scrollbar {
@@ -178,6 +187,40 @@ require_once('../clases/funcion_bitacora.php');
                     [0, 'desc']
                 ],
                 "responsive": true,
+                                     //desde aqui
+        dom: 'Bfrtip',
+        "buttons": [{
+            extend: 'copyHtml5',
+            title: 'Datos Exportados',
+            text: 'Copiar <i class="fas fa-copy"></i>',
+            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            exportOptions: {
+              columns: [0, 1, 2, 3]
+            }
+          },
+          {
+            extend: 'excelHtml5',
+            title: 'Datos Exportados',
+            text: 'Excel <i class="fas fa-file-excel"></i>',
+            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            exportOptions: {
+              columns: [0, 1, 2, 3]
+            }
+          },
+          {
+            extend: 'pdfHtml5',
+            title: 'Datos Exportados',
+            text: 'PDF <i class="fas fa-file-pdf"></i>',
+            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            exportOptions: {
+              columns: [0, 1, 2, 3]
+            }
+          },
+        ],
+        //hasta aqui
 
                 language: {
                     "sProcessing": "Procesando...",
