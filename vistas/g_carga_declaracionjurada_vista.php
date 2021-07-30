@@ -65,8 +65,8 @@ if (permiso_ver('106') == '1') {
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Jefatura</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Gestión de Carga Académica</a></li>
+              <li class="breadcrumb-item active">Declaración Jurada</li>
             </ol>
           </div>
 
@@ -225,7 +225,7 @@ if (permiso_ver('106') == '1') {
           .then(res => res.json())
           .then(data => {
             console.log(data);
-            localStorage.setItem('data', JSON.stringify(data));            
+            localStorage.setItem('data', JSON.stringify(data));
             window.location.href = "../vistas/g_generardeclaracion_vista.php";
           })
       });

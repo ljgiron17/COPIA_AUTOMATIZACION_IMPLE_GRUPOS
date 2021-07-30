@@ -33,8 +33,9 @@ if (permiso_ver('108') == '1') {
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Jefatura</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Gestión de Carga Académica</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_carga_declaracionjurada_vista.php">Declaración Jurada</a></li>
+              <li class="breadcrumb-item active">Selección de Docentes</li>
             </ol>
           </div>
 
@@ -58,7 +59,7 @@ if (permiso_ver('108') == '1') {
           </div>
           <div class="modal-body">
             <div class="container-fluid">
-               <p id="nombreDocente"></p>
+              <p id="nombreDocente"></p>
               <table id="detalle_docente" class="table table-bordered">
                 <thead>
                   <tr>
@@ -169,7 +170,7 @@ if (permiso_ver('108') == '1') {
       // });
       var retrievedObject = localStorage.getItem('data');
       const data = JSON.parse(retrievedObject);
-      
+
       var table = $('#tabla_docentes').DataTable({
         "language": {
           "lengthMenu": "Mostrar _MENU_ Registros",
@@ -227,8 +228,9 @@ if (permiso_ver('108') == '1') {
           type: "POST",
           url: "../clases/tabla_detalle_docente.php",
           data: {
-            id_archivo: id_archivo, nombre_docente: nombre_docente,
-            
+            id_archivo: id_archivo,
+            nombre_docente: nombre_docente,
+
           },
           dataType: 'JSON',
           // error: function(xhr, status, error) {

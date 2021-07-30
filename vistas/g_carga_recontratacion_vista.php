@@ -1,56 +1,53 @@
 <?php
 ob_start();
 session_start();
-require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php');
-require_once ('../clases/funcion_bitacora.php');
-require_once ('../clases/funcion_visualizar.php');
-require_once ('../clases/funcion_permisos.php');
+require_once('../vistas/pagina_inicio_vista.php');
+require_once('../clases/Conexion.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('110')=='1')
- {
-  
-  $_SESSION['g_carga_recontratacion_vista']="...";
-}
-else
-{
-$_SESSION['g_carga_recontratacion_vista']="No 
+if (permiso_ver('110') == '1') {
+
+  $_SESSION['g_carga_recontratacion_vista'] = "...";
+} else {
+  $_SESSION['g_carga_recontratacion_vista'] = "No 
   tiene permisos para visualizar";
-
 }
 ?>
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
 
-  </head>
-  <body>
-  
-    <div class="content-wrapper"> 
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
+</head>
+
+<body>
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
             <h1>Recontratación</h1>
-            </div>
-
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Jefatura</a></li>
-              </ol>
-            </div>
-
-            <div class="RespuestaAjax"></div>
-
           </div>
-        </div><!-- /.container-fluid -->
 
-      </section> 
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Gestión de Carga Académica</a></li>
+              <li class="breadcrumb-item active">Recontratación</a></li>
+            </ol>
+          </div>
 
-      <!-- Main content 
+          <div class="RespuestaAjax"></div>
+
+        </div>
+      </div><!-- /.container-fluid -->
+
+    </section>
+
+    <!-- Main content 
       <section class="content">
         <div class="container-fluid">
 
@@ -79,61 +76,59 @@ $_SESSION['g_carga_recontratacion_vista']="No
           </div>
         </div>
       </div>
-         <!-- pantalla 2 --> 
-          <div class="card card-default">
-            <div class="card-header">
-              <h3 class="card-title">Historial de Recontratación</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-            </div>
+      <!-- pantalla 2 -->
+      <div class="card card-default">
+        <div class="card-header">
+          <h3 class="card-title">Historial de Recontratación</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
           </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <table id="tabla_recontratacion" class="table table-bordered table-striped">
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="tabla_recontratacion" class="table table-bordered table-striped">
             <thead>
-                  <tr>
-                    <th scope="col">ID CARGA</th>
-                    <th scope="col">PERIODO</th>
-                    <th scope="col">FECHA</th>
-                    <th scope="col">ACCIÓN</th>
-                  </tr>
-                </thead>
-              </table>
+              <tr>
+                <th scope="col">ID CARGA</th>
+                <th scope="col">PERIODO</th>
+                <th scope="col">FECHA</th>
+                <th scope="col">ACCIÓN</th>
+              </tr>
+            </thead>
+          </table>
 
 
-          </div> <!-- /.card-bodyr -->
+        </div> <!-- /.card-bodyr -->
 
 
-            
-        </div> <!-- /.container-fluid -->
+
+      </div> <!-- /.container-fluid -->
       </section>
 
 
-      </div>
-      <div class="RespuestaAjax"></div>
+    </div>
+    <div class="RespuestaAjax"></div>
 
     <!--/form-->
 
-    </div>
+  </div>
 
-    <script type="text/javascript">
-  
+  <script type="text/javascript">
+    $(function() {
 
-      $(function () {
-   
-        $('#tabla').DataTable({
-          "paging": true,
-          "lengthChange": true,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": true,
-          "responsive": true,
-        });
+      $('#tabla').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "responsive": true,
       });
-    </script>
+    });
+  </script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function() {
       var table = $("#tabla_recontratacion").DataTable({
         "lengthMenu": [
@@ -195,12 +190,13 @@ $_SESSION['g_carga_recontratacion_vista']="No
           .then(res => res.json())
           .then(data => {
             console.log(data);
-            localStorage.setItem('data', JSON.stringify(data));            
+            localStorage.setItem('data', JSON.stringify(data));
             window.location.href = "../vistas/g_generarrecontratacion_vista.php";
           })
       });
 
     });
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

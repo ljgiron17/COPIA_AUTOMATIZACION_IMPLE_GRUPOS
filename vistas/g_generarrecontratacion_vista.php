@@ -33,8 +33,9 @@ if (permiso_ver('112') == '1') {
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Jefatura</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Gestión de Carga Académica</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_carga_recontratacion_vista.php">Recontratación</a></li>
+              <li class="breadcrumb-item active">Selección de Docentes</li>
             </ol>
           </div>
 

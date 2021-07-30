@@ -226,8 +226,8 @@ if (isset($_REQUEST['msj'])) {
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Jefatura</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Gestión de Carga Académica</a></li>
+              <li class="breadcrumb-item active">Registros de Cargas Académicas</li>
             </ol>
           </div>
 

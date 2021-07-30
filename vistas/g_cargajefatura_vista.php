@@ -70,7 +70,7 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Jefatura</li>
+              <li class="breadcrumb-item active">Gestión de Carga Académica</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
