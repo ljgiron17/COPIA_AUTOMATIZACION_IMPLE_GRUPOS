@@ -629,7 +629,12 @@ if (isset($_POST['addData_r_detalle'])) {
     $rspuesta = $db->insertar_detalle($nombre, $cantidad, $descripcion, $precio_aprox, $id_recurso_tipo);
     echo json_encode($rspuesta);
 }
-
+//eliminar para detalle recursos
+if (isset($_POST['eliminar'])) {
+    $id = $_POST['id'];
+    $respuesta = $db->eliminarGestion_recursos($id);
+    echo json_encode($respuesta);
+}
 //!obetner detalles de id_detalles_tipo_indicador
 
 if (isset($_POST['getDataIndicador'])) {
@@ -637,10 +642,37 @@ if (isset($_POST['getDataIndicador'])) {
     echo json_encode($respuesta);
 }
 
-if (isset($_POST['addData_r_detalle'])) {
+if (isset($_POST['getDataIndicador'])) {
 
     $descripcion = $_POST["descp_detalle"];
     $id_indicador_gestion = $_POST["valor_select"];
-    $rspuesta = $db->insertar_detalle_gestion($descripcion,$id_indicador_gestion);
+    $rspuesta = $db->insertar_detalle_gestion($descripcion, $id_indicador_gestion);
     echo json_encode($rspuesta);
+}
+
+//eliminar para indicadores detalle
+if (isset($_POST['eliminar'])) {
+    $id = $_POST['id'];
+    $respuesta = $db->eliminarGestion_indicador($id);
+    echo json_encode($respuesta);
+}
+//!obetner detalles de tipo_gastos
+
+if (isset($_POST['getDataGasto'])) {
+    $respuesta = $db->getDataTipo_gasto();
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['addData_detalle_gasto'])) {
+
+    $nombre = $_POST["nombre_detalle_r"];
+    $cantidad = $_POST["cantidad_detalle"];
+    $descripcion = $_POST["descp_detalle"];
+    $precio_aprox = $_POST["precio_detalle"];
+    $id_tipo_gastos = $_POST["valor_select"];
+    //$rspuesta = $db->insertar_detalle($nombre, $cantidad, $descripcion, $precio_aprox, $id_tipo_gasto);
+    $respuesta = $db->insertar_detalle_gasto($nombre, $cantidad, $descripcion, $precio_aprox, $id_tipo_gastos);
+    echo json_encode($respuesta);
+
+    //echo json_encode($_POST);
 }

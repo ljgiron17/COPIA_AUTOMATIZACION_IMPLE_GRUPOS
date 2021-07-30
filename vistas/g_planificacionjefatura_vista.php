@@ -5,24 +5,39 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
-//require_once('../clases/funcion_permisos.php');
+require_once('../clases/funcion_permisos.php');
 
-//if (permiso_ver('121') == '1') {
-
-  //$_SESSION['g_planificacionjefatura_vista'] = "...";
-//} else {
-  //$_SESSION['g_planificacionjefatura_vista'] = "No 
-  //tiene permisos para visualizar";
-//}
 
 //if (permiso_ver('124') == '1') {
 
-  //$_SESSION['g_planificacion'] = "...";
+  //$_SESSION['poa_vista'] = "...";
 //} else {
-  //$_SESSION['g_planificacion'] = "No 
+  //$_SESSION['poa_vista'] = "No 
   //tiene permisos para visualizar";
 //}
 
+//if (permiso_ver('139') == '1') {
+
+  //$_SESSION['g_detalle_recursos'] = "...";
+//} else {
+  //$_SESSION['g_detalle_recursos'] = "No 
+  //tiene permisos para visualizar";
+//}
+//if (permiso_ver('140') == '1') {
+
+  //$_SESSION['g_detalle_indicadores'] = "...";
+//} else {
+  //$_SESSION['g_detalle_indicadores'] = "No 
+  //tiene permisos para visualizar";
+//}
+
+//if (permiso_ver('140') == '1') {
+
+  //$_SESSION['g_detalle_gastos'] = "...";
+//} else {
+  //$_SESSION['g_detalle_gastos'] = "No 
+  //tiene permisos para visualizar";
+//}
 
 ?>
 <!DOCTYPE html>
@@ -42,6 +57,7 @@ require_once('../clases/funcion_visualizar.php');
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
+
             <div class="col-sm-6">
               <h1 class="m-0 text-dark">PLANIFICACION ACADEMICA DE JEFATURA</h1>
             </div><!-- /.col -->
@@ -72,7 +88,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>PLAN OPERATIVO ANUAL(POA)</h5>
-                  <p><?php echo $_SESSION['g_planificacion_vista']; ?></p>
+                  <p><?php echo $_SESSION['poa_vista']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>
@@ -106,18 +122,16 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>GESTIÓN DE GASTOS OPERATIVOS</h5>
-                  <p><?php echo $_SESSION['gestion_gastos_vista']; ?></p>
+                  <p><?php echo $_SESSION['g_detalle_gastos']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>
                 </div>
-                <a href="../vistas/gestion_gastos_vista.php" class="small-box-footer">
+                <a href="../vistas/g_detalle_gastos.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div>
-
-
             <div class="col-4 col-sm-4 col-md-4">
               <div class="small-box bg-light">
                 <div class="inner">
@@ -139,16 +153,10 @@ require_once('../clases/funcion_visualizar.php');
       </section>
       <!-- /.content -->
     </div>
-
-
   </div> <!-- /.info-box -->
   </div> <!-- /.container-fluid -->
   </section>
-
   </div>
-
-
   </div>
 </body>
-
 </html>

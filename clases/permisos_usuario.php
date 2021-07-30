@@ -450,7 +450,7 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
    //nuevas pantallas de poa
    if ($_SESSION['pantalla'] == '124') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['g_planificacion'] = "block";
+         $_SESSION['poa_vista'] = "block";
       }
    }
    if ($_SESSION['pantalla'] == '125') {
@@ -524,8 +524,17 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
       }
    }
 
+   if ($_SESSION['pantalla'] == '140') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_detalle_indicadores'] = "block";
+      }
+   }
 
-
+   if ($_SESSION['pantalla'] == '141') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_detalle_gastos'] = "block";
+      }
+   }
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 

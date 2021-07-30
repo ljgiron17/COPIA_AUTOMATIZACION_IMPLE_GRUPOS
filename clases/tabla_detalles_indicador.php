@@ -6,7 +6,7 @@ $conexion = conexion();
 $query = "SELECT rt.id_detalles_tipo_indicador, rt.descripcion, ret.nombre_indicador from tbl_detalles_tipo_indicador rt, tbl_indicadores_gestion ret
 WHERE rt.id_indicadores_gestion = ret.id_indicadores_gestion";
 //buscando el resultado
-$resultado = mysqli_query($conexion, $query);
+$resultado = mysqli_query($conexion, $query); 
 if (!$resultado) {
     die("Error");
 } else {

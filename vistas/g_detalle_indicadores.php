@@ -5,11 +5,11 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-//if (permiso_ver('139') == '1') {
+//if (permiso_ver('140') == '1') {
 //
-  //  $_SESSION['g_detalle_recursos'] = "...";
+  //  $_SESSION['g_detalle_indicadores'] = "...";
   //} else {
-    //$_SESSION['g_detalle_recursos'] = "No 
+    //$_SESSION['g_detalle_indicadores'] = "No 
     //tiene permisos para visualizar";
  // }
 
@@ -37,15 +37,13 @@ require_once('../clases/funcion_visualizar.php');
 
 
 <body>
-
-
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>GESTIÓN DE RECURSOS OPERATIVOS DE JEFATURA</h1>
+                        <h1>INDICADORES DE GESTIÓN ACADEMICA DE JEFATURA</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -53,19 +51,12 @@ require_once('../clases/funcion_visualizar.php');
                             <li class="breadcrumb-item active"><a href="../vistas/g_planificacionjefatura_vista.php">Jefatura</a></li>
                         </ol>
                     </div>
-
-
-
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <section class="content">
             <div class="container-fluid">
                 <!-- pantalla 1 -->
-
-
-
             </div>
         </section>
         <!--Pantalla 2-->
@@ -73,30 +64,23 @@ require_once('../clases/funcion_visualizar.php');
             <div class="card-body  ">
                 <div class="row">
                     <div class="col-9">
-                        <h3 class="card-title">DETALLES DE REGISTRO DE RECURSOS</h3>
+                        <h3 class="card-title">DETALLES INDICADORES DE GESTIÓN</h3>
                     </div>
                     <div class="col-3">
-                        <a href="../vistas/agregar_detalles_recursos.php" class="btn btn-success btn-m">Agregar Detalle recursos</a>
+                        <a href="../vistas/agregar_detalles_indicadores.php" class="btn btn-success btn-m">Agregar Nuevo Detalle Indicador</a>
                     </div>
-
                 </div>
-
-                <!-- <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="btn btn-success btn-m">Nueva Gestión de Carga</a> -->
-
+                
             </div>
 
         </div>
         <!-- /.card-header -->
         <div class=" card-body">
-
             <div class="container-fluid">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">RECURSOS DETALLES</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">INDICADORES ACADEMICOS DETALLES</a>
                     </li>
-                    <!-- <li class="nav-item">
-            <a class="nav-link" id="movimientos-tab" data-toggle="tab" href="#movimientos" role="tab" aria-controls="movimientos" aria-selected="false">CRAED</a>
-          </li> -->
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -105,16 +89,12 @@ require_once('../clases/funcion_visualizar.php');
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="tabla_detalles_recursos" class="table table-bordered table-striped" cellpadding="0" width="100%">
+                                            <table id="tabla_detalles_indicador" class="table table-bordered table-striped" cellpadding="0" width="100%">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">ID</th>
-                                                        <th scope="col">NOMBRE</th>
-                                                        <th scope="col">CANTIDAD</th>
                                                         <th scope="col">DESCRIPCION</th>
-                                                        <th scope="col">PRECIO</th>
-                                                        <th scope="col">TOTAL</th>
-                                                        <th scope="col">NOMBRE RECURSO</th>
+                                                        <th scope="col">NOMBRE INDICADOR</th>
                                                         <th scope="col">ELIMINAR</th>
                                                     </tr>
                                                 </thead>
@@ -124,7 +104,6 @@ require_once('../clases/funcion_visualizar.php');
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -136,25 +115,16 @@ require_once('../clases/funcion_visualizar.php');
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
-
     </div>
     </div>
-
     </div>
-
     </section>
-
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
-
-
-
     <script src="../js/jefatura.js"></script>
     <!-- <script type="text/javascript">
     $(function() {
-
       $('#tabla').DataTable({
         "paging": true,
         "lengthChange": true,
@@ -168,16 +138,15 @@ require_once('../clases/funcion_visualizar.php');
   </script> -->
     <script type="text/javascript">
         $(document).ready(function() {
-            var table = $("#tabla_detalles_recursos").DataTable({
+            var table = $("#tabla_detalles_indicador").DataTable({
                 "lengthMenu": [
-                    [5],
-                    [5]
+                    [10],
+                    [10]
                 ],
                 "order": [
                     [0, 'desc']
                 ],
                 "responsive": true,
-                
                 language: {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar    _MENU_    Filas",
@@ -203,43 +172,31 @@ require_once('../clases/funcion_visualizar.php');
                     },
                 },
                 "ajax": {
-                    "url": "../clases/tabla_detalles_recursos.php",
+                    "url": "../clases/tabla_detalles_indicador.php", 
                     "type": "POST",
                     "dataSrc": ""
                 },
                 "columns": [{
-                        "data": "id_detalle_tipo_recurso"
-                    },
-                    {
-                        "data": "nombre"
-                    },
-                    {
-                        "data": "cantidad"
-                    },
+                        "data": "id_detalles_tipo_indicador"
+                    },    
                     {
                         "data": "descripcion"
                     },
                     {
-                        "data": "precio_aprox"
-                    },
-                    {
-                        "data": "total"
-                    },
-                    {
-                        "data": "nombre_recurso"
+                        "data": "nombre_indicador"
                     },
                     {
                         "data": null,
                         defaultContent: '<center><div class="btn-group">'+ 
-                        '<button id="ver_detail" class="ver btn btn-danger btn - m" data-toggle="modal" data-target=".archivosAcademica"><i class="fas fa-trash"></i></button><div></center>'
+                        '<button id="ver_detalle" class="ver btn btn-danger btn - m" data-toggle="modal" data-target=".archivosAcademica"><i class="fas fa-trash"></i></button><div></center>'
                     },
                     
                 ],
             });
 
-            table.columns([0]).visible(false);
+            //table.columns([0]).visible(false);
 
-            $('#tabla_academica tbody').on('click', '#ver_detail', function() {
+            $('#tabla_academica tbody').on('click', '#ver_detalle', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var nombre_archivo = fila.nombre_archivo;
                 console.log(nombre_archivo);
@@ -262,7 +219,7 @@ require_once('../clases/funcion_visualizar.php');
                 //FIN  AJAX
             });
 
-            $('#tabla_academica tbody').on('click', '#descarga', function() {
+            $('#tabla_detalles_indicador tbody').on('click', '#descarga', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var nombre_archivo = fila.nombre_archivo;
                 console.log(nombre_archivo);
@@ -272,15 +229,6 @@ require_once('../clases/funcion_visualizar.php');
 
             });
         });
-
-        // function download(url) {
-        //     var link = document.createElement("a");
-        //     $(link).click(function(e) {
-        //         e.preventDefault();
-        //         window.location.href = url;
-        //     });
-        //     $(link).click();
-        // }
     </script>
 
     <script>
@@ -291,10 +239,7 @@ require_once('../clases/funcion_visualizar.php');
         });
     </script>
 </body>
-
 </html>
-
-
 <script>
     //este script srive para validar los campos del modal
     $("#descrp_ca, #descrip_cr").keypress(function(key) {

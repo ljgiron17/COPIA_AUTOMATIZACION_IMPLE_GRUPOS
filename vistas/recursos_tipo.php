@@ -154,7 +154,6 @@ ob_end_flush();
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-
                     </div>
                 </div>
             </div>

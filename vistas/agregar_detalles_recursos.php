@@ -16,7 +16,7 @@ require_once('../vistas/pagina_inicio_vista.php');
     <title>Document</title>
 </head>
 
-<body onload="cargar_detalle();">
+<body onload="cargar_detalle_recurso();">
 
     <div class="content-wrapper">
         <br><br>
@@ -65,7 +65,7 @@ require_once('../vistas/pagina_inicio_vista.php');
 </html>
 
 <script>
-    function cargar_detalle() {
+    function cargar_detalle_recurso() {
         const form_recursos_tipo = new FormData();
         form_recursos_tipo.append('getDataRecursos', 1);
         fetch('../Controlador/action.php', {

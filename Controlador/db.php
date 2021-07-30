@@ -296,7 +296,6 @@ class db extends conexion2
         return 'exito';
     }
 
-
     public function edit_indicador($id_indicador, $descripcion, $resultados)
     {
         $sql = "UPDATE tbl_indicadores SET descripcion = :descripcion, resultados= :resultados WHERE id_indicador = :id_indicador";
@@ -529,28 +528,71 @@ class db extends conexion2
         return 'exito';
     }
 
-//parte de los indicadores para agregar multiples descripciones
-public function getDataTipo_indicador()
-{
-    $sql = "SELECT `id_indicadores_gestion`, `nombre_indicador` from tbl_indicadores_gestion";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->execute([]);
-    $filas = $stmt->fetchAll();
-    return $filas;
-}
+    //parte de los indicadores para agregar multiples descripciones
+    public function getDataTipo_indicador()
+    {
+        $sql = "SELECT `id_indicadores_gestion`, `nombre_indicador` from tbl_indicadores_gestion";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([]);
+        $filas = $stmt->fetchAll();
+        return $filas;
+    }
 
-public function insertar_detalle_gestion($descripcion, $id_indicador_gestion)
-{
-    $sql = "INSERT INTO `tbl_detalles_tipo_indicador`(`descripcion`, `id_indicador_gestion`) 
+    public function insertar_detalle_gestion($descripcion, $id_indicador_gestion)
+    {
+        $sql = "INSERT INTO `tbl_detalles_tipo_indicador`(`descripcion`, `id_indicador_gestion`) 
     VALUES (:descripcion, :id_indicador_gestion)";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->execute([
-        'descripcion' => $descripcion,
-        'id_indicador_gestion' => $id_indicador_gestion
-    ]);
-    return 'exito';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'descripcion' => $descripcion,
+            'id_indicador_gestion' => $id_indicador_gestion
+        ]);
+        return 'exito';
+    }
+
+    //!detalles gastos
+    public function getDataTipo_gasto()
+    {
+        $sql = "SELECT `id_tipo_gastos`, `nombre_gasto` from  tbl_tipo_gastos";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([]);
+        $filas = $stmt->fetchAll();
+        return $filas;
+    }
+
+    public function insertar_detalle_gasto($nombre, $cantidad, $descripcion, $precio_aprox, $id_tipo_gastos)
+    {
+        $sql = "INSERT INTO `tbl_detalles_tipo_gasto`(`nombre`, `cantidad`, `descripcion`, `precio_aprox`, `id_tipo_gastos`) 
+    VALUES (:nombre, :cantidad, :descripcion, :precio_aprox, :id_tipo_gastos)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'nombre' => $nombre,
+            'cantidad' => $cantidad,
+            'descripcion' => $descripcion,
+            'precio_aprox' => $precio_aprox,
+            'id_tipo_gastos' => $id_tipo_gastos
+        ]);
+        return 'exito';
+    }
+
+    public function eliminarGestion_indicador($id_detalles_tipo_indicador)
+     {
+        $sql = "DELETE FROM ` tbl_detalles_tipo_indicador` WHERE id_indicador = :id_indicador";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_detalle_tipo_indicador' => $id_detalles_tipo_indicador 
+        ]);
+        return 'exito';
+    }
+    public function eliminarGestion_recursos($id_detalle_tipo_recurso)
+    {
+       $sql = "DELETE FROM ` tbl_detalles_tipo_recurso` WHERE id_detalle_tipo_recurso = :id_detalle_tipo_recurso";
+       $stmt = $this->conn->prepare($sql);
+       $stmt->execute([
+           'id_detalle_tipo_recurso' => $id_detalle_tipo_recurso
+       ]);
+       return 'exito';
+   }
+    
+    
 }
-
-}
-
-
