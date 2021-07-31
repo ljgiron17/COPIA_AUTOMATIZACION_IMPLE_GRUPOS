@@ -3,7 +3,7 @@ require_once 'conexion3.php';
 $conexion = conexion();
 
 //envio de la consulta
-$query = "SELECT id_reac_academica,id_docente,nombre_docente, estado  FROM tbl_reasignacion_academica";
+$query = "SELECT id_reac_academica,id_docente,nombre_docente,razon_negada, estado  FROM tbl_reasignacion_academica";
 
 //buscando el resultado 
 $resultado = mysqli_query($conexion, $query);
