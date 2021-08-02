@@ -75,10 +75,8 @@ if (isset($_POST['reac_cliente'])) {
 }
 
 if (isset($_POST['denegada'])) {
-    $razon_minu = $_POST['razon_negada'];
-    $razon_mayus = strtoupper($razon_minu);
     $id_cliente = $_POST['id_cliente'];
-    $respuesta = $db->updateSolicitudDenegada($id_cliente, $razon_mayus);
+    $respuesta = $db->updateSolicitudDenegada($id_cliente);
     echo json_encode($respuesta);
 }
 
@@ -678,71 +676,3 @@ if (isset($_POST['addData_detalle_gasto'])) {
 
     //echo json_encode($_POST);
 }
-
-//?modificacion 29/07/2021
-
-if (isset($_POST['denegada'])) {
-    $razon_minu = $_POST['razon_negada'];
-    $razon_mayus = strtoupper($razon_minu);
-    $id_cliente = $_POST['id_cliente'];
-    $respuesta = $db->updateSolicitudDenegada($id_cliente, $razon_mayus);
-    echo json_encode($respuesta);
-}
-//?fin modificacion 29/07/2021
-//?ultima modificacion 28/7/2021
-if (isset($_POST['getData_docente'])) {
-    $respuesta = $db->getDocentes();
-    echo json_encode($respuesta);
-}
-
-if (isset($_POST['guardarDatos_soli'])) {
-
-    $id_docente = $_POST['nombre_docentes'];
-    $nombre_docente = $_POST['nombre_completo'];
-    $nombre_proyecto = $_POST['nombre_proyecto'];
-    $fecha_inicio = $_POST['fecha_inicio'];
-    $fecha_final = $_POST['fecha_final'];
-    $avance_realizado = $_POST['avance_realizado'];
-    $proyec_periodo_actual = $_POST['periodo_soli'];
-    $cant_horas = $_POST['horas_soli'];
-    $estado = 'Pendiente';
-    $respuesta = $db->insert_soli($id_docente, $nombre_docente, $nombre_proyecto, $fecha_inicio, $fecha_final, $avance_realizado, $proyec_periodo_actual, $cant_horas, $estado);
-    echo json_encode($respuesta);
-}
-//?ultima modificacion 28/7/2021
-
-//?modificacion 29/07/2021
-if (isset($_POST['nueva_retro'])) {
-    $nombre_docente = $_POST['nombre_completo'];
-    $arrayNombre = explode(" ", $nombre_docente, 3);
-    $nombre_buscar = $arrayNombre[0] . " " . $arrayNombre[1];
-
-    $anio = date("Y");
-    $periodo = $_POST["periodo_soli"];
-    $docente = $_POST["nombre_completo"];
-    $codigo_empleado = $_POST["nombre_docentes"];
-    $cant_clases_reasignadas = $_POST["cant_clases"];
-    $memorandum = $_POST["n_memo"];
-    $nombre_proyecto = $_POST["nombre_proyecto"];
-    $fecha_inicio = $_POST["fecha_inicio"];
-    $fecha_finalizacion = $_POST["fecha_final"];
-    $estado = 'Pendiente';
-    $avances = $_POST["avance_realizado"];
-
-
-    $identidad = $db->get_id($nombre_buscar);
-    if ($identidad == false) {
-        $nombre_buscar = $arrayNombre[0];
-        $n_identidad = $db->get_id($nombre_buscar);
-        $id_final = $n_identidad['identidad'];
-        $ingresar_retro = $db->add_retroalimentacion($periodo, $anio, $docente, $codigo_empleado, $cant_clases_reasignadas, $memorandum, $nombre_proyecto, $fecha_inicio, $fecha_finalizacion, $id_final, $estado, $avances);
-        echo json_encode($ingresar_retro);
-        //echo json_encode($n_identidad);
-    } else {
-        $id_final = $identidad['identidad'];
-        $ingresar_retro = $db->add_retroalimentacion($periodo, $anio, $docente, $codigo_empleado, $cant_clases_reasignadas, $memorandum, $nombre_proyecto, $fecha_inicio, $fecha_finalizacion, $id_final, $estado, $avances);
-        echo json_encode($ingresar_retro);
-        //echo json_encode($identidad);
-    }
-}
-//?fin modificacion 29/07/2021

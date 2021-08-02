@@ -47,13 +47,12 @@ class db extends conexion2
     // }
 
 
-    public function updateSolicitudDenegada($id_solicitud, $razon)
+    public function updateSolicitudDenegada($id_solicitud)
     {
-        $sql = "UPDATE tbl_reasignacion_academica set estado = 'Denegada', razon_negada =:razon  WHERE id_reac_academica = :id_solicitud";
+        $sql = "UPDATE tbl_reasignacion_academica set estado = 'Denegada' WHERE id_reac_academica = :id_solicitud";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
-            'id_solicitud' => $id_solicitud,
-            'razon' => $razon
+            'id_solicitud' => $id_solicitud
         ]);
         return 'exito';
     }
@@ -136,15 +135,15 @@ class db extends conexion2
         ]);
         return 'exito';
     }
-    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_gasto)
+    public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
     {
-        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
+        $sql = "INSERT INTO tbl_indicadores_gestion(descripcion,estado, fecha, nombre_indicador)  VALUES (:descripcion, :estado, :fecha, :nombre_indicador) ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'descripcion' => $descripcion,
             'estado' => $estado,
             'fecha' => $fecha,
-            'nombre_gasto' => $nombre_gasto
+            'nombre_indicador' => $nombre_indicador
         ]);
         return 'exito';
     }
@@ -591,69 +590,6 @@ class db extends conexion2
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'id_detalle_tipo_recurso' => $id_detalle_tipo_recurso
-        ]);
-        return 'exito';
-    }
-
-    public function getDocentes()
-    {
-        $sql = "SELECT id_persona, CONCAT(nombres,' ',apellidos)as nombre_completo  from tbl_personas WHERE id_tipo_persona = 1";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([]);
-        $filas = $stmt->fetchAll();
-        return $filas;
-    }
-
-    public function insert_soli($id_docente, $nombre_docente, $nombre_proyecto, $fecha_inicio, $fecha_final, $avance_realizado, $proyec_periodo_actual, $cant_horas, $estado)
-    {
-        $sql = "INSERT INTO `tbl_reasignacion_academica`(`id_docente`, `nombre_docente`, `nombre_proyecto`, `fecha_inicio`, `fecha_final`, `avance_realizado`, `proyec_periodo_actual`, `cant_horas`, `estado`) 
-        VALUES (:id_docente, :nombre_docente, :nombre_proyecto, :fecha_inicio, :fecha_final, :avance_realizado, :proyec_periodo_actual, :cant_horas, :estado)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            'id_docente' => $id_docente,
-            'nombre_docente' => $nombre_docente,
-            'nombre_proyecto' => $nombre_proyecto,
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_final' => $fecha_final,
-            'avance_realizado' => $avance_realizado,
-            'proyec_periodo_actual' => $proyec_periodo_actual,
-            'cant_horas' => $cant_horas,
-            'estado' => $estado
-        ]);
-        return 'exito';
-    }
-    //?ultima modificacion 28/07/2021
-
-    //?modificacion 29/07/2021
-    public function get_id($nombre_docente)
-    {
-        $sql = "SELECT identidad FROM tbl_personas WHERE nombres=:nombre_docente";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            'nombre_docente' => $nombre_docente
-        ]);
-        $fila = $stmt->fetch();
-        return $fila;
-    }
-
-    public function add_retroalimentacion($periodo, $anio, $docente, $codigo_empleado, $cant_clases_reasignadas, $memorandum, $nombre_proyecto, $fecha_inicio, $fecha_finalizacion, $n_identidad, $estado, $avances)
-    {
-        $sql = "INSERT INTO `tbl_retroalimentacion`(`periodo`, `anio`, `docente`, `codigo_empleado`, `cant_clases_reasignadas`, `memorandum`, `nombre_proyecto`, `fecha_inicio`, `fecha_finalizacion`, `n_identidad`, `estado`, `avances`) 
-    VALUES (:periodo, :anio, :docente, :codigo_empleado, :cant_clases_reasignadas, :memorandum, :nombre_proyecto, :fecha_inicio, :fecha_finalizacion, :n_identidad, :estado, :avances)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            'periodo' => $periodo,
-            'anio' => $anio,
-            'docente' => $docente,
-            'codigo_empleado' => $codigo_empleado,
-            'cant_clases_reasignadas' => $cant_clases_reasignadas,
-            'memorandum' => $memorandum,
-            'nombre_proyecto' => $nombre_proyecto,
-            'fecha_inicio' => $fecha_inicio,
-            'fecha_finalizacion' => $fecha_finalizacion,
-            'n_identidad' => $n_identidad,
-            'estado' => $estado,
-            'avances' => $avances
         ]);
         return 'exito';
     }

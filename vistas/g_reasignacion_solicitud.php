@@ -25,21 +25,7 @@ $visualizacion = permiso_ver($Id_objeto);
 <html>
 
 <head>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
-  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
-  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
-
+  <title></title>
   <style>
     p {
       font-size: 15px;
@@ -56,7 +42,9 @@ $visualizacion = permiso_ver($Id_objeto);
 
 </head>
 
+
 <body>
+
   <!-- inicio modal -->
   <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -127,7 +115,7 @@ $visualizacion = permiso_ver($Id_objeto);
           <form position="absolute" id="form_solictiud" method="get" target="_blank" action="../pdf/getDataReasignacion.php">
             <!-- <input type="text" name="id_cliente" value=' + data + '> -->
             <input style="display:none;" type="text" id="id_cliente" name="id_cliente" class="form-control">
-            <input id="" type="submit" name="enviar" class="btn btn-primary" value="Generar PDF">
+            <input id="redirbtn" type="submit" name="enviar" class="btn btn-primary" value="Generar PDF">
           </form>
           <!-- <button type="button"  >Generar PDF</button> -->
 
@@ -138,57 +126,8 @@ $visualizacion = permiso_ver($Id_objeto);
       </div>
     </div>
   </div>
+
   <!-- fin modal -->
-
-  <!-- Modal -->
-  <div class="modal fade" id="nueva_solicitud" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Nueva Solicitud</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="form_solicitud_nueva">
-            <label for="">Nombre Docente</label>
-            <select name="nombre_docentes" id="nombre_docentes" class="form-control">
-
-            </select>
-            <label for="">Nombre Proyecto</label>
-            <input type="text" class="form-control" id="nombre_proyecto" maxlength="90" name="nombre_proyecto" onkeyup="mayusculas(this);" required>
-            <div class="row">
-              <div class="col-6">
-                <label for="">Fecha inicio</label>
-                <input type="text" class="form-control" id="datepicker" onkeydown="return false" name="fecha_inicio" required>
-              </div>
-              <div class="col-6">
-                <label for="">Fecha final</label>
-                <input type="text" class="form-control" id="datepicker1" onkeydown="return false" name="fecha_final" required>
-              </div>
-            </div>
-            <label for="">Periodo del proyecto</label>
-            <select name="periodo_soli" id="periodo_soli" class="form-control">
-              <option value="PERIODO I">PERIODO I</option>
-              <option value="PERIODO II">PERIODO II</option>
-              <option value="PERIODO III">PERIODO III</option>
-              <option value="PERIODO IV">PERIODO IV</option>
-            </select>
-            <label for="">Cantidad horas</label>
-            <input type="text" id="horas_soli" name="horas_soli" class="form-control" number maxlength="2" required>
-            <label for="">Avance Realizado</label>
-            <textarea class="form-control" id="avance_realizado" name="avance_realizado" rows="3" onkeyup="mayusculas(this);" required></textarea>
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="genera_solicitud">Enviar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -202,8 +141,8 @@ $visualizacion = permiso_ver($Id_objeto);
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-
+            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_reasignacionjefatura_vista.php">Reasigacion Academica</a></li>
             </ol>
           </div>
 
@@ -212,25 +151,6 @@ $visualizacion = permiso_ver($Id_objeto);
         </div>
       </div><!-- /.container-fluid -->
     </section>
-    <!--Pantalla 2-->
-    <div class="card card-default">
-
-
-      <div class="card-body  ">
-        <div class="row">
-          <div class="col-9">
-            <h3 class="card-title">Registro de solicitudes</h3>
-          </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success btn-m" data-toggle="modal" id="nueva_soli_modal" data-target="#nueva_solicitud">Nueva solicitud</a>
-          </div>
-        </div>
-        <!-- <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="btn btn-success btn-m">Nueva Gestión de Carga</a> -->
-      </div>
-
-    </div>
-    <br>
-    <br>
 
     <div class="card card-default">
       <div class="card-header">
@@ -251,10 +171,8 @@ $visualizacion = permiso_ver($Id_objeto);
               <th scope="col">ID SOLICITUD</th>
               <th scope="col">ID DOCENTE</th>
               <th scope="col">NOMBRE DOCENTE</th>
-              <th scope="col">RAZÓN</th>
               <th scope="col">ESTADO SOLICITUD</th>
               <th scope="col">ACCIÓN</th>
-              <th scope="col">PDF</th>
             </tr>
           </thead>
         </table>
@@ -275,79 +193,41 @@ $visualizacion = permiso_ver($Id_objeto);
   </div>
 
   <script src="../js/manejo_solicitudes.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script> -->
-
-
   <script type="text/javascript">
     $(document).ready(function() {
       var table = $("#tabla_solicitud").DataTable({
         "lengthMenu": [
-          [5],
-          [5]
+          [3],
+          [3]
         ],
-        "order": [
+        "order": [ 
           [0, 'desc']
         ],
         "responsive": true,
-        dom: 'Bfrtip',
-        "buttons": [{
-            extend: 'copyHtml5',
-            title: 'Datos Exportados',
-            text: 'Copiar <i class="fas fa-copy"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3, 4]
-            }
-          },
-          {
-            extend: 'excelHtml5',
-            title: 'Datos Exportados',
-            text: ' Excel <i class="fas fa-file-excel"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3, 4]
-            }
-          },
-          {
-            extend: 'pdfHtml5',
-            title: 'Datos Exportados',
-            text: 'PDF <i class="fas fa-file-pdf"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3, 4]
-            }
-          },
-        ],
         language: {
-          "sProcessing": "Procesando...",
-          "sLengthMenu": "Mostrar    _MENU_    Filas",
-          "sZeroRecords": "No se encontraron resultados",
-          "sEmptyTable": "Ningún dato disponible en esta tabla",
-          "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
-          "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
-          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-          "sInfoPostFix": "",
-          "sSearch": "Buscar:",
-          "sUrl": "",
-          "sInfoThousands": ",",
-          "sLoadingRecords": "Cargando...",
-          "oPaginate": {
-            "sFirst": "Primero",
-            "sLast": "Último",
-            "sNext": "Siguiente",
-            "sPrevious": "Anterior"
-          },
-          "oAria": {
-            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-          },
-        },
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar    _MENU_    Filas",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
+                "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },                
+            },
         "ajax": {
           "url": "../clases/tabla_reac_solicitud.php",
           "type": "POST",
@@ -363,18 +243,11 @@ $visualizacion = permiso_ver($Id_objeto);
             "data": "nombre_docente"
           },
           {
-            "data": "razon_negada"
-          },
-          {
             "data": "estado"
           },
           {
             "data": null,
             defaultContent: '<center><div class="btn-group"><button id="ver_detalles" class="ver btn btn-success btn - m" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye"></i></button><div></center>'
-          },
-          {
-            "data": null,
-            defaultContent: '<center><button class="btn btn-primary" id="generar_pdf">Generar</button></center>'
           },
           // { "data": "ip" },
           // { "data": "cambio" },                                                    
@@ -389,12 +262,6 @@ $visualizacion = permiso_ver($Id_objeto);
 
       });
 
-      $('#tabla_solicitud tbody').on('click', '#generar_pdf', function() {
-        var fila = table.row($(this).parents('tr')).data();
-        var id_soli = fila.id_reac_academica;
-        console.log(id_soli);
-        redir(id_soli);
-      });
 
       $('#tabla_solicitud tbody').on('click', '#ver_detalles', function() {
         //LECTURA DEL EVENTO PARA ELIMINAR UN REGISTRO
@@ -431,80 +298,10 @@ $visualizacion = permiso_ver($Id_objeto);
     });
 
     function redir(data) {
-      //document.getElementById('redirect').innerHTML = '<form style="display:none;" position="absolute" method="get" target="_blank" action="../pdf/getDataReasignacion.php"><input type="text" name="id_cliente" value = ' + data + '><input id="redirbtn" type="submit" name="enviar" value=' + data + '></form>';
       document.getElementById('redirect').innerHTML = '<form style="display:none;" position="absolute" method="get" target="_blank" action="../pdf/getDataReasignacion.php"><input type="text" name="id_cliente" value = ' + data + '><input id="redirbtn" type="submit" name="enviar" value=' + data + '></form>';
+      // document.getElementById('redirect').innerHTML = '<form style="display:none;" position="absolute" method="get" target="_blank" action="../pdf/getDataReasignacion.php"><input type="text" name="id_cliente" value = ' + data + '><input id="redirbtn" type="submit" name="enviar" value=' + data + '></form>';
       document.getElementById('redirbtn').click();
     }
-    $("#datepicker, #datepicker1").datepicker();
-
-    function mayusculas(e) {
-      e.value = e.value.toUpperCase();
-    }
-
-
-    const button_modal_soli = document.getElementById('nueva_soli_modal');
-    button_modal_soli.addEventListener('click', function(e) {
-      const getData_docentes = new FormData();
-      getData_docentes.append('getData_docente', 1);
-      fetch('../Controlador/action.php', {
-          method: 'POST',
-          body: getData_docentes
-        })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          let res = document.querySelector("#nombre_docentes");
-          res.innerHTML = '';
-          for (let item of data) {
-            res.innerHTML += `<option value="${item.id_persona}">${item.nombre_completo}</option>`
-          }
-        })
-    });
-
-    const generar_solicitud = document.getElementById('genera_solicitud');
-    const formulario_solicitud = document.getElementById('form_solicitud_nueva');
-
-    generar_solicitud.addEventListener('click', function(e) {
-      e.preventDefault();
-
-
-      if (form_solicitud_nueva.checkValidity() === false) {
-        e.preventDefault();
-        e.stopPropagation();
-        form_solicitud_nueva.classList.add('was-validated')
-      } else {
-        var nombre_docente = $('#nombre_docentes option:selected').text();
-        const enviar_datos = new FormData(formulario_solicitud);
-        enviar_datos.append('guardarDatos_soli', 1);
-        enviar_datos.append('nombre_completo', nombre_docente);
-        fetch('../Controlador/action.php', {
-            method: 'POST',
-            body: enviar_datos
-          })
-          .then(res => res.json())
-          .then(data => {
-            console.log(data);
-            if (data == 'exito') {
-              $('#nueva_solicitud').modal('toggle');
-              swal(
-                '¡Solicitud enviada con exito!',
-                'datos agregados a la base de datos',
-                'success'
-              )
-              var tabla_revision = $('#tabla_solicitud').dataTable();
-              tabla_revision.api().ajax.reload();
-            } else {
-              swal(
-                'Oops...',
-                'Something went wrong!',
-                'error'
-              )
-            }
-          })
-      }
-
-
-    });
   </script>
 </body>
 

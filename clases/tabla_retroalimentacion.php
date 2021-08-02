@@ -3,7 +3,7 @@ require_once 'conexion3.php';
 $conexion = conexion();
 
 //envio de la consulta
-$query = "SELECT `id_retroalimentacion`, `periodo`, `docente`,`codigo_empleado`,`avances`  from tbl_retroalimentacion ";
+$query = "SELECT `id_retroalimentacion`, `periodo`, `docente`,`codigo_empleado`,`estado`  from tbl_retroalimentacion ";
 
 //buscando el resultado 
 $resultado = mysqli_query($conexion, $query);
