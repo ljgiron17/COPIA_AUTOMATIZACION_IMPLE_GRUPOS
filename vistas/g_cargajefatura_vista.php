@@ -6,7 +6,6 @@ require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_permisos.php');
-
 if (permiso_ver('105')=='1')
  {
   
@@ -42,9 +41,17 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
   tiene permisos para visualizar";
 
 }
+if (permiso_ver('110')=='1')
+ {
+  
+  $_SESSION['g_carga_recontratacion_vista']="...";
+}
+else
+{
+$_SESSION['g_carga_recontratacion_vista']="No 
+  tiene permisos para visualizar";
 
-
-
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,9 +59,6 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-
-
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -77,23 +81,18 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row" style="  display: flex;
     align-items: center;
-    justify-content: center;">
-
-
-          
+    justify-content: center;">          
     <div class="col-6 col-sm-6 col-md-4">
     <div class="small-box bg-light">
     <div class="inner">	
     <h4>Carga Académica</h4>
-    <p><?php echo $_SESSION['g_cargaacademica_vista'];?></p>
+    <p><?php echo $_SESSION['g_carga_cargaacademica_vista'];?></p>
   </div>
   <div class="icon">
     <i class="fas fa-user-plus"></i>
@@ -103,7 +102,6 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
   </a>
 </div>
 </div>
-
 <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">
   <div class="inner">	

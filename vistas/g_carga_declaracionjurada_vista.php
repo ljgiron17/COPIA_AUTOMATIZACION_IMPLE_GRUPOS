@@ -3,46 +3,38 @@ ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
-//require_once('../clases/funcion_bitacora.php');
-// require_once('../clases/funcion_visualizar.php');
-// require_once('../clases/funcion_permisos.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_permisos.php');
 
 
-// $id_objeto = 106;
-
-// $visualizacion = permiso_ver($id_objeto);
-
-// if ($visualizacion == 0) {
-//   echo '<script type="text/javascript">
-//                           swal({
-//                                 title:"",
-//                                 text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-//                                 type: "error",
-//                                 showConfirmButton: false,
-//                                 timer: 3000
-//                               });
-//                             window.location = "../vistas/gestion_dias_feriados_vista.php";
-
-//                             </script>';
-// } else {
-
-//   bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'Ingresó', 'a Declaracion Jurada');
-// }
+$Id_objeto = 106;
 
 
+$visualizacion = permiso_ver($Id_objeto);
 
 
-// ob_end_flush();
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/g_carga_declaracionjurada_vista.php";
+
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A DECLARACIÓN JURADA.');
 
 
+  
+}
 
-// if (permiso_ver('106') == '1') {
-
-//   $_SESSION['g_carga_declaracionjurada_vista'] = "...";
-// } else {
-//   $_SESSION['g_carga_declaracionjurada_vista'] = "No 
-//   tiene permisos para visualizar";
-// }
+ob_end_flush();
 
 ?>
 <!DOCTYPE html>

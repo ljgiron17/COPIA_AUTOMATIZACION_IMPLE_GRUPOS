@@ -395,11 +395,13 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_cargajefatura_vista'] = "block";
       }
    }
+
    if ($_SESSION['pantalla'] == '118') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['g_reasignacionjefatura_vista'] = "block";
       }
    }
+
    if ($_SESSION['pantalla'] == '119') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['g_reasignacion_solicitud'] = "block";
@@ -446,45 +448,97 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_retroalimentacion_docentes_vista'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '108') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_generardeclaracion_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '112') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_generarrecontratacion_vista'] = "block";
+      }
+   }
+
    
    //nuevas pantallas de poa
-   if ($_SESSION['pantalla'] == '124') {
+   if ($_SESSION['pantalla'] == '107') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['poa_vista'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '125') {
+
+
+   if ($_SESSION['pantalla'] == '109') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['g_planif_objetivos'] = "block";
+         $_SESSION['objetivos_poa'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '111') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['indicadores_poa'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '113') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['metas_poa'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '115') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['actividades_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '116') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['responsables_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '117') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['g_detalle_recursos'] = "block";
       }
    }
    if ($_SESSION['pantalla'] == '126') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['g_planif_indicadores'] = "block";
+         $_SESSION['g_detalle_gasto'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '127') {
+   if ($_SESSION['pantalla'] == '125') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['g_planif_indicadoresactividad'] = "block";
+         $_SESSION['g_detalle_indicadores'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '128') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['g_menu_mantenimientos_jefatura_principal'] = "block";
-      }
-   }
-    if ($_SESSION['pantalla'] == '127') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['g_planif_indicadoresactividad'] = "block";
-      }
-   }
-   if ($_SESSION['pantalla'] == '131') {
+   if ($_SESSION['pantalla'] == '124') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['menu_mantenimientos_jefatura_principal'] = "block";
       }
    }
-   
-   if ($_SESSION['pantalla'] == '133') {
+   if ($_SESSION['pantalla'] == '127') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['recursos_tipo'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '128') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_tipos_recursos'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '129') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['gastos_tipo'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '130') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_tipo_gastos_vista'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '131') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['indicador_tipo'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '132') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['mantenimiento_tipo_indicadores'] = "block";
       }
@@ -535,6 +589,8 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['g_detalle_gastos'] = "block";
       }
    }
+
+
    // if ($_SESSION['pantalla']=='55')
    // {
    //  if ( $_SESSION['confirmacion']=='block') 
