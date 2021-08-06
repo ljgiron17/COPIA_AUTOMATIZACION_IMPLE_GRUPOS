@@ -34,7 +34,7 @@ require_once('../clases/funcion_bitacora.php');
 <html>
 
 <head>
-   
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
@@ -277,66 +277,66 @@ require_once('../clases/funcion_bitacora.php');
                     [0, 'desc']
                 ],
                 "responsive": true,
-                                     //desde aqui
-        dom: 'Bfrtip',
-        "buttons": [{
-            extend: 'copyHtml5',
-            title: 'Datos Exportados',
-            text: 'Copiar <i class="fas fa-copy"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'excelHtml5',
-            title: 'Datos Exportados',
-            text: 'Excel <i class="fas fa-file-excel"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'pdfHtml5',
-            title: 'Datos Exportados',
-            text: 'PDF <i class="fas fa-file-pdf"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-        ],
-        //hasta aqui
-               
-language: {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar    _MENU_    Filas",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla",
-                "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
-                "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
+                //desde aqui
+                dom: 'Bfrtip',
+                "buttons": [{
+                        extend: 'copyHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Copiar <i class="fas fa-copy"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Excel <i class="fas fa-file-excel"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Datos Exportados',
+                        text: 'PDF <i class="fas fa-file-pdf"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                ],
+                //hasta aqui
+
+                language: {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar    _MENU_    Filas",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ ",
+                    "sInfoEmpty": "Mostrando del 0 al 0 de un total de 0 ",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    },
                 },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },                
-            },
-            
+
 
                 "ajax": {
                     "url": "../clases/tabla_recursos_tipo.php",
@@ -378,7 +378,7 @@ language: {
             });
 
             table.columns([0]).visible(false);
-            
+
             $('#tabla_recursos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id = fila.id_recurso_tipo;
@@ -404,8 +404,58 @@ language: {
             $('#tabla_recursos_tipo tbody').on('click', '#eliminar', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id_recurso_tipo = fila.id_recurso_tipo;
-                console.log(id_recurso_tipo + ' eliminar');
-                eliminar(id_recurso_tipo);
+                console.log(id_recurso_tipo);
+                //eliminar(id_recurso_tipo);
+                swal({
+                    title: 'Seguro que quiere eliminar este recurso?',
+                    text: "!Este registro no podra ser recuperado!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Eliminarlo!',
+                    cancelButtonText: 'No, Cancelar!',
+                    confirmButtonClass: 'btn btn-success',
+                    cancelButtonClass: 'btn btn-danger',
+                    buttonsStyling: false
+                }).then(function() {
+
+                    const form = new FormData();
+                    form.append('eliminar_recurso', 1);
+                    form.append('id', id_recurso_tipo);
+                    fetch('../Controlador/action.php', {
+                            method: 'POST',
+                            body: form
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data == 'exito') {
+                                swal(
+                                    'Eliminado!',
+                                    '!Su registro ha sido eliminado!',
+                                    'success'
+                                )
+                                $('#tabla_recursos_tipo').DataTable().ajax.reload();
+                            } else {
+                                swal(
+                                    'Error',
+                                    'A ocurrido un error en la consulta!',
+                                    'error'
+                                )
+                            }
+                        })
+                }, function(dismiss) {                    
+                    if (dismiss === 'cancel') {
+                        swal(
+                            'Cancelado',
+                            'Su registro esta en la base de datos!',
+                            'error'
+                        )
+                    }
+                })
+
+
             });
         });
     </script>
@@ -418,62 +468,64 @@ language: {
         });
     </script>
     <script type="text/javascript" language="javascript">
-    function MismaLetra(id_input) {
-        var valor = $('#' + id_input).val();
-        var longitud = valor.length;
-        //console.log(valor+longitud);
-        if (longitud > 2) {
-            var str1 = valor.substring(longitud - 3, longitud - 2);
-            var str2 = valor.substring(longitud - 2, longitud - 1);
-            var str3 = valor.substring(longitud - 1, longitud);
-            nuevo_valor = valor.substring(0, longitud - 1);
-            if (str1 == str2 && str1 == str3 && str2 == str3) {
-                swal('Error', 'No se permiten 3 letras consecutivamente', 'error');
+        function MismaLetra(id_input) {
+            var valor = $('#' + id_input).val();
+            var longitud = valor.length;
+            //console.log(valor+longitud);
+            if (longitud > 2) {
+                var str1 = valor.substring(longitud - 3, longitud - 2);
+                var str2 = valor.substring(longitud - 2, longitud - 1);
+                var str3 = valor.substring(longitud - 1, longitud);
+                nuevo_valor = valor.substring(0, longitud - 1);
+                if (str1 == str2 && str1 == str3 && str2 == str3) {
+                    swal('Error', 'No se permiten 3 letras consecutivamente', 'error');
 
-                $('#' + id_input).val(nuevo_valor);
-            }
-        }
-    }
-    function validate(s){
-        if (/^(\w+\s?)*\s*$/.test(s)){
-          return s.replace(/\s+$/,  '');
-        }
-        return 'NOT ALLOWED';
-        }
-        
-        validate('tes ting')      //'test ing'
-        validate('testing')       //'testing'
-        validate(' testing')      //'NOT ALLOWED'
-        validate('testing ')      //'testing'
-        validate('testing  ')     //'testing'
-        validate('testing   ')   
-
-    function sololetras(e) {
-
-        key = e.keyCode || e.wich;
-
-        teclado = String.fromCharCode(key).toUpperCase();
-
-        letras = " ABCDEFGHIJKLMNOPQRSTUVWXYZÑ";
-
-        especiales = "8-37-38-46-164";
-
-        teclado_especial = false;
-
-        for (var i in especiales) {
-
-            if (key == especiales[i]) {
-                teclado_especial = true;
-                break;
+                    $('#' + id_input).val(nuevo_valor);
+                }
             }
         }
 
-        if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-            return false;
+        function validate(s) {
+            if (/^(\w+\s?)*\s*$/.test(s)) {
+                return s.replace(/\s+$/, '');
+            }
+            return 'NOT ALLOWED';
         }
 
-    }
-</script>
+        validate('tes ting') //'test ing'
+        validate('testing') //'testing'
+        validate(' testing') //'NOT ALLOWED'
+        validate('testing ') //'testing'
+        validate('testing  ') //'testing'
+        validate('testing   ')
+        validate('teAtiNg   ')
+
+        function sololetras(e) {
+
+            key = e.keyCode || e.wich;
+
+            teclado = String.fromCharCode(key).toUpperCase();
+
+            letras = " ABCDEFGHIJKLMNOPQRSTUVWXYZÑ";
+
+            especiales = "8-37-38-46-164";
+
+            teclado_especial = false;
+
+            for (var i in especiales) {
+
+                if (key == especiales[i]) {
+                    teclado_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+
+        }
+    </script>
 </body>
 
 </html>

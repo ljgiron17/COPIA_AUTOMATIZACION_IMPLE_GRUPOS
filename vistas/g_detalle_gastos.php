@@ -265,8 +265,7 @@ require_once('../clases/funcion_visualizar.php');
                     },
                     {
                         "data": null,
-                        defaultContent: '<center><div class="btn-group">' +
-                            '<button id="ver_detail" class="ver btn btn-danger btn - m" data-toggle="modal" data-target=".archivosAcademica"><i class="fas fa-trash"></i></button><div></center>'
+                        defaultContent: '<center> <button id="eliminar_datell_gasto" class="btn btn-danger">Eliminar</center>'
                     },
 
                 ],
@@ -274,38 +273,49 @@ require_once('../clases/funcion_visualizar.php');
 
             table.columns([0]).visible(false);
 
-            $('#tabla_academica tbody').on('click', '#ver_detail', function() {
+            $('#tabla_detalles_gastos tbody').on('click', '#eliminar_datell_gasto', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var nombre_archivo = fila.nombre_archivo;
-                console.log(nombre_archivo);
-                //comienza ajax
-                var ver_excel_ca = "ver_excel_ca";
-                $.ajax({
-                    url: "../Controlador/action.php",
-                    type: "POST",
-                    dataType: "html",
-                    data: {
-                        nombre_archivo: nombre_archivo,
-                        ver_excel_ca: ver_excel_ca
-                    },
-                    success: function(r) {
-                        console.log(r);
-                        //document.getElementById('cargar_excel').innerHTML = r;
-                        $('#cargar_excel').html(r);
-                    } //FIN SUCCES
-                });
-                //FIN  AJAX
+                var id_detalle_tipo_gasto = fila.id_detalle_tipo_gasto;
+                console.log(id_detalle_tipo_gasto);
+
+                const formulario_datell_gastos = new FormData();
+                formulario_datell_gastos.append('eliminar_detalle_gasto', 1);
+                formulario_datell_gastos.append('id_detalle_tipo_gasto', id_detalle_tipo_gasto);
+
+                fetch('../Controlador/action.php', {
+                        method: 'POST',
+                        body: formulario_datell_gastos
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data == 'exito') {
+                            swal(
+                                'Exito...',
+                                'Datos guardados!',
+                                'success'
+                            )
+                            $('#tabla_detalles_gastos').DataTable().ajax.reload();
+                        } else {
+                            swal(
+                                'Oops...',
+                                'Something went wrong!',
+                                'error'
+                            )
+                        }
+                    })
+
             });
 
-            $('#tabla_academica tbody').on('click', '#descarga', function() {
-                var fila = table.row($(this).parents('tr')).data();
-                var nombre_archivo = fila.nombre_archivo;
-                console.log(nombre_archivo);
+            // $('#tabla_academica tbody').on('click', '#descarga', function() {
+            //     var fila = table.row($(this).parents('tr')).data();
+            //     var nombre_archivo = fila.nombre_archivo;
+            //     console.log(nombre_archivo);
 
-                var url = `../archivos/file_academica/${nombre_archivo}`;
-                download(url);
+            //     var url = `../archivos/file_academica/${nombre_archivo}`;
+            //     download(url);
 
-            });
+            // });
         });
 
         // function download(url) {

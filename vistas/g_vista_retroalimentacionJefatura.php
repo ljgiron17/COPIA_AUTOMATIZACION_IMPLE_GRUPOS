@@ -2,22 +2,23 @@
 session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
-require_once('../clases/funcion_bitacora.php');
-require_once('../clases/funcion_visualizar.php');
+// require_once('../clases/funcion_bitacora.php');
+// require_once('../clases/funcion_visualizar.php');
 
-if (permiso_ver('119') == '1') {
+// if (permiso_ver('119') == '1') {
 
-  $_SESSION['g_reasignacion_solicitud'] = "...";
-} else {
-  $_SESSION['g_reasignacion_solicitud'] = "No 
-   tiene permisos para visualizar";
-}
+//   $_SESSION['g_reasignacion_solicitud'] = "...";
+// } else {
+//   $_SESSION['g_reasignacion_solicitud'] = "No 
+//    tiene permisos para visualizar";
+// }
 
 
-$Id_objeto = 119;
+// $Id_objeto = 119;
 
-$visualizacion = permiso_ver($Id_objeto);
+// $visualizacion = permiso_ver($Id_objeto);
 
+// 
 ?>
 
 
@@ -25,6 +26,8 @@ $visualizacion = permiso_ver($Id_objeto);
 <html>
 
 <head>
+  <title></title>
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -39,7 +42,6 @@ $visualizacion = permiso_ver($Id_objeto);
   <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
   <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
-
   <style>
     p {
       font-size: 15px;
@@ -76,47 +78,63 @@ $visualizacion = permiso_ver($Id_objeto);
               <meta charset="UTF-8">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Document</title>
+              <title>Retroalimentacion</title>
             </head>
+            <style>
+              p {
+                font-size: 15px;
+              }
+
+              p.f1 {
+                margin: 58px;
+              }
+
+              p.f0 {
+                font-size: 18px;
+              }
+            </style>
 
             <body style="margin:0;padding:0">
+              <p style="text-align:right; margin-right: 58px;">Oficio de solicitud N° ________</p><br>
+              <p></p>
               <p align="center" class="f0">
-                <strong>Solicitud de reasignación académica</strong>
+                <strong>Reporte de retroalimentación por reasignación académica</strong>
               </p>
-              <p style="margin-left: 30px;">
-                <img width="246" height="123" src="../dist/img/unah_log.jpg" />
+              <br>
 
-              </p><br>
-              <p style="text-align:right; margin-right: 58px;">Oficio de solicitud N° <u id="id_solicitud"> </u> </p><br>
+              <p></p>
 
-              <p style="text-align:left; margin-left: 58px;">
-                <strong>Solicitud</strong>
-                <u id="nombre_solicitud"></u>
+              <p style="text-align:left; margin-left: 60px;">
+                <strong>Periodo</strong>
+                <u id="id_periodo"></u>&nbsp;&nbsp; <strong>Año</strong> <u id="anio"></u>
               </p> <br>
-              <p style="text-align:left; margin-left: 58px;">
+              <p style="text-align:left; margin-left: 60px;">
                 <strong>Docente</strong>
-                <u id="nombre_docente"></u>
-              </p><br>
-              <p style="text-align:left; margin-left: 58px;">
-                <strong>Proyecto</strong>
+                <u id="docente_nombre"></u>&nbsp;&nbsp; <strong>Codigo Empleado</strong> <u id="cod_empleado"></u>
+              </p> <br>
+              <p style="text-align:left; margin-left: 60px;">
+                <strong>Cantidad de clases reasignadas</strong>
+                <u id="cant_clases"></u>&nbsp;&nbsp; <strong>memorándum</strong> <u id="memo"></u>
+              </p> <br>
+
+              <p style="text-align:left; margin-left: 60px;">
+                <strong>Nombre del proyecto en el que trabaja</strong><br>
                 <u id="nombre_proyecto"></u>
+
               </p><br>
-              <p style="text-align:left; margin-left: 58px;">
-                <strong>Fecha Inicio</strong>
-                <u id="fecha_inicio"></u> <strong align="right">Fecha Finaliza</strong><u id="fecha_final"></u>
+              <p style="text-align:left; margin-left: 60px;">
+                <strong>Resultado obtenido</strong><br>
+                <u id="resultado"></u>
+
               </p><br>
-              <p style="text-align:left; margin-left: 58px;">
-                <strong>Avance realizado si estuvo el periodo anterior</strong>
-                <u id="avance_realizado"></u>
-              </p><br>
-              <p style="text-align:left; margin-left: 58px;">
-                <strong>Proyección para este periodo académico</strong>
-                <u id="proyeccion"></u>
-              </p><br>
-              <p style="text-align:left; margin-left: 58px;">
-                <strong>Tiempo de dedicación propuesto (horas por semana)</strong>
-                <u id="horas"></u>
-              </p>
+              <p style="text-align:left; margin-left: 60px;">
+                <strong>Fecha que inicio el proyecto</strong><br>
+                <u id="fecha_inicio"></u>
+              </p> <br>
+              <p style="text-align:left; margin-left: 60px;">
+                <strong>Fecha que finaliza participación en proyecto</strong><br>
+                <u id="fecha_final"></u>
+              </p> <br> <br> <br>
 
             </body>
 
@@ -124,15 +142,12 @@ $visualizacion = permiso_ver($Id_objeto);
           </div>
         </div>
         <div class="modal-footer">
-          <form position="absolute" id="form_solictiud" method="get" target="_blank" action="../pdf/getDataReasignacion.php">
+          <form position="absolute" id="form_solictiud" method="get" target="_blank" action="../pdf/pdf_retro_alimentacion.php">
             <!-- <input type="text" name="id_cliente" value=' + data + '> -->
-            <input style="display:none;" type="text" id="id_cliente" name="id_cliente" class="form-control">
+            <input style="display:none;" type="text" id="id_retro_soli" name="id_retro_soli" class="form-control">
             <input id="" type="submit" name="enviar" class="btn btn-primary" value="Generar PDF">
           </form>
           <!-- <button type="button"  >Generar PDF</button> -->
-
-          <button type="button" class="btn btn-danger" id="solictud_denegar">Denegar</button>
-          <button type="button" class="btn btn-success" id="aceptar_solicitud">Aceptar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
@@ -140,8 +155,8 @@ $visualizacion = permiso_ver($Id_objeto);
   </div>
   <!-- fin modal -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="nueva_solicitud" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!-- segundo modal Inicio -->
+  <div class="modal fade" id="nueva_retroali" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -151,7 +166,7 @@ $visualizacion = permiso_ver($Id_objeto);
           </button>
         </div>
         <div class="modal-body">
-          <form id="form_solicitud_nueva">
+          <form id="form_retro_nueva">
             <label for="">Nombre Docente</label>
             <select name="nombre_docentes" id="nombre_docentes" class="form-control">
 
@@ -175,20 +190,34 @@ $visualizacion = permiso_ver($Id_objeto);
               <option value="PERIODO III">PERIODO III</option>
               <option value="PERIODO IV">PERIODO IV</option>
             </select>
-            <label for="">Cantidad horas</label>
-            <input type="text" id="horas_soli" name="horas_soli" class="form-control" number maxlength="2" required>
+            <div class="row">
+              <div class="col-4">
+                <label for="">Cantidad horas</label>
+                <input type="text" id="horas_soli" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="horas_soli" class="form-control" number maxlength="2" required>
+              </div>
+              <div class="col-4">
+                <label for="">Cantidad clases</label>
+                <input type="text" id="cant_clases" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="cant_clases" class="form-control" number maxlength="1" required>
+              </div>
+              <div class="col-4">
+                <label for="">N° Memo</label>
+                <input type="text" id="n_memo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="n_memo" class="form-control" number maxlength="6" required>
+              </div>
+            </div>
             <label for="">Avance Realizado</label>
             <textarea class="form-control" id="avance_realizado" name="avance_realizado" rows="3" onkeyup="mayusculas(this);" required></textarea>
-
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="genera_solicitud">Enviar</button>
+          <button type="button" class="btn btn-primary" id="genera_retroalimentacion">Enviar</button>
         </div>
       </div>
     </div>
   </div>
+
+
+  <!-- segundo modal fin -->
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -198,7 +227,7 @@ $visualizacion = permiso_ver($Id_objeto);
           <div class="col-sm-6">
 
 
-            <h1>Solicitudes de reasignación</h1>
+            <h1>Retroalimentación</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -212,29 +241,27 @@ $visualizacion = permiso_ver($Id_objeto);
         </div>
       </div><!-- /.container-fluid -->
     </section>
-    <!--Pantalla 2-->
     <div class="card card-default">
 
 
       <div class="card-body  ">
         <div class="row">
           <div class="col-9">
-            <h3 class="card-title">Registro de solicitudes</h3>
+            <h3 class="card-title">Registro de retroalimentación</h3>
           </div>
           <div class="col-3">
-            <a href="#" class="btn btn-success btn-m" data-toggle="modal" id="nueva_soli_modal" data-target="#nueva_solicitud">Nueva solicitud</a>
+            <a href="#" class="btn btn-success btn-m" data-toggle="modal" id="nueva_soli_retro" data-target="#nueva_retroali">Nueva retroalimentación</a>
           </div>
         </div>
         <!-- <a href="../vistas/g_cargararchivosdecargaacademica_vista.php" class="btn btn-success btn-m">Nueva Gestión de Carga</a> -->
       </div>
 
     </div>
-    <br>
-    <br>
+
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Solicitudes</h3>
+        <h3 class="card-title">Retroalimentación</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -245,15 +272,15 @@ $visualizacion = permiso_ver($Id_objeto);
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-        <table id="tabla_solicitud" class="table table-bordered table-striped" cellpadding="0" width="100%">
+        <table id="tabla_retroalimentacion" class="table table-bordered table-striped" cellpadding="0" width="100%">
           <thead>
             <tr>
-              <th scope="col">ID SOLICITUD</th>
-              <th scope="col">ID DOCENTE</th>
-              <th scope="col">NOMBRE DOCENTE</th>
-              <th scope="col">RAZÓN</th>
-              <th scope="col">ESTADO SOLICITUD</th>
-              <th scope="col">ACCIÓN</th>
+              <th scope="col">ID</th>
+              <th scope="col">PERIODO</th>
+              <th scope="col">DOCENTE</th>
+              <th scope="col">CODIGO EMPLEADO</th>
+              <th scope="col">AVANCES</th>
+              <th scope="col">DETALLES</th>
               <th scope="col">PDF</th>
             </tr>
           </thead>
@@ -262,10 +289,8 @@ $visualizacion = permiso_ver($Id_objeto);
       <!-- /.card-body -->
       <br> <br> <br> <br>
       <div class="card-footer">
-        <a href="../pdf/pdf_reasignacion.php" target="_blank">Descargar solicitud de reasignación</a>
+        <a href="../pdf/pdf_retroalimentacion.php" target="_blank">Descargar solicitud de retroalimentación</a>
         <!-- <embed src="../pdf/getDataReasignacion.php" frameborder="1" width="100%" height="400px"> -->
-
-
       </div>
     </div>
 
@@ -275,15 +300,9 @@ $visualizacion = permiso_ver($Id_objeto);
   </div>
 
   <script src="../js/manejo_solicitudes.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script> -->
-
-
   <script type="text/javascript">
     $(document).ready(function() {
-      var table = $("#tabla_solicitud").DataTable({
+      var table = $("#tabla_retroalimentacion").DataTable({
         "lengthMenu": [
           [5],
           [5]
@@ -349,101 +368,95 @@ $visualizacion = permiso_ver($Id_objeto);
           },
         },
         "ajax": {
-          "url": "../clases/tabla_reac_solicitud.php",
+          "url": "../clases/tabla_retroalimentacion.php",
           "type": "POST",
           "dataSrc": ""
         },
         "columns": [{
-            "data": "id_reac_academica"
+            "data": "id_retroalimentacion"
           },
           {
-            "data": "id_docente"
+            "data": "periodo"
           },
           {
-            "data": "nombre_docente"
+            "data": "docente"
           },
           {
-            "data": "razon_negada"
+            "data": "codigo_empleado"
           },
           {
-            "data": "estado"
+            "data": "avances"
           },
           {
             "data": null,
             defaultContent: '<center><div class="btn-group"><button id="ver_detalles" class="ver btn btn-success btn - m" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye"></i></button><div></center>'
-          },
-          {
+          }, {
             "data": null,
-            defaultContent: '<center><button class="btn btn-primary" id="generar_pdf">Generar</button></center>'
+            defaultContent: '<center> <button class="btn btn-primary" id="generar_pdf">Generar</button></center>'
           },
           // { "data": "ip" },
           // { "data": "cambio" },                                                    
         ],
-        "rowCallback": function(row, data, index) {
-          if (data.estado == "Denegada") {
-            $('td', row).css('background-color', '#fba6b1');
-          } else if (data.estado == "Aceptada") {
-            $('td', row).css('background-color', '#c7ffc7');
-          }
-        }
+        // "rowCallback": function(row, data, index) {
+        //   if (data.estado == "Denegada") {
+        //     $('td', row).css('background-color', '#fba6b1');
+        //   } else if (data.estado == "Aceptada") {
+        //     $('td', row).css('background-color', '#c7ffc7');
+        //   }
+        // }
 
       });
 
-      $('#tabla_solicitud tbody').on('click', '#generar_pdf', function() {
+      $('#tabla_retroalimentacion tbody').on('click', '#generar_pdf', function() {
         var fila = table.row($(this).parents('tr')).data();
-        var id_soli = fila.id_reac_academica;
-        console.log(id_soli);
-        redir(id_soli);
-      });
-
-      $('#tabla_solicitud tbody').on('click', '#ver_detalles', function() {
-        //LECTURA DEL EVENTO PARA ELIMINAR UN REGISTRO
-        var fila = table.row($(this).parents('tr')).data();
-        var id = fila.id_reac_academica;
+        var id = fila.id_retroalimentacion;
         console.log(id);
-        document.getElementById("id_cliente").value = id;
-        //redir(id);
-        const formulario_envio = new FormData();
-        formulario_envio.append('id_cliente', id);
-        formulario_envio.append('reac_cliente', 1);
+        redir(id);
+      });
+
+
+      $('#tabla_retroalimentacion tbody').on('click', '#ver_detalles', function() {
+        var fila = table.row($(this).parents('tr')).data();
+        var id = fila.id_retroalimentacion;
+        document.getElementById('id_retro_soli').value = id;
+        //console.log(id);
+
+        const form_retro = new FormData();
+        form_retro.append('enviar_retro', 1);
+        form_retro.append('id_retro', id);
+
         fetch('../Controlador/action.php', {
-            method: 'POST',
-            body: formulario_envio
+            method: "POST",
+            body: form_retro
           })
           .then(res => res.json())
           .then(data => {
             //console.log(data);
-            console.log('Datos_proyecto_solicitud');
-            //document.getElementById('').innerHTML = `${data.}`;
-            document.getElementById('id_solicitud').innerHTML = `${data.id_reac_academica}`;
-            document.getElementById('nombre_solicitud').innerHTML = `${data.nombre_proyecto}`;
-            document.getElementById('nombre_docente').innerHTML = `${data.nombre_docente}`;
+            document.getElementById('id_periodo').innerHTML = `${data.periodo}`;
+            document.getElementById('anio').innerHTML = `${data.anio}`;
+            document.getElementById('docente_nombre').innerHTML = `${data.docente}`;
+            document.getElementById('cod_empleado').innerHTML = `${data.codigo_empleado}`;
+            document.getElementById('cant_clases').innerHTML = `${data.cant_clases_reasignadas}`;
+            document.getElementById('memo').innerHTML = `${data.memorandum}`;
             document.getElementById('nombre_proyecto').innerHTML = `${data.nombre_proyecto}`;
+            document.getElementById('resultado').innerHTML = `${data.avances}`;
             document.getElementById('fecha_inicio').innerHTML = `${data.fecha_inicio}`;
-            document.getElementById('fecha_final').innerHTML = `${data.fecha_final}`;
-            document.getElementById('avance_realizado').innerHTML = `${data.avance_realizado}`;
-            document.getElementById('proyeccion').innerHTML = `${data.proyec_periodo_actual}`;
-            document.getElementById('horas').innerHTML = `${data.cant_horas}`;
+            document.getElementById('fecha_final').innerHTML = `${data.fecha_finalizacion}`;
           });
       });
-
 
     });
 
     function redir(data) {
-      //document.getElementById('redirect').innerHTML = '<form style="display:none;" position="absolute" method="get" target="_blank" action="../pdf/getDataReasignacion.php"><input type="text" name="id_cliente" value = ' + data + '><input id="redirbtn" type="submit" name="enviar" value=' + data + '></form>';
-      document.getElementById('redirect').innerHTML = '<form style="display:none;" position="absolute" method="get" target="_blank" action="../pdf/getDataReasignacion.php"><input type="text" name="id_cliente" value = ' + data + '><input id="redirbtn" type="submit" name="enviar" value=' + data + '></form>';
+      document.getElementById('redirect').innerHTML = '<form style="display:none;" position="absolute" method="get" target="_blank" action="../pdf/pdf_retro_alimentacion.php"><input type="text" name="id_retro_soli" value = ' + data + '><input id="redirbtn" type="submit" name="enviar" value=' + data + '></form>';
+      // document.getElementById('redirect').innerHTML = '<form style="display:none;" position="absolute" method="get" target="_blank" action="../pdf/getDataReasignacion.php"><input type="text" name="id_cliente" value = ' + data + '><input id="redirbtn" type="submit" name="enviar" value=' + data + '></form>';
       document.getElementById('redirbtn').click();
     }
-    $("#datepicker, #datepicker1").datepicker();
 
-    function mayusculas(e) {
-      e.value = e.value.toUpperCase();
-    }
+    const mostrar_modal = document.getElementById('nueva_soli_retro');
+    mostrar_modal.addEventListener('click', function(e) {
+      e.preventDefault();
 
-
-    const button_modal_soli = document.getElementById('nueva_soli_modal');
-    button_modal_soli.addEventListener('click', function(e) {
       const getData_docentes = new FormData();
       getData_docentes.append('getData_docente', 1);
       fetch('../Controlador/action.php', {
@@ -461,37 +474,45 @@ $visualizacion = permiso_ver($Id_objeto);
         })
     });
 
-    const generar_solicitud = document.getElementById('genera_solicitud');
-    const formulario_solicitud = document.getElementById('form_solicitud_nueva');
 
-    generar_solicitud.addEventListener('click', function(e) {
-      e.preventDefault();
+    $("#datepicker, #datepicker1").datepicker();
 
+    function mayusculas(e) {
+      e.value = e.value.toUpperCase();
+    }
 
-      if (form_solicitud_nueva.checkValidity() === false) {
+    //!agregar una nueva retroalimentación
+
+    const new_retro = document.getElementById('genera_retroalimentacion');
+    const form_retro = document.getElementById('form_retro_nueva');
+
+    new_retro.addEventListener('click', function(e) {
+      if (form_retro_nueva.checkValidity() === false) {
         e.preventDefault();
         e.stopPropagation();
-        form_solicitud_nueva.classList.add('was-validated')
+        form_retro_nueva.classList.add('was-validated')
       } else {
         var nombre_docente = $('#nombre_docentes option:selected').text();
-        const enviar_datos = new FormData(formulario_solicitud);
-        enviar_datos.append('guardarDatos_soli', 1);
-        enviar_datos.append('nombre_completo', nombre_docente);
+
+        const new_form = new FormData(form_retro);
+        new_form.append('nueva_retro', 1);
+        new_form.append('nombre_completo', nombre_docente);
+        e.preventDefault();
         fetch('../Controlador/action.php', {
             method: 'POST',
-            body: enviar_datos
+            body: new_form
           })
           .then(res => res.json())
           .then(data => {
             console.log(data);
             if (data == 'exito') {
-              $('#nueva_solicitud').modal('toggle');
+              $('#nueva_retroali').modal('toggle');
               swal(
                 '¡Solicitud enviada con exito!',
                 'datos agregados a la base de datos',
                 'success'
               )
-              var tabla_revision = $('#tabla_solicitud').dataTable();
+              var tabla_revision = $('#tabla_retroalimentacion').dataTable();
               tabla_revision.api().ajax.reload();
             } else {
               swal(
@@ -502,9 +523,9 @@ $visualizacion = permiso_ver($Id_objeto);
             }
           })
       }
-
-
     });
+
+    //! FIN agregar una nueva retroalimentación
   </script>
 </body>
 

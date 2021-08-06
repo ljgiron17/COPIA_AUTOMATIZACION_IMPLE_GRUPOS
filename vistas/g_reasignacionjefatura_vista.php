@@ -67,7 +67,7 @@ $_SESSION['g_reasignacion_retroalimentacion']="No
             <ol class="breadcrumb float-sm-right">
 
             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Jefatura</li>
+              <li class="breadcrumb-item active">Gestion de Reasignacion Jefatura</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -110,7 +110,7 @@ $_SESSION['g_reasignacion_retroalimentacion']="No
   <div class="icon">
     <i class="fas fa-user-plus"></i>
   </div>
-  <a href="../vistas/g_reasignacion_retroalimentacion.php" class="small-box-footer">
+  <a href="../vistas/g_vista_retroalimentacionJefatura.php" class="small-box-footer">
   Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>

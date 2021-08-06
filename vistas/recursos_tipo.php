@@ -161,7 +161,7 @@ ob_end_flush();
     </div>
 </body>
 </html>
-<script src="../js/tipos_recursos.js"></script>
+<script src="../js/tipos_recursos.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>

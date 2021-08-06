@@ -5,10 +5,11 @@ $db = new db;
 require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+//!modificacion 1/8/2021 ----------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 if (isset($_POST['add_info'])) {
 
-    //archivo coordinacion academica
+    // //?archivo coordinacion academica
     $nombreArchivo_ca = $_FILES['file_ca']['name'];
     $nombreTemp_ca = $_FILES['file_ca']['tmp_name']; //ruta del archivo a validar formato correcto
     $fileError_ca = $_FILES['file_ca']['error']; //!errores
@@ -61,11 +62,123 @@ if (isset($_POST['add_info'])) {
             $fecha_cr = $_POST['txt_fecha_ingreso_cr'];
             //?fin datos del form
 
-            $respuesta = $db->addfileAcademica($periodo_ca, $descrip_ca, $nombre_archivo, $fecha, $periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr);
-            echo json_encode($respuesta);
+            //$respuesta = $db->addfileAcademica($periodo_ca, $descrip_ca, $nombre_archivo, $fecha, $periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr);
+            $id_ca = $db->addfileAcademica($periodo_ca, $descrip_ca, $nombre_archivo, $fecha);
+            $id_cr = $db->subir_craed($periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr);
+            //echo json_encode($respuesta_ca);
+            //print_r($respuesta_ca . ' ' . $respuesta_cr);
+            if ($id_ca <= 0 or $id_cr <= 0) {
+                echo json_encode('error');
+            } else {
+                subirBase_academica($nombre_archivo, $id_ca);
+                subirBase_craed($nombre_archivo_cr, $id_cr);
+                echo json_encode('exito');
+            }
         }
     }
 }
+//funcion para subir el archivo de academica 
+function subirBase_academica($nombre_archivo, $id_ca)
+{
+    //$nombre_archivo = $_POST['nombre_archivo1'];
+    //$id = $_POST['id_archivo'];
+
+    // $respuesta = $db->contarArchivo($id);
+    // $cantidad = $respuesta['cuenta'];
+
+    $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
+    //$ruta = '../archivos/file_academica/' . $nombre_archivo;
+    class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
+    {
+
+        public function readCell($column, $row, $worksheetName = '')
+        {
+            if ($row > 3) {
+                return true;
+            }
+            return false;
+        }
+    }
+    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+    $inputFileName = '../archivos/file_academica/' . $nombre_archivo;
+
+    $inputFileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($inputFileName);
+
+    $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+
+    $reader->setReadFilter(new MyReadFilter());
+    $spreadsheet = $reader->load($inputFileName);
+    $cantidad = $spreadsheet->getActiveSheet()->toArray();
+
+
+    foreach ($cantidad as $row) {
+        if ($row[0] != "") {
+            array_push($row, $id_ca);
+            // $consulta = "INSERT INTO `academica_prueba_1`(`n_empleado`, `nombre`, `codigo`, `aignatura`, `unidades_valorativas`, `seccion`, `hi`, `hf`, `dia`, `aula`, `edificio`, `n_alumnos`, `control`, `modalidad`)
+            // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]')";
+            // $consulta = " INSERT INTO `tbl_carga_academica_temporal`(`N_empleado`, `Nombre`, `Codigo`, `Asignatura`, `UV`, `Seccion`, `HI`, `HF`, `Dias`, `Aula`, `Edificio`, `N_Alumnos`, `N_Control`, `Modalidad`,`id_coordAcademica`)
+            //VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]')";
+
+            $consulta = "INSERT INTO `tbl_carga_academica_temporal`(`N_empleado`, `Nombre`, `Codigo`, `Asignatura`, `UV`, `Seccion`, `HI`, `HF`, `Dias`, `Aula`, `Edificio`, `N_Alumnos`, `N_Control`, `Modalidad`,`id_coordAcademica`)
+            VALUES('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]')";
+            $resultado = $conexion->query($consulta);
+        }
+    }
+    //echo json_encode('exito');
+}
+//*fin funcion para subir el archivo academica
+
+//?subir archivo de craed
+
+function subirBase_craed($nombre_archivo_cr, $id_cr)
+{
+
+
+    $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
+    class MyReadFilte implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
+    {
+        public function readCell($column, $row, $worksheetName = '')
+        {
+            if ($row > 4) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+    $inputFileName = '../archivos/file_craed/' . $nombre_archivo_cr;
+
+    $inputFileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($inputFileName);
+
+    $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+
+    $reader->setReadFilter(new MyReadFilter());
+    $spreadsheet = $reader->load($inputFileName);
+    $cantidad = $spreadsheet->getActiveSheet()->toArray();
+
+
+    foreach ($cantidad as $row) {
+        if ($row[0] != "") {
+            array_push($row, $id_cr);
+            // $consulta = "INSERT INTO `academica_prueba_1`(`n_empleado`, `nombre`, `codigo`, `aignatura`, `unidades_valorativas`, `seccion`, `hi`, `hf`, `dia`, `aula`, `edificio`, `n_alumnos`, `control`, `modalidad`)
+            // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]')";
+            // $consulta = " INSERT INTO `tbl_carga_craed`(`Seleccionar`, `N_Control_cr`, `Centro_cr`, `Codigo_cr`, `Asignatura_cr`, `Seccion_cr`, `Periodo`, `HI_cr`, `HF_cr`, `Dias_cr`, `Aula_cr`, `Edificio_cr`, `Numero`, `Profesor`, `Autorizacion`, `Cupos`, `Cupos_libres`, `Lista_espera`, `Semana`, `En_linea`, `Por_egresar`, `En_Red`, 'id_craed_jefa')
+            // VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]', '$row[15]', '$row[16]', '$row[17]','$row[18]', '$row[19]','$row[20]','$row[21]','$row[22]')";
+
+            $consulta =  "INSERT INTO `tbl_carga_craed`(`Seleccionar`, `N_Control_cr`, `Centro_cr`, `Codigo_cr`, `Asignatura_cr`, `Seccion_cr`, `Periodo`, `HI_cr`, `HF_cr`, `Dias_cr`, `Aula_cr`, `Edificio_cr`, `Numero`, `Profesor`, `Autorizacion`, `Cupos`, `Cupos_libres`, `Lista_espera`, `Semana`, `En_linea`, `Por_egresar`, `En_Red`, `id_craed_jefa`)
+            VALUES ('$row[0]', '$row[1]','$row[2]', '$row[3]','$row[4]', '$row[5]', '$row[6]', '$row[7]','$row[8]', '$row[9]','$row[10]', '$row[11]','$row[12]', '$row[13]', '$row[14]','$row[15]', '$row[16]','$row[17]', '$row[18]', '$row[19]', '$row[20]','$row[21]', '$row[22]')";
+            $resultado = $conexion->query($consulta);
+            //print_r($row);
+
+        }
+    }
+    //    echo $resultado;      
+    //echo json_encode('archivo_subidoCR');
+}
+//fin subir archivo de craed
+
+//!fin modificacion 1/08/2021 ----------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 if (isset($_POST['reac_cliente'])) {
 
@@ -74,11 +187,16 @@ if (isset($_POST['reac_cliente'])) {
     echo json_encode($respuesta);
 }
 
+//?modificacion 29/07/2021
+
 if (isset($_POST['denegada'])) {
+    $razon_minu = $_POST['razon_negada'];
+    $razon_mayus = strtoupper($razon_minu);
     $id_cliente = $_POST['id_cliente'];
-    $respuesta = $db->updateSolicitudDenegada($id_cliente);
+    $respuesta = $db->updateSolicitudDenegada($id_cliente, $razon_mayus);
     echo json_encode($respuesta);
 }
+//?fin modificacion 29/07/2021
 
 if (isset($_POST['aceptada'])) {
     $id_cliente = $_POST['id_cliente'];
@@ -159,11 +277,18 @@ if (isset($_POST['tipo_recursos'])) {
     echo json_encode($respuesta);
 }
 
-if (isset($_POST['eliminar'])) {
-    $id = $_POST['id'];
-    $respuesta = $db->eliminarRecurso($id);
-    echo json_encode($respuesta);
+if (isset($_POST['eliminar_recurso'])) {
+    //echo json_encode($_POST);
+    $id_recurso = $_POST['id'];
+    $rspuesta = $db->EliminarRecurso($id_recurso);
+    echo json_encode($rspuesta);
 }
+
+// if (isset($_POST['eliminar_recurso'])) {
+//     $id = $_POST['id'];
+//     $respuesta = $db->eliminarRecurso($id);
+//     echo json_encode($respuesta);
+// }
 
 if (isset($_POST['cambiar_estado'])) {
     $estado = $_POST['estado'];
@@ -378,8 +503,13 @@ if (isset($_POST['crear_plani'])) {
     $nombre = $_POST['n_planificacion'];
     $descripcion = $_POST['descripcion'];
     $anio = $_POST['txt_fecha_ingreso_ca'];
-    $respuesta = $db->addPlanificaion($nombre, $descripcion, $anio);
-    echo json_encode($respuesta);
+    $año_actual = date('Y');
+    if ($anio < $año_actual) {
+        echo json_encode('anio_viejo');
+    } else {
+        $respuesta = $db->addPlanificaion($nombre, $descripcion, $anio);
+        echo json_encode($respuesta);
+    }
 }
 
 if (isset($_POST['crear_obj'])) {
@@ -642,12 +772,12 @@ if (isset($_POST['getDataIndicador'])) {
     echo json_encode($respuesta);
 }
 
-if (isset($_POST['getDataIndicador'])) {
-
+if (isset($_POST['insertDataIndicador'])) {
     $descripcion = $_POST["descp_detalle"];
     $id_indicador_gestion = $_POST["valor_select"];
-    $rspuesta = $db->insertar_detalle_gestion($descripcion, $id_indicador_gestion);
-    echo json_encode($rspuesta);
+    $respuesta = $db->insertar_detalle_gestion($descripcion, $id_indicador_gestion);
+    //$rspuesta = $db->insertar_detalle_gestion($descripcion, $id_indicador_gestion);
+    echo json_encode($respuesta);
 }
 
 //eliminar para indicadores detalle
@@ -676,3 +806,78 @@ if (isset($_POST['addData_detalle_gasto'])) {
 
     //echo json_encode($_POST);
 }
+//modificacion laura
+
+
+//parte de alex
+//?ultima modificacion 28/7/2021
+if (isset($_POST['getData_docente'])) {
+    $respuesta = $db->getDocentes();
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['guardarDatos_soli'])) {
+
+    $id_docente = $_POST['nombre_docentes'];
+    $nombre_docente = $_POST['nombre_completo'];
+    $nombre_proyecto = $_POST['nombre_proyecto'];
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_final = $_POST['fecha_final'];
+    $avance_realizado = $_POST['avance_realizado'];
+    $proyec_periodo_actual = $_POST['periodo_soli'];
+    $cant_horas = $_POST['horas_soli'];
+    $estado = 'Pendiente';
+    $respuesta = $db->insert_soli($id_docente, $nombre_docente, $nombre_proyecto, $fecha_inicio, $fecha_final, $avance_realizado, $proyec_periodo_actual, $cant_horas, $estado);
+    echo json_encode($respuesta);
+}
+//?ultima modificacion 28/7/2021
+
+if (isset($_POST['eliminar_indicador'])) {
+    $id_indicador = $_POST['id_indicador'];
+    $rspuesta = $db->eliminar_indicador($id_indicador);
+    echo json_encode($rspuesta);
+}
+if (isset($_POST['eliminar_detalle_gasto'])) {
+    
+    $id_detalle_tipo_gasto = $_POST['id_detalle_tipo_gasto'];
+    $rewspuesta = $db->eliminar_deatlle_gasto($id_detalle_tipo_gasto);
+    echo json_encode($rewspuesta);
+    //echo json_encode($_POST);
+
+}
+
+//?modificacion 29/07/2021
+if (isset($_POST['nueva_retro'])) {
+    $nombre_docente = $_POST['nombre_completo'];
+    $arrayNombre = explode(" ", $nombre_docente, 3);
+    $nombre_buscar = $arrayNombre[0] . " " . $arrayNombre[1];
+
+    $anio = date("Y");
+    $periodo = $_POST["periodo_soli"];
+    $docente = $_POST["nombre_completo"];
+    $codigo_empleado = $_POST["nombre_docentes"];
+    $cant_clases_reasignadas = $_POST["cant_clases"];
+    $memorandum = $_POST["n_memo"];
+    $nombre_proyecto = $_POST["nombre_proyecto"];
+    $fecha_inicio = $_POST["fecha_inicio"];
+    $fecha_finalizacion = $_POST["fecha_final"];
+    $estado = 'Pendiente';
+    $avances = $_POST["avance_realizado"];
+
+
+    $identidad = $db->get_id($nombre_buscar);
+    if ($identidad == false) {
+        $nombre_buscar = $arrayNombre[0];
+        $n_identidad = $db->get_id($nombre_buscar);
+        $id_final = $n_identidad['identidad'];
+        $ingresar_retro = $db->add_retroalimentacion($periodo, $anio, $docente, $codigo_empleado, $cant_clases_reasignadas, $memorandum, $nombre_proyecto, $fecha_inicio, $fecha_finalizacion, $id_final, $estado, $avances);
+        echo json_encode($ingresar_retro);
+        //echo json_encode($n_identidad);
+    } else {
+        $id_final = $identidad['identidad'];
+        $ingresar_retro = $db->add_retroalimentacion($periodo, $anio, $docente, $codigo_empleado, $cant_clases_reasignadas, $memorandum, $nombre_proyecto, $fecha_inicio, $fecha_finalizacion, $id_final, $estado, $avances);
+        echo json_encode($ingresar_retro);
+        //echo json_encode($identidad);
+    }
+}
+//?fin modificacion 29/07/2021

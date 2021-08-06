@@ -3,46 +3,46 @@ ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
-require_once('../clases/funcion_bitacora.php');
-require_once('../clases/funcion_visualizar.php');
-require_once('../clases/funcion_permisos.php');
+//require_once('../clases/funcion_bitacora.php');
+// require_once('../clases/funcion_visualizar.php');
+// require_once('../clases/funcion_permisos.php');
 
 
-$id_objeto = 106;
+// $id_objeto = 106;
 
-$visualizacion = permiso_ver($id_objeto);
+// $visualizacion = permiso_ver($id_objeto);
 
-if ($visualizacion == 0) {
-  echo '<script type="text/javascript">
-                          swal({
-                                title:"",
-                                text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-                                type: "error",
-                                showConfirmButton: false,
-                                timer: 3000
-                              });
-                            window.location = "../vistas/gestion_dias_feriados_vista.php";
+// if ($visualizacion == 0) {
+//   echo '<script type="text/javascript">
+//                           swal({
+//                                 title:"",
+//                                 text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+//                                 type: "error",
+//                                 showConfirmButton: false,
+//                                 timer: 3000
+//                               });
+//                             window.location = "../vistas/gestion_dias_feriados_vista.php";
 
-                            </script>';
-} else {
+//                             </script>';
+// } else {
 
-  bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'Ingresó', 'a Declaracion Jurada');
-}
-
-
-
-
-ob_end_flush();
+//   bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'Ingresó', 'a Declaracion Jurada');
+// }
 
 
 
-if (permiso_ver('106') == '1') {
 
-  $_SESSION['g_carga_declaracionjurada_vista'] = "...";
-} else {
-  $_SESSION['g_carga_declaracionjurada_vista'] = "No 
-  tiene permisos para visualizar";
-}
+// ob_end_flush();
+
+
+
+// if (permiso_ver('106') == '1') {
+
+//   $_SESSION['g_carga_declaracionjurada_vista'] = "...";
+// } else {
+//   $_SESSION['g_carga_declaracionjurada_vista'] = "No 
+//   tiene permisos para visualizar";
+// }
 
 ?>
 <!DOCTYPE html>
@@ -65,6 +65,7 @@ if (permiso_ver('106') == '1') {
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
               <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Gestión de Carga Académica</a></li>
               <li class="breadcrumb-item active">Declaración Jurada</li>
             </ol>
@@ -213,7 +214,10 @@ if (permiso_ver('106') == '1') {
         e.preventDefault();
         var fila = table.row($(this).parents('tr')).data();
         var id_coordAcademica = fila.id_coordAcademica;
+        var periodo = fila.periodo;
         window.localStorage.clear();
+        localStorage.setItem('id_coordAcademica', id_coordAcademica);
+        localStorage.setItem('periodo', periodo);
 
         const formulario = new FormData();
         formulario.append('enviar_docente', 1);
@@ -225,7 +229,7 @@ if (permiso_ver('106') == '1') {
           .then(res => res.json())
           .then(data => {
             console.log(data);
-            localStorage.setItem('data', JSON.stringify(data));
+            localStorage.setItem('data', JSON.stringify(data));            
             window.location.href = "../vistas/g_generardeclaracion_vista.php";
           })
       });

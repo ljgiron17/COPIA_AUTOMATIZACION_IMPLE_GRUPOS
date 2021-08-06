@@ -62,10 +62,55 @@ if (isset($_REQUEST['msj'])) {
       display: block;
     }
   </style>
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"> -->
+  <!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script> -->
+
+  <!-- <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script> -->
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
 </head>
 
-
 <body>
+  <!-- modal de presentacion de word -->
+  <!-- Modal -->
+  <div class="modal fade" id="modal_final" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="datos_form_ca" method="get">
+            <label for="">Nombre del MASTER</label>
+            <input type="text" class="form-control" id="master_n" name="master_n" required onkeyup="mayusculas(this)">
+            <label for="">N° de Oficio</label>
+            <input type="text" class="form-control" id="numero_fi" name="numero_ofi" required onkeyup="mayusculas(this);">
+            <input type="text" id="numero_archivo" hidden readonly>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="enviar_reporte_word">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- fin modal de presentacion de word -->
+
+
 
 
   <div class="content-wrapper">
@@ -74,8 +119,6 @@ if (isset($_REQUEST['msj'])) {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-
-
             <!-- inicio del modal -->
             <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg">
@@ -123,8 +166,7 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
-                                <!--  <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" required>-->
-                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" maxlength="50" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descrp_ca');" onkeypress="return sololetras(event)" required>
+                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" required onkeyup="mayusculas(this);">
                               </div>
                               <div class="col-sm">
                                 <label for="">AÑO PERIODO</label><br>
@@ -170,8 +212,7 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
-                                <!-- <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" required>-->
-                                <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" maxlength="50" value="" onkeyup="DobleEspacio(this, event); MismaLetra('descrip_cr');" onkeypress="return sololetras(event)" required>
+                                <input type="text" class="form-control" name="descrip_cr" id="descrip_cr" required>
                               </div>
                               <div class="col-sm">
                                 <label for="">AÑO PERIODO</label><br>
@@ -186,7 +227,7 @@ if (isset($_REQUEST['msj'])) {
 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="enviar_archivos">Guardar</button>
+                    <button type="button" class="btn btn-success" id="enviar_archivos">Enviar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
@@ -212,7 +253,7 @@ if (isset($_REQUEST['msj'])) {
 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Generar WORD</button>
+                    <!-- <button type="button" class="btn btn-primary">Generar WORD</button> -->
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
@@ -226,8 +267,8 @@ if (isset($_REQUEST['msj'])) {
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Gestión de Carga Académica</a></li>
-              <li class="breadcrumb-item active">Registros de Cargas Académicas</li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_cargajefatura_vista.php">Jefatura</a></li>
             </ol>
           </div>
 
@@ -235,8 +276,7 @@ if (isset($_REQUEST['msj'])) {
 
         </div>
       </div><!-- /.container-fluid -->
-    </section>
-
+    </section>    
     <section class="content">
       <div class="container-fluid">
         <!-- pantalla 1 -->
@@ -252,7 +292,7 @@ if (isset($_REQUEST['msj'])) {
       <div class="card-body  ">
         <div class="row">
           <div class="col-9">
-            <h3 class="card-title">Registros de Cargas Académicas</h3>
+            <h3 class="card-title">Registro de Cargas Académicas</h3>
           </div>
           <div class="col-3">
             <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".bd-example-modal-lg">Nueva Gestión de Carga</a>
@@ -267,31 +307,7 @@ if (isset($_REQUEST['msj'])) {
     </div>
     <!-- /.card-header -->
     <div class=" card-body">
-      <!-- <table id="tabla" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>PERIODO</th>
-            <th>DESCRIPCIÓN</th>
-            <th>FECHA</th>
-            <th>ACCIONES</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            <td>
-            <td>
-            <td>
-              <div class="btn-group"> <button class="ver btn btn-primary btn - m">
-                  <i class="fas fa-eye"></i>
-                </button>
-                <button class="editar btn btn-success btn-m">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <div>
 
-        </tbody>
-      </table> -->
       <div class="container-fluid">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
@@ -311,14 +327,14 @@ if (isset($_REQUEST['msj'])) {
                       <table id="tabla_academica" class="table table-bordered table-striped" cellpadding="0" width="100%">
                         <thead>
                           <tr>
-                            <th scope="col">ID ARCHIVO</th>
+                            <th scope="col">ID</th>
                             <th scope="col">PERIODO</th>
                             <th scope="col">DESCRIPCIÓN</th>
                             <th scope="col">ARCHIVO</th>
                             <th scope="col">AÑO PERIODO</th>
                             <th scope="col">FECHA SUBIDA</th>
                             <th scope="col">ACCIÓN</th>
-                            <th scope="col">SUBIR</th>
+                            <th scope="col">Generar WORD</th>
                           </tr>
                         </thead>
                       </table>
@@ -394,26 +410,47 @@ if (isset($_REQUEST['msj'])) {
           [0, 'desc']
         ],
         "responsive": true,
-        "language": {
-          "lengthMenu": "Mostrar _MENU_ Registros",
-          "zeroRecords": "No se encontraron resultados",
-          "info": "Mostrando la pagina de _PAGE_ de _PAGES_",
-          "infoEmpty": "No records available",
-          "infoFiltered": "(Filtrado de _MAX_ Registros Totales)",
-          "search": "Buscar:",
-          "pagingType": "full_numbers",
-          "oPaginate": {
-            "sNext": "Siguiente",
-            "sPrevious": "Anterior"
+        dom: 'Bfrtip',
+        "buttons": [{
+            extend: 'copyHtml5',
+            title: 'Datos Exportados',
+            text: 'Copiar <i class="fas fa-copy"></i>',
+            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            exportOptions: {
+              columns: [0, ':visible']
+            }
           },
-        },
+          {
+            extend: 'excelHtml5',
+            title: 'Datos Exportados',
+            text: 'Excel <i class="fas fa-file-excel"></i>',
+            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            exportOptions: {
+              columns: ':visible'
+            }
+          },
+          {
+            extend: 'pdfHtml5',
+            title: 'Datos Exportados',
+            text: 'PDF <i class="fas fa-file-pdf"></i>',
+            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+            exportOptions: {
+              columns: [0, 1, 2, 3]
+            }
+          },
+          //'colvis'
+        ],
         "ajax": {
           "url": "../clases/tabla_academica.php",
           "type": "POST",
           "dataSrc": ""
         },
         "columns": [{
-            "data": "id_coordAcademica"
+            "data": "id_coordAcademica",
+            "visible": false,
           },
           {
             "data": "periodo"
@@ -436,16 +473,40 @@ if (isset($_REQUEST['msj'])) {
           },
           {
             "data": null,
-            defaultContent: '<button id="upload" class="btn btn-warning"><i class="fas fa-upload"></i></button>'
-          },
+            defaultContent: '<center><button class="btn btn-primary" id="generar_word" data-toggle="modal" data-target="#modal_final">Generar WORD</button></center>'
+          }
         ],
       });
+      //table(0).columns['hidden'];
+
+      //!modificaciones 2/08/2021
+      $('#tabla_academica tbody').on('click', '#generar_word', function() {
+        var fila = table.row($(this).parents('tr')).data();
+        var id_archivo = fila.id_coordAcademica;
+        console.log(id_archivo);
+        document.getElementById('numero_archivo').value = id_archivo;
+        //window.location.href = '../Reporte/reporte_word.php?enviar=enviar&id_archivo='+id_archivo+'';
+      });
+
+
+      const button_sendW = document.getElementById('enviar_reporte_word');
+      button_sendW.addEventListener('click', function(e) {
+        e.preventDefault();
+        var master = document.getElementById("master_n").value;
+        var numero_ofi = document.getElementById("numero_fi").value;
+        var id_archivo = document.getElementById("numero_archivo").value;
+        window.location.href = '../Reporte/reporte_word.php?enviar=enviar&id_archivo=' + id_archivo + '&master=' + master + '&numero_ofi=' + numero_ofi + '';
+        document.getElementById('datos_form_ca').reset();
+        $('#modal_final').modal('toggle');
+      });
+
+      //!modificaciones 2/08/2021
 
       $('#tabla_academica tbody').on('click', '#ver_detail', function() {
         var fila = table.row($(this).parents('tr')).data();
         var nombre_archivo = fila.nombre_archivo;
         console.log(nombre_archivo);
-        //comienza ajax 
+        //comienza ajax
         var ver_excel_ca = "ver_excel_ca";
         $.ajax({
           url: "../Controlador/action.php",
@@ -456,7 +517,7 @@ if (isset($_REQUEST['msj'])) {
             ver_excel_ca: ver_excel_ca
           },
           success: function(r) {
-            console.log(r);
+            //console.log(r); 
             //document.getElementById('cargar_excel').innerHTML = r;
             $('#cargar_excel').html(r);
           } //FIN SUCCES
@@ -473,38 +534,6 @@ if (isset($_REQUEST['msj'])) {
         download(url);
 
       });
-
-      $('#tabla_academica tbody').on('click', '#upload', function() {
-        var fila = table.row($(this).parents('tr')).data();
-        var nombre_archivo1 = fila.nombre_archivo;
-        var id_archivo = fila.id_coordAcademica;
-        const formulario = new FormData();
-        formulario.append('subir_excel_ca', 1);
-        formulario.append('nombre_archivo1', nombre_archivo1);
-        formulario.append('id_archivo', id_archivo);
-        fetch('../Controlador/action.php', {
-            method: 'POST',
-            body: formulario
-          })
-          .then(res => res.json())
-          .then(data => {
-            console.log(data);
-            if (data == 'exito') {
-              swal(
-                'Exito!',
-                '¡Datos subidos correctamente!',
-                'success'
-              )
-            } else if (data == "archivo_subido") {
-              swal(
-                'Existe!',
-                '¡Archivo ya existe en la base de datos!',
-                'warning'
-              )
-            }
-          });
-      });
-
     });
 
     function download(url) {
@@ -519,11 +548,58 @@ if (isset($_REQUEST['msj'])) {
 
   <script>
     $("#datepicker, #datepicker1").datepicker({
-      format: " yyyy", // Notice the Extra space at the beginning
+      format: "yyyy", // Notice the Extra space at the beginning
       viewMode: "years",
-      minViewMode: "years"
+      minViewMode: "years",
+      yearRange: "2021:2100"
     });
   </script>
 </body>
 
 </html>
+
+
+<script>
+  function mayusculas(e) {
+    e.value = e.value.toUpperCase();
+  }
+  //este script srive para validar los campos del modal
+  $("#descrp_ca, #descrip_cr").keypress(function(key) {
+    if ((key.charCode < 97 || key.charCode > 122) //letras mayusculas
+      &&
+      (key.charCode < 65 || key.charCode > 90) //letras minusculas
+      &&
+      (key.charCode != 45) //retroceso
+      &&
+      (key.charCode != 241) //ñ
+      &&
+      (key.charCode != 209) //Ñ
+      &&
+      (key.charCode != 225) //á
+      &&
+      (key.charCode != 233) //é
+      &&
+      (key.charCode != 237) //í
+      &&
+      (key.charCode != 243) //ó
+      &&
+      (key.charCode != 250) //ú
+      &&
+      (key.charCode != 193) //Á
+      &&
+      (key.charCode != 201) //É
+      &&
+      (key.charCode != 205) //Í
+      &&
+      (key.charCode != 211) //Ó
+      &&
+      (key.charCode != 218) //Ú 
+      &&
+      (key.charCode != 95) //_
+      &&
+      (key.charCode != 32) //espacio
+    )
+      return false;
+  });
+  //fin validacion  
+</script>

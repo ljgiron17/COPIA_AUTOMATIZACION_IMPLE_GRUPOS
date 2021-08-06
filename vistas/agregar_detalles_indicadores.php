@@ -84,7 +84,7 @@ require_once('../vistas/pagina_inicio_vista.php');
         } else {
             var select_id = $('#tipos_indicadores').val();
             const formulario_add_detalle_r = new FormData(formulario_detalles);
-            formulario_add_detalle_r.append('addData_r_detalle', 1);
+            formulario_add_detalle_r.append('insertDataIndicador', 1);
             formulario_add_detalle_r.append('valor_select', select_id)
             fetch('../Controlador/action.php', {
                     method: 'POST',

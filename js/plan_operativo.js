@@ -6,7 +6,6 @@ const poa_form = document.getElementById('poa_form');
 const button_edit = document.getElementById('edit_plani');
 
 button.addEventListener('click', function (e) {
-
     //alert('hola');
     if (poa_form.checkValidity() === false) {
         e.preventDefault();
@@ -31,6 +30,12 @@ button.addEventListener('click', function (e) {
                         'success'
                     )
                     document.getElementById("poa_form").reset();
+                } else if (data == 'anio_viejo') {
+                    swal(
+                        '¡año incorrecto!',
+                        '¡Verifique que el año sea mayor o igual que el año actual!',
+                        'info'
+                    )
                 } else {
                     swal(
                         'Oops...',

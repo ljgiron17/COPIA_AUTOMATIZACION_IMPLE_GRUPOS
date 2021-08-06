@@ -7,11 +7,11 @@ require_once('../clases/funcion_visualizar.php');
 
 //if (permiso_ver('140') == '1') {
 //
-  //  $_SESSION['g_detalle_indicadores'] = "...";
-  //} else {
-    //$_SESSION['g_detalle_indicadores'] = "No 
-    //tiene permisos para visualizar";
- // }
+//  $_SESSION['g_detalle_indicadores'] = "...";
+//} else {
+//$_SESSION['g_detalle_indicadores'] = "No 
+//tiene permisos para visualizar";
+// }
 
 ?>
 
@@ -31,7 +31,7 @@ require_once('../clases/funcion_visualizar.php');
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
     <title></title>
-    
+
     <style>
         .my-custom-scrollbar {
             position: relative;
@@ -80,7 +80,7 @@ require_once('../clases/funcion_visualizar.php');
                         <a href="../vistas/agregar_detalles_indicadores.php" class="btn btn-success btn-m">Agregar Nuevo Detalle Indicador</a>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>
@@ -157,40 +157,40 @@ require_once('../clases/funcion_visualizar.php');
                     [0, 'desc']
                 ],
                 "responsive": true,
-                     //desde aqui
-        dom: 'Bfrtip',
-        "buttons": [{
-            extend: 'copyHtml5',
-            title: 'Datos Exportados',
-            text: 'Copiar <i class="fas fa-copy"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'excelHtml5',
-            title: 'Datos Exportados',
-            text: 'Excel <i class="fas fa-file-excel"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'pdfHtml5',
-            title: 'Datos Exportados',
-            text: 'PDF <i class="fas fa-file-pdf"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-        ],
-        //hasta aqui
+                //desde aqui
+                dom: 'Bfrtip',
+                "buttons": [{
+                        extend: 'copyHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Copiar <i class="fas fa-copy"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Excel <i class="fas fa-file-excel"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Datos Exportados',
+                        text: 'PDF <i class="fas fa-file-pdf"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                ],
+                //hasta aqui
                 language: {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar    _MENU_    Filas",
@@ -216,13 +216,13 @@ require_once('../clases/funcion_visualizar.php');
                     },
                 },
                 "ajax": {
-                    "url": "../clases/tabla_detalles_indicador.php", 
+                    "url": "../clases/tabla_detalles_indicador.php",
                     "type": "POST",
                     "dataSrc": ""
                 },
                 "columns": [{
                         "data": "id_detalles_tipo_indicador"
-                    },    
+                    },
                     {
                         "data": "descripcion"
                     },
@@ -231,47 +231,57 @@ require_once('../clases/funcion_visualizar.php');
                     },
                     {
                         "data": null,
-                        defaultContent: '<center><div class="btn-group">'+ 
-                        '<button id="ver_detalle" class="ver btn btn-danger btn - m" data-toggle="modal" data-target=".archivosAcademica"><i class="fas fa-trash"></i></button><div></center>'
+                        defaultContent: '<center><button id="eliminar_indicador" class="btn btn-danger">Eliminar</center>'
                     },
-                    
+
                 ],
             });
 
             //table.columns([0]).visible(false);
 
-            $('#tabla_academica tbody').on('click', '#ver_detalle', function() {
+            $('#tabla_detalles_indicador tbody').on('click', '#eliminar_indicador', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var nombre_archivo = fila.nombre_archivo;
-                console.log(nombre_archivo);
-                //comienza ajax
-                var ver_excel_ca = "ver_excel_ca";
-                $.ajax({
-                    url: "../Controlador/action.php",
-                    type: "POST",
-                    dataType: "html",
-                    data: {
-                        nombre_archivo: nombre_archivo,
-                        ver_excel_ca: ver_excel_ca
-                    },
-                    success: function(r) {
-                        console.log(r);
-                        //document.getElementById('cargar_excel').innerHTML = r;
-                        $('#cargar_excel').html(r);
-                    } //FIN SUCCES
-                });
-                //FIN  AJAX
+                var id_indicador = fila.id_detalles_tipo_indicador;
+                console.log(id_indicador);
+
+                const formulario_indicador = new FormData();
+                formulario_indicador.append('eliminar_indicador', 1);
+                formulario_indicador.append('id_indicador', id_indicador);
+
+                fetch('../Controlador/action.php', {
+                        method: 'POST',
+                        body: formulario_indicador
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data == 'exito') {
+                            swal(
+                                'Exito...',
+                                'DAtos Eliminados con exito!',
+                                'success'
+                            )
+                            $('#tabla_detalles_indicador').DataTable().ajax.reload();
+                        } else {
+                            swal(
+                                'Oops...',
+                                'Something went wrong!',
+                                'error'
+                            )
+                        }
+                    });
+
             });
 
-            $('#tabla_detalles_indicador tbody').on('click', '#descarga', function() {
-                var fila = table.row($(this).parents('tr')).data();
-                var nombre_archivo = fila.nombre_archivo;
-                console.log(nombre_archivo);
+            // $('#tabla_detalles_indicador tbody').on('click', '#descarga', function() {
+            //     var fila = table.row($(this).parents('tr')).data();
+            //     var nombre_archivo = fila.nombre_archivo;
+            //     console.log(nombre_archivo);
 
-                var url = `../archivos/file_academica/${nombre_archivo}`;
-                download(url);
+            //     var url = `../archivos/file_academica/${nombre_archivo}`;
+            //     download(url);
 
-            });
+            // });
         });
     </script>
 
@@ -283,6 +293,7 @@ require_once('../clases/funcion_visualizar.php');
         });
     </script>
 </body>
+
 </html>
 <script>
     //este script srive para validar los campos del modal

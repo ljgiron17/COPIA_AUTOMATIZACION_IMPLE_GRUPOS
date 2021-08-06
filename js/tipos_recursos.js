@@ -16,7 +16,7 @@ function eliminar(id) {
     }).then(function () {
 
         const form = new FormData();
-        form.append('eliminar', 1);
+        form.append('eliminar_recurso', 1);
         form.append('id', id);
 
         fetch('../Controlador/action.php', {
@@ -131,32 +131,21 @@ buttonGuardar.addEventListener('click', function (e) {
         )
             .then(res => res.json())
             .then(data => {
-                if (data == 'exito') {
-                    swal.queue([{
-                        title: 'Exito!',
-                        confirmButtonText: 'Regresar',
-                        text:
-                            'Los datos han sido agregados exitosamente',
-                        showLoaderOnConfirm: true,
-                        preConfirm: function () {
-                            location.href = "../vistas/mantenimiento_tipos_recursos.php";
-                        }
-                    }]);
-
-                    //     swal(
-                    //         'Exito!',
-                    //         'Los datos han sido agregados!',
-                    //         'success'
-                    //     )
-                    //     $('#modal').modal('toggle');
-                    //     // $('#tabla_recursos_tipo').DataTable().ajax.reload();
-                    //     document.getElementById("enviar_Datos").reset();
-                    //    // location.href ="../vistas/mantenimiento_tipos_recursos.php";
-
-                } else {
-
-                }
                 console.log(data);
+                if (data == 'exito') {
+                    swal(
+                        'Exito...',
+                        'Datos guardados!',
+                        'success'
+                    )
+                } else {
+                    swal(
+                        'Oopss...',
+                        'algo ocurrio mal!',
+                        'error'
+                    )
+                }
+
             })
     }
 });

@@ -2,7 +2,8 @@
 require_once("../clases/conexion2.php");
 class db extends conexion2
 {
-    public function addfileAcademica($periodo_ca, $descrip_ca, $nombre_archivo, $fecha, $periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr)
+    //!modificacion 1/8/2021 ----------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public function addfileAcademica($periodo_ca, $descrip_ca, $nombre_archivo, $fecha/*, $periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr*/)
     {
         $sql = "INSERT INTO tbl_coordinacion_academica (periodo,descripcion,nombre_archivo, fecha) VALUES (:periodo_ca, :descrip_ca, :nombre_archivo, :fecha)";
         $stmt = $this->conn->prepare($sql);
@@ -12,7 +13,21 @@ class db extends conexion2
             'nombre_archivo' => $nombre_archivo,
             'fecha' => $fecha
         ]);
+        $id_ca = $this->conn->lastInsertId();
 
+        // $sql = "INSERT INTO tbl_craed_jefatura (periodo_cr, descripcion_cr, nombre_archivo_cr, fecha_cr) VALUES (:periodo_cr, :descripcion_cr, :nombre_archivo_cr, :fecha_cr )";
+        // $stmt = $stmt = $this->conn->prepare($sql);
+        // $stmt->execute([
+        //     'periodo_cr' => $periodo_cr,
+        //     'descripcion_cr' => $descripcion_cr,
+        //     'nombre_archivo_cr' => $nombre_archivo_cr,
+        //     'fecha_cr' => $fecha_cr
+        // ]);
+        return $id_ca;
+    }
+
+    public function subir_craed($periodo_cr, $descripcion_cr, $nombre_archivo_cr, $fecha_cr)
+    {
         $sql = "INSERT INTO tbl_craed_jefatura (periodo_cr, descripcion_cr, nombre_archivo_cr, fecha_cr) VALUES (:periodo_cr, :descripcion_cr, :nombre_archivo_cr, :fecha_cr )";
         $stmt = $stmt = $this->conn->prepare($sql);
         $stmt->execute([
@@ -21,8 +36,15 @@ class db extends conexion2
             'nombre_archivo_cr' => $nombre_archivo_cr,
             'fecha_cr' => $fecha_cr
         ]);
-        return "exito";
+
+        $id_cr = $this->conn->lastInsertId();
+
+        return $id_cr;
     }
+
+    //! fin modificacion 1/8/2021 ----------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 
 
     public function getDatosReac($id_reac)
@@ -47,12 +69,13 @@ class db extends conexion2
     // }
 
 
-    public function updateSolicitudDenegada($id_solicitud)
+    public function updateSolicitudDenegada($id_solicitud, $razon)
     {
-        $sql = "UPDATE tbl_reasignacion_academica set estado = 'Denegada' WHERE id_reac_academica = :id_solicitud";
+        $sql = "UPDATE tbl_reasignacion_academica set estado = 'Denegada', razon_negada =:razon WHERE id_reac_academica = :id_solicitud";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
-            'id_solicitud' => $id_solicitud
+            'id_solicitud' => $id_solicitud,
+            'razon' => $razon
         ]);
         return 'exito';
     }
@@ -80,15 +103,26 @@ class db extends conexion2
         return 'exito';
     }
 
-    public function eliminarRecurso($id)
+    public function EliminarRecurso($id_recurso)
     {
-        $sql = "DELETE FROM tbl_recursos_tipo WHERE id_recurso_tipo = :id";
+
+        $sql = "DELETE FROM `tbl_recursos_tipo` WHERE `tbl_recursos_tipo`.`id_recurso_tipo` =:id_recurso ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
-            'id' => $id
+            'id_recurso' => $id_recurso
         ]);
         return 'exito';
     }
+
+    // public function eliminarRecurso($id)
+    // {
+    //     $sql = "DELETE FROM tbl_recursos_tipo WHERE id_recurso_tipo =:id";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->execute([
+    //         'id' => $id
+    //     ]);
+    //     return 'exito';
+    // }
 
     public function cambiarEstado($id, $estado)
     {
@@ -135,6 +169,8 @@ class db extends conexion2
         ]);
         return 'exito';
     }
+
+
     public function insertTipoindicador($descripcion, $estado, $fecha, $nombre_indicador)
     {
         $sql = "INSERT INTO tbl_indicadores_gestion(descripcion,estado, fecha, nombre_indicador)  VALUES (:descripcion, :estado, :fecha, :nombre_indicador) ";
@@ -286,6 +322,7 @@ class db extends conexion2
         return 'exito';
     }
 
+
     public function delete_Indicador($id_indicador)
     {
         $sql = "DELETE FROM `tbl_indicadores` WHERE id_indicador = :id_indicador";
@@ -307,8 +344,6 @@ class db extends conexion2
         ]);
         return 'exito';
     }
-
-
     public function get_data_responsables($id_indicador)
     {
         $sql = "select r.id_responsables, r.descripcion_responsable from tbl_responsables r, tbl_indica_responsables ir, tbl_indicadores i 
@@ -502,8 +537,9 @@ class db extends conexion2
         //$filas = $stmt->fetchAll();
         return $row;
     }
-    //! detalles recursos
 
+
+    //! detalles recursos
     public function getDataTipo_recurso()
     {
         $sql = "SELECT `id_recurso_tipo`, `nombre_recurso` from tbl_recursos_tipo";
@@ -513,6 +549,7 @@ class db extends conexion2
         return $filas;
     }
 
+    //Laura recursos
     public function insertar_detalle($nombre, $cantidad, $descripcion, $precio_aprox, $id_recurso_tipo)
     {
         $sql = "INSERT INTO `tbl_detalles_tipo_recurso`(`nombre`, `cantidad`, `descripcion`, `precio_aprox`, `id_recurso_tipo`) 
@@ -540,8 +577,7 @@ class db extends conexion2
 
     public function insertar_detalle_gestion($descripcion, $id_indicador_gestion)
     {
-        $sql = "INSERT INTO `tbl_detalles_tipo_indicador`(`descripcion`, `id_indicador_gestion`) 
-    VALUES (:descripcion, :id_indicador_gestion)";
+        $sql = "INSERT INTO `tbl_detalles_tipo_indicador`(`descripcion`, `id_indicadores_gestion`) VALUES (:descripcion,:id_indicador_gestion)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'descripcion' => $descripcion,
@@ -550,6 +586,25 @@ class db extends conexion2
         return 'exito';
     }
 
+    public function eliminar_deatlle_gasto($id_detalle_tipo_gasto)
+    {
+        $sql = "DELETE FROM `tbl_detalles_tipo_gasto` WHERE `id_detalle_tipo_gasto` =:id_detalle_tipo_gasto";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_detalle_tipo_gasto' => $id_detalle_tipo_gasto
+        ]);
+        return 'exito';
+    }
+
+    public function eliminar_indicador($id_indicador)
+    {
+        $sql = "DELETE FROM `tbl_detalles_tipo_indicador` WHERE `id_detalles_tipo_indicador` =:id_indicador ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_indicador' => $id_indicador
+        ]);
+        return 'exito';
+    }
     //!detalles gastos
     public function getDataTipo_gasto()
     {
@@ -584,13 +639,87 @@ class db extends conexion2
         ]);
         return 'exito';
     }
+
     public function eliminarGestion_recursos($id_detalle_tipo_recurso)
     {
-        $sql = "DELETE FROM ` tbl_detalles_tipo_recurso` WHERE id_detalle_tipo_recurso = :id_detalle_tipo_recurso";
+        $sql = "DELETE FROM `tbl_detalles_tipo_recurso` WHERE id_detalle_tipo_recurso = :id_detalle_tipo_recurso";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'id_detalle_tipo_recurso' => $id_detalle_tipo_recurso
         ]);
         return 'exito';
     }
+
+
+
+
+
+
+
+    //?ultima modificacion 28/07/2021
+    public function getDocentes()
+    {
+        $sql = "SELECT id_persona, CONCAT(nombres,' ',apellidos)as nombre_completo  from tbl_personas WHERE id_tipo_persona = 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([]);
+        $filas = $stmt->fetchAll();
+        return $filas;
+    }
+
+    public function insert_soli($id_docente, $nombre_docente, $nombre_proyecto, $fecha_inicio, $fecha_final, $avance_realizado, $proyec_periodo_actual, $cant_horas, $estado)
+    {
+        $sql = "INSERT INTO `tbl_reasignacion_academica`(`id_docente`, `nombre_docente`, `nombre_proyecto`, `fecha_inicio`, `fecha_final`, `avance_realizado`, `proyec_periodo_actual`, `cant_horas`, `estado`) 
+        VALUES (:id_docente, :nombre_docente, :nombre_proyecto, :fecha_inicio, :fecha_final, :avance_realizado, :proyec_periodo_actual, :cant_horas, :estado)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_docente' => $id_docente,
+            'nombre_docente' => $nombre_docente,
+            'nombre_proyecto' => $nombre_proyecto,
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_final' => $fecha_final,
+            'avance_realizado' => $avance_realizado,
+            'proyec_periodo_actual' => $proyec_periodo_actual,
+            'cant_horas' => $cant_horas,
+            'estado' => $estado
+        ]);
+        return 'exito';
+    }
+    //?ultima modificacion 28/07/2021
+
+    //?modificacion 29/07/2021
+    public function get_id($nombre_docente)
+    {
+        $sql = "SELECT identidad FROM tbl_personas WHERE nombres=:nombre_docente";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'nombre_docente' => $nombre_docente
+        ]);
+        $fila = $stmt->fetch();
+        return $fila;
+    }
+
+    public function add_retroalimentacion($periodo, $anio, $docente, $codigo_empleado, $cant_clases_reasignadas, $memorandum, $nombre_proyecto, $fecha_inicio, $fecha_finalizacion, $n_identidad, $estado, $avances)
+    {
+        $sql = "INSERT INTO `tbl_retroalimentacion`(`periodo`, `anio`, `docente`, `codigo_empleado`, `cant_clases_reasignadas`, `memorandum`, `nombre_proyecto`, `fecha_inicio`, `fecha_finalizacion`, `n_identidad`, `estado`, `avances`) 
+    VALUES (:periodo, :anio, :docente, :codigo_empleado, :cant_clases_reasignadas, :memorandum, :nombre_proyecto, :fecha_inicio, :fecha_finalizacion, :n_identidad, :estado, :avances)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'periodo' => $periodo,
+            'anio' => $anio,
+            'docente' => $docente,
+            'codigo_empleado' => $codigo_empleado,
+            'cant_clases_reasignadas' => $cant_clases_reasignadas,
+            'memorandum' => $memorandum,
+            'nombre_proyecto' => $nombre_proyecto,
+            'fecha_inicio' => $fecha_inicio,
+            'fecha_finalizacion' => $fecha_finalizacion,
+            'n_identidad' => $n_identidad,
+            'estado' => $estado,
+            'avances' => $avances
+        ]);
+        return 'exito';
+    }
+
+    //?fin modificacion 29/07/2021
+
 }

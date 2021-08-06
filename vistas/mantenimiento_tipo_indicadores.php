@@ -111,7 +111,7 @@ require_once('../clases/funcion_bitacora.php');
                                         </form> <!-- fin del form -->
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" id="">Enviar</button>
+                                        <button type="button" class="btn btn-success" id="">Guardar</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
