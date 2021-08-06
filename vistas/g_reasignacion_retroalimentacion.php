@@ -2,26 +2,32 @@
 session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
-// require_once('../clases/funcion_bitacora.php');
-// require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
 
-// if (permiso_ver('120') == '1') {
+$Id_objeto = 120;
+$visualizacion = permiso_ver($Id_objeto);
 
-//   $_SESSION['g_reasignacion_retroalimentacion'] = "...";
-// } else {
-//   $_SESSION['g_reasignacion_retroalimentacion'] = "No 
-//    tiene permisos para visualizar";
-// }
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/g_vista_retroalimentacionJefatura.php";
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GESTIÓN RETROALIMENTACIÓN.');
+
+}
+ob_end_flush(); 
 
 
-// $Id_objeto = 120;
-
-// $visualizacion = permiso_ver($Id_objeto);
-
-// 
 ?>
-
-
 <!DOCTYPE html>
 <html>
 

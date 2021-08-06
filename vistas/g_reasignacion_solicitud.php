@@ -5,19 +5,31 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-if (permiso_ver('119') == '1') {
-
-  $_SESSION['g_reasignacion_solicitud'] = "...";
-} else {
-  $_SESSION['g_reasignacion_solicitud'] = "No 
-   tiene permisos para visualizar";
-}
-
-
 $Id_objeto = 119;
+
 
 $visualizacion = permiso_ver($Id_objeto);
 
+
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/g_reasignacion_solicitud.php";
+
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REASIGNACIÓN SOLICITUD.');
+
+}
+
+ob_end_flush();
 ?>
 
 

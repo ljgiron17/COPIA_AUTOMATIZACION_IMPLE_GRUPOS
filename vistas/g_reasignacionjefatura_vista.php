@@ -14,10 +14,11 @@ if (permiso_ver('118')=='1')
 }
 else
 {
-$_SESSION['ayuda_menu']="No 
+$_SESSION['g_reasignacionjefatura_vista']="No 
   tiene permisos para visualizar";
 
 }
+
 if (permiso_ver('119')=='1')
  {
   
@@ -29,6 +30,7 @@ $_SESSION['g_reasignacion_solicitud']="No
   tiene permisos para visualizar";
 
 }
+
 if (permiso_ver('120')=='1')
  {
   
