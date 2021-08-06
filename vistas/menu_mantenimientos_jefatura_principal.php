@@ -4,79 +4,68 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
 
 
-//recursos
-if (permiso_ver('56') == '1') {
+if (permiso_ver('124') == '1') {
 
-  $_SESSION['mantenimiento_jornada_docente_vista'] = "...";
+  $_SESSION['menu_mantenimientos_jefatura_principal'] = "...";
 } else {
-  $_SESSION['mantenimiento_jornada_docente_vista'] = "No 
+  $_SESSION['menu_mantenimientos_jefatura_principal'] = "No 
   tiene permisos para visualizar";
 }
 
+if (permiso_ver('127') == '1') {
 
-if (permiso_ver('57') == '1') {
-
-  $_SESSION['mantenimiento_comisiones_docente_vista'] = "...";
+  $_SESSION['recursos_tipo'] = "...";
 } else {
-  $_SESSION['mantenimiento_comisiones_docente_vista'] = "No 
+  $_SESSION['recursos_tipo'] = "No 
   tiene permisos para visualizar";
 }
 //recursos
 
 //requerimientos
-if (permiso_ver('59') == '1') {
+if (permiso_ver('128') == '1') {
 
-  $_SESSION['mantenimiento_categorias_docente_vista'] = "...";
+  $_SESSION['mantenimiento_tipos_recursos'] = "...";
 } else {
-  $_SESSION['mantenimiento_categorias_docente_vista'] = "No 
+  $_SESSION['mantenimiento_tipos_recursos'] = "No 
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('60') == '1') {
+if (permiso_ver('129') == '1') {
 
-  $_SESSION['mantenimiento_grados_academicos_vista'] = "...";
+  $_SESSION['gastos_tipo'] = "...";
 } else {
-  $_SESSION['mantenimiento_grados_academicos_vista'] = "No 
+  $_SESSION['gastos_tipo'] = "No 
   tiene permisos para visualizar";
 }
 //requerimientos
 
 //gastos
-if (permiso_ver('62') == '1') {
+if (permiso_ver('130') == '1') {
 
-  $_SESSION['mantenimiento_estado_civil_vista'] = "...";
+  $_SESSION['mantenimiento_tipo_gastos_vista'] = "...";
 } else {
-  $_SESSION['mantenimiento_estado_civil_vista'] = "No 
+  $_SESSION['mantenimiento_tipo_gastos_vista'] = "No 
   tiene permisos para visualizar";
 }
 
 
-if (permiso_ver('64') == '1') {
+if (permiso_ver('131') == '1') {
 
-  $_SESSION['mantenimiento_crear_comisiones_vista'] = "...";
+  $_SESSION['indicador_tipo'] = "...";
 } else {
-  $_SESSION['mantenimiento_crear_comisiones_vista'] = "No 
+  $_SESSION['indicador_tipo'] = "No 
   tiene permisos para visualizar";
 }
 //gastos fin
 
 //indicadores
-if (permiso_ver('65') == '1') {
+if (permiso_ver('132') == '1') {
 
-  $_SESSION['mantenimiento_crear_grados_academicos_vista'] = "...";
+  $_SESSION['mantenimiento_tipo_indicadores'] = "...";
 } else {
-  $_SESSION['mantenimiento_crear_grados_academicos_vista'] = "No 
+  $_SESSION['mantenimiento_tipo_indicadores'] = "No 
   tiene permisos para visualizar";
 }
-
-if (permiso_ver('66') == '1') {
-
-  $_SESSION['mantenimiento_crear_categoria_vista'] = "...";
-} else {
-  $_SESSION['mantenimiento_crear_categoria_vista'] = "No 
-  tiene permisos para visualizar";
-}
-//fin indicadores
 
 
 
@@ -161,7 +150,7 @@ if (permiso_ver('66') == '1') {
               <div class="small-box bg-primary">
                 <div class="inner">
                   <h4>Mantenimiento Recursos </h4>
-                  <p><?php echo $_SESSION['matenimiento_tipo_recursos']; ?></p>
+                  <p><?php echo $_SESSION['mantenimiento_tipos_recursos']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-edit"></i>
@@ -208,7 +197,7 @@ if (permiso_ver('66') == '1') {
               <div class="small-box bg-light">
                 <div class="inner">
                   <h4>Crear Tipo de Gastos Operativos</h4>
-                  <p><?php echo $_SESSION['gastos tipo']; ?></p>
+                  <p><?php echo $_SESSION['gastos_tipo']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-plus-square"></i>
@@ -256,7 +245,7 @@ if (permiso_ver('66') == '1') {
               <div class="small-box bg-light">
                 <div class="inner">
                   <h4>Crear Indicador de Gestión </h4>
-                  <p><?php echo $_SESSION['indicadores_tipo']; ?></p>
+                  <p><?php echo $_SESSION['indicador_tipo']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-plus-square"></i>
@@ -275,7 +264,7 @@ if (permiso_ver('66') == '1') {
               <div class="small-box bg-primary">
                 <div class="inner">
                   <h4>Mantenimiento Indicador de Gestión </h4>
-                  <p><?php echo $_SESSION['indicadores_tipo']; ?></p>
+                  <p><?php echo $_SESSION['mantenimiento_tipo_indicadores']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-edit"></i>
