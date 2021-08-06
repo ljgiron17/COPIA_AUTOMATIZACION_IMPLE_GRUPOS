@@ -7,37 +7,46 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
+if (permiso_ver('121') == '1') {
 
-//if (permiso_ver('124') == '1') {
+  $_SESSION['g_planificacionjefatura_vista'] = "...";
+} else {
+  $_SESSION['g_planificacionjefatura_vista'] = "No 
+  tiene permisos para visualizar";
+}
 
-  //$_SESSION['poa_vista'] = "...";
-//} else {
-  //$_SESSION['poa_vista'] = "No 
-  //tiene permisos para visualizar";
-//}
+if (permiso_ver('107') == '1') {
 
-//if (permiso_ver('139') == '1') {
+  $_SESSION['poa_vista'] = "...";
+} else {
+  $_SESSION['poa_vista'] = "No 
+  tiene permisos para visualizar";
+}
 
-  //$_SESSION['g_detalle_recursos'] = "...";
-//} else {
-  //$_SESSION['g_detalle_recursos'] = "No 
-  //tiene permisos para visualizar";
-//}
-//if (permiso_ver('140') == '1') {
+if (permiso_ver('117') == '1') {
 
-  //$_SESSION['g_detalle_indicadores'] = "...";
-//} else {
-  //$_SESSION['g_detalle_indicadores'] = "No 
-  //tiene permisos para visualizar";
-//}
+  $_SESSION['g_detalle_recursos'] = "...";
+} else {
+  $_SESSION['g_detalle_recursos'] = "No 
+  tiene permisos para visualizar";
+}
 
-//if (permiso_ver('140') == '1') {
+if (permiso_ver('126') == '1') {
 
-  //$_SESSION['g_detalle_gastos'] = "...";
-//} else {
-  //$_SESSION['g_detalle_gastos'] = "No 
-  //tiene permisos para visualizar";
-//}
+  $_SESSION['g_detalle_gastos'] = "...";
+} else {
+  $_SESSION['g_detalle_gastos'] = "No 
+  tiene permisos para visualizar";
+}
+
+if (permiso_ver('125') == '1') {
+
+  $_SESSION['g_detalle_indicadores'] = "...";
+} else {
+  $_SESSION['g_detalle_indicadores'] = "No 
+  tiene permisos para visualizar";
+}
+
 
 ?>
 <!DOCTYPE html>

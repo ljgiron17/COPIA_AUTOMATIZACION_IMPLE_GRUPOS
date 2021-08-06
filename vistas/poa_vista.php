@@ -2,45 +2,36 @@
 session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
-// require_once('../clases/funcion_bitacora.php');
-// require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
 
-// if (permiso_ver('114') == '1') {
+$Id_objeto = 107;
+$visualizacion = permiso_ver($Id_objeto);
 
-//   $_SESSION['g_cargaacademica_vista'] = "...";
-// } else {
-//   $_SESSION['g_cargaacademica_vista'] = "No 
-//    tiene permisos para visualizar";
-// }
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/poa_vista.php";
 
+                            </script>';
+} else {
 
-// $Id_objeto = 114;
-
-// $visualizacion = permiso_ver($Id_objeto);
-
-
-
-// if ($visualizacion == 0) {
-//   header('location:  ../vistas/pagina_principal_vista.php');
-// } else {
-//   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
-// }
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'AL PLAN OPERATIVO ANUAL.');
 
 
-// if (isset($_REQUEST['msj'])) {
-//   $msj = $_REQUEST['msj'];
+ 
+}
 
-//   if ($msj == 1) {
-//     echo '<script> alert("Fecha invalidas favor verificar.")</script>';
-//   }
+ob_end_flush();
 
-//   if ($msj == 2) {
-//     echo '<script> alert("Datos por rellenar, por favor verificar.")</script>';
-//   }
-//   if ($msj == 3) {
-//     echo '<script> alert("Por favor verificar fechas.")</script>';
-//   }
-// }
+
+
 
 ?>
 

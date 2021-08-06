@@ -5,13 +5,33 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-//if (permiso_ver('139') == '1') {
-//
-//  $_SESSION['g_detalle_recursos'] = "...";
-//} else {
-//$_SESSION['g_detalle_recursos'] = "No 
-//tiene permisos para visualizar";
-// }
+$Id_objeto = 125;
+
+
+$visualizacion = permiso_ver($Id_objeto);
+
+
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/poa_vista.php";
+
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LOS DETALLES DE GASTOS.');
+
+
+ 
+}
+
+ob_end_flush();
 
 ?>
 <!DOCTYPE html>
