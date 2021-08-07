@@ -43,6 +43,34 @@ $_SESSION['g_reasignacion_retroalimentacion']="No
 
 }
 
+$Id_objeto = 118;
+
+
+$visualizacion = permiso_ver($Id_objeto);
+
+
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/g_reasignacionjefatura_vista.php";
+
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MENU REASIGNACION JEFATURA.');
+
+
+ 
+}
+
+ob_end_flush()
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -7,58 +7,36 @@ session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
-// require_once('../clases/funcion_visualizar.php');
-// require_once('../clases/funcion_permisos.php');
+require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_permisos.php');
 
-// $Id_objeto = 64;
+$Id_objeto = 131;
 
-// bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento/Crear Comision');
 
-// $visualizacion = permiso_ver($Id_objeto);
+$visualizacion = permiso_ver($Id_objeto);
 
-// if ($visualizacion == 0) {
-//     //header('location:  ../vistas/menu_roles_vista.php');
 
-//     echo '<script type="text/javascript">
-//                               swal({
-//                                    title:"",
-//                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-//                                    type: "error",
-//                                    showConfirmButton: false,
-//                                    timer: 3000
-//                                 });
-//                            window.location = "../vistas/menu_roles_vista.php";
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/indicador_tipo.php";
 
-//                             </script>';
-// } else {
+                            </script>';
+} else {
 
-//     if (permisos::permiso_insertar($Id_objeto) == '1') {
-//         $_SESSION['btn_guardar_comision'] = "";
-//     } else {
-//         $_SESSION['btn_guardar_comision'] = "disabled";
-//     }
-/*
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A TIPOS DE INDICADOR .');
 
- if (isset($_REQUEST['msj']))
- {
-      $msj=$_REQUEST['msj'];
-        if ($msj==1)
-            {
-            echo '<script> alert("Lo sentimos el rol a ingresar ya existe favor intenta con uno nuevo")</script>';
-            }
-   
-               if ($msj==2)
-                  {
-                  echo '<script> alert("Rol agregado correctamente")</script>';
-                  }
- }
 
-*/
-//}
-
+ 
+}
 
 ob_end_flush();
-
 
 ?>
 

@@ -46,6 +46,34 @@ if (permiso_ver('125') == '1') {
   $_SESSION['g_detalle_indicadores'] = "No 
   tiene permisos para visualizar";
 }
+$Id_objeto = 105;
+
+
+$visualizacion = permiso_ver($Id_objeto);
+
+
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/g_planificacionjefatura_vista.php";
+
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MENU JEFATURA.');
+
+
+ 
+}
+
+ob_end_flush()
+
 
 
 ?>

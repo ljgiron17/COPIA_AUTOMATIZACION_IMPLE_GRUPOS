@@ -67,6 +67,33 @@ if (permiso_ver('132') == '1') {
   tiene permisos para visualizar";
 }
 
+$Id_objeto = 124;
+
+
+$visualizacion = permiso_ver($Id_objeto);
+
+
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/menu_mantenimientos_jefatura_principal.php";
+
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MENU MANTENIMIENTOS JEFATURA.');
+
+
+ 
+}
+
+ob_end_flush();
 
 
 ?>

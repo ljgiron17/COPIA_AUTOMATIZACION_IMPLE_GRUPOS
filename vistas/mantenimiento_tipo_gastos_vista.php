@@ -3,29 +3,35 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
-//require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_visualizar.php');
 
-// if (permiso_ver('114') == '1') {
-
-//   $_SESSION['g_cargaacademica_vista'] = "...";
-// } else {
-//   $_SESSION['g_cargaacademica_vista'] = "No 
-//    tiene permisos para visualizar";
-// }
+$Id_objeto = 130;
 
 
-// $Id_objeto = 114;
+$visualizacion = permiso_ver($Id_objeto);
 
-// $visualizacion = permiso_ver($Id_objeto);
 
-// $visualizacion == 0;
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/mantenimiento_tipo_gastos_vista.php";
 
-// if ($visualizacion == 0) {
-//   header('location:  ../vistas/pagina_principal_vista.php');
-// } else {
-//   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
-// }
+                            </script>';
+} else {
 
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LAS MANTENIMIENTOS TIPOS DE GASTOS.');
+
+
+ 
+}
+
+ob_end_flush();
 
 ?>
 
