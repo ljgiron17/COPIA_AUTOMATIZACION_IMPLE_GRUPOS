@@ -26,9 +26,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LAS MANTENIMIENTOS TIPOS DE GASTOS.');
-
-
- 
 }
 
 ob_end_flush();
@@ -38,8 +35,9 @@ ob_end_flush();
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -86,7 +84,56 @@ ob_end_flush();
                 </div>
             </div><!-- /.container-fluid -->
         </section>
+        <!-- inicio del modal -->
+        <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Envio de datos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editar_datos" class="needs-validation">
+                            <!-- inicio del form -->
+                            <div class="card card-default">
+                                <!--inciio primer card -->
+                                <div class="card-header" style="background-color: #ced2d7;">
+                                    <h3 class="card-title"><strong>TIPOS DE GASTOS</strong> </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="">Fecha</label><br>
+                                            <input type="text" class="form-control" id="datepicker" name="fecha_recurso_ed" placeholder="dd/mm/yyyy" required> <br>
+                                            <label for="">Nombre Gasto</label><br>
+                                            <input type="text" class="form-control" id="nombre_gasto" name="nombre_gasto" maxlength="20" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('nombre_recurso_ed');" onkeypress="return sololetras(event)" required><br>
+                                        </div>
+                                        <br>
+                                        <div class="col-12">
+                                            <label for="">Descripción</label><br>
+                                            <textarea cols="20" rows="5" class="form-control" id="desc_gasto" name="desc_gasto" maxlength="100" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion_ed');" onkeypress="return sololetras(event)" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- fin primer card -->
+                        </form> <!-- fin del form -->
+                    </div>
+                    <div class="modal-footer">
 
+                        <button type="button" class="btn btn-success" id="guardar_edicion_gasto">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- fin del modal -->
         <section class="content">
             <div class="container-fluid">
                 <!-- pantalla 1 -->
@@ -148,6 +195,7 @@ ob_end_flush();
                                                         <th scope="col">ESTADO</th>
                                                         <th scope="col">ACCIÓN</th>
                                                         <th scope="col">ELIMINAR</th>
+                                                        <th scope="col">EDITAR</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -193,40 +241,40 @@ ob_end_flush();
                     [0, 'desc']
                 ],
                 "responsive": true,
-                                     //desde aqui
-        dom: 'Bfrtip',
-        "buttons": [{
-            extend: 'copyHtml5',
-            title: 'Datos Exportados',
-            text: 'Copiar <i class="fas fa-copy"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'excelHtml5',
-            title: 'Datos Exportados',
-            text: 'Excel <i class="fas fa-file-excel"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'pdfHtml5',
-            title: 'Datos Exportados',
-            text: 'PDF <i class="fas fa-file-pdf"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-        ],
-        //hasta aqui
+                //desde aqui
+                dom: 'Bfrtip',
+                "buttons": [{
+                        extend: 'copyHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Copiar <i class="fas fa-copy"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Excel <i class="fas fa-file-excel"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Datos Exportados',
+                        text: 'PDF <i class="fas fa-file-pdf"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                ],
+                //hasta aqui
 
                 language: {
                     "sProcessing": "Procesando...",
@@ -284,10 +332,29 @@ ob_end_flush();
                         "data": null,
                         defaultContent: '<center><div class="btn-group"> <button id="eliminar" class="ver btn btn-danger btn - m" ><i class="fas fa-trash"></i></button><div></center>'
                     },
+                    {
+                        "data": null,
+                        defaultContent: '<center><div class="btn-group"> <button id="editar_gasto" data-toggle="modal" data-target="#modal" class="ver btn btn-warning btn - m" ><i class="fas fa-edit"></i></button><div></center>'
+                    },
                 ],
             });
 
             table.columns([0]).visible(false);
+
+
+            $('#tabla_gastos_tipo tbody').on('click', '#editar_gasto', function() {
+                var fila = table.row($(this).parents('tr')).data();
+                var id = fila.id_tipo_gastos;
+                var nombre_gasto = fila.nombre_gasto;
+                var descripcion = fila.descripcion;
+                var fecha = fila.fecha;
+                console.log(id);
+                localStorage.removeItem('id_gasto');
+                localStorage.setItem('id_gasto', id);
+                document.getElementById('datepicker').value = fecha;
+                document.getElementById('nombre_gasto').value = nombre_gasto;
+                document.getElementById('desc_gasto').value = descripcion;
+            });
 
             $('#tabla_gastos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
@@ -316,4 +383,40 @@ ob_end_flush();
         });
     </script>
 </body>
+
 </html>
+<script>
+    const button_gasto = document.getElementById('guardar_edicion_gasto');
+    const form_gasto = document.getElementById('editar_datos');
+
+    button_gasto.addEventListener('click', function(e) {
+        e.preventDefault();
+        const form_enviar = new FormData(form_gasto);
+        form_enviar.append('editar_gasto_send', 1);
+        form_enviar.append('id_gasto', localStorage.getItem('id_gasto'));
+        fetch('../Controlador/action.php', {
+                method: 'POST',
+                body: form_enviar
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data == 'exito') {
+                    $('#modal').modal('toggle');
+                    swal(
+                        'Exito...',
+                        'Datos guardados!',
+                        'success'
+                    )
+                    $('#tabla_gastos_tipo').DataTable().ajax.reload();
+
+                } else {
+                    swal(
+                        'Oopss...',
+                        'algo ocurrio mal!',
+                        'error'
+                    )
+                }
+            })
+    });
+</script>

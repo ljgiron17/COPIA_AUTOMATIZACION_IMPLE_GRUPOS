@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+ob_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
@@ -32,6 +33,7 @@ if ($visualizacion == 0) {
 }
 
 ob_end_flush();
+
 ?>
 
 <!DOCTYPE html>
@@ -224,7 +226,4 @@ ob_end_flush();
 
   
 </script>
-
-
-
 </html>

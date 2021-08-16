@@ -284,12 +284,6 @@ if (isset($_POST['eliminar_recurso'])) {
     echo json_encode($rspuesta);
 }
 
-// if (isset($_POST['eliminar_recurso'])) {
-//     $id = $_POST['id'];
-//     $respuesta = $db->eliminarRecurso($id);
-//     echo json_encode($respuesta);
-// }
-
 if (isset($_POST['cambiar_estado'])) {
     $estado = $_POST['estado'];
     $id = $_POST['id'];
@@ -838,14 +832,30 @@ if (isset($_POST['eliminar_indicador'])) {
     echo json_encode($rspuesta);
 }
 if (isset($_POST['eliminar_detalle_gasto'])) {
-    
+
     $id_detalle_tipo_gasto = $_POST['id_detalle_tipo_gasto'];
     $rewspuesta = $db->eliminar_deatlle_gasto($id_detalle_tipo_gasto);
     echo json_encode($rewspuesta);
     //echo json_encode($_POST);
 
 }
+//eliminar indicador de detalle
+if (isset($_POST['eliminar_detalle_indicador'])) {
 
+    $id_detalles_tipo_indicador = $_POST['id_detalles_tipo_indicador'];
+    $rewspuesta = $db->eliminar_detalle_indicador($id_detalles_tipo_indicador);
+    echo json_encode($rewspuesta);
+    //echo json_encode($_POST);
+
+}
+
+//eliminar detalle de recursos
+if (isset($_POST['eliminar_detalle_recurso'])) {
+    $id_detalle_tipo_recurso = $_POST['id_recurso'];
+    $rewspuesta = $db->eliminar_detalle_recurso($id_detalle_tipo_recurso);
+    echo json_encode($rewspuesta);
+    //echo json_encode($_POST);
+}
 //?modificacion 29/07/2021
 if (isset($_POST['nueva_retro'])) {
     $nombre_docente = $_POST['nombre_completo'];
@@ -881,3 +891,48 @@ if (isset($_POST['nueva_retro'])) {
     }
 }
 //?fin modificacion 29/07/2021
+
+if (isset($_POST['edicion_recurso_send'])) {
+
+    $id_recurso = $_POST['id_recurso'];
+    $nombre_recurso_ed = $_POST['nombre_recurso_ed'];
+    $descripcion_ed = $_POST['descripcion_ed'];
+    $respuesta = $db->editar_recurso($id_recurso, $nombre_recurso_ed, $descripcion_ed);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['edicion_indicadores'])) {
+
+    $id_indicador = $_POST['id_indicador'];
+    $nombre_indicador = $_POST['nombre_recurso_ed'];
+    $descripcion = $_POST['descripcion_ed'];
+    $respuesta = $db->edicion_indicador($id_indicador, $nombre_indicador, $descripcion);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['editar_gasto_send'])) {
+
+    $id_gasto = $_POST['id_gasto'];
+    $descripcion = $_POST['desc_gasto'];
+    $nombre_gasto = $_POST['nombre_gasto'];
+    $respuesta = $db->editar_gasto($id_gasto, $descripcion, $nombre_gasto);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['editar_detalleSend_recuros'])) {
+    $id_detalle_recurso = $_POST['id_recurso_detalle'];
+    $nombre_detalle = $_POST['nombre_detalle'];
+    $cant_detalle = $_POST['cantidad_detalle'];
+    $precio_detalle = $_POST['precio_detalle'];
+    $desc_detalle = $_POST['desc_detalle'];
+    $respuesta = $db->editar_detalle_recurso($id_detalle_recurso, $nombre_detalle, $cant_detalle, $precio_detalle, $desc_detalle);
+    echo json_encode($respuesta);
+}
+
+
+if (isset($_POST['editar_indicdrosend_det'])) {
+    $id_indicador = $_POST['id_indicador'];
+    $descripcion = $_POST['desc_indicadro'];
+    $respuesta = $db->detalle_indicador($id_indicador, $descripcion);
+    echo json_encode($respuesta);
+}

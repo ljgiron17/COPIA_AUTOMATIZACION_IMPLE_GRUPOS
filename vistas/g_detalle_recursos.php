@@ -26,9 +26,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LA GESTION DE DETALLES RECURSO.');
-
-
- 
 }
 
 ob_end_flush();
@@ -51,7 +48,7 @@ ob_end_flush();
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
     <title></title>
-    
+
     <style>
         .my-custom-scrollbar {
             position: relative;
@@ -98,6 +95,58 @@ ob_end_flush();
 
             </div>
         </section>
+        <!-- inicio del modal -->
+        <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Envio de datos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editar_datos" class="needs-validation">
+                            <!-- inicio del form -->
+                            <div class="card card-default">
+                                <!--inciio primer card -->
+                                <div class="card-header" style="background-color: #ced2d7;">
+                                    <h3 class="card-title"><strong>EDITAR DETALLE DE RECURSOS</strong> </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="">Nombre</label><br>
+                                            <input type="text" class="form-control" id="nombre_detalle" name="nombre_detalle" placeholder="Nombre" required> <br>
+                                            <label for="">Cantidad</label><br>
+                                            <input type="number" class="form-control" id="cantidad_detalle" name="cantidad_detalle" maxlength="3" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('nombre_recurso_ed');" onkeypress="return sololetras(event)" required><br>
+                                            <label for="">Precio</label><br>
+                                            <input type="number" class="form-control" id="precio_detalle" name="precio_detalle" maxlength="4" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('nombre_recurso_ed');" onkeypress="return sololetras(event)" required><br>
+                                        </div>
+                                        <br>
+                                        <div class="col-12">
+                                            <label for="">Descripción</label><br>
+                                            <textarea cols="20" rows="5" class="form-control" id="desc_detalle" name="desc_detalle" maxlength="100" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion_ed');" onkeypress="return sololetras(event)" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- fin primer card -->
+                        </form> <!-- fin del form -->
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-success" id="editar_detalle_recursos">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- fin del modal -->
         <!--Pantalla 2-->
         <div class="card card-default">
             <div class="card-body  ">
@@ -146,6 +195,7 @@ ob_end_flush();
                                                         <th scope="col">TOTAL</th>
                                                         <th scope="col">NOMBRE RECURSO</th>
                                                         <th scope="col">ELIMINAR</th>
+                                                        <th scope="col">EDITAR</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -207,41 +257,41 @@ ob_end_flush();
                     [0, 'desc']
                 ],
                 "responsive": true,
-                     //desde aqui
-        dom: 'Bfrtip',
-        "buttons": [{
-            extend: 'copyHtml5',
-            title: 'Datos Exportados',
-            text: 'Copiar <i class="fas fa-copy"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'excelHtml5',
-            title: 'Datos Exportados',
-            text: 'Excel <i class="fas fa-file-excel"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'pdfHtml5',
-            title: 'Datos Exportados',
-            text: 'PDF <i class="fas fa-file-pdf"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-        ],
-        //hasta aqui
-                
+                //desde aqui
+                dom: 'Bfrtip',
+                "buttons": [{
+                        extend: 'copyHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Copiar <i class="fas fa-copy"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Excel <i class="fas fa-file-excel"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Datos Exportados',
+                        text: 'PDF <i class="fas fa-file-pdf"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                ],
+                //hasta aqui
+
                 language: {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar    _MENU_    Filas",
@@ -294,47 +344,68 @@ ob_end_flush();
                     },
                     {
                         "data": null,
-                        defaultContent: '<center><div class="btn-group">'+ 
-                        '<button id="ver_detail" class="ver btn btn-danger btn - m" data-toggle="modal" data-target=".archivosAcademica"><i class="fas fa-trash"></i></button><div></center>'
+                        defaultContent: '<center> <button id="eliminar_detalle_recurso" class="btn btn-danger">Eliminar</center>'
                     },
-                    
+                    {
+                        "data": null,
+                        defaultContent: '<center> <button id="editar_detalle_recurso" data-toggle="modal" data-target="#modal" class="btn  btn-warning btn - m">Editar</center>'
+                    }, //pendiente de agregar la edicion
+
                 ],
             });
 
             table.columns([0]).visible(false);
 
-            $('#tabla_academica tbody').on('click', '#ver_detail', function() {
+            $('#tabla_detalles_recursos tbody').on('click', '#editar_detalle_recurso', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var nombre_archivo = fila.nombre_archivo;
-                console.log(nombre_archivo);
-                //comienza ajax
-                var ver_excel_ca = "ver_excel_ca";
-                $.ajax({
-                    url: "../Controlador/action.php",
-                    type: "POST",
-                    dataType: "html",
-                    data: {
-                        nombre_archivo: nombre_archivo,
-                        ver_excel_ca: ver_excel_ca
-                    },
-                    success: function(r) {
-                        console.log(r);
-                        //document.getElementById('cargar_excel').innerHTML = r;
-                        $('#cargar_excel').html(r);
-                    } //FIN SUCCES
-                });
-                //FIN  AJAX
+                var id_recurso = fila.id_detalle_tipo_recurso;
+                var nombre = fila.nombre;
+                var cantidad = fila.cantidad;
+                var descripcion = fila.descripcion;
+                var precio = fila.precio_aprox;
+
+                localStorage.removeItem('id_recurso');
+                localStorage.setItem('id_recurso', id_recurso);
+
+                document.getElementById('nombre_detalle').value = nombre;
+                document.getElementById('cantidad_detalle').value = cantidad;
+                document.getElementById('precio_detalle').value = precio;
+                document.getElementById('desc_detalle').value = descripcion;
             });
 
-            $('#tabla_academica tbody').on('click', '#descarga', function() {
+            $('#tabla_detalles_recursos tbody').on('click', '#eliminar_detalle_recurso', function() {
                 var fila = table.row($(this).parents('tr')).data();
-                var nombre_archivo = fila.nombre_archivo;
-                console.log(nombre_archivo);
+                var id_recurso = fila.id_detalle_tipo_recurso;
+                console.log(id_recurso);
 
-                var url = `../archivos/file_academica/${nombre_archivo}`;
-                download(url);
+                const formulario_recurso = new FormData();
+                formulario_recurso.append('eliminar_detalle_recurso', 1);
+                formulario_recurso.append('id_recurso', id_recurso);
 
+                fetch('../Controlador/action.php', {
+                        method: 'POST',
+                        body: formulario_recurso
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data == 'exito') {
+                            swal(
+                                'Exito...',
+                                'DAtos Eliminados con exito!',
+                                'success'
+                            )
+                            $('#tabla_detalles_recursos').DataTable().ajax.reload();
+                        } else {
+                            swal(
+                                'Oops...',
+                                'Ah ocurrido un error',
+                                'error'
+                            )
+                        }
+                    });
             });
+
         });
 
         // function download(url) {
@@ -399,4 +470,40 @@ ob_end_flush();
             return false;
     });
     //fin validacion  
+</script>
+<script>
+    const button_editar = document.getElementById('editar_detalle_recursos');
+    const form_editar_send = document.getElementById('editar_datos');
+
+    button_editar.addEventListener('click', function(e) {
+        e.preventDefault();
+        //alert('hola');
+        const form_editar = new FormData(form_editar_send);
+        form_editar.append('editar_detalleSend_recuros', 1);
+        form_editar.append('id_recurso_detalle', localStorage.getItem('id_recurso'));
+        fetch('../Controlador/action.php', {
+                method: 'POST',
+                body: form_editar
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data == 'exito') {
+                    $('#modal').modal('toggle');
+                    swal(
+                        'Exito...',
+                        'Datos guardados!',
+                        'success'
+                    )
+                    $('#tabla_detalles_recursos').DataTable().ajax.reload();
+
+                } else {
+                    swal(
+                        'Oopss...',
+                        'algo ocurrio mal!',
+                        'error'
+                    )
+                }
+            })
+    });
 </script>

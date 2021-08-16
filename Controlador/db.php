@@ -595,6 +595,25 @@ class db extends conexion2
         ]);
         return 'exito';
     }
+    public function eliminar_detalle_indicador($id_detalles_tipo_indicador)
+    {
+        $sql = "DELETE FROM `tbl_detalles_tipo_indicador` WHERE `id_detalles_tipo_indicador` =:id_detalles_tipo_indicador";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_detalles_tipo_indicador' => $id_detalles_tipo_indicador
+        ]);
+        return 'exito';
+    }
+
+    public function eliminar_detalle_recurso($id_detalle_tipo_recurso)
+    {
+        $sql = "DELETE FROM `tbl_detalles_tipo_recurso` WHERE `id_detalle_tipo_recurso` =:id_detalle_tipo_recurso";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_detalle_tipo_recurso' => $id_detalle_tipo_recurso
+        ]);
+        return 'exito';
+    }
 
     public function eliminar_indicador($id_indicador)
     {
@@ -722,4 +741,66 @@ class db extends conexion2
 
     //?fin modificacion 29/07/2021
 
+    public function editar_recurso($id_recurso, $nombre_recurso_ed, $descripcion_ed)
+    {
+        $sql = "UPDATE `tbl_recursos_tipo` SET `descripcion`= :descripcion_ed,`nombre_recurso`= :nombre_recurso_ed WHERE `id_recurso_tipo` =:id_recurso";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_recurso' => $id_recurso,
+            'nombre_recurso_ed' => $nombre_recurso_ed,
+            'descripcion_ed' => $descripcion_ed
+        ]);
+
+        return 'exito';
+    }
+
+    public function edicion_indicador($id_indicador, $nombre_indicador, $descripcion)
+    {
+        $sql = "UPDATE tbl_indicadores_gestion SET descripcion = :descripcion , nombre_indicador = :nombre_indicador WHERE id_indicadores_gestion = :id_indicador";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_indicador' =>   $id_indicador,
+            'nombre_indicador' =>  $nombre_indicador,
+            'descripcion' =>  $descripcion
+        ]);
+
+        return 'exito';
+    }
+
+    public function editar_gasto($id_gasto, $descripcion, $nombre_gasto)
+    {
+        $sql = "UPDATE tbl_tipo_gastos SET nombre_gasto =:nombre_gasto, descripcion =:descripcion WHERE id_tipo_gastos =:id_gasto";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_gasto' =>  $id_gasto,
+            'descripcion' =>  $descripcion,
+            'nombre_gasto' =>  $nombre_gasto
+        ]);
+        return 'exito';
+    }
+
+    public function editar_detalle_recurso($id_detalle_recurso, $nombre_detalle, $cant_detalle, $precio_detalle, $desc_detalle)
+    {
+        $sql = "UPDATE `tbl_detalles_tipo_recurso` SET nombre =:nombre_detalle , descripcion =:desc_detalle , cantidad = :cant_detalle , precio_aprox=:precio_detalle WHERE id_detalle_tipo_recurso =:id_detalle_recurso";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_detalle_recurso' => $id_detalle_recurso,
+            'nombre_detalle' =>  $nombre_detalle,
+            'cant_detalle' =>   $cant_detalle,
+            'precio_detalle' =>   $precio_detalle,
+            'desc_detalle' => $desc_detalle
+        ]);
+        return 'exito';
+    }
+
+    public function detalle_indicador($id_indicador, $descripcion)
+    {
+        $sql = "UPDATE `tbl_detalles_tipo_indicador` SET descripcion=:descripcion WHERE id_detalles_tipo_indicador =:id_indicador";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_indicador' => $id_indicador,
+            'descripcion' => $descripcion
+        ]);
+        return 'exito';
+    }
 }

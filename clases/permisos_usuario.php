@@ -543,7 +543,11 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['mantenimiento_tipo_indicadores'] = "block";
       }
    }
-
+   if ($_SESSION['pantalla'] == '133') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['responsables_vista'] = "block";
+      }
+   }
    
    if ($_SESSION['pantalla'] == '138') {
       if ($_SESSION['confirmacion'] == 'block') {

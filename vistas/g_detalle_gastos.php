@@ -91,6 +91,56 @@ ob_end_flush();
 
             </div>
         </section>
+         <!-- inicio del modal -->
+         <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Envio de datos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editar_datos" class="needs-validation">
+                            <!-- inicio del form -->
+                            <div class="card card-default">
+                                <!--inciio primer card -->
+                                <div class="card-header" style="background-color: #ced2d7;">
+                                    <h3 class="card-title"><strong>TIPOS DE GASTOS</strong> </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="">Fecha</label><br>
+                                            <input type="text" class="form-control" id="datepicker" name="fecha_recurso_ed" placeholder="dd/mm/yyyy" required> <br>
+                                            <label for="">Nombre Gasto</label><br>
+                                            <input type="text" class="form-control" id="nombre_gasto" name="nombre_gasto" maxlength="20" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('nombre_recurso_ed');" onkeypress="return sololetras(event)" required><br>
+                                        </div>
+                                        <br>
+                                        <div class="col-12">
+                                            <label for="">Descripción</label><br>
+                                            <textarea cols="20" rows="5" class="form-control" id="desc_gasto" name="desc_gasto" maxlength="100" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion_ed');" onkeypress="return sololetras(event)" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- fin primer card -->
+                        </form> <!-- fin del form -->
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-success" id="guardar_edicion_gasto">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- fin del modal -->
         <!--Pantalla 2-->
         <div class="card card-default">
             <div class="card-body  ">
@@ -139,6 +189,7 @@ ob_end_flush();
                                                         <th scope="col">TOTAL</th>
                                                         <th scope="col">NOMBRE GASTO</th>
                                                         <th scope="col">ELIMINAR</th>
+                                                        <th scope="col">EDITAR</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -287,6 +338,10 @@ ob_end_flush();
                         "data": null,
                         defaultContent: '<center> <button id="eliminar_datell_gasto" class="btn btn-danger">Eliminar</center>'
                     },
+                    {
+                        "data": null,
+                        defaultContent: '<center> <button id="editar_detalle_gasto" data-toggle="modal" data-target="#modal" class="btn  btn-warning btn - m">Editar</center>'
+                    },//pendiente de agregar la edicion
 
                 ],
             });
@@ -401,3 +456,4 @@ ob_end_flush();
     });
     //fin validacion  
 </script>
+

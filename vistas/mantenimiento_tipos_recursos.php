@@ -26,9 +26,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MANTENIMINETOS TIPOS DE RECURSOS.');
-
-
- 
 }
 
 ob_end_flush();
@@ -118,9 +115,11 @@ ob_end_flush();
                                         </form> <!-- fin del form -->
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" id="">Guardar</button>
+
+                                        <button type="button" class="btn btn-success" id="guardar_edicion_recurso">Guardar</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -155,49 +154,10 @@ ob_end_flush();
         <div class="card card-default">
 
 
-            <!-- <div class="card-body  ">
-                <div class="row">
-                    <div class="col-9">
-                        <h3 class="card-title">Registros de Tipos de recurso</h3>
-                    </div>
-                    <div class="col-3">
-                        <a href="../vistas/recursos_tipo.php" class="btn btn-success btn-m" >Nuevo Tipo de Recurso</a>
-                    </div>
-
-                </div>
-
-               
-
-            </div> -->
-
         </div>
         <!-- /.card-header -->
         <div class=" card-body">
-            <!-- <table id="tabla" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>PERIODO</th>
-            <th>DESCRIPCIÓN</th>
-            <th>FECHA</th>
-            <th>ACCIONES</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-            <td>
-            <td>
-            <td>
-              <div class="btn-group"> <button class="ver btn btn-primary btn - m">
-                  <i class="fas fa-eye"></i>
-                </button>
-                <button class="editar btn btn-success btn-m">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <div>
 
-        </tbody>
-      </table> -->
             <div class="container-fluid">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -369,10 +329,7 @@ ob_end_flush();
                         "data": null,
                         defaultContent: '<center><div class="btn-group"> <button id="estado" class="ver btn btn-success btn - m" ><i class="fas fa-question-circle"</button><div></center>'
                     },
-                    // {
-                    //     "data": null,
-                    //     defaultContent: '<center><div class="btn-group"> <button id="estado" class="ver btn btn-primary btn - m" ><i class="fas fa-question-circle"></i></button><div></center>'
-                    // },
+
                     {
                         "data": null,
                         defaultContent: '<center><div class="btn-group"> <button id="eliminar" class="ver btn btn-danger btn - m" ><i class="fas fa-trash"></i></button><div></center>'
@@ -384,7 +341,7 @@ ob_end_flush();
                 ],
             });
 
-            table.columns([0]).visible(false);
+            //table.columns([0]).visible(false);
 
             $('#tabla_recursos_tipo tbody').on('click', '#estado', function() {
                 var fila = table.row($(this).parents('tr')).data();
@@ -401,6 +358,10 @@ ob_end_flush();
                 var descripcion = fila.descripcion;
                 var fecha = fila.fecha;
                 var nombre_recurso = fila.nombre_recurso;
+                localStorage.removeItem('id_recurso');
+                localStorage.setItem('id_recurso', id);
+
+
                 document.getElementById('descripcion_ed').value = descripcion;
                 document.getElementById("datepicker").value = fecha;
                 document.getElementById("nombre_recurso_ed").value = nombre_recurso;
@@ -452,7 +413,7 @@ ob_end_flush();
                                 )
                             }
                         })
-                }, function(dismiss) {                    
+                }, function(dismiss) {
                     if (dismiss === 'cancel') {
                         swal(
                             'Cancelado',
@@ -536,3 +497,38 @@ ob_end_flush();
 </body>
 
 </html>
+<script>
+    const button_editar = document.getElementById('guardar_edicion_recurso');
+    const form_editar_recurso = document.getElementById('editar_datos');
+
+    button_editar.addEventListener('click', function(e) {
+        e.preventDefault();
+        const form_enviar = new FormData(form_editar_recurso);
+        form_enviar.append('edicion_recurso_send', 1);
+        form_enviar.append('id_recurso', localStorage.getItem('id_recurso'));
+        fetch('../Controlador/action.php', {
+                method: 'POST',
+                body: form_enviar
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data == 'exito') {
+                    swal(
+                        'Exito...',
+                        'Datos guardados!',
+                        'success'
+                    )
+                    $('#tabla_recursos_tipo').DataTable().ajax.reload();
+                    $('#modal').modal('toggle');
+                } else {
+                    swal(
+                        'Oopss...',
+                        'algo ocurrio mal!',
+                        'error'
+                    )
+                }
+            })
+
+    })
+</script>

@@ -26,9 +26,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MANTENIMIENTOS TIPOS DE INDICADORE.');
-
-
- 
 }
 
 ob_end_flush();
@@ -40,7 +37,7 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -104,7 +101,7 @@ ob_end_flush();
                                                             <label for="">Fecha</label><br>
                                                             <input type="text" class="form-control" id="datepicker" name="fecha_recurso_ed" placeholder="dd/mm/yyyy" required> <br>
                                                             <label for="">Nombre Indicador</label><br>
-                                                            <input type="text" class="form-control" id="nombre_recurso_ed" name="nombre_recurso_ed" required><br>
+                                                            <input type="text" class="form-control" id="nombre_indicador" name="nombre_recurso_ed" required><br>
                                                         </div>
                                                         <br>
                                                         <div class="col-12">
@@ -117,7 +114,7 @@ ob_end_flush();
                                         </form> <!-- fin del form -->
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" id="">Guardar</button>
+                                        <button type="button" class="btn btn-success" id="edicion_tipo_indica">Guardar</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
@@ -243,40 +240,40 @@ ob_end_flush();
                     [0, 'desc']
                 ],
                 "responsive": true,
-                                     //desde aqui
-        dom: 'Bfrtip',
-        "buttons": [{
-            extend: 'copyHtml5',
-            title: 'Datos Exportados',
-            text: 'Copiar <i class="fas fa-copy"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'excelHtml5',
-            title: 'Datos Exportados',
-            text: 'Excel <i class="fas fa-file-excel"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-          {
-            extend: 'pdfHtml5',
-            title: 'Datos Exportados',
-            text: 'PDF <i class="fas fa-file-pdf"></i>',
-            messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
-            exportOptions: {
-              columns: [0, 1, 2, 3]
-            }
-          },
-        ],
-        //hasta aqui
+                //desde aqui
+                dom: 'Bfrtip',
+                "buttons": [{
+                        extend: 'copyHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Copiar <i class="fas fa-copy"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Datos Exportados',
+                        text: 'Excel <i class="fas fa-file-excel"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Datos Exportados',
+                        text: 'PDF <i class="fas fa-file-pdf"></i>',
+                        messageTop: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        messageBottom: 'La información contenida en este documento pertenece a, UNAH 2021-2022',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
+                    },
+                ],
+                //hasta aqui
 
                 language: {
                     "sProcessing": "Procesando...",
@@ -341,7 +338,7 @@ ob_end_flush();
                 ],
 
             });
-            
+
             table.columns([0]).visible(false);
 
             $('#tabla_indicadores_tipo tbody').on('click', '#estado', function() {
@@ -359,9 +356,13 @@ ob_end_flush();
                 var descripcion = fila.descripcion;
                 var fecha = fila.fecha;
                 var nombre_indicador = fila.nombre_indicador;
+
+                localStorage.removeItem('id_indicador');
+                localStorage.setItem('id_indicador', id);
+
                 document.getElementById('descripcion_ed').value = descripcion;
                 document.getElementById("datepicker").value = fecha;
-                document.getElementById("nombre_indicador_ed").value = nombre_indicador;
+                document.getElementById("nombre_indicador").value = nombre_indicador;
 
             });
 
@@ -385,3 +386,39 @@ ob_end_flush();
 </body>
 
 </html>
+<script>
+    const button_edicion_indicador = document.getElementById('edicion_tipo_indica');
+    const formulario_edicion = document.getElementById('editar_datos');
+
+    button_edicion_indicador.addEventListener('click', function(e) {
+        e.preventDefault();
+        const form_enviar = new FormData(formulario_edicion);
+        form_enviar.append('edicion_indicadores', 1);
+        form_enviar.append('id_indicador', localStorage.getItem('id_indicador'));
+        fetch('../Controlador/action.php', {
+                method: 'POST',
+                body: form_enviar
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data == 'exito') {
+                    $('#modal').modal('toggle');
+                    swal(
+                        'Exito...',
+                        'Datos guardados!',
+                        'success'
+                    )
+                    $('#tabla_indicadores_tipo').DataTable().ajax.reload();
+
+                } else {
+                    swal(
+                        'Oopss...',
+                        'algo ocurrio mal!',
+                        'error'
+                    )
+                }
+            })
+
+    })
+</script>
