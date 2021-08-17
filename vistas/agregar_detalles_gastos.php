@@ -107,7 +107,7 @@ require_once('../vistas/pagina_inicio_vista.php');
                     console.log(data);
                     if (data == 'exito') {
                         swal({
-                            title: '¡Dato agregado a la base de datos!',
+                            title: '¡Dato Agregado!',
                             type: 'success',
                             html: '¿Desea agregar mas datos?',
                             showCloseButton: true,
