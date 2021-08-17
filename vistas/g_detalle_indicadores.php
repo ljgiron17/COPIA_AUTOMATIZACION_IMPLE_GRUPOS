@@ -39,7 +39,7 @@ ob_end_flush();
 <head>
     <title></title>
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/java pt" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
@@ -396,7 +396,7 @@ ob_end_flush();
                         if (data == 'exito') {
                             swal(
                                 'Exito...',
-                                'DAtos Eliminados con exito!',
+                                'Datos Eliminados con exito!',
                                 'success'
                             )
                             $('#tabla_detalles_indicador').DataTable().ajax.reload();
