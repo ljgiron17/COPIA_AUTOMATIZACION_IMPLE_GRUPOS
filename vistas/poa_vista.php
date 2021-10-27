@@ -103,13 +103,12 @@ ob_end_flush();
                                     <div class="modal-body">
                                         <form id="poa_form">
                                             <div class="container">
-                                                <label for="">Nombre Planificación</label>
-                                                <input type="text" id="n_planificacion" name="n_planificacion" class="form-control" maxlength="150" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('n_planificacion');" onkeypress="return sololetras(event)" required>
+                                                <label for="">Nombre planificación</label>
+                                                <input type="text" id="n_planificacion" name="n_planificacion" class="form-control" required>
                                                 <label for="">Fecha</label>
                                                 <input type="text" id="datepicker" name="txt_fecha_ingreso_ca" onkeydown="return false" class="form-control" placeholder="AÑO" required="">
-
                                                 <label for="">Descripción</label>
-                                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('descripcion');" onkeypress="return sololetras(event)" required></textarea>
+                                                <textarea class="form-control" id="descripción" name="descripcion" rows="3" required></textarea>
                                                 <input type="text" id="id_plani_edit" name="id_plani_edit" hidden>
                                             </div>
                                         </form>
@@ -123,13 +122,13 @@ ob_end_flush();
                             </div>
                         </div>
                         <!-- fin del modal-->
-                        <h1>GESTIÓN DE PLAN OPERATIVO ANUAL (POA)</h1>
+                        <h1>Gestión de POA</h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/g_planificacionjefatura_vista.php">Jefatura</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/planificacion_academica_vista.php">POA</a></li>
                         </ol>
                     </div>
                 </div>
@@ -141,10 +140,10 @@ ob_end_flush();
             <div class="card-body  ">
                 <div class="row">
                     <div class="col-9">
-                        <h3 class="card-title">Registro de Planificaciones Academicas</h3>
+                        <h3 class="card-title">Registro de planificaciones</h3>
                     </div>
                     <div class="col-3">
-                        <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".poa_modal" onclick="cambiarNombre();">Nueva Planificación</a>
+                        <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".poa_modal" onclick="cambiarNombre();">Nueva planificación</a>
                     </div>
                 </div>
             </div>
@@ -180,7 +179,7 @@ ob_end_flush();
                                                     <th scope="col">ID PLANIFICACIÓN</th>
                                                     <th scope="col">NOMBRE</th>
                                                     <th scope="col">DESCRIPCIÓN</th>
-                                                    <th scope="col">FECHA</th>
+                                                    <th scope="col">FECHA CREACIÓN</th>
                                                     <th scope="col">AÑO</th>
                                                     <th scope="col">CREAR OBJETIVOS</th>
                                                     <th scope="col">VER POA</th>
@@ -251,7 +250,7 @@ ob_end_flush();
                     },
                     {
                         "data": null,
-                        defaultContent: '<center><button class="btn btn-success" id="detalles_poa" data-toggle="modal" data-target="#mostrar_poa_final"><i class="fas fa-eye"></i></button></center>'
+                        defaultContent: '<center><button class="btn btn-success" id="detalles_poa"><i class="far fa-file-excel"></i></button></center>'
                     },
                     {
                         "data": null,
@@ -270,31 +269,43 @@ ob_end_flush();
             });
             table.columns([0]).visible(false);
 
+            // $('#tabla_poa tbody').on('click', '#detalles_poa', function() {
+            //     var fila = table.row($(this).parents('tr')).data();
+            //     var id_planificacion = fila.id_planificacion;
+            //     console.log(id_planificacion);
+            // });
+
             $('#tabla_poa tbody').on('click', '#detalles_poa', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id_planificacion = fila.id_planificacion;
                 console.log(id_planificacion);
 
-                const form_detalles_poa = new FormData();
-                form_detalles_poa.append('get_detalle_poa', 1);
-                form_detalles_poa.append('id_planificacion', id_planificacion);
+                //!mostrar el POA completo
+                window.location.href = "../Reporte/report_poa.php?enviar=enviar&id_planificacion=" + id_planificacion + "";
 
-                fetch('../Controlador/action.php', {
-                        method: 'POST',
-                        body: form_detalles_poa
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                    })
+
+                // const form_detalles_poa = new FormData();
+                // form_detalles_poa.append('get_detalle_poa', 1);
+                // form_detalles_poa.append('id_planificacion', id_planificacion);
+
+                // fetch('../Controlador/action.php', {
+                //         method: 'POST',
+                //         body: form_detalles_poa
+                //     })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //     })
             });
 
             $('#tabla_poa tbody').on('click', '#add_objetivos', function() {
                 var fila = table.row($(this).parents('tr')).data();
                 var id_planificacion = fila.id_planificacion;
+                var nombre_plani = fila.nombre;
                 //console.log(id_planificacion);
                 window.localStorage.clear();
                 localStorage.setItem('id_planifi', id_planificacion);
+                localStorage.setItem('nombre_planificacion', nombre_plani);
 
                 const form_plani = new FormData();
                 form_plani.append('datos_plani', 1);
@@ -452,90 +463,6 @@ ob_end_flush();
             $('.tooltip-test').tooltip();
         });
     </script>
-
-    <script type="text/javascript" language="javascript">
-    function MismaLetra(id_input) {
-        var valor = $('#' + id_input).val();
-        var longitud = valor.length;
-        //console.log(valor+longitud);
-        if (longitud > 2) {
-            var str1 = valor.substring(longitud - 3, longitud - 2);
-            var str2 = valor.substring(longitud - 2, longitud - 1);
-            var str3 = valor.substring(longitud - 1, longitud);
-            nuevo_valor = valor.substring(0, longitud - 1);
-            if (str1 == str2 && str1 == str3 && str2 == str3) {
-                swal('Error', 'No se permiten 3 letras consecutivamente', 'error');
-
-                $('#' + id_input).val(nuevo_valor);
-            }
-        }
-    }
-    function letrasynumeros(e){
-        
-        key=e.keyCode || e.wich;
-    
-        teclado= String.fromCharCode(key).toUpperCase();
-    
-        letras= "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ1234567890";
-        
-        especiales ="8-37-38-46-164";
-    
-        teclado_especial=false;
-    
-        for (var i in especiales) {
-          
-          if(key==especiales[i]){
-            teclado_especial= true;break;
-          }
-        }
-    
-        if (letras.indexOf(teclado)==-1 && !teclado_especial) {
-          return false;
-        }
-    
-    }
-    function validate(s){
-        if (/^(\w+\s?)*\s*$/.test(s)){
-          return s.replace(/\s+$/,  '');
-        }
-        return 'NOT ALLOWED';
-        }
-        
-        validate('tes ting')      //'test ing'
-        validate('testing')       //'testing'
-        validate(' testing')      //'NOT ALLOWED'
-        validate('testing ')      //'testing'
-        validate('testing  ')     //'testing'
-        validate('testing   ')   
-
-    function sololetras(e) {
-
-        key = e.keyCode || e.wich;
-
-        teclado = String.fromCharCode(key).toUpperCase();
-
-        letras = " ABCDEFGHIJKLMNOPQRSTUVWXYZÑ";
-
-        especiales = "8-37-38-46-164";
-
-        teclado_especial = false;
-
-        for (var i in especiales) {
-
-            if (key == especiales[i]) {
-                teclado_especial = true;
-                break;
-            }
-        }
-
-        if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-            return false;
-        }
-
-    }
-  
-</script>
-
 </body>
 
 </html>
