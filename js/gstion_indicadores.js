@@ -6,6 +6,7 @@ const edit_button = document.getElementById('edit_indicador');
 const guardar_responsable = document.getElementById('guardar_responsable');
 const agregar_responsables = document.getElementById('agregar_responsables');
 
+
 button_indi.addEventListener('click', function (e) {
 
     if (ind_form.checkValidity() === false) {

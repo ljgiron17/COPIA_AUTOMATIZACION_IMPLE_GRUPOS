@@ -14,6 +14,7 @@ function conexion(){
  		exit();
  	}
 
+	 
  	//Error al conectar con la base de datos
  	mysqli_select_db($conexion,$db_nombre) or die("No se encuentra la base de datos");
 

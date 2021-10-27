@@ -11,6 +11,7 @@ function init(){
 	})
 }
 
+
 //Función limpiar
 function limpiar()
 {

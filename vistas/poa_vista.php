@@ -5,7 +5,7 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 107;
+$Id_objeto = 238;
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {

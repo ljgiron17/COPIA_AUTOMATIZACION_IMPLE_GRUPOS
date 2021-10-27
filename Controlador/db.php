@@ -793,6 +793,7 @@ class db extends conexion2
         return 'exito';
     }
 
+    
     public function detalle_indicador($id_indicador, $descripcion)
     {
         $sql = "UPDATE `tbl_detalles_tipo_indicador` SET descripcion=:descripcion WHERE id_detalles_tipo_indicador =:id_indicador";

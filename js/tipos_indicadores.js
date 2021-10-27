@@ -1,44 +1,5 @@
 console.log('hola_indicador');
 
-// const button_enviar = document.getElementById('tipos_recursos');
-// const formulario_datos = document.getElementById('enviar_Datos');
-
-// button_enviar.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const form2 = new FormData(formulario_datos);
-//     form2.append('tipo_recursos', 1);
-
-
-//     if (enviar_Datos.checkValidity() === false) {
-//         e.preventDefault();
-//         e.stopPropagation();
-//         enviar_Datos.classList.add('was-validated')
-//     } else {
-
-//         fetch('../Controlador/action.php', {
-//             method: 'POST',
-//             body: form2
-//         }
-//         )
-//             .then(res => res.json())
-//             .then(data => {
-//                 if (data == 'exito') {
-//                     swal(
-//                         'Exito!',
-//                         'Los datos han sido agregados!',
-//                         'success'
-//                     )
-//                     $('#modal').modal('toggle');
-//                     $('#tabla_recursos_tipo').DataTable().ajax.reload();
-//                     document.getElementById("enviar_Datos").reset();
-//                 } else {
-
-//                 }
-//                 console.log(data);
-//             })
-//     }
-
-// })
 
 function eliminar(id) {
     swal({

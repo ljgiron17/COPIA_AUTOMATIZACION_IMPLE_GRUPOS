@@ -5,7 +5,6 @@ class conexion2
     private const DBUSER = 'root';
     private const DBPASS = '';
     private const DBNAME = 'informat_desarrollo_automatizacion';
-
     private $dsn = 'mysql:host=' . self::DBHOST . ';dbname=' . self::DBNAME . '';
     protected $conn = null;
 
@@ -19,5 +18,6 @@ class conexion2
             die('Error' . $e->getMessage());
         }
     }
+    
     
 }

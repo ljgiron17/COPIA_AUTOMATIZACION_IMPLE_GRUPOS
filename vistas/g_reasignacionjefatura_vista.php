@@ -7,7 +7,7 @@ require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_permisos.php');
 
-if (permiso_ver('118')=='1')
+if (permiso_ver('249')=='1')
  {
   
   $_SESSION['g_reasignacionjefatura_vista']="...";
@@ -19,7 +19,7 @@ $_SESSION['g_reasignacionjefatura_vista']="No
 
 }
 
-if (permiso_ver('119')=='1')
+if (permiso_ver('250')=='1')
  {
   
   $_SESSION['g_reasignacion_solicitud']="...";
@@ -31,7 +31,7 @@ $_SESSION['g_reasignacion_solicitud']="No
 
 }
 
-if (permiso_ver('120')=='1')
+if (permiso_ver('251')=='1')
  {
   
   $_SESSION['g_reasignacion_retroalimentacion']="...";
@@ -43,7 +43,7 @@ $_SESSION['g_reasignacion_retroalimentacion']="No
 
 }
 
-$Id_objeto = 118;
+$Id_objeto = 249;
 
 
 $visualizacion = permiso_ver($Id_objeto);

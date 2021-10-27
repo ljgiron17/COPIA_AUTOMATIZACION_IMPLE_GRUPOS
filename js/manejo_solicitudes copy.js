@@ -4,7 +4,6 @@ const button_denegar = document.getElementById('solictud_denegar');
 const form_solictiud = document.getElementById('form_solictiud');
 const button_aceptar = document.getElementById('aceptar_solicitud');
 
-
 button_denegar.addEventListener('click', function (e) {
     //alert('denegada');
     const form_denegada = new FormData(form_solictiud);

@@ -5,7 +5,7 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 120;
+$Id_objeto = 251;
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {
@@ -160,7 +160,7 @@ ob_end_flush();
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/g_reasignacionjefatura_vista.php">Reasigacion Academica</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/g_reasignacionjefatura_vista.php">Gestion de Reasignacion Jefatura</a></li>
 
             </ol>
           </div>

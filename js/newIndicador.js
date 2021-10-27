@@ -21,6 +21,7 @@ button.addEventListener('click', function (e) {
 
 });
 
+
 function eliminar(id) {
     swal({
         title: 'Seguro que quiere eliminar este Indicador de Gestión Academica?',

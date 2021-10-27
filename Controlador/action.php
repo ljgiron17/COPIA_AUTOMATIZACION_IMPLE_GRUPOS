@@ -929,7 +929,6 @@ if (isset($_POST['editar_detalleSend_recuros'])) {
     echo json_encode($respuesta);
 }
 
-
 if (isset($_POST['editar_indicdrosend_det'])) {
     $id_indicador = $_POST['id_indicador'];
     $descripcion = $_POST['desc_indicadro'];

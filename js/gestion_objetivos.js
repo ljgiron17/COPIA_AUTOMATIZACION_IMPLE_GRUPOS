@@ -4,6 +4,7 @@ const form_objetivo = document.getElementById('obj_form');
 var id_planifica = localStorage.getItem('id_planifi');
 const button_edit = document.getElementById('edicion_obj');
 
+
 //?CREACION DE UN NUEVO OBJETIVO
 button_objetivo.addEventListener('click', function (e) {
     if (obj_form.checkValidity() === false) {

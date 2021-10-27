@@ -10,7 +10,6 @@ function init(){
 		guardaryeditar(e);	
 	})
 }
-
 //Función limpiar
 function limpiar()
 {

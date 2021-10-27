@@ -5,7 +5,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
 
-if (permiso_ver('124') == '1') {
+if (permiso_ver('255') == '1') {
 
   $_SESSION['menu_mantenimientos_jefatura_principal'] = "...";
 } else {
@@ -13,7 +13,7 @@ if (permiso_ver('124') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('127') == '1') {
+if (permiso_ver('258') == '1') {
 
   $_SESSION['recursos_tipo'] = "...";
 } else {
@@ -23,7 +23,7 @@ if (permiso_ver('127') == '1') {
 //recursos
 
 //requerimientos
-if (permiso_ver('128') == '1') {
+if (permiso_ver('259') == '1') {
 
   $_SESSION['mantenimiento_tipos_recursos'] = "...";
 } else {
@@ -31,7 +31,7 @@ if (permiso_ver('128') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('129') == '1') {
+if (permiso_ver('260') == '1') {
 
   $_SESSION['gastos_tipo'] = "...";
 } else {
@@ -41,7 +41,7 @@ if (permiso_ver('129') == '1') {
 //requerimientos
 
 //gastos
-if (permiso_ver('130') == '1') {
+if (permiso_ver('261') == '1') {
 
   $_SESSION['mantenimiento_tipo_gastos_vista'] = "...";
 } else {
@@ -50,7 +50,7 @@ if (permiso_ver('130') == '1') {
 }
 
 
-if (permiso_ver('131') == '1') {
+if (permiso_ver('262') == '1') {
 
   $_SESSION['indicador_tipo'] = "...";
 } else {
@@ -60,7 +60,7 @@ if (permiso_ver('131') == '1') {
 //gastos fin
 
 //indicadores
-if (permiso_ver('132') == '1') {
+if (permiso_ver('263') == '1') {
 
   $_SESSION['mantenimiento_tipo_indicadores'] = "...";
 } else {
@@ -68,7 +68,7 @@ if (permiso_ver('132') == '1') {
   tiene permisos para visualizar";
 }
 
-$Id_objeto = 124;
+$Id_objeto = 255;
 
 
 $visualizacion = permiso_ver($Id_objeto);

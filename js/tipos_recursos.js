@@ -15,6 +15,7 @@ function eliminar(id) {
         buttonsStyling: false
     }).then(function () {
 
+        
         const form = new FormData();
         form.append('eliminar_recurso', 1);
         form.append('id', id);

@@ -1,6 +1,5 @@
 
 
-
  function ltr(e){
         key=e.keyCode || e.which;
         tec=String.fromCharCode(key).toLowerCase();

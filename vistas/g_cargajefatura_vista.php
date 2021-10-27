@@ -8,7 +8,7 @@ require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_permisos.php');
 
 
-if (permiso_ver('105')=='1')
+if (permiso_ver('236')=='1')
  {
   
   $_SESSION['g_cargajefatura_vista']="...";
@@ -20,7 +20,7 @@ $_SESSION['g_cargajefatura_vista']="No
 
 }
 
-if (permiso_ver('114')=='1')
+if (permiso_ver('245')=='1')
  {
   
   $_SESSION['g_carga_cargaacademica_vista']="...";
@@ -32,7 +32,7 @@ $_SESSION['g_carga_cargaacademica_vista']="No
 
 }
 
-if (permiso_ver('106')=='1')
+if (permiso_ver('237')=='1')
  {
   
   $_SESSION['g_carga_declaracionjurada_vista']="...";
@@ -43,7 +43,7 @@ $_SESSION['g_carga_declaracionjurada_vista']="No
   tiene permisos para visualizar";
 
 }
-if (permiso_ver('110')=='1')
+if (permiso_ver('241')=='1')
  {
   
   $_SESSION['g_carga_recontratacion_vista']="...";
@@ -54,7 +54,7 @@ $_SESSION['g_carga_recontratacion_vista']="No
   tiene permisos para visualizar";
 
 }
-$Id_objeto = 114;
+$Id_objeto = 236;
 
 
 $visualizacion = permiso_ver($Id_objeto);

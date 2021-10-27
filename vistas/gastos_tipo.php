@@ -10,7 +10,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-$Id_objeto = 129;
+$Id_objeto = 260;
 
 
 $visualizacion = permiso_ver($Id_objeto);

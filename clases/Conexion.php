@@ -23,7 +23,5 @@ if (!mysqli_set_charset($mysqli, "utf8")) {
         printf("");
     }
 
-    
-	
 
 ?>
