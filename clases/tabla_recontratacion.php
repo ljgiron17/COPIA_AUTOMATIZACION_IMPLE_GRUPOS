@@ -20,4 +20,5 @@ $conexion = conexion();
     mysqli_free_result($resultado);
     mysqli_close($conexion);
 
+
 //envio de la consulta

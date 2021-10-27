@@ -8,7 +8,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 237;
+$Id_objeto = 106;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -207,9 +207,11 @@ ob_end_flush();
         var fila = table.row($(this).parents('tr')).data();
         var id_coordAcademica = fila.id_coordAcademica;
         var periodo = fila.periodo;
+        var fecha = fila.fecha;
         window.localStorage.clear();
         localStorage.setItem('id_coordAcademica', id_coordAcademica);
         localStorage.setItem('periodo', periodo);
+        localStorage.setItem('fecha', fecha);
 
         const formulario = new FormData();
         formulario.append('enviar_docente', 1);

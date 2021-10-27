@@ -31,6 +31,12 @@ if ($visualizacion == 0) {
 
 ob_end_flush();
 ?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 

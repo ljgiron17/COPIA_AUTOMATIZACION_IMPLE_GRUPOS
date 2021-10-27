@@ -93,7 +93,7 @@ ob_end_flush();
                             <form id="agregar_metas">
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Primer Trimestre</label>
-                                    <input type="text" class="form-control" id="primer_trimestre" name="primer_trimestre" maxlength="3" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('ind_indicador');" onkeypress="return solonumeros(event)" placeholder="Primero">
+                                    <input type="text" class="form-control" id="primer_trimestre" name="primer_trimestre" maxlength="3" placeholder="Primero">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Segundo Trimestre</label>
@@ -110,12 +110,18 @@ ob_end_flush();
                                 <div id="mensaje_meta">
 
                                 </div>
-                                <div class="form-group d-flex">
-                                    <div class="ml-auto p-2">
-                                        <button class="btn btn-primary" id="guardar_metas">Guardar</button>
-                                    </div>
-                                </div>
                             </form>
+                            <div class="form-group d-flex">
+                                <div class="ml-auto p-2" id="edicion_metas" hidden>
+                                    <button class="btn sw-btn-prev btn btn-danger" id="finalizar_edicion">Finalizar Edición</button>
+                                    <button class="btn btn-warning" id="guardar_metas_edicion">Guardar Edición</button>
+                                </div>
+                                <div class="ml-auto p-2" id="creacion_metas">
+                                    <button class="btn sw-btn-prev btn btn-danger">Finalizar</button>
+                                    <button class="btn btn-primary" id="guardar_metas">Guardar</button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -135,95 +141,84 @@ ob_end_flush();
         transitionEffect: 'fade',
         transitionSpeed: '400',
         lang: { // Language variables for button
-            next: 'Siguiente',
-            previous: 'Anterior'
+            next: 'SIGUIENTE',
+            previous: 'ANTERIOR'
         }
     });
     // function call_wizard2() {
     //     $('#vista_smart').smartWizard("reset");
-    // }
+    // }   
+    table.columns([0]).visible(false);
+
+    $('#tabla_metas tbody').on('click', '#editar_metas', function() {
+        table.columns([0]).visible(false);
+        
+        var fila = $(this).closest('tr');
+        var id_meta_editar = fila.find('td:eq(0)').text();
+        var primer_trimestre = fila.find('td:eq(1)').text();
+        var segundo_trimestre = fila.find('td:eq(2)').text();
+        var tercer_trimestre = fila.find('td:eq(3)').text();
+        var cuarto_trimestre = fila.find('td:eq(4)').text();
+
+        document.getElementById('primer_trimestre').value = primer_trimestre;
+        document.getElementById('segundo_trimestre').value = segundo_trimestre;
+        document.getElementById('tercer_trimestre').value = tercer_trimestre;
+        document.getElementById('cuarto_trimestre').value = cuarto_trimestre;
+
+
+        localStorage.removeItem('id_meta_editar');
+        localStorage.setItem('id_meta_editar', id_meta_editar);
+        console.log(id_meta_editar);
+        $(".sw-btn-next").trigger("click");
+        $("#edicion_metas").attr("hidden", false);
+        $("#creacion_metas").attr("hidden", true);
+    });
+
+    $('#finalizar_edicion').click(function() {
+        document.getElementById('agregar_metas').reset();
+        $("#edicion_metas").attr("hidden", true);
+        $("#creacion_metas").attr("hidden", false);
+    });
+
+    const guardar_metas_edicion = document.getElementById('guardar_metas_edicion'); //boton guardar metas
+    const form_metas = document.getElementById('agregar_metas');
+
+    guardar_metas_edicion.addEventListener('click', function(e) {
+        e.preventDefault();
+        //alert('hola');
+        const new_form = new FormData(form_metas);
+        new_form.append('editar_meta', 1);
+        new_form.append('id_metas', localStorage.getItem('id_meta_editar'));
+        fetch('../Controlador/action.php', {
+                method: 'POST',
+                body: new_form
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data == 'exito') {
+                    console.log(data);
+                    $("#mensaje_meta").html(showMEssage('success', '¡Metas han sido agregadas!'));
+                    $("#mensaje_meta").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#mensaje_meta").slideUp(500);
+                    });
+                    $('#tabla_metas tbody').empty();
+                    update_metas();
+                    document.getElementById('agregar_metas').reset();
+
+                } else if (data == 'cuenta_mayor') {
+                    $("#mensaje_meta").html(showMEssage('danger', '¡Cantidades ingresadas suman mas de 100%, verifique los campos!'));
+                    $("#mensaje_meta").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#mensaje_meta").slideUp(500);
+                    });
+                } else if (data == 'menor_cuenta') {
+                    $("#mensaje_meta").html(showMEssage('danger', '¡Sus porcentaje de metas no suma el 100%!'));
+                    $("#mensaje_meta").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#mensaje_meta").slideUp(500);
+                    });
+                }
+            })
+    })
 </script>
 
-<script type="text/javascript" language="javascript">
-    function MismaLetra(id_input) {
-        var valor = $('#' + id_input).val();
-        var longitud = valor.length;
-        //console.log(valor+longitud);
-        if (longitud > 2) {
-            var str1 = valor.substring(longitud - 3, longitud - 2);
-            var str2 = valor.substring(longitud - 2, longitud - 1);
-            var str3 = valor.substring(longitud - 1, longitud);
-            nuevo_valor = valor.substring(0, longitud - 1);
-            if (str1 == str2 && str1 == str3 && str2 == str3) {
-                swal('Error', 'No se permiten 3 letras consecutivamente', 'error');
-
-                $('#' + id_input).val(nuevo_valor);
-            }
-        }
-    }
-    function letrasynumeros(e){
-        
-        key=e.keyCode || e.wich;
-    
-        teclado= String.fromCharCode(key).toUpperCase();
-    
-        letras= "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ1234567890";
-        
-        especiales ="8-37-38-46-164";
-    
-        teclado_especial=false;
-    
-        for (var i in especiales) {
-          
-          if(key==especiales[i]){
-            teclado_especial= true;break;
-          }
-        }
-    
-        if (letras.indexOf(teclado)==-1 && !teclado_especial) {
-          return false;
-        }
-    
-    }
-    function validate(s){
-        if (/^(\w+\s?)*\s*$/.test(s)){
-          return s.replace(/\s+$/,  '');
-        }
-        return 'NOT ALLOWED';
-        }
-        
-        validate('tes ting')      //'test ing'
-        validate('testing')       //'testing'
-        validate(' testing')      //'NOT ALLOWED'
-        validate('testing ')      //'testing'
-        validate('testing  ')     //'testing'
-        validate('testing   ')   
-
-    function solonumeros(e){
-        
-        key=e.keyCode || e.wich;
-    
-        teclado= String.fromCharCode(key).toUpperCase();
-    
-        letras= "1234567890";
-        
-        especiales ="8-37-38-46-164";
-    
-        teclado_especial=false;
-    
-        for (var i in especiales) {
-          
-          if(key==especiales[i]){
-            teclado_especial= true;break;
-          }
-        }
-    
-        if (letras.indexOf(teclado)==-1 && !teclado_especial) {
-          return false;
-        }
-    
-    }
-
-  
-</script>
 </html>

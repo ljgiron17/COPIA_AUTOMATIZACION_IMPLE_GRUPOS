@@ -105,6 +105,7 @@ if (permiso_ver('112') == '1') {
                   <th scope="col">ID</th>
                   <th scope="col">NOMBRE DOCENTES</th>
                   <th scope="col">ACCIÓN</th>
+                  <th scope="col">GENERAR</th>
                 </tr>
               </thead>
             </table>
@@ -148,6 +149,12 @@ if (permiso_ver('112') == '1') {
           render: function(data, type, row) {
 
             return '<center><button class="btn btn-primary" id="get_ID" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus " ></i></button><center>';
+          }
+        },
+        {
+          data: null,
+          render: function(data, type, row) {
+            return '<center><button class="btn btn-success" data-toggle="modal" data-target="#modal_final_CR" id="generar_doctoCR">Generar</button><center>';
           }
         }
       ]

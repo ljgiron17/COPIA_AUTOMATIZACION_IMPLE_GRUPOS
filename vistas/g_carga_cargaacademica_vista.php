@@ -5,33 +5,42 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 245;
-$visualizacion = permiso_ver($Id_objeto);
-if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
-                              swal({
-                                   title:"",
-                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-                                   type: "error",
-                                   showConfirmButton: false,
-                                   timer: 3000
-                                });
-                           window.location = "../vistas/g_carga_cargaacademica_vista.php";
+if (permiso_ver('114') == '1') {
 
-                            </script>';
+  $_SESSION['g_cargaacademica_vista'] = "...";
 } else {
-
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GESTIÓN DE CARGA ACADÉMICA DE JEFATURA.');
-
-
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "";
-    // } else {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "disabled";
-    // }
+  $_SESSION['g_cargaacademica_vista'] = "No 
+   tiene permisos para visualizar";
 }
 
-ob_end_flush();
+
+$Id_objeto = 114;
+
+$visualizacion = permiso_ver($Id_objeto);
+
+
+
+if ($visualizacion == 0) {
+  header('location:  ../vistas/pagina_principal_vista.php');
+} else {
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
+}
+
+
+if (isset($_REQUEST['msj'])) {
+  $msj = $_REQUEST['msj'];
+
+  if ($msj == 1) {
+    echo '<script> alert("Fecha invalidas favor verificar.")</script>';
+  }
+
+  if ($msj == 2) {
+    echo '<script> alert("Datos por rellenar, por favor verificar.")</script>';
+  }
+  if ($msj == 3) {
+    echo '<script> alert("Por favor verificar fechas.")</script>';
+  }
+}
 
 ?>
 
@@ -87,7 +96,7 @@ ob_end_flush();
             <label for="">Nombre del MASTER</label>
             <input type="text" class="form-control" id="master_n" name="master_n" required onkeyup="mayusculas(this)">
             <label for="">N° de Oficio</label>
-            <input type="text" class="form-control" id="numero_fi" name="numero_ofi" required onkeyup="mayusculas(this);">
+            <input type="text" class="form-control" id="numero_ofi" name="numero_ofi" required onkeyup="mayusculas(this);">
             <input type="text" id="numero_archivo" hidden readonly>
           </form>
         </div>
@@ -267,7 +276,7 @@ ob_end_flush();
 
         </div>
       </div><!-- /.container-fluid -->
-    </section>    
+    </section>
     <section class="content">
       <div class="container-fluid">
         <!-- pantalla 1 -->
@@ -474,6 +483,12 @@ ob_end_flush();
       $('#tabla_academica tbody').on('click', '#generar_word', function() {
         var fila = table.row($(this).parents('tr')).data();
         var id_archivo = fila.id_coordAcademica;
+        var periodo = fila.periodo;
+        var fecha = fila.fecha;
+        localStorage.removeItem('periodo');
+        localStorage.removeItem('fecha');
+        localStorage.setItem('periodo', periodo);
+        localStorage.setItem('fecha', fecha);
         console.log(id_archivo);
         document.getElementById('numero_archivo').value = id_archivo;
         //window.location.href = '../Reporte/reporte_word.php?enviar=enviar&id_archivo='+id_archivo+'';
@@ -484,9 +499,11 @@ ob_end_flush();
       button_sendW.addEventListener('click', function(e) {
         e.preventDefault();
         var master = document.getElementById("master_n").value;
-        var numero_ofi = document.getElementById("numero_fi").value;
+        var numero_ofi = document.getElementById("numero_ofi").value;
         var id_archivo = document.getElementById("numero_archivo").value;
-        window.location.href = '../Reporte/reporte_word.php?enviar=enviar&id_archivo=' + id_archivo + '&master=' + master + '&numero_ofi=' + numero_ofi + '';
+        var periodo = localStorage.getItem('periodo');
+        var fecha = localStorage.getItem('fecha');
+        window.location.href = '../Reporte/reporte_word.php?enviar=enviar&id_archivo=' + id_archivo + '&master_n=' + master + '&numero_ofi=' + numero_ofi + '&periodo=' + periodo + '&fecha=' + fecha;
         document.getElementById('datos_form_ca').reset();
         $('#modal_final').modal('toggle');
       });
@@ -594,3 +611,4 @@ ob_end_flush();
   });
   //fin validacion  
 </script>
+

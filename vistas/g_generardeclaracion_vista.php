@@ -7,7 +7,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('239') == '1') {
+if (permiso_ver('108') == '1') {
 
   $_SESSION['g_generardeclaracion_vista'] = "...";
 } else {
@@ -46,14 +46,16 @@ if (permiso_ver('239') == '1') {
         </div>
         <div class="modal-body">
           <form id="form_reporte_ind">
-            <label for="">Nombre Jefe</label>
-            <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" onkeyup="mayusculas(this);" required>
+            <!--  <label for="">Nombre Jefe</label>-->
+           <!-- <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" onkeyup="mayusculas(this);" required>-->
             <label for="">Departamento</label>
             <input type="text" class="form-control" id="depto" name="depto" onkeyup="mayusculas(this);" required>
-            <label for="">Numero de identidad</label>
-            <input type="text" class="form-control" id="identidad" name="identidad" required>
-            <label for="">Profesión</label>
-            <input type="text" class="form-control" id="profesion" name="profesion" onkeyup="mayusculas(this);" required>
+            <!-- <label for="">Numero de identidad</label>
+            <input type="text" class="form-control" id="identidad" name="identidad" required>-->
+            <label for="">Profesión del jefe</label>
+            <input type="text" class="form-control" id="profesion_jefe" name="profesion_jefe" onkeyup="mayusculas(this);" required>
+            <label for="">Profesión del docente</label>
+            <input type="text" class="form-control" id="profesion_docente" name="profesion_docente" onkeyup="mayusculas(this);" required>
             <input type="text" id="nombreEnviar_docente" hidden readonly>
           </form>
         </div>
@@ -296,14 +298,16 @@ if (permiso_ver('239') == '1') {
         e.stopPropagation();
         form_reporte_ind.classList.add('was-validated')
       } else {
-        var nombre_jefe = document.getElementById('nombre_jefe').value;
+       // var nombre_jefe = document.getElementById('nombre_jefe').value;
         var depto = document.getElementById('depto').value;
-        var identidad = document.getElementById('identidad').value;
+        //var identidad = document.getElementById('identidad').value;
         var periodo = localStorage.getItem('periodo');
+        var fecha = localStorage.getItem('fecha');
         var nombre_docente = document.getElementById('nombreEnviar_docente').value;
-        var profesion = document.getElementById('profesion').value;  
+        var profesion_jefe = document.getElementById('profesion_jefe').value; 
+        var profesion_docente = document.getElementById('profesion_docente').value;  
         var id_coordAcademica = localStorage.getItem('id_coordAcademica');      
-        window.location.href = '../Reporte/reporte_individual.php?enviar=enviar&nombre_docente=' + nombre_docente + '&nombre_jefe=' + nombre_jefe + '&depto=' + depto + '&identidad=' + identidad + '&periodo=' + periodo + '&profesion=' + profesion + '&id_coordAcademica='+id_coordAcademica+'';                
+        window.location.href = '../Reporte/reporte_individual.php?enviar=enviar&nombre_docente=' + nombre_docente  +'&depto=' + depto  + '&periodo=' + periodo  + '&fecha='+ fecha + '&profesion_jefe=' + profesion_jefe +  '&profesion_docente=' + profesion_docente + '&id_coordAcademica='+id_coordAcademica+'';                
         $('#modal_final_ca').modal('toggle');
         document.getElementById('form_reporte_ind').reset();
       }

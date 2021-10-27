@@ -34,6 +34,8 @@ ob_end_flush();
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html>
 
@@ -51,9 +53,15 @@ ob_end_flush();
             display: block;
         }
     </style>
+    <script>
+        function cargar_plani() {
+            var nombre = localStorage.getItem('nombre_planificacion');
+            document.getElementById('nombre_planificacion').innerHTML = nombre;
+        }
+    </script>
 </head>
 
-<body>
+<body onload="cargar_plani();">
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -75,9 +83,9 @@ ob_end_flush();
                                         <form id="obj_form">
                                             <div class="container">
                                                 <label for="">Nombre objetivo</label>
-                                                <input type="text" id="n_objetivo" name="n_objetivo" class="form-control" maxlength="100" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('n_objetivo');" onkeypress="return sololetras(event)" required>
+                                                <input type="text" id="n_objetivo" name="n_objetivo" class="form-control" maxlength="50" required>
                                                 <label for="">Descripción</label>
-                                                <textarea class="form-control" id="obj_descripción" name="obj_descripción" rows="3" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('obj_descripción');" onkeypress="return sololetras(event)" required></textarea>
+                                                <textarea class="form-control" id="obj_descripción" name="obj_descripción" rows="3" maxlength="100" required></textarea>
                                                 <input type="text" id="id_objetivo" name="id_objetivo_edit" hidden>
                                             </div>
                                         </form>
@@ -97,8 +105,9 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/planificacion_academica_vista.php">POA</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/poa_vista.php">POA</a></li>
                         </ol>
+                        
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -134,6 +143,17 @@ ob_end_flush();
             </li>
             <li class="page-item"><label class="page-link">Indicadores</label></li>
         </ul>
+
+        <div class="container">
+            <nav class="navbar navbar-dark bg-primary">
+                <hr>
+                <center>
+                    <h5>Nombre Planificación: <strong id="nombre_planificacion"></strong></h5>
+                </center>
+                <hr>
+            </nav>
+        </div>
+
         <div class=" card-body">
             <div class="container-fluid">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -250,7 +270,7 @@ ob_end_flush();
             document.getElementById('id_objetivo').value = id_obj_edit;
 
             document.getElementById('exampleModalLabel').innerHTML = "Editar Objetivo";
-            
+
             document.getElementById('guardar_objetivo').style.display = 'none';
             if ($('#edicion_obj').css('display') == 'none') {
                 document.getElementById('edicion_obj').style.display = '';
@@ -261,8 +281,12 @@ ob_end_flush();
         $('#tabla_objetivos tbody').on('click', '#get_ID', function() {
             var fila = table.row($(this).parents('tr')).data();
             var id_obj_send = fila.id_objetivo;
+            var nombre_objetivo = fila.nombre_objetivo;
             console.log(id_obj_send);
             //window.location.href = "../vistas/indicadores_poa.php";
+            localStorage.removeItem('nombre_objetivo');
+            localStorage.setItem('nombre_objetivo', nombre_objetivo);
+
             const form_indicadores_get = new FormData();
             form_indicadores_get.append('get_data_indicador', 1);
             form_indicadores_get.append('id_obj_send', id_obj_send)
@@ -287,7 +311,7 @@ ob_end_flush();
             var id_planificacion = fila.id_planificacion;
             localStorage.removeItem('id_planificacion');
             localStorage.setItem('id_planificacion', id_planificacion);
-            
+
             delete_Obj(id_delete);
         });
 
@@ -440,88 +464,6 @@ ob_end_flush();
         });
         //fin validacion  
     </script>
-    <script type="text/javascript" language="javascript">
-    function MismaLetra(id_input) {
-        var valor = $('#' + id_input).val();
-        var longitud = valor.length;
-        //console.log(valor+longitud);
-        if (longitud > 2) {
-            var str1 = valor.substring(longitud - 3, longitud - 2);
-            var str2 = valor.substring(longitud - 2, longitud - 1);
-            var str3 = valor.substring(longitud - 1, longitud);
-            nuevo_valor = valor.substring(0, longitud - 1);
-            if (str1 == str2 && str1 == str3 && str2 == str3) {
-                swal('Error', 'No se permiten 3 letras consecutivamente', 'error');
-
-                $('#' + id_input).val(nuevo_valor);
-            }
-        }
-    }
-    function letrasynumeros(e){
-        
-        key=e.keyCode || e.wich;
-    
-        teclado= String.fromCharCode(key).toUpperCase();
-    
-        letras= "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ1234567890";
-        
-        especiales ="8-37-38-46-164";
-    
-        teclado_especial=false;
-    
-        for (var i in especiales) {
-          
-          if(key==especiales[i]){
-            teclado_especial= true;break;
-          }
-        }
-    
-        if (letras.indexOf(teclado)==-1 && !teclado_especial) {
-          return false;
-        }
-    
-    }
-    function validate(s){
-        if (/^(\w+\s?)*\s*$/.test(s)){
-          return s.replace(/\s+$/,  '');
-        }
-        return 'NOT ALLOWED';
-        }
-        
-        validate('tes ting')      //'test ing'
-        validate('testing')       //'testing'
-        validate(' testing')      //'NOT ALLOWED'
-        validate('testing ')      //'testing'
-        validate('testing  ')     //'testing'
-        validate('testing   ')   
-
-    function sololetras(e) {
-
-        key = e.keyCode || e.wich;
-
-        teclado = String.fromCharCode(key).toUpperCase();
-
-        letras = " ABCDEFGHIJKLMNOPQRSTUVWXYZÑ";
-
-        especiales = "8-37-38-46-164";
-
-        teclado_especial = false;
-
-        for (var i in especiales) {
-
-            if (key == especiales[i]) {
-                teclado_especial = true;
-                break;
-            }
-        }
-
-        if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-            return false;
-        }
-
-    }
-  
-</script>
 </body>
 
 </html>
